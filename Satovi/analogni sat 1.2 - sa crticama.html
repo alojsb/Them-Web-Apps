@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>analogni sat 1.2 - sa crticama</title>
+    <style>
+    
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            background-color: rgba(252, 251, 227, 0.815);
+        }
+
+        .centrirano{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .kazaljke{
+            position: absolute;
+            transform-origin: bottom center; /*odredjuje tacku oko koje se vrsi rotacija div-a*/
+        }
+
+        #sat{
+            background-color: black;
+            width: 40vw;
+            height: 40vw;
+            border-radius: 20vw;
+        }
+
+        #zifferblatt{
+            background-color: wheat;
+            width: 36vw;
+            height: 36vw;
+            border-radius: 18vw;
+        }
+
+        #satara{
+            background-color: black;
+            width: 2vw;
+            height: 10vw;
+            top: 8vw;
+            left: calc(100% - 18vw - 1vw);  /*sirina ekrana minus radijus zifferblatta minus pola sirine kazaljke*/
+            /*transform: rotate(0deg);    /*svakih 12 minuta treba da se pomjeri za 6deg*/
+        }
+
+        #satara-residue{
+            background-color: black;
+            width: 2vw;
+            height: 3vw;
+            top: 15vw;
+            left: calc(100% - 18vw - 1vw);  /*sirina ekrana minus radijus zifferblatta minus pola sirine kazaljke*/
+            /*transform: rotate(180deg);    /*vrijednost kod satare plus 180*/       
+        }
+
+        #minutara{
+            background-color: black;         
+            width: 1.5vw;
+            height: 16vw;
+            top: 2vw;
+            left: calc(100% - 18vw - 0.75vw);   /*sirina ekrana minus radijus zifferblatta minus sirina kazaljke*/
+            /*transform: rotate(54deg);    /*1 minuta je 6deg*/
+        }
+
+        #minutara-residue{
+            background-color: black;
+            width: 1.5vw;
+            height: 3vw;
+            top: 15vw;
+            left: calc(100% - 18vw - 0.75vw); /*sirina ekrana minus radijus zifferblatta minus sirina kazaljke*/
+            /*transform: rotate(234deg);  /*vrijednost kod minutare plus 180*/
+        }
+
+        #sekundara{
+            background-color: red;
+            width: 0.5vw;
+            height: 12vw;
+            top: 6vw;
+            left: calc(100% - 18vw - 0.25vw);  /*sirina ekrana minus radijus zifferblatta minus pola sirine kazaljke*/
+            /*transform: rotate(90deg);    /*svakih 12 minuta treba da se pomjeri za 6deg*/
+        }
+
+        #sekundara-residue{
+            background-color: red;
+            width: 0.5vw;
+            height: 4vw;
+            top: 14vw;
+            left: calc(100% - 18vw - 0.25vw);  /*sirina ekrana minus radijus zifferblatta minus sirina kazaljke*/
+            /*transform: rotate(270deg);    /*vrijednost kod satare plus 180*/
+        }
+
+        #centar{
+            background-color: brown;
+            width: 1vw;
+            height: 1vw;
+            border-radius: 0.5vw;
+        }
+
+        .brojevi{
+            width: 4vw;
+            height: 16vw;
+            top:  2vw;
+            left: calc(100% - 18vw - 2vw);
+            text-align: center;
+            font-size: 3.5vw;
+        }
+
+        #jedan{
+            transform: rotate(30deg);
+        }
+
+        #broj-jedan{
+            transform: rotate(330deg);  /*360 minus vrijednost u #jedan*/
+        }
+
+        #dva{
+            transform: rotate(60deg);
+        }
+
+        #broj-dva{
+            transform: rotate(300deg);  /*360 minus vrijednost u #dva*/
+        }
+
+        #tri{
+            transform: rotate(90deg);
+        }
+
+        #broj-tri{
+            transform: rotate(270deg);  /*360 minus vrijednost u #tri*/
+        }
+
+        #cetiri{
+            transform: rotate(120deg);
+        }
+
+        #broj-cetiri{
+            transform: rotate(240deg);  /*360 minus vrijednost u #cetiri*/
+        }
+
+        #pet{
+            transform: rotate(150deg);
+        }
+
+        #broj-pet{
+            transform: rotate(210deg);  /*360 minus vrijednost u #pet*/
+        }
+
+        #sest{
+            transform: rotate(180deg);
+        }
+
+        #broj-sest{
+            transform: rotate(180deg);  /*360 minus vrijednost u #sest*/
+        }
+
+        #sedam{
+            transform: rotate(210deg);
+        }
+
+        #broj-sedam{
+            transform: rotate(150deg);  /*360 minus vrijednost u #sedam*/
+        }
+
+        #osam{
+            transform: rotate(240deg);
+        }
+
+        #broj-osam{
+            transform: rotate(120deg);  /*360 minus vrijednost u #osam*/
+        }
+
+        #devet{
+            transform: rotate(270deg);
+        }
+
+        #broj-devet{
+            transform: rotate(90deg);   /*360 minus vrijednost u #devet*/
+        }
+
+        #deset{
+            transform: rotate(300deg);
+        }
+
+        #broj-deset{
+            transform: rotate(60deg);   /*360 minus vrijednost u #deset*/
+        }
+
+        #jedanaest{
+            transform: rotate(330deg);
+        }
+
+        #broj-jedanaest{
+            transform: rotate(30deg);   /*360 minus vrijednost u #jedanaest*/
+        }
+
+        .crtice{
+            width: 0.5vw;
+            height: 17.5vw;
+            font-weight: 900;
+            text-align: center;
+            top: 0.5vw;
+            left: calc(100% - 18vw - 0.25vw);
+        }
+
+        #crta-00{
+            font-size: 1.5vw;
+        }
+
+        #crta-01{
+            transform: rotate(6deg);
+        }
+
+        #crta-02{
+            transform: rotate(12deg);
+        }
+
+        #crta-03{
+            transform: rotate(18deg);
+        }
+
+        #crta-04{
+            transform: rotate(24deg);
+        }
+
+        #crta-05{
+            transform: rotate(30deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-06{
+            transform: rotate(36deg);
+        }
+
+        #crta-07{
+            transform: rotate(42deg);
+        }
+
+        #crta-08{
+            transform: rotate(48deg);
+        }
+
+        #crta-09{
+            transform: rotate(54deg);
+        }
+
+        #crta-10{
+            transform: rotate(60deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-11{
+            transform: rotate(66deg);
+        }
+
+        #crta-12{
+            transform: rotate(72deg);
+        }
+
+        #crta-13{
+            transform: rotate(78deg);
+        }
+
+        #crta-14{
+            transform: rotate(84deg);
+        }
+
+        #crta-15{
+            transform: rotate(90deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-16{
+            transform: rotate(96deg);
+        }
+
+        #crta-17{
+            transform: rotate(102deg);
+        }
+
+        #crta-18{
+            transform: rotate(108deg);
+        }
+
+        #crta-19{
+            transform: rotate(114deg);
+        }
+
+        #crta-20{
+            transform: rotate(120deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-21{
+            transform: rotate(126deg);
+        }
+
+        #crta-22{
+            transform: rotate(132deg);
+        }
+
+        #crta-23{
+            transform: rotate(138deg);
+        }
+
+        #crta-24{
+            transform: rotate(144deg);
+        }
+
+        #crta-25{
+            transform: rotate(150deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-26{
+            transform: rotate(156deg);
+        }
+
+        #crta-27{
+            transform: rotate(162deg);
+        }
+
+        #crta-28{
+            transform: rotate(168deg);
+        }
+
+        #crta-29{
+            transform: rotate(174deg);
+        }
+
+        #crta-30{
+            transform: rotate(180deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-31{
+            transform: rotate(186deg);
+        }
+
+        #crta-32{
+            transform: rotate(192deg);
+        }
+
+        #crta-33{
+            transform: rotate(198deg);
+        }
+
+        #crta-34{
+            transform: rotate(204deg);
+        }
+
+        #crta-35{
+            transform: rotate(210deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-36{
+            transform: rotate(216deg);
+        }
+
+        #crta-37{
+            transform: rotate(222deg);
+        }
+
+        #crta-38{
+            transform: rotate(228deg);
+        }
+
+        #crta-39{
+            transform: rotate(234deg);
+        }
+
+        #crta-40{
+            transform: rotate(240deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-41{
+            transform: rotate(246deg);
+        }
+
+        #crta-42{
+            transform: rotate(252deg);
+        }
+
+        #crta-43{
+            transform: rotate(258deg);
+        }
+
+        #crta-44{
+            transform: rotate(264deg);
+        }
+
+        #crta-45{
+            transform: rotate(270deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-46{
+            transform: rotate(276deg);
+        }
+
+        #crta-47{
+            transform: rotate(282deg);
+        }
+
+        #crta-48{
+            transform: rotate(288deg);
+        }
+
+        #crta-49{
+            transform: rotate(294deg);
+        }
+
+        #crta-50{
+            transform: rotate(300deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-51{
+            transform: rotate(306deg);
+        }
+
+        #crta-52{
+            transform: rotate(312deg);
+        }
+
+        #crta-53{
+            transform: rotate(318deg);
+        }
+
+        #crta-54{
+            transform: rotate(324deg);
+        }
+
+        #crta-55{
+            transform: rotate(330deg);
+            font-size: 1.5vw;
+        }
+
+        #crta-56{
+            transform: rotate(336deg);
+        }
+
+        #crta-57{
+            transform: rotate(342deg);
+        }
+
+        #crta-58{
+            transform: rotate(348deg);
+        }
+
+        #crta-59{
+            transform: rotate(354deg);
+        }
+
+
+    
+    </style>
+</head>
+<body>
+        <div id="trenutnoVrijeme"></div>
+        <div id="sat" class="centrirano">
+            <div id="zifferblatt" class="centrirano">
+                <div id="crta-00" class="kazaljke crtice">|</div>
+                <div id="crta-01" class="kazaljke crtice">|</div>
+                <div id="crta-02" class="kazaljke crtice">|</div>
+                <div id="crta-03" class="kazaljke crtice">|</div>
+                <div id="crta-04" class="kazaljke crtice">|</div>
+                <div id="crta-05" class="kazaljke crtice">|</div>
+                <div id="crta-06" class="kazaljke crtice">|</div>
+                <div id="crta-07" class="kazaljke crtice">|</div>
+                <div id="crta-08" class="kazaljke crtice">|</div>
+                <div id="crta-09" class="kazaljke crtice">|</div>
+                <div id="crta-10" class="kazaljke crtice">|</div>
+                <div id="crta-11" class="kazaljke crtice">|</div>
+                <div id="crta-12" class="kazaljke crtice">|</div>
+                <div id="crta-13" class="kazaljke crtice">|</div>
+                <div id="crta-14" class="kazaljke crtice">|</div>
+                <div id="crta-15" class="kazaljke crtice">|</div>
+                <div id="crta-16" class="kazaljke crtice">|</div>
+                <div id="crta-17" class="kazaljke crtice">|</div>
+                <div id="crta-18" class="kazaljke crtice">|</div>
+                <div id="crta-19" class="kazaljke crtice">|</div>
+                <div id="crta-20" class="kazaljke crtice">|</div>
+                <div id="crta-21" class="kazaljke crtice">|</div>
+                <div id="crta-22" class="kazaljke crtice">|</div>
+                <div id="crta-23" class="kazaljke crtice">|</div>
+                <div id="crta-24" class="kazaljke crtice">|</div>
+                <div id="crta-25" class="kazaljke crtice">|</div>
+                <div id="crta-26" class="kazaljke crtice">|</div>
+                <div id="crta-27" class="kazaljke crtice">|</div>
+                <div id="crta-28" class="kazaljke crtice">|</div>
+                <div id="crta-29" class="kazaljke crtice">|</div>
+                <div id="crta-30" class="kazaljke crtice">|</div>
+                <div id="crta-31" class="kazaljke crtice">|</div>
+                <div id="crta-32" class="kazaljke crtice">|</div>
+                <div id="crta-33" class="kazaljke crtice">|</div>
+                <div id="crta-34" class="kazaljke crtice">|</div>
+                <div id="crta-35" class="kazaljke crtice">|</div>
+                <div id="crta-36" class="kazaljke crtice">|</div>
+                <div id="crta-37" class="kazaljke crtice">|</div>
+                <div id="crta-38" class="kazaljke crtice">|</div>
+                <div id="crta-39" class="kazaljke crtice">|</div>
+                <div id="crta-40" class="kazaljke crtice">|</div>
+                <div id="crta-41" class="kazaljke crtice">|</div>
+                <div id="crta-42" class="kazaljke crtice">|</div>
+                <div id="crta-43" class="kazaljke crtice">|</div>
+                <div id="crta-44" class="kazaljke crtice">|</div>
+                <div id="crta-45" class="kazaljke crtice">|</div>
+                <div id="crta-46" class="kazaljke crtice">|</div>
+                <div id="crta-47" class="kazaljke crtice">|</div>
+                <div id="crta-48" class="kazaljke crtice">|</div>
+                <div id="crta-49" class="kazaljke crtice">|</div>
+                <div id="crta-50" class="kazaljke crtice">|</div>
+                <div id="crta-51" class="kazaljke crtice">|</div>
+                <div id="crta-52" class="kazaljke crtice">|</div>
+                <div id="crta-53" class="kazaljke crtice">|</div>
+                <div id="crta-54" class="kazaljke crtice">|</div>
+                <div id="crta-55" class="kazaljke crtice">|</div>
+                <div id="crta-56" class="kazaljke crtice">|</div>
+                <div id="crta-57" class="kazaljke crtice">|</div>
+                <div id="crta-58" class="kazaljke crtice">|</div>
+                <div id="crta-59" class="kazaljke crtice">|</div>
+
+                <div id="dvanaest" class="kazaljke brojevi">12</div>
+                <div id="jedan" class="kazaljke brojevi"><div id="broj-jedan">1</div></div>
+                <div id="dva" class="kazaljke brojevi"><div id="broj-dva">2</div></div>
+                <div id="tri" class="kazaljke brojevi"><div id="broj-tri">3</div></div>
+                <div id="cetiri" class="kazaljke brojevi"><div id="broj-cetiri">4</div></div>
+                <div id="pet" class="kazaljke brojevi"><div id="broj-pet">5</div></div>
+                <div id="sest" class="kazaljke brojevi"><div id="broj-sest">6</div></div>
+                <div id="sedam" class="kazaljke brojevi"><div id="broj-sedam">7</div></div>
+                <div id="osam" class="kazaljke brojevi"><div id="broj-osam">8</div></div>
+                <div id="devet" class="kazaljke brojevi"><div id="broj-devet">9</div></div>
+                <div id="deset" class="kazaljke brojevi"><div id="broj-deset">10</div></div>
+                <div id="jedanaest" class="kazaljke brojevi"><div id="broj-jedanaest">11</div></div>
+                <div id="satara" class="kazaljke"></div>
+                <div id="satara-residue" class="kazaljke"></div>
+                <div id="minutara" class="kazaljke"></div>
+                <div id="minutara-residue" class="kazaljke"></div>
+                <div id="sekundara" class="kazaljke"></div>
+                <div id="sekundara-residue" class="kazaljke"></div>
+                <div id="centar" class="centrirano"></div>
+            </div>
+        </div>
+
+        <script>
+
+            // poziva funkciju svakih 1000 milisekundi
+            window.setInterval(dajMiPodatke, 1000);
+
+            // deklaracija osnovnih varijabli za vrijeme
+            var sati, minute, sekunde;
+
+            function dajMiPodatke() {
+
+                // displej vremena gore lijevo u cosku
+                var displej = document.getElementById('trenutnoVrijeme');
+                var kompletnoVrijeme = new Date();
+                displej.innerText = kompletnoVrijeme;
+
+                // dodjela trenutnih vrijednosti osnovnim varijablama za vrijeme
+                sati = new Date().getHours();
+                minute = new Date().getMinutes();
+                sekunde = new Date().getSeconds();
+
+                // pomjeranje kazaljke za sat za frakciju unutar raspona sata
+                var pomakSatare = parseInt(minute/12);
+                // console.log(pomakSatare);
+
+                // odredi ugao kazaljke za sat
+                document.getElementById('satara').style.transform = "rotate(" + (sati * 30 + pomakSatare * 6) + "deg)";
+                document.getElementById('satara-residue').style.transform = "rotate(" + (sati * 30 + pomakSatare * 6 + 180) + "deg)";
+                // odredi ugao kazaljke za minute
+                document.getElementById('minutara').style.transform = "rotate(" + minute * 6 + "deg)";
+                document.getElementById('minutara-residue').style.transform = "rotate(" + (minute * 6 + 180) + "deg)";
+                // odredi ugao kazaljke za sekunde
+                document.getElementById('sekundara').style.transform = "rotate(" + sekunde * 6 + "deg)";
+                document.getElementById('sekundara-residue').style.transform = "rotate(" + (sekunde * 6 + 180) + "deg)";
+            }
+        
+        </script>
+</body>
+</html>

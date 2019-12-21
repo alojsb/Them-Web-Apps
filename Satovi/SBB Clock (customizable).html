@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SBB Clock (customizable)</title>
+    <style>
+    
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .stranice{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            /* background-image: url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'); */
+            /* background-image: url('https://images.unsplash.com/photo-1521292270410-a8c4d716d518?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'); */
+            /* background-image: url('https://images.unsplash.com/photo-1535224206242-487f7090b5bb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); */
+            /* background-image: url('https://images.unsplash.com/photo-1541879113555-36761759a379?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'); */
+            /* background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Z%C3%BCrich_Stadelhofen_in_2006.jpg/1280px-Z%C3%BCrich_Stadelhofen_in_2006.jpg'); */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            /* border: 2px solid dodgerblue; */
+            /* overflow: auto; */
+        }
+
+        .wrapperi{
+            overflow: auto;
+        }
+
+        #strana-1{
+            background-color: black;
+            
+        }
+
+        #strana-2{
+            border: 2px solid dodgerblue;            
+        }
+
+        #naslov-2{
+            background-color: dodgerblue;
+            padding: 5px;
+        }
+
+        #settingsBojaSataForma{
+            width: 448px;
+            margin: auto;
+            padding: 8px;
+        }
+
+        .settingsBojaSataForma-odsjek{
+            display: inline-block;
+            border: 1px solid whitesmoke;
+            margin: 5px;
+            padding: 5px;
+            box-sizing: border-box;
+            background-color: rgb(104, 167, 104);
+            opacity: 0.8;
+        }
+
+        .odabran{
+            box-shadow: inset 0 0 10px 15px black;
+            background-color: rgb(54, 54, 54);
+        }
+
+        .settingsBojaSataForma-odsjek:hover{
+            box-shadow: inset 0px 0px 10px 5px white;
+        }
+
+        .settingsBojaSataForma-odsjek:active{
+            opacity: 1;
+        }
+
+        #settingsPozadina{
+            padding: 5px;
+            border: 1px solid white;
+            border-top: none;
+            background-color: coral;
+        }
+
+        input{
+            margin: 5px;
+            padding: 2px 5px;
+        }
+
+        label{
+            font-weight: 900;
+            text-shadow: 1px 1px 0 #fff,
+                        -1px 1px 0 #fff,
+                        1px -1px 0 #fff,
+                        -1px -1px 0 #fff;
+        }
+
+        #strana-2-footer{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        #strana-3{
+            background-color: rgb(181, 230, 5);
+            border: 2px solid bisque;
+            /* padding: 8px; */
+        }
+
+        .zamaglenje{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: black;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        #wrapper-3{
+            margin: auto;
+        }
+
+        #naslov-3{
+            background-color: bisque;
+            padding: 5px;
+        }
+
+        #kontejnerSlika{
+            padding: 8px;
+            text-align: center;
+        }
+
+        img{
+            width: 170px;
+            position: relative;
+            left: calc(100% - 185px);    /*minus pola od sirine parenta*/
+        }
+
+        img:hover{
+            box-shadow: 0px 0px 10px 5px white;
+            z-index: 2;
+        }
+
+        .slike{
+            width: 200px;
+            align-content: center;
+        }
+
+        .slikeBG{
+            width: 200px;
+            align-content: center;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .odabranIMG{
+            box-shadow: 0 0 3px 5px goldenrod;
+        }
+
+        .dugmad{
+            border: 1px solid whitesmoke;
+            width: 200px;
+            height: 60px;
+            display: inline-block;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #dugmeOdaberi{
+            background-color: goldenrod;
+            position: relative;
+            left: calc(50% - 111px);
+        }
+
+        #spanOdaberi{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            display: block;
+            transform: translate(-50%,-50%);
+            width: 138px;
+            font-weight: 900;
+        }
+        
+        #dugmeOdaberi:hover{
+            text-shadow: 1px 1px 0 #fff,
+                        -1px 1px 0 #fff,
+                        1px -1px 0 #fff,
+                        -1px -1px 0 #fff;
+                        box-shadow: inset 0 0 10px 5px white;
+        }
+
+        #dugmeOdaberi:active{
+            background-color: rgb(197, 150, 30);
+            box-shadow: none;
+        }
+
+        #changeBackground{
+            background-color: goldenrod;
+            opacity: 0.8;
+        }
+
+        #changeBackground:hover{
+            text-shadow: 1px 1px 0 #fff,
+                        -1px 1px 0 #fff,
+                        1px -1px 0 #fff,
+                        -1px -1px 0 #fff;
+                        box-shadow: inset 0 0 10px 5px white;
+        }
+
+        #changeBackground:active{
+            background-color: rgb(240, 175, 12);
+            opacity: 1;
+            box-shadow: none;
+        }
+
+        .spanBackground{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            display: block;
+            transform: translate(-50%,-50%);
+            width: 141px;
+            font-weight: 900;
+        }
+
+        #saveAndExit{
+            background-color: firebrick;
+            opacity: 0.8;
+        }
+
+        #saveAndExit:hover{
+            text-shadow: 1px 1px 0 #fff,
+                        -1px 1px 0 #fff,
+                        1px -1px 0 #fff,
+                        -1px -1px 0 #fff;
+                        box-shadow: inset 0 0 10px 5px white;
+        }
+
+        #saveAndExit:active{
+            background-color: rgb(177, 26, 26);
+            opacity: 1;
+            box-shadow: none;
+        }
+
+        .spanSave{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            display: block;
+            transform: translate(-50%,-50%);
+            width: 82px;
+            font-weight: 900;
+        }
+
+        .sakrij{
+            display: none;
+        }
+
+        /*CSS vezan za sami sat*/
+
+        body{
+            background-color: rgba(252, 251, 227, 0.815);
+        }
+
+        .centrirano{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .kazaljke{
+            position: absolute;
+            transform-origin: bottom center; /*odredjuje tacku oko koje se vrsi rotacija div-a*/
+        }
+
+        .sat-srebreni{
+            background: rgba(226,226,226,1);
+background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(194,192,194,1) 21%, rgba(255,255,255,1) 29%, rgba(212,212,212,1) 32%, rgba(173,173,173,1) 36%, rgba(255,255,255,1) 41%, rgba(184,184,184,1) 45%, rgba(212,210,212,1) 66%, rgba(255,255,255,1) 70%, rgba(189,189,189,1) 76%, rgba(217,217,217,1) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(21%, rgba(194,192,194,1)), color-stop(29%, rgba(255,255,255,1)), color-stop(32%, rgba(212,212,212,1)), color-stop(36%, rgba(173,173,173,1)), color-stop(41%, rgba(255,255,255,1)), color-stop(45%, rgba(184,184,184,1)), color-stop(66%, rgba(212,210,212,1)), color-stop(70%, rgba(255,255,255,1)), color-stop(76%, rgba(189,189,189,1)), color-stop(100%, rgba(217,217,217,1)));
+background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(194,192,194,1) 21%, rgba(255,255,255,1) 29%, rgba(212,212,212,1) 32%, rgba(173,173,173,1) 36%, rgba(255,255,255,1) 41%, rgba(184,184,184,1) 45%, rgba(212,210,212,1) 66%, rgba(255,255,255,1) 70%, rgba(189,189,189,1) 76%, rgba(217,217,217,1) 100%);
+background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(194,192,194,1) 21%, rgba(255,255,255,1) 29%, rgba(212,212,212,1) 32%, rgba(173,173,173,1) 36%, rgba(255,255,255,1) 41%, rgba(184,184,184,1) 45%, rgba(212,210,212,1) 66%, rgba(255,255,255,1) 70%, rgba(189,189,189,1) 76%, rgba(217,217,217,1) 100%);
+background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(194,192,194,1) 21%, rgba(255,255,255,1) 29%, rgba(212,212,212,1) 32%, rgba(173,173,173,1) 36%, rgba(255,255,255,1) 41%, rgba(184,184,184,1) 45%, rgba(212,210,212,1) 66%, rgba(255,255,255,1) 70%, rgba(189,189,189,1) 76%, rgba(217,217,217,1) 100%);
+background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(194,192,194,1) 21%, rgba(255,255,255,1) 29%, rgba(212,212,212,1) 32%, rgba(173,173,173,1) 36%, rgba(255,255,255,1) 41%, rgba(184,184,184,1) 45%, rgba(212,210,212,1) 66%, rgba(255,255,255,1) 70%, rgba(189,189,189,1) 76%, rgba(217,217,217,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#d9d9d9', GradientType=1 );
+        }
+
+        .sat-crveni{
+            background: rgba(209,31,0,1);
+background: -moz-linear-gradient(45deg, rgba(209,31,0,1) 0%, rgba(209,31,0,1) 25%, rgba(235,177,170,1) 33%, rgba(222,36,11,1) 36%, rgba(240,184,178,1) 39%, rgba(222,26,9,1) 46%, rgba(184,25,11,1) 62%, rgba(240,184,178,1) 68%, rgba(209,31,0,1) 87%, rgba(209,31,0,1) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(209,31,0,1)), color-stop(25%, rgba(209,31,0,1)), color-stop(33%, rgba(235,177,170,1)), color-stop(36%, rgba(222,36,11,1)), color-stop(39%, rgba(240,184,178,1)), color-stop(46%, rgba(222,26,9,1)), color-stop(62%, rgba(184,25,11,1)), color-stop(68%, rgba(240,184,178,1)), color-stop(87%, rgba(209,31,0,1)), color-stop(100%, rgba(209,31,0,1)));
+background: -webkit-linear-gradient(45deg, rgba(209,31,0,1) 0%, rgba(209,31,0,1) 25%, rgba(235,177,170,1) 33%, rgba(222,36,11,1) 36%, rgba(240,184,178,1) 39%, rgba(222,26,9,1) 46%, rgba(184,25,11,1) 62%, rgba(240,184,178,1) 68%, rgba(209,31,0,1) 87%, rgba(209,31,0,1) 100%);
+background: -o-linear-gradient(45deg, rgba(209,31,0,1) 0%, rgba(209,31,0,1) 25%, rgba(235,177,170,1) 33%, rgba(222,36,11,1) 36%, rgba(240,184,178,1) 39%, rgba(222,26,9,1) 46%, rgba(184,25,11,1) 62%, rgba(240,184,178,1) 68%, rgba(209,31,0,1) 87%, rgba(209,31,0,1) 100%);
+background: -ms-linear-gradient(45deg, rgba(209,31,0,1) 0%, rgba(209,31,0,1) 25%, rgba(235,177,170,1) 33%, rgba(222,36,11,1) 36%, rgba(240,184,178,1) 39%, rgba(222,26,9,1) 46%, rgba(184,25,11,1) 62%, rgba(240,184,178,1) 68%, rgba(209,31,0,1) 87%, rgba(209,31,0,1) 100%);
+background: linear-gradient(45deg, rgba(209,31,0,1) 0%, rgba(209,31,0,1) 25%, rgba(235,177,170,1) 33%, rgba(222,36,11,1) 36%, rgba(240,184,178,1) 39%, rgba(222,26,9,1) 46%, rgba(184,25,11,1) 62%, rgba(240,184,178,1) 68%, rgba(209,31,0,1) 87%, rgba(209,31,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d11f00', endColorstr='#d11f00', GradientType=1 );
+        }
+
+        .sat-crni{
+            background: rgba(76,76,76,1);
+background: -moz-linear-gradient(45deg, rgba(76,76,76,1) 0%, rgba(51,51,51,1) 22%, rgba(161,161,161,1) 25%, rgba(43,43,43,1) 30%, rgba(44,44,44,1) 34%, rgba(186,186,186,1) 39%, rgba(71,71,71,1) 43%, rgba(89,89,89,1) 50%, rgba(17,17,17,1) 75%, rgba(173,173,173,1) 80%, rgba(19,19,19,1) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(76,76,76,1)), color-stop(22%, rgba(51,51,51,1)), color-stop(25%, rgba(161,161,161,1)), color-stop(30%, rgba(43,43,43,1)), color-stop(34%, rgba(44,44,44,1)), color-stop(39%, rgba(186,186,186,1)), color-stop(43%, rgba(71,71,71,1)), color-stop(50%, rgba(89,89,89,1)), color-stop(75%, rgba(17,17,17,1)), color-stop(80%, rgba(173,173,173,1)), color-stop(100%, rgba(19,19,19,1)));
+background: -webkit-linear-gradient(45deg, rgba(76,76,76,1) 0%, rgba(51,51,51,1) 22%, rgba(161,161,161,1) 25%, rgba(43,43,43,1) 30%, rgba(44,44,44,1) 34%, rgba(186,186,186,1) 39%, rgba(71,71,71,1) 43%, rgba(89,89,89,1) 50%, rgba(17,17,17,1) 75%, rgba(173,173,173,1) 80%, rgba(19,19,19,1) 100%);
+background: -o-linear-gradient(45deg, rgba(76,76,76,1) 0%, rgba(51,51,51,1) 22%, rgba(161,161,161,1) 25%, rgba(43,43,43,1) 30%, rgba(44,44,44,1) 34%, rgba(186,186,186,1) 39%, rgba(71,71,71,1) 43%, rgba(89,89,89,1) 50%, rgba(17,17,17,1) 75%, rgba(173,173,173,1) 80%, rgba(19,19,19,1) 100%);
+background: -ms-linear-gradient(45deg, rgba(76,76,76,1) 0%, rgba(51,51,51,1) 22%, rgba(161,161,161,1) 25%, rgba(43,43,43,1) 30%, rgba(44,44,44,1) 34%, rgba(186,186,186,1) 39%, rgba(71,71,71,1) 43%, rgba(89,89,89,1) 50%, rgba(17,17,17,1) 75%, rgba(173,173,173,1) 80%, rgba(19,19,19,1) 100%);
+background: linear-gradient(45deg, rgba(76,76,76,1) 0%, rgba(51,51,51,1) 22%, rgba(161,161,161,1) 25%, rgba(43,43,43,1) 30%, rgba(44,44,44,1) 34%, rgba(186,186,186,1) 39%, rgba(71,71,71,1) 43%, rgba(89,89,89,1) 50%, rgba(17,17,17,1) 75%, rgba(173,173,173,1) 80%, rgba(19,19,19,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
+        }
+
+        #sat{
+            /* background-color: black; */
+            width: 40vw;
+            height: 40vw;
+            border-radius: 20vw;
+            box-shadow: 3px 3px 10px 5px black;
+        }
+
+        #zifferblatt{
+            background-color: whitesmoke;
+            width: 36vw;
+            height: 36vw;
+            border-radius: 18vw;
+            box-shadow: inset 1px 1px 10px 5px black;
+        }
+
+        #satara{
+            background-color: black;
+            width: 2vw;
+            height: 11vw;
+            top: 7vw;
+            left: calc(100% - 18vw - 1vw);  /*sirina ekrana minus radijus zifferblatta minus pola sirine kazaljke*/
+        }
+
+        #satara-residue{
+            background-color: black;
+            width: 2vw;
+            height: 3vw;
+            top: 15vw;
+            left: calc(100% - 18vw - 1vw);  /*sirina ekrana minus radijus zifferblatta minus pola sirine kazaljke*/    
+        }
+
+        #minutara{
+            background-color: black;         
+            width: 1.5vw;
+            height: 16vw;
+            top: 2vw;
+            left: calc(100% - 18vw - 0.75vw);   /*sirina ekrana minus radijus zifferblatta minus sirina kazaljke*/
+        }
+
+        #minutara-residue{
+            background-color: black;
+            width: 1.5vw;
+            height: 3vw;
+            top: 15vw;
+            left: calc(100% - 18vw - 0.75vw); /*sirina ekrana minus radijus zifferblatta minus sirina kazaljke*/
+        }
+
+        #sekundara{
+            width: 4vw;
+            height: 13vw;
+            top: 5vw;
+            left: calc(100% - 18vw - 2vw);
+        }
+
+        #sekundara-stap{
+            background-color: red;
+            width: 0.5vw;
+            height: 13vw;
+            left: calc(2vw - 0.25vw);
+        }
+
+        #sekundara-lizalo{
+            background-color: red;
+            width: 3vw;
+            height: 3vw;
+            border-radius: 1.5vw;
+            left: calc(2vw - 1.5vw);
+        }
+
+        #sekundara-residue{
+            background-color: red;
+            width: 0.5vw;
+            height: 4vw;
+            top: 14vw;
+            left: calc(100% - 18vw - 0.25vw);  /*sirina ekrana minus radijus zifferblatta minus sirina kazaljke*/
+        }
+
+        #centar{
+            background-color: red;
+            width: 0.5vw;
+            height: 0.5vw;
+            border-radius: 50%;
+        }
+
+        .brojevi{
+            width: 4vw;
+            height: 17vw;
+            top:  1vw;
+            left: calc(100% - 18vw - 2vw);
+            text-align: center;
+            font-size: 3.5vw;
+        }
+
+        .velika-crta{
+            background-color: black;
+            width: 1vw;
+            height: 3.5vw;
+            margin: auto;
+        }
+
+        .mala-crta{
+            background-color: black;
+            width: 0.4vw;
+            height: 1vw;
+            margin: auto;
+        }
+
+        #jedan{
+            transform: rotate(30deg);
+        }
+
+        #dva{
+            transform: rotate(60deg);
+        }
+
+        #tri{
+            transform: rotate(90deg);
+        }
+
+        #cetiri{
+            transform: rotate(120deg);
+        }
+
+        #pet{
+            transform: rotate(150deg);
+        }
+
+        #sest{
+            transform: rotate(180deg);
+        }
+
+        #sedam{
+            transform: rotate(210deg);
+        }
+
+        #osam{
+            transform: rotate(240deg);
+        }
+
+        #devet{
+            transform: rotate(270deg);
+        }
+
+        #deset{
+            transform: rotate(300deg);
+        }
+
+        #jedanaest{
+            transform: rotate(330deg);
+        }
+
+        .crtice{
+            width: 0.5vw;
+            height: 17vw;
+            font-weight: 900;
+            text-align: center;
+            top: 1vw;
+            left: calc(100% - 18vw - 0.25vw);
+        }
+
+        #crta-01{
+            transform: rotate(6deg);
+        }
+
+        #crta-02{
+            transform: rotate(12deg);
+        }
+
+        #crta-03{
+            transform: rotate(18deg);
+        }
+
+        #crta-04{
+            transform: rotate(24deg);
+        }
+
+        #crta-05{
+            transform: rotate(30deg);
+        }
+
+        #crta-06{
+            transform: rotate(36deg);
+        }
+
+        #crta-07{
+            transform: rotate(42deg);
+        }
+
+        #crta-08{
+            transform: rotate(48deg);
+        }
+
+        #crta-09{
+            transform: rotate(54deg);
+        }
+
+        #crta-10{
+            transform: rotate(60deg);
+        }
+
+        #crta-11{
+            transform: rotate(66deg);
+        }
+
+        #crta-12{
+            transform: rotate(72deg);
+        }
+
+        #crta-13{
+            transform: rotate(78deg);
+        }
+
+        #crta-14{
+            transform: rotate(84deg);
+        }
+
+        #crta-15{
+            transform: rotate(90deg);
+        }
+
+        #crta-16{
+            transform: rotate(96deg);
+        }
+
+        #crta-17{
+            transform: rotate(102deg);
+        }
+
+        #crta-18{
+            transform: rotate(108deg);
+        }
+
+        #crta-19{
+            transform: rotate(114deg);
+        }
+
+        #crta-20{
+            transform: rotate(120deg);
+        }
+
+        #crta-21{
+            transform: rotate(126deg);
+        }
+
+        #crta-22{
+            transform: rotate(132deg);
+        }
+
+        #crta-23{
+            transform: rotate(138deg);
+        }
+
+        #crta-24{
+            transform: rotate(144deg);
+        }
+
+        #crta-25{
+            transform: rotate(150deg);
+        }
+
+        #crta-26{
+            transform: rotate(156deg);
+        }
+
+        #crta-27{
+            transform: rotate(162deg);
+        }
+
+        #crta-28{
+            transform: rotate(168deg);
+        }
+
+        #crta-29{
+            transform: rotate(174deg);
+        }
+
+        #crta-30{
+            transform: rotate(180deg);
+        }
+
+        #crta-31{
+            transform: rotate(186deg);
+        }
+
+        #crta-32{
+            transform: rotate(192deg);
+        }
+
+        #crta-33{
+            transform: rotate(198deg);
+        }
+
+        #crta-34{
+            transform: rotate(204deg);
+        }
+
+        #crta-35{
+            transform: rotate(210deg);
+        }
+
+        #crta-36{
+            transform: rotate(216deg);
+        }
+
+        #crta-37{
+            transform: rotate(222deg);
+        }
+
+        #crta-38{
+            transform: rotate(228deg);
+        }
+
+        #crta-39{
+            transform: rotate(234deg);
+        }
+
+        #crta-40{
+            transform: rotate(240deg);
+        }
+
+        #crta-41{
+            transform: rotate(246deg);
+        }
+
+        #crta-42{
+            transform: rotate(252deg);
+        }
+
+        #crta-43{
+            transform: rotate(258deg);
+        }
+
+        #crta-44{
+            transform: rotate(264deg);
+        }
+
+        #crta-45{
+            transform: rotate(270deg);
+        }
+
+        #crta-46{
+            transform: rotate(276deg);
+        }
+
+        #crta-47{
+            transform: rotate(282deg);
+        }
+
+        #crta-48{
+            transform: rotate(288deg);
+        }
+
+        #crta-49{
+            transform: rotate(294deg);
+        }
+
+        #crta-50{
+            transform: rotate(300deg);
+        }
+
+        #crta-51{
+            transform: rotate(306deg);
+        }
+
+        #crta-52{
+            transform: rotate(312deg);
+        }
+
+        #crta-53{
+            transform: rotate(318deg);
+        }
+
+        #crta-54{
+            transform: rotate(324deg);
+        }
+
+        #crta-55{
+            transform: rotate(330deg);
+        }
+
+        #crta-56{
+            transform: rotate(336deg);
+        }
+
+        #crta-57{
+            transform: rotate(342deg);
+        }
+
+        #crta-58{
+            transform: rotate(348deg);
+        }
+
+        #crta-59{
+            transform: rotate(354deg);
+        }
+
+        #settings{
+            font-size: 36px;
+            font-weight: 900;
+            border: 5px solid gray;
+            color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: darkgrey;
+            opacity: 0.2;
+            box-sizing: border-box;
+            line-height: 30px;
+            position: absolute;
+            left: 30px;
+            bottom: 30px;
+        }
+
+        #settings:hover{
+            border: 5px solid yellow;
+            background-color: darkgoldenrod;
+        }
+    
+    </style>
+</head>
+<body>
+
+    
+    
+    <div id="strana-1" class="stranice "> <!--sakrij -->
+        <div id="trenutnoVrijeme"></div>
+        <div id="sat" class="centrirano sat-crni">  <!--sat-crni, sat-crveni, sat-srebreni, nista (transparent)-->
+            <div id="zifferblatt" class="centrirano">
+                <!-- <div id="crta-00" class="kazaljke crtice">|</div> -->
+                <div id="crta-01" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-02" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-03" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-04" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-05" class="kazaljke crtice"><div class="mala-crta"></div></div> -->
+                <div id="crta-06" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-07" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-08" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-09" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-10" class="kazaljke crtice">|</div> -->
+                <div id="crta-11" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-12" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-13" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-14" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-15" class="kazaljke crtice">|</div> -->
+                <div id="crta-16" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-17" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-18" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-19" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-20" class="kazaljke crtice">|</div> -->
+                <div id="crta-21" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-22" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-23" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-24" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-25" class="kazaljke crtice">|</div> -->
+                <div id="crta-26" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-27" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-28" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-29" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-30" class="kazaljke crtice">|</div> -->
+                <div id="crta-31" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-32" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-33" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-34" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-35" class="kazaljke crtice">|</div> -->
+                <div id="crta-36" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-37" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-38" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-39" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-40" class="kazaljke crtice">|</div> -->
+                <div id="crta-41" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-42" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-43" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-44" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-45" class="kazaljke crtice">|</div> -->
+                <div id="crta-46" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-47" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-48" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-49" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-50" class="kazaljke crtice">|</div> -->
+                <div id="crta-51" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-52" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-53" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-54" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <!-- <div id="crta-55" class="kazaljke crtice">|</div> -->
+                <div id="crta-56" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-57" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-58" class="kazaljke crtice"><div class="mala-crta"></div></div>
+                <div id="crta-59" class="kazaljke crtice"><div class="mala-crta"></div></div>
+
+                <div id="dvanaest" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="jedan" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="dva" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="tri" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="cetiri" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="pet" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="sest" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="sedam" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="osam" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="devet" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="deset" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="jedanaest" class="kazaljke brojevi"><div class="velika-crta"></div></div>
+                <div id="satara" class="kazaljke"></div>
+                <div id="satara-residue" class="kazaljke"></div>
+                <div id="minutara" class="kazaljke"></div>
+                <div id="minutara-residue" class="kazaljke"></div>
+                <div id="sekundara" class="kazaljke">
+                    <div id="sekundara-stap" class="kazaljke"></div>
+                    <div id="sekundara-lizalo" class="kazaljke"></div>
+                </div>
+                <div id="sekundara-residue" class="kazaljke"></div>
+                <div id="centar" class="centrirano"></div>
+                
+            </div>
+        </div>
+        <div id="settings" title="Settings">&#9881</div>
+    </div>
+    <div id="strana-2" class="stranice sakrij">   <!--sakrij-->
+        <div id="wrapper-2" class="wrapperi">
+            <div id="naslov-2"><h2>Settings</h2></div>
+
+                    <div id="settingsBojaSataForma">
+                        <div id="crniOkvir" class="settingsBojaSataForma-odsjek odabran">
+                            <!-- <input type="radio" value="Black" name="black"> -->
+                            <label for="black">Black</label>
+                            <div class="slike">
+                                <!-- <img src="sbb clock black.png" alt="SBB Clock Black"> -->
+                                <img src="https://i.imgur.com/PovkMTA.png" alt="SBB Clock Black">
+                            </div>
+                        </div>
+                        <div id="srebreniOkvir" class="settingsBojaSataForma-odsjek">
+                            <!-- <input type="radio" value="Silver" name="silver"> -->
+                            <label for="silver">Silver</label>
+                            <div class="slike">
+                                <!-- <img src="sbb clock silver.png" alt="SBB Clock Silver"> -->
+                                <img src="https://i.imgur.com/b4iE0EI.png" alt="SBB Clock Silver">
+                            </div>
+                        </div>
+                        <div id="crveniOkvir" class="settingsBojaSataForma-odsjek">
+                            <!-- <input type="radio" value="Red" name="red"> -->
+                            <label for="red">Red</label>
+                            <div class="slike">
+                                <!-- <img src="sbb clock red.png" alt="SBB Clock Red"> -->
+                                <img src="https://i.imgur.com/IwdiGGe.png" alt="SBB Clock Red">
+                            </div>
+                        </div>
+                        <div id="providniOkvir" class="settingsBojaSataForma-odsjek">
+                            <!-- <input type="radio" name="transparent" id="transparent"> -->
+                            <label for="transparent">Transparent</label>    
+                            <div class="slike">
+                                <!-- <img src="sbb clock transparent.png" alt="SBB Clock Transparent"> -->
+                                <img src="https://i.imgur.com/2YdnBiI.png" alt="SBB Clock Transparent">
+                            </div>
+                        </div>
+                        <div id="changeBackground" class="dugmad"><span class="spanBackground">Change Background</span></div>
+                        <div id="saveAndExit" class="dugmad"><span class="spanSave">Save & Exit</span></div>
+                    </div>
+
+        </div>
+    </div>
+    <div id="strana-3" class="stranice sakrij">   <!--sakrij-->
+        <div class="zamaglenje"></div>
+        <div id="wrapper-3" class="wrapperi">
+            <div id="naslov-3"><h2>Background image selection</h2></div>
+            <div id="kontejnerSlika">
+                <div class="slikeBG"><img id="img1" class="odabranIMG" src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="Lauterbrunnen"></div>                              
+                <div class="slikeBG"><img id="img2" src="https://images.unsplash.com/photo-1521292270410-a8c4d716d518?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Wengen, Lauterbrunnen"></div>
+                <div class="slikeBG"><img id="img3" src="https://images.unsplash.com/photo-1535224206242-487f7090b5bb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Matterhorn in sunrise"></div>
+                <div class="slikeBG"><img id="img4" src="https://images.unsplash.com/photo-1541879113555-36761759a379?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Pilatus, Alpnach"></div>
+                <div class="slikeBG"><img id="img5" src="https://images.unsplash.com/photo-1550177943-17dc96ae0f19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Unknown 1, CH"></div>
+                <div class="slikeBG"><img id="img6" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Z%C3%BCrich_Stadelhofen_in_2006.jpg/1280px-Z%C3%BCrich_Stadelhofen_in_2006.jpg" alt="Bahnhof 1, CH"></div>
+                <div class="slikeBG"><img id="img7" src="https://images.unsplash.com/photo-1521808896374-c407e2ae5377?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Swiss flag"></div>
+                <div class="slikeBG"><img id="img8" src="https://images.unsplash.com/photo-1477271706509-fecda7438b68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Luzern, CH"></div>
+                <div class="slikeBG"><img id="img9" src="https://images.unsplash.com/photo-1534546584494-57363237b97f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Zermatt, CH"></div>
+                <div class="slikeBG"><img id="img10" src="https://images.unsplash.com/photo-1520446396645-d72d96708bcf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Unknown village, CH"></div>
+                <div class="slikeBG"><img id="img11" src="https://images.unsplash.com/photo-1470103885609-bfd460a802a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1949&q=80" alt="Kleine Scheidegg, Lauterbrunnen, CH"></div>
+                <div class="slikeBG"><img id="img12" src="https://images.unsplash.com/photo-1543226506-7845c806b70a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Forest near Olten, CH"></div>
+                <div class="slikeBG"><img id="img13" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Das_S%C3%A4lischl%C3%B6ssli_bei_Olten.jpg" alt="Saelischloessli, Olten, CH"></div>
+                <div class="slikeBG"><img id="img14" src="https://images.unsplash.com/photo-1543226574-7b3654507c00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Froburg, Olten, CH"></div>
+                <div class="slikeBG"><img id="img15" src="https://images.unsplash.com/photo-1543226549-10d29b2cfaf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Froburg 2, Olten, CH"></div>
+                <div class="slikeBG"><img id="img16" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Montreux%2C_Switzerland.JPG/1280px-Montreux%2C_Switzerland.JPG" alt="Montreux, CH"></div>
+                <div class="slikeBG"><img id="img17" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Rhine_Rhein_Basel_2006_871.JPG/1280px-Rhine_Rhein_Basel_2006_871.JPG" alt="Basel, CH"></div>
+                <div class="slikeBG"><img id="img18" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Sanetsch.jpg/1280px-Sanetsch.jpg" alt="Col du Sanetsch"></div>
+                <div class="slikeBG"><img id="img19" src="https://upload.wikimedia.org/wikipedia/commons/7/79/Kleine_Scheidegg.jpg" alt="Kleine Scheidegg 2, CH"></div>
+                <div class="slikeBG"><img id="img20" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Rigi01.jpg/1280px-Rigi01.jpg" alt="Rigi, CH"></div>
+                <div class="slikeBG"><img id="img21" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/AmdenWalensee2.JPG/1280px-AmdenWalensee2.JPG" alt="Walensee"></div>
+                <div class="slikeBG"><img id="img22" src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Braunwald_Alps2.jpg" alt="Braunwald"></div>
+                <div class="slikeBG"><img id="img23" src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Bifertenstock2.jpg" alt="Limmernsee"></div>
+                <div class="slikeBG"><img id="img24" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Calfeisen.jpg/1280px-Calfeisen.jpg" alt="Calfeisental"></div>
+                <div class="slikeBG"><img id="img25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Am_Ch%C3%BCebodensee_bei_Elm.jpg/1280px-Am_Ch%C3%BCebodensee_bei_Elm.jpg" alt="Chueebodensee"></div>
+                <div class="slikeBG"><img id="img26" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Morteratsch03.jpg" alt="Vadret da Morteratsch"></div>
+                <div class="slikeBG"><img id="img27" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/SBB_RABe_523_FLIRT_der_Zuger_S-Bahn.jpg/1280px-SBB_RABe_523_FLIRT_der_Zuger_S-Bahn.jpg" alt="S-Bahn"></div>
+                <div class="slikeBG"><img id="img28" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/GlacierUrseren.jpg/1280px-GlacierUrseren.jpg" alt="Glacier Express, Andermatt"></div>
+            </div>
+            <div id="kontejnerOdaberi">
+                <div id="dugmeOdaberi" class="dugmad"><span id="spanOdaberi">Choose Background</span></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        // poziva funkciju svakih 1000 milisekundi
+        window.setInterval(dajMiPodatke, 1000);
+
+        // deklaracija osnovnih varijabli za vrijeme
+        var sati, minute, sekunde;
+
+        function dajMiPodatke() {
+
+            // displej vremena gore lijevo u cosku
+            var displej = document.getElementById('trenutnoVrijeme');
+            var kompletnoVrijeme = new Date();
+            displej.innerText = kompletnoVrijeme;
+
+            // dodjela trenutnih vrijednosti osnovnim varijablama za vrijeme
+            sati = new Date().getHours();
+            minute = new Date().getMinutes();
+            sekunde = new Date().getSeconds();
+
+            // pomjeranje kazaljke za sat za frakciju unutar raspona sata
+            var pomakSatare = parseInt(minute/12);
+            // console.log(pomakSatare);
+
+            // odredi ugao kazaljke za sat
+            document.getElementById('satara').style.transform = "rotate(" + (sati * 30 + pomakSatare * 6) + "deg)";
+            document.getElementById('satara-residue').style.transform = "rotate(" + (sati * 30 + pomakSatare * 6 + 180) + "deg)";
+            // odredi ugao kazaljke za minute
+            document.getElementById('minutara').style.transform = "rotate(" + minute * 6 + "deg)";
+            document.getElementById('minutara-residue').style.transform = "rotate(" + (minute * 6 + 180) + "deg)";
+            // odredi ugao kazaljke za sekunde
+            document.getElementById('sekundara').style.transform = "rotate(" + sekunde * 6 + "deg)";
+            document.getElementById('sekundara-residue').style.transform = "rotate(" + (sekunde * 6 + 180) + "deg)";
+        }
+
+        // --- navigacija u settings --- //
+
+        var sat = document.getElementById('sat');
+        var settings = document.getElementById('settings');
+        var stranica1 = document.getElementById('strana-1');
+        var stranica2 = document.getElementById('strana-2');
+        var stranica3 = document.getElementById('strana-3');
+        var crniOkvir = document.getElementById('crniOkvir');
+        var srebreniOkvir = document.getElementById('srebreniOkvir');
+        var crveniOkvir = document.getElementById('crveniOkvir');
+        var providniOkvir = document.getElementById('providniOkvir');
+        var changeBackground = document.getElementById('changeBackground');
+        var saveAndExit = document.getElementById('saveAndExit');
+        var dugmeOdaberi = document.getElementById('dugmeOdaberi');
+
+        var dan, mjesec;
+        dan = new Date().getUTCDate();
+        mjesec = new Date().getUTCMonth()+1;
+        console.log('danas je '+dan+'.'+mjesec+'.');
+
+        if (dan == 1 && mjesec == 8) {
+            stranica1.style.backgroundImage = "url(https://images.unsplash.com/photo-1521808896374-c407e2ae5377?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)";
+            stranica2.style.backgroundImage = "url(https://images.unsplash.com/photo-1521808896374-c407e2ae5377?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)";
+            stranica3.style.backgroundImage = "url(https://images.unsplash.com/photo-1521808896374-c407e2ae5377?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)";
+        
+        }
+        else {
+            stranica1.style.backgroundImage = "url(https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)";
+            stranica2.style.backgroundImage = "url(https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)";
+            stranica3.style.backgroundImage = "url(https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)";
+        }
+
+
+
+        settings.addEventListener('click', function () {
+            stranica1.classList.add('sakrij');
+            stranica2.classList.remove('sakrij');
+        });
+
+        changeBackground.addEventListener('click', function () {
+            stranica2.classList.add('sakrij');
+            stranica3.classList.remove('sakrij');
+        });
+
+        saveAndExit.addEventListener('click', function () {
+            stranica1.classList.remove('sakrij');
+            stranica2.classList.add('sakrij');
+        });
+
+        dugmeOdaberi.addEventListener('click', function () {
+           stranica3.classList.add('sakrij');
+           stranica2.classList.remove('sakrij');
+        });
+
+        crniOkvir.addEventListener('click', function () {
+            crniOkvir.classList.add('odabran');
+            srebreniOkvir.classList.remove('odabran');
+            crveniOkvir.classList.remove('odabran');
+            providniOkvir.classList.remove('odabran');
+
+            sat.classList.add('sat-crni');
+            sat.classList.remove('sat-srebreni');
+            sat.classList.remove('sat-crveni');
+            sat.classList.remove('sat-transparentni');
+        });
+
+        srebreniOkvir.addEventListener('click', function () {
+            srebreniOkvir.classList.add('odabran');
+            crniOkvir.classList.remove('odabran');
+            crveniOkvir.classList.remove('odabran');
+            providniOkvir.classList.remove('odabran');
+
+            sat.classList.remove('sat-crni');
+            sat.classList.add('sat-srebreni');
+            sat.classList.remove('sat-crveni');
+            sat.classList.remove('sat-transparentni');
+        });
+
+        crveniOkvir.addEventListener('click', function () {
+            crveniOkvir.classList.add('odabran');
+            srebreniOkvir.classList.remove('odabran');
+            crniOkvir.classList.remove('odabran');
+            providniOkvir.classList.remove('odabran');
+
+            sat.classList.remove('sat-crni');
+            sat.classList.remove('sat-srebreni');
+            sat.classList.add('sat-crveni');
+            sat.classList.remove('sat-transparentni');
+        });
+
+        providniOkvir.addEventListener('click', function () {
+            providniOkvir.classList.add('odabran');
+            srebreniOkvir.classList.remove('odabran');
+            crveniOkvir.classList.remove('odabran');
+            crniOkvir.classList.remove('odabran');
+
+            sat.classList.remove('sat-crni');
+            sat.classList.remove('sat-srebreni');
+            sat.classList.remove('sat-crveni');
+            sat.classList.add('sat-transparentni');
+        });
+
+        var img1 = document.getElementById('img1');
+        var img2 = document.getElementById('img2');
+        var img3 = document.getElementById('img3');
+        var img4 = document.getElementById('img4');
+        var img5 = document.getElementById('img5');
+        var img6 = document.getElementById('img6');
+        var img7 = document.getElementById('img7');
+        var img8 = document.getElementById('img8');
+        var img9 = document.getElementById('img9');
+        var img10 = document.getElementById('img10');
+        var img11 = document.getElementById('img11');
+        var img12 = document.getElementById('img12');
+        var img13 = document.getElementById('img13');
+        var img14 = document.getElementById('img14');
+        var img15 = document.getElementById('img15');
+        var img16 = document.getElementById('img16');
+        var img17 = document.getElementById('img17');
+        var img18 = document.getElementById('img18');
+        var img19 = document.getElementById('img19');
+        var img20 = document.getElementById('img20');
+        var img21 = document.getElementById('img21');
+        var img22 = document.getElementById('img22');
+        var img23 = document.getElementById('img23');
+        var img24 = document.getElementById('img24');
+        var img25 = document.getElementById('img25');
+        var img26 = document.getElementById('img26');
+        var img27 = document.getElementById('img27');
+        var img28 = document.getElementById('img28');
+
+        img1.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img1.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img1.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img1.getAttribute('src') + ")";
+
+            img1.classList.add('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        img2.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img2.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img2.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img2.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.add('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        img3.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img3.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img3.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img3.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.add('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+        
+        img4.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img4.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img4.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img4.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.add('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img5.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img5.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img5.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img5.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.add('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img6.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img6.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img6.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img6.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.add('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img7.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img7.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img7.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img7.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.add('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        img8.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img8.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img8.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img8.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.add('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+        
+        img9.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img9.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img9.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img9.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.add('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img10.addEventListener('click', function () {
+
+            stranica1.style.backgroundImage = "url(" + img10.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img10.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img10.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.add('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img11.addEventListener('click', function () {
+            
+            stranica1.style.backgroundImage = "url(" + img11.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img11.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img11.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.add('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img12.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img12.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img12.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img12.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.add('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img13.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img13.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img13.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img13.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.add('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img14.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img14.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img14.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img14.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.add('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img15.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img15.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img15.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img15.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.add('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img16.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img16.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img16.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img16.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.add('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img17.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img17.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img17.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img17.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.add('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img18.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img18.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img18.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img18.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.add('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img19.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img19.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img19.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img19.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.add('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img20.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img20.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img20.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img20.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.add('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img21.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img21.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img21.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img21.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.add('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img22.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img22.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img22.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img22.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.add('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img23.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img23.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img23.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img23.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.add('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img24.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img24.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img24.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img24.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.add('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img25.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img25.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img25.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img25.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.add('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img26.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img26.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img26.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img26.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.add('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+
+        
+        img27.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img27.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img27.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img27.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.add('odabranIMG');
+            img28.classList.remove('odabranIMG');
+        });
+        
+        img28.addEventListener('click', function () {
+                        
+            stranica1.style.backgroundImage = "url(" + img28.getAttribute('src') + ")";
+            stranica2.style.backgroundImage = "url(" + img28.getAttribute('src') + ")";
+            stranica3.style.backgroundImage = "url(" + img28.getAttribute('src') + ")";
+
+            img1.classList.remove('odabranIMG');
+            img2.classList.remove('odabranIMG');
+            img3.classList.remove('odabranIMG');
+            img4.classList.remove('odabranIMG');
+            img5.classList.remove('odabranIMG');
+            img6.classList.remove('odabranIMG');
+            img7.classList.remove('odabranIMG');
+            img8.classList.remove('odabranIMG');
+            img9.classList.remove('odabranIMG');
+            img10.classList.remove('odabranIMG');
+            img11.classList.remove('odabranIMG');
+            img12.classList.remove('odabranIMG');
+            img13.classList.remove('odabranIMG');
+            img14.classList.remove('odabranIMG');
+            img15.classList.remove('odabranIMG');
+            img16.classList.remove('odabranIMG');
+            img17.classList.remove('odabranIMG');
+            img18.classList.remove('odabranIMG');
+            img19.classList.remove('odabranIMG');
+            img20.classList.remove('odabranIMG');
+            img21.classList.remove('odabranIMG');
+            img22.classList.remove('odabranIMG');
+            img23.classList.remove('odabranIMG');
+            img24.classList.remove('odabranIMG');
+            img25.classList.remove('odabranIMG');
+            img26.classList.remove('odabranIMG');
+            img27.classList.remove('odabranIMG');
+            img28.classList.add('odabranIMG');
+        });
+    
+    </script>
+
+</body>
+</html>
