@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map of Europe</title>
+    <script src="countryBorders.js"></script>
+    <style>
+
+        #myCanvas{
+            border: 1px solid green;
+        }
+
+        img{
+            display: none;
+        }
+
+        #coords{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+            height: 24px;
+            border: 1px solid red;
+        }
+
+        #copy-paste-window{
+            position: absolute;
+            top: 48px;
+            right: 10px;
+            width: 200px;
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+<body>
+
+            <canvas id="myCanvas" width="1024" height="768">
+                <!-- Only shown when the browser does not support the canvas tag -->
+                Your browser does not support the 'canvas' feature.
+            </canvas>
+
+        <img id="euroMap" width="1024" height="768" src="Europe_map_resized.png" alt="Map of Europe">
+
+
+            <div id="coords"></div>
+            <div id="copy-paste-window"></div>
+
+
+    <script>
+
+        // canvas basic settings
+        let myCanvas = document.getElementById("myCanvas");
+        let c = myCanvas.getContext("2d");
+
+        // helper windows with information on click coordinates
+        let coords = document.getElementById("coords");
+        let copy = document.getElementById("copy-paste-window");
+
+        // declaration of fundamental variables
+        let countryVertices;    // array of vertices of the active country being drawn (undefined at first)
+        let x, y;               // placeholders for click coordinates (undefined until clicked first)
+
+        // needs to execute this only after whole document is rendered
+        window.onload = function () {
+
+            // list of countries
+            let countryList =
+            [
+                "France",
+                "Iceland",
+                "Ireland",
+                "Portugal",
+                "Spain",
+                "United Kingdom",
+                "United Kingdom - N.Ireland"
+            ]
+
+            // draw the whole border of a single country
+            function drawBorders(s) {
+
+                c.beginPath();
+                c.moveTo(s[0].x, s[0].y);
+
+                for(var i = 1; i < s.length; i++){
+
+                    c.lineTo(s[i].x, s[i].y);
+                }
+
+                c.closePath();
+                c.strokeStyle = c.isPointInPath(x, y) ? "red" : "blue";
+                c.stroke();
+            }
+
+            // draw borders of all countries
+            function drawAllCountries(e) {
+
+                // pinpoint user click coordinates (e is undefined before first click)
+                if (e) {
+                    x = e.clientX - 8;
+                    y = e.clientY - 8;
+                }
+
+                // clear the canvas
+                c.clearRect(0, 0, myCanvas.width, myCanvas.height);
+
+                // catch the background image
+                let euroMap = document.getElementById("euroMap");
+                c.drawImage(euroMap, 0, 0);
+                    
+                // draw borders of 'active country'
+                for(var i = 0; i < countryList.length; i++) {
+
+                    if (countryList[i] === "France") {
+                        countryVertices = franceVertices;
+                    }
+                    if (countryList[i] === "Iceland") {
+                        countryVertices = icelandVertices;
+                    }
+                    if (countryList[i] === "Ireland") {
+                        countryVertices = irelandVertices;
+                    }
+                    if (countryList[i] === "Portugal") {
+                        countryVertices = portugalVertices;
+                    }
+                    if (countryList[i] === "Spain") {
+                        countryVertices = spainVertices;
+                    }
+                    if (countryList[i] === "United Kingdom") {
+                        countryVertices = unitedKingdom;
+                    }
+                    if (countryList[i] === "United Kingdom - N.Ireland") {
+                        countryVertices = unitedKingdom2;
+                    }
+                    drawBorders(countryVertices);
+                }
+            }
+
+            // draw all countries for the first time
+            drawAllCountries();
+            // draw again whenever we click (this can't be with the other event listeners because then 'drawAllCountries' is undefined)
+            myCanvas.addEventListener("click", drawAllCountries);
+        }
+
+
+        // event listeners
+
+        myCanvas.addEventListener('mousemove', function (e) {
+
+            // coords.innerText = "c.lineTo(" + (e.clientX - 8) + ", " + (e.clientY - 8) + ");";
+            coords.innerText = "{x:" + (e.clientX - 8) + ", y:" + (e.clientY - 8) + "},";
+        });
+
+        myCanvas.addEventListener('click', function (e) {
+
+            // coords.innerText = "c.lineTo(" + (e.clientX - 8) + ", " + (e.clientY - 8) + ");";
+            copy.innerText += "{x:" + (e.clientX - 8) + ", y:" + (e.clientY - 8) + "},\n";
+        });
+
+    </script>
+    
+
+</body>
+</html>
