@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../contexts/authContext';
 import { doCreateUserWithEmailAndPassword } from '../../../firebase/auth';
+//import './register.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -17,8 +18,21 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!isRegistering) {
-      setIsRegistering(true);
-      await doCreateUserWithEmailAndPassword(email, password);
+      if (password !== confirmPassword) {
+        setErrorMessage('Password entries do not match');
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 3000);
+      } else {
+        setIsRegistering(true);
+        await doCreateUserWithEmailAndPassword(email, password).catch((err) => {
+          setIsRegistering(false);
+          setErrorMessage(err.message);
+          setTimeout(() => {
+            setErrorMessage('');
+          }, 3000);
+        });
+      }
     }
   };
 
@@ -26,18 +40,16 @@ const Register = () => {
     <>
       {userLoggedIn && <Navigate to={'/home'} replace={true} />}
 
-      <main className='w-full h-screen flex self-center place-content-center place-items-center'>
-        <div className='w-96 text-gray-600 space-y-5 p-4 shadow-xl border rounded-xl'>
-          <div className='text-center mb-6'>
-            <div className='mt-2'>
-              <h3 className='text-gray-800 text-xl font-semibold sm:text-2xl'>
-                Create a New Account
-              </h3>
+      <main className='main'>
+        <div className='frame'>
+          <div className='title_container'>
+            <div className='title_div'>
+              <h3 className='title'>Create a New Account</h3>
             </div>
           </div>
-          <form onSubmit={onSubmit} className='space-y-4'>
+          <form onSubmit={onSubmit} className='login_form'>
             <div>
-              <label className='text-sm text-gray-600 font-bold'>Email</label>
+              <label className='login_form_label'>Email</label>
               <input
                 type='email'
                 autoComplete='email'
@@ -46,14 +58,12 @@ const Register = () => {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                className='w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:indigo-600 shadow-sm rounded-lg transition duration-300'
+                className='login_form_input'
               />
             </div>
 
             <div>
-              <label className='text-sm text-gray-600 font-bold'>
-                Password
-              </label>
+              <label className='login_form_label'>Password</label>
               <input
                 disabled={isRegistering}
                 type='password'
@@ -63,14 +73,12 @@ const Register = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                className='w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300'
+                className='login_form_input'
               />
             </div>
 
             <div>
-              <label className='text-sm text-gray-600 font-bold'>
-                Confirm Password
-              </label>
+              <label className='login_form_label'>Confirm Password</label>
               <input
                 disabled={isRegistering}
                 type='password'
@@ -80,34 +88,31 @@ const Register = () => {
                 onChange={(e) => {
                   setconfirmPassword(e.target.value);
                 }}
-                className='w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300'
+                className='login_form_input'
               />
             </div>
 
             {errorMessage && (
-              <span className='text-red-600 font-bold'>{errorMessage}</span>
+              <div className='error_message'>
+                <span>{errorMessage}</span>
+              </div>
             )}
 
             <button
               type='submit'
               disabled={isRegistering}
-              className={`w-full px-4 py-2 text-white font-medium rounded-lg ${
-                isRegistering
-                  ? 'bg-gray-300 cursor-not-allowed'
-                  : 'bg-indigo-600 hover:bg-indigo-700 hover:shadow-xl transition duration-300'
+              className={`submit_btn button ${
+                isRegistering ? 'signing_in_true' : 'signing_in_false'
               }`}
             >
               {isRegistering ? 'Signing Up...' : 'Sign Up'}
             </button>
-            <div className='text-sm text-center'>
+            <p className='register_paragraph'>
               Already have an account? {'   '}
-              <Link
-                to={'/login'}
-                className='text-center text-sm hover:underline font-bold'
-              >
-                Continue
+              <Link to={'/login'} className='register_link'>
+                Sign In
               </Link>
-            </div>
+            </p>
           </form>
         </div>
       </main>

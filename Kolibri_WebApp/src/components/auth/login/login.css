@@ -122,6 +122,13 @@ button,
     0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
+.error_message {
+  display: flex;
+  font-weight: 500;
+  place-content: center;
+  margin-top: 0.5rem;
+}
+
 .register_paragraph {
   text-align: center;
   font-size: 0.875rem; /* 14px */

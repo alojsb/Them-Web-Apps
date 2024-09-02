@@ -19,7 +19,14 @@ const Login = () => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
-      await doSignInWithEmailAndPassword(email, password);
+      await doSignInWithEmailAndPassword(email, password).catch((err) => {
+        //console.error('Sign in error:', err);
+        setIsSigningIn(false);
+        setErrorMessage('Invalid credentials');
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 3000);
+      });
       // doSendEmailVerification()
     }
   };
@@ -28,8 +35,11 @@ const Login = () => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
+      console.log('isSigningIn is: ' + isSigningIn);
       doSignInWithGoogle().catch((err) => {
-        setIsSigningIn(false);
+        console.error('Google SignIn Error: ' + err);
+        //setIsSigningIn(false);
+        //console.log('isSigningIn inside catch is: ' + isSigningIn);
       });
     }
   };
@@ -75,7 +85,9 @@ const Login = () => {
             </div>
 
             {errorMessage && (
-              <span className='error_message'>{errorMessage}</span>
+              <div className='error_message'>
+                <span>{errorMessage}</span>
+              </div>
             )}
 
             <button
