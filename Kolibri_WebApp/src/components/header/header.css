@@ -1,0 +1,22 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem; /* 8px */
+  width: 100%;
+  z-index: 20;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 3rem; /* 48px */
+  border-bottom-width: 1px;
+  place-content: center;
+  place-items: center;
+  background-color: rgb(229 231 235);
+}
+
+.nav-bar-link {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  color: rgb(37 99 235);
+  text-decoration-line: underline;
+}
