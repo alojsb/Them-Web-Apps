@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../contexts/authContext';
 import { doCreateUserWithEmailAndPassword } from '../../../firebase/auth';
-//import './register.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -15,22 +14,23 @@ const Register = () => {
 
   const { userLoggedIn } = useAuth();
 
+  const errorMessageHandler = (msg) => {
+    setErrorMessage(msg);
+    setTimeout(() => {
+      setErrorMessage('');
+    }, 3000);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!isRegistering) {
       if (password !== confirmPassword) {
-        setErrorMessage('Password entries do not match');
-        setTimeout(() => {
-          setErrorMessage('');
-        }, 3000);
+        errorMessageHandler('Password entries do not match');
       } else {
         setIsRegistering(true);
         await doCreateUserWithEmailAndPassword(email, password).catch((err) => {
           setIsRegistering(false);
-          setErrorMessage(err.message);
-          setTimeout(() => {
-            setErrorMessage('');
-          }, 3000);
+          errorMessageHandler(err.message);
         });
       }
     }

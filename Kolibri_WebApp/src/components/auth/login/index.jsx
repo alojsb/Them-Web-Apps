@@ -5,7 +5,7 @@ import {
   doSignInWithGoogle,
 } from '../../../firebase/auth';
 import { useAuth } from '../../../contexts/authContext';
-import './login.css';
+//import './login.css';
 
 const Login = () => {
   const { userLoggedIn } = useAuth();
@@ -15,17 +15,20 @@ const Login = () => {
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const errorMessageHandler = (msg) => {
+    setErrorMessage(msg);
+    setTimeout(() => {
+      setErrorMessage('');
+    }, 3000);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
       await doSignInWithEmailAndPassword(email, password).catch((err) => {
-        //console.error('Sign in error:', err);
         setIsSigningIn(false);
-        setErrorMessage('Invalid credentials');
-        setTimeout(() => {
-          setErrorMessage('');
-        }, 3000);
+        errorMessageHandler(err.message);
       });
       // doSendEmailVerification()
     }
@@ -38,8 +41,6 @@ const Login = () => {
       console.log('isSigningIn is: ' + isSigningIn);
       doSignInWithGoogle().catch((err) => {
         console.error('Google SignIn Error: ' + err);
-        //setIsSigningIn(false);
-        //console.log('isSigningIn inside catch is: ' + isSigningIn);
       });
     }
   };
