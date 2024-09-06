@@ -42,6 +42,10 @@ const BookDetail = () => {
     navigate('/books'); // Navigate back to the BookList screen
   };
 
+  const handleEditClick = () => {
+    navigate(`/edit-book/${id}`); // Navigate to the edit book form
+  };
+
   if (loading) return <div>Loading...</div>;
 
   return (
@@ -79,6 +83,9 @@ const BookDetail = () => {
           </p>
           <button className='back-button' onClick={handleBackClick}>
             Back
+          </button>
+          <button className='edit-button' onClick={handleEditClick}>
+            Edit
           </button>
         </div>
       )}

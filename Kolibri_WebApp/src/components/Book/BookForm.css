@@ -42,20 +42,39 @@ textarea {
   min-height: 10vh; /* Ensure the textarea is at least 20% of the viewport height */
 }
 
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Adds space between the buttons */
+  margin-top: 1.25rem; /* Adds some space above the buttons */
+}
+
 button {
-  width: 100%;
+  flex: 1;
   padding: 0.625rem; /* 10px converted to rem */
   border: none;
   border-radius: 0.25rem; /* 4px converted to rem */
-  background-color: #007bff;
-  color: #fff;
   font-size: 1rem; /* 16px converted to rem */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+button[type='submit'] {
+  background-color: #007bff; /* Blue for Add Book */
+  color: #fff;
+}
+
+button[type='submit']:hover {
   background-color: #0056b3;
+}
+
+button[type='button'] {
+  background-color: #ff9800; /* Orange for Cancel */
+  color: #fff;
+}
+
+button[type='button']:hover {
+  background-color: #e68900;
 }
 
 input:focus,

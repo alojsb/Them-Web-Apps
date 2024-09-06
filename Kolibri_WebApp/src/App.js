@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AuthProvider } from './context/AuthContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, firestore } from './firebase/firebaseConfig'; // Import Firestore
@@ -26,10 +27,12 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <Navbar user={user} />
-      <AppRoutes />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Navbar user={user} />
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
   );
 };
 

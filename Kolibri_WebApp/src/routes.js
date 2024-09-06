@@ -16,9 +16,10 @@ const AppRoutes = () => (
     <Route path='/register' element={<Register />} />
     <Route path='/books' element={<BookList />} />
     <Route path='/books/:id' element={<BookDetail />} />
-    <Route path='/add-book' element={<BookForm />} />
+    <Route path='/add-book' element={<BookForm editMode={false} />} />
+    <Route path='/edit-book/:id' element={<BookForm editMode={true} />} />
     <Route path='/users' element={<UserList />} />
-    <Route path='/not-found' component={NotFound} />
+    <Route path='/not-found' element={<NotFound />} />
   </Routes>
 );
 

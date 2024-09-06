@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebaseConfig';
-import './BookList.css'; // Import your CSS file
+import { useAuth } from '../../context/AuthContext';
+import './BookList.css';
 
-const BookList = () => {
+const BookList = ({ user }) => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const { userRole } = useAuth();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -33,6 +36,14 @@ const BookList = () => {
   return (
     <div className='book-list'>
       <h2>Book List</h2>
+      {userRole === 'admin' && (
+        <button
+          className='add-book-button'
+          onClick={() => navigate('/add-book')}
+        >
+          Add Book
+        </button>
+      )}
       <ul>
         {books.map((book) => (
           <li key={book.id}>

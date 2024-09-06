@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
-import { addDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
+import {
+  addDoc,
+  collection,
+  doc,
+  updateDoc,
+  query,
+  where,
+  getDocs,
+  getDoc,
+} from 'firebase/firestore';
 import { firestore } from '../../firebase/firebaseConfig';
+import { useNavigate, useParams } from 'react-router-dom';
 import './BookForm.css'; // Import the CSS file
 
-const BookForm = () => {
+const BookForm = ({ editMode = false }) => {
+  const { id: bookId } = useParams(); // Get the book ID from URL params
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [author, setAuthor] = useState('');
@@ -16,10 +27,40 @@ const BookForm = () => {
   const [currentStock, setCurrentStock] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (editMode && bookId) {
+      const fetchBookDetails = async () => {
+        try {
+          const bookRef = doc(firestore, 'books', bookId);
+          const bookSnap = await getDoc(bookRef);
+
+          if (bookSnap.exists()) {
+            const bookData = bookSnap.data();
+            setTitle(bookData.title);
+            setDescription(bookData.description);
+            setAuthor(bookData.author);
+            setYear(bookData.year);
+            setIsbn(bookData.isbn);
+            setScript(bookData.script);
+            setLanguage(bookData.language);
+            setGenre(bookData.genre);
+            setTotalNumber(bookData.totalNumber);
+            setCurrentStock(bookData.currentStock);
+          }
+        } catch (error) {
+          console.error('Error fetching book details: ', error.message);
+        }
+      };
+
+      fetchBookDetails();
+    }
+  }, [editMode, bookId]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate inputs
     if (parseInt(totalNumber) < 0 || parseInt(currentStock) < 0) {
       setErrorMessage('Total Number and Current Stock cannot be negative.');
       return;
@@ -35,45 +76,62 @@ const BookForm = () => {
       const q = query(booksRef, where('isbn', '==', isbn));
       const querySnapshot = await getDocs(q);
 
-      if (!querySnapshot.empty) {
+      if (!editMode && !querySnapshot.empty) {
         setErrorMessage('A book with this ISBN already exists.');
         return;
       }
 
-      await addDoc(collection(firestore, 'books'), {
-        title,
-        description,
-        author,
-        year,
-        isbn,
-        script,
-        language,
-        genre,
-        totalNumber: parseInt(totalNumber),
-        currentStock: parseInt(currentStock),
-      });
+      if (editMode && bookId) {
+        // Update existing book
+        const bookRef = doc(firestore, 'books', bookId);
+        await updateDoc(bookRef, {
+          title,
+          description,
+          author,
+          year,
+          isbn,
+          script,
+          language,
+          genre,
+          totalNumber: parseInt(totalNumber),
+          currentStock: parseInt(currentStock),
+        });
+        alert('Book successfully updated!');
+      } else {
+        // Add new book
+        await addDoc(collection(firestore, 'books'), {
+          title,
+          description,
+          author,
+          year,
+          isbn,
+          script,
+          language,
+          genre,
+          totalNumber: parseInt(totalNumber),
+          currentStock: parseInt(currentStock),
+        });
+        alert('Book successfully added!');
+      }
 
-      alert('Book successfully added!');
-      setTitle('');
-      setDescription('');
-      setAuthor('');
-      setYear('');
-      setIsbn('');
-      setScript('');
-      setLanguage('');
-      setGenre('');
-      setTotalNumber('');
-      setCurrentStock('');
-      setErrorMessage('');
+      navigate('/books');
     } catch (error) {
-      console.error('Error adding book: ', error.message);
+      console.error('Error saving book: ', error.message);
+    }
+  };
+
+  const handleCancel = () => {
+    if (editMode) {
+      navigate(`/books/${bookId}`); // Navigate to BookDetail page if in edit mode
+    } else {
+      navigate('/books');
     }
   };
 
   return (
     <div className='form-container'>
       <form onSubmit={handleSubmit}>
-        <h2>Add New Book</h2>
+        <h2>{editMode ? 'Edit Book' : 'Add New Book'}</h2>
 
         {errorMessage && <div className='error-message'>{errorMessage}</div>}
 
@@ -175,7 +233,12 @@ const BookForm = () => {
           />
         </div>
 
-        <button type='submit'>Add Book</button>
+        <div className='button-group'>
+          <button type='submit'>{editMode ? 'Update Book' : 'Add Book'}</button>
+          <button type='button' onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

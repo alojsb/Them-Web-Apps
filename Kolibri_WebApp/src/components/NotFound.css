@@ -1,17 +1,24 @@
-/* NotFound.css */
-
 .not-found {
   text-align: center;
-  margin: 2rem auto;
   padding: 2rem;
 }
 
 .not-found h1 {
   font-size: 2rem;
-  color: #d9534f;
+  margin-bottom: 1rem;
 }
 
 .not-found p {
-  font-size: 1rem;
-  color: #555;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.back-home-link {
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-home-link:hover {
+  text-decoration: underline;
 }
