@@ -40,3 +40,27 @@
 .back-button:hover {
   background-color: #0056b3;
 }
+
+.book-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.book-info {
+  max-width: 60%;
+}
+
+.book-cover img {
+  max-width: 300px;
+  height: auto;
+}
+
+.book-detail-buttons {
+  margin-top: 20px;
+}
+
+.back-button,
+.edit-button {
+  margin-right: 10px;
+}

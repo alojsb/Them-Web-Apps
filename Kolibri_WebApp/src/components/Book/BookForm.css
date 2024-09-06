@@ -26,6 +26,15 @@ h2 {
   margin-bottom: 0.9375rem; /* 15px converted to rem */
 }
 
+.form-group input[type='file'] {
+  width: 100%;
+  padding: 0.625rem; /* 10px converted to rem */
+  border: 0.0625rem solid #ddd; /* 1px converted to rem */
+  border-radius: 0.25rem; /* 4px converted to rem */
+  font-size: 1rem; /* 16px converted to rem */
+  margin-top: 0.3125rem; /* 5px converted to rem */
+}
+
 input[type='text'],
 input[type='number'],
 textarea {

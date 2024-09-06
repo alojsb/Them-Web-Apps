@@ -52,43 +52,52 @@ const BookDetail = () => {
     <div className='book-detail'>
       <h2>Book Details</h2>
       {book && (
-        <div>
-          <h3>{book.title}</h3>
-          <p>
-            <strong>Description:</strong> {book.description}
-          </p>
-          <p>
-            <strong>Author:</strong> {book.author}
-          </p>
-          <p>
-            <strong>Year:</strong> {book.year}
-          </p>
-          <p>
-            <strong>ISBN:</strong> {book.isbn}
-          </p>
-          <p>
-            <strong>Script:</strong> {book.script}
-          </p>
-          <p>
-            <strong>Language:</strong> {book.language}
-          </p>
-          <p>
-            <strong>Genre:</strong> {book.genre}
-          </p>
-          <p>
-            <strong>Total Number:</strong> {book.totalNumber}
-          </p>
-          <p>
-            <strong>Current Stock:</strong> {book.currentStock}
-          </p>
-          <button className='back-button' onClick={handleBackClick}>
-            Back
-          </button>
-          <button className='edit-button' onClick={handleEditClick}>
-            Edit
-          </button>
+        <div className='book-details-container'>
+          <div className='book-info'>
+            <h3>{book.title}</h3>
+            <p>
+              <strong>Description:</strong> {book.description}
+            </p>
+            <p>
+              <strong>Author:</strong> {book.author}
+            </p>
+            <p>
+              <strong>Year:</strong> {book.year}
+            </p>
+            <p>
+              <strong>ISBN:</strong> {book.isbn}
+            </p>
+            <p>
+              <strong>Script:</strong> {book.script}
+            </p>
+            <p>
+              <strong>Language:</strong> {book.language}
+            </p>
+            <p>
+              <strong>Genre:</strong> {book.genre}
+            </p>
+            <p>
+              <strong>Total Number:</strong> {book.totalNumber}
+            </p>
+            <p>
+              <strong>Current Stock:</strong> {book.currentStock}
+            </p>
+          </div>
+          {book.coverImageURL && (
+            <div className='book-cover'>
+              <img src={book.coverImageURL} alt={`${book.title} cover`} />
+            </div>
+          )}
         </div>
       )}
+      <div className='book-detail-buttons'>
+        <button className='back-button' onClick={handleBackClick}>
+          Back
+        </button>
+        <button className='edit-button' onClick={handleEditClick}>
+          Edit
+        </button>
+      </div>
     </div>
   );
 };

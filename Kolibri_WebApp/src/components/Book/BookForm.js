@@ -9,7 +9,8 @@ import {
   getDocs,
   getDoc,
 } from 'firebase/firestore';
-import { firestore } from '../../firebase/firebaseConfig';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { firestore, storage } from '../../firebase/firebaseConfig';
 import { useNavigate, useParams } from 'react-router-dom';
 import './BookForm.css'; // Import the CSS file
 
@@ -25,6 +26,7 @@ const BookForm = ({ editMode = false }) => {
   const [genre, setGenre] = useState('');
   const [totalNumber, setTotalNumber] = useState('');
   const [currentStock, setCurrentStock] = useState('');
+  const [coverImage, setCoverImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
@@ -48,6 +50,7 @@ const BookForm = ({ editMode = false }) => {
             setGenre(bookData.genre);
             setTotalNumber(bookData.totalNumber);
             setCurrentStock(bookData.currentStock);
+            // Optionally, handle cover image URL if needed
           }
         } catch (error) {
           console.error('Error fetching book details: ', error.message);
@@ -81,6 +84,13 @@ const BookForm = ({ editMode = false }) => {
         return;
       }
 
+      let coverImageURL = '';
+      if (coverImage) {
+        const imageRef = ref(storage, `book-covers/${coverImage.name}`);
+        await uploadBytes(imageRef, coverImage);
+        coverImageURL = await getDownloadURL(imageRef);
+      }
+
       if (editMode && bookId) {
         // Update existing book
         const bookRef = doc(firestore, 'books', bookId);
@@ -95,6 +105,7 @@ const BookForm = ({ editMode = false }) => {
           genre,
           totalNumber: parseInt(totalNumber),
           currentStock: parseInt(currentStock),
+          coverImageURL,
         });
         alert('Book successfully updated!');
       } else {
@@ -110,6 +121,7 @@ const BookForm = ({ editMode = false }) => {
           genre,
           totalNumber: parseInt(totalNumber),
           currentStock: parseInt(currentStock),
+          coverImageURL,
         });
         alert('Book successfully added!');
       }
@@ -126,6 +138,10 @@ const BookForm = ({ editMode = false }) => {
     } else {
       navigate('/books');
     }
+  };
+
+  const handleImageChange = (e) => {
+    setCoverImage(e.target.files[0]);
   };
 
   return (
@@ -231,6 +247,10 @@ const BookForm = ({ editMode = false }) => {
             placeholder='Current Stock'
             required
           />
+        </div>
+
+        <div className='form-group'>
+          <input type='file' accept='image/*' onChange={handleImageChange} />
         </div>
 
         <div className='button-group'>
