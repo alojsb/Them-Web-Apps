@@ -1,38 +1,36 @@
-import Login from './components/auth/login';
-import Register from './components/auth/register';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, firestore } from './firebase/firebaseConfig'; // Import Firestore
+import { doc, getDoc } from 'firebase/firestore';
+import AppRoutes from './routes';
+import Navbar from './components/Navbar';
 
-import Header from './components/header';
-import Home from './components/home';
+const App = () => {
+  const [user, setUser] = useState(null);
 
-import { AuthProvider } from './contexts/authContext';
-import { useRoutes } from 'react-router-dom';
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        // Fetch user role from Firestore
+        const userDoc = await getDoc(doc(firestore, 'users', currentUser.uid));
+        if (userDoc.exists()) {
+          setUser({ ...currentUser, ...userDoc.data() });
+        }
+      } else {
+        setUser(null);
+      }
+    });
 
-function App() {
-  const routesArray = [
-    {
-      path: '*',
-      element: <div>not logged in</div>,
-    },
-    {
-      path: '/login',
-      element: <Login />,
-    },
-    {
-      path: '/register',
-      element: <Register />,
-    },
-    {
-      path: '/home',
-      element: <Home />,
-    },
-  ];
-  let routesElement = useRoutes(routesArray);
+    return () => unsubscribe();
+  }, []);
+
   return (
-    <AuthProvider>
-      <Header />
-      <div className='routes_container'>{routesElement}</div>
-    </AuthProvider>
+    <Router>
+      <Navbar user={user} />
+      <AppRoutes />
+    </Router>
   );
-}
+};
 
 export default App;
