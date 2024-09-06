@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, firestore } from './firebase/firebaseConfig'; // Import Firestore
 import { doc, getDoc } from 'firebase/firestore';
-import AppRoutes from './routes';
+import AppRoutes from './routes/routes';
 import Navbar from './components/Navbar';
 
 const App = () => {

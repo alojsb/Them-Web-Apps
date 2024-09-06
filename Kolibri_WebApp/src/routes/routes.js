@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
-import BookList from './components/Book/BookList';
-import BookDetail from './components/Book/BookDetail';
-import BookForm from './components/Book/BookForm';
-import UserList from './components/User/UserList';
-import Home from './components/Home';
-import NotFound from './components/NotFound';
+import Login from '../components/Auth/Login';
+import Register from '../components/Auth/Register';
+import BookList from '../components/Book/BookList';
+import BookDetail from '../components/Book/BookDetail';
+import BookForm from '../components/Book/BookForm';
+import UserList from '../components/User/UserList';
+import Home from '../components/Home';
+import NotFound from '../components/NotFound';
 
 const AppRoutes = () => (
   <Routes>
