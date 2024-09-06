@@ -7,16 +7,18 @@ import BookDetail from './components/Book/BookDetail';
 import BookForm from './components/Book/BookForm';
 import UserList from './components/User/UserList';
 import Home from './components/Home';
+import NotFound from './components/NotFound';
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-    <Route path="/books" element={<BookList />} />
-    <Route path="/books/:id" element={<BookDetail />} />
-    <Route path="/add-book" element={<BookForm />} />
-    <Route path="/users" element={<UserList />} />
+    <Route path='/' element={<Home />} />
+    <Route path='/login' element={<Login />} />
+    <Route path='/register' element={<Register />} />
+    <Route path='/books' element={<BookList />} />
+    <Route path='/books/:id' element={<BookDetail />} />
+    <Route path='/add-book' element={<BookForm />} />
+    <Route path='/users' element={<UserList />} />
+    <Route path='/not-found' component={NotFound} />
   </Routes>
 );
 

@@ -1,0 +1,21 @@
+/* BookList.css */
+
+.book-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.book-list li {
+  margin: 0.75rem 0;
+}
+
+.book-list a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.book-list a:hover {
+  color: #0056b3;
+}
