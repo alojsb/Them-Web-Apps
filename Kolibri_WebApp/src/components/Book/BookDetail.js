@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebaseConfig';
+import { useAuth } from '../../context/AuthContext';
 import './BookDetail.css'; // Import the CSS file
 
 const BookDetail = () => {
@@ -10,6 +11,7 @@ const BookDetail = () => {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { userRole } = useAuth();
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -94,9 +96,11 @@ const BookDetail = () => {
         <button className='back-button' onClick={handleBackClick}>
           Back
         </button>
-        <button className='edit-button' onClick={handleEditClick}>
-          Edit
-        </button>
+        {userRole === 'admin' && (
+          <button className='edit-button' onClick={handleEditClick}>
+            Edit
+          </button>
+        )}
       </div>
     </div>
   );

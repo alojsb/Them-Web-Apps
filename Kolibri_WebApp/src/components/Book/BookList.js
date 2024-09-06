@@ -5,11 +5,11 @@ import { firestore } from '../../firebase/firebaseConfig';
 import { useAuth } from '../../context/AuthContext';
 import './BookList.css';
 
-const BookList = ({ user }) => {
+const BookList = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const { userRole } = useAuth();
+  const { userRole } = useAuth(); // Fetch userRole from AuthContext
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -36,6 +36,7 @@ const BookList = ({ user }) => {
   return (
     <div className='book-list'>
       <h2>Book List</h2>
+      {/* Only show the Add Book button to users with 'admin' role */}
       {userRole === 'admin' && (
         <button
           className='add-book-button'
