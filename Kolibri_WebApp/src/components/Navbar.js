@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'; // Import useAuth
 import { auth } from '../firebase/firebaseConfig'; // Import auth
 
 const Navbar = () => {
-  const { currentUser, getDisplayName } = useAuth(); // Use getDisplayName
+  const { currentUser, getDisplayName, userRole } = useAuth(); // Use userRole
 
   return (
     <nav>
@@ -19,6 +19,9 @@ const Navbar = () => {
             </li>
             <li>
               <span>Welcome, {getDisplayName()}</span> {/* Display user name or email */}
+            </li>
+            <li>
+              <span>Role: {userRole}</span> {/* Display user role */}
             </li>
             <li>
               <button onClick={() => auth.signOut()}>Logout</button>
