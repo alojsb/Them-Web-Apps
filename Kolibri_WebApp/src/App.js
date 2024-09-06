@@ -1,38 +1,19 @@
-import Login from './components/auth/login';
-import Register from './components/auth/register';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom'; // Import BrowserRouter
+import AppRoutes from './routes';
+import Navbar from './components/Navbar';
+import { AuthProvider } from './context/AuthContext'; // Import AuthProvider
+import './assets/styles.css';
 
-import Header from './components/header';
-import Home from './components/home';
-
-import { AuthProvider } from './contexts/authContext';
-import { useRoutes } from 'react-router-dom';
-
-function App() {
-  const routesArray = [
-    {
-      path: '*',
-      element: <div>not logged in</div>,
-    },
-    {
-      path: '/login',
-      element: <Login />,
-    },
-    {
-      path: '/register',
-      element: <Register />,
-    },
-    {
-      path: '/home',
-      element: <Home />,
-    },
-  ];
-  let routesElement = useRoutes(routesArray);
-  return (
-    <AuthProvider>
-      <Header />
-      <div className='routes_container'>{routesElement}</div>
-    </AuthProvider>
-  );
-}
+const App = () => (
+  <AuthProvider>
+    <Router> {/* Wrap the entire application in BrowserRouter */}
+      <div className="App">
+        <Navbar />
+        <AppRoutes />
+      </div>
+    </Router>
+  </AuthProvider>
+);
 
 export default App;
