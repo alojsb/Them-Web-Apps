@@ -1,0 +1,74 @@
+/* BookForm.css */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 37.5rem; /* 600px converted to rem */
+  margin: 0 auto;
+  padding: 1.25rem; /* 20px converted to rem */
+  border-radius: 0.5rem; /* 8px converted to rem */
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); /* 10px converted to rem */
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.25rem; /* 20px converted to rem */
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 0.9375rem; /* 15px converted to rem */
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  width: 100%;
+  padding: 0.625rem; /* 10px converted to rem */
+  margin: 0.3125rem 0; /* 5px converted to rem */
+  border: 0.0625rem solid #ddd; /* 1px converted to rem */
+  border-radius: 0.25rem; /* 4px converted to rem */
+  font-size: 1rem; /* 16px converted to rem */
+}
+
+textarea {
+  resize: vertical;
+  min-height: 10vh; /* Ensure the textarea is at least 20% of the viewport height */
+}
+
+button {
+  width: 100%;
+  padding: 0.625rem; /* 10px converted to rem */
+  border: none;
+  border-radius: 0.25rem; /* 4px converted to rem */
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem; /* 16px converted to rem */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.error-message {
+  color: #d9534f;
+  background-color: #f2dede;
+  border: 0.0625rem solid #ebccd1; /* 1px converted to rem */
+  border-radius: 0.25rem; /* 4px converted to rem */
+  padding: 0.625rem; /* 10px converted to rem */
+  margin-bottom: 1.25rem; /* 20px converted to rem */
+}
