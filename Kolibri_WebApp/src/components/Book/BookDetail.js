@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebaseConfig';
 import { useAuth } from '../../context/AuthContext';
-import './BookDetail.css'; // Import the CSS file
+import './BookDetail.css';
 
 const BookDetail = () => {
-  const { id } = useParams();
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const { id: bookId } = useParams();
+  const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,13 +16,14 @@ const BookDetail = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const bookRef = doc(firestore, 'books', id);
+        const bookRef = doc(firestore, 'books', bookId);
         const bookSnap = await getDoc(bookRef);
 
         if (bookSnap.exists()) {
           setBook(bookSnap.data());
         } else {
           setError('Book not found');
+          navigate('/not-found');
         }
       } catch (err) {
         setError('An error occurred while fetching the book details.');
@@ -32,7 +33,23 @@ const BookDetail = () => {
     };
 
     fetchBook();
-  }, [id]);
+  }, [bookId]);
+
+  const handleDelete = async () => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this book?'
+    );
+    if (confirmed) {
+      try {
+        const bookRef = doc(firestore, 'books', bookId);
+        await deleteDoc(bookRef);
+        alert('Book deleted successfully!');
+        navigate('/books'); // Redirect to book list after deletion
+      } catch (error) {
+        console.error('Error deleting book:', error.message);
+      }
+    }
+  };
 
   useEffect(() => {
     if (error) {
@@ -45,7 +62,7 @@ const BookDetail = () => {
   };
 
   const handleEditClick = () => {
-    navigate(`/edit-book/${id}`); // Navigate to the edit book form
+    navigate(`/edit-book/${bookId}`); // Navigate to the edit book form
   };
 
   if (loading) return <div>Loading...</div>;
@@ -115,9 +132,14 @@ const BookDetail = () => {
           Back
         </button>
         {userRole === 'admin' && (
-          <button className='edit-button' onClick={handleEditClick}>
-            Edit
-          </button>
+          <>
+            <button className='edit-button' onClick={handleEditClick}>
+              Edit
+            </button>
+            <button className='delete-button' onClick={handleDelete}>
+              Delete
+            </button>
+          </>
         )}
       </div>
     </div>
