@@ -92,6 +92,24 @@ const BookDetail = () => {
           )}
         </div>
       )}
+      {userRole === 'admin' && (
+        <div className='admin-fields'>
+          <p>
+            <strong>Created At:</strong>{' '}
+            {book.createdAt?.toDate().toLocaleString()}
+          </p>
+          <p>
+            <strong>Created By:</strong> {book.createdBy}
+          </p>
+          <p>
+            <strong>Updated At:</strong>{' '}
+            {book.updatedAt?.toDate().toLocaleString()}
+          </p>
+          <p>
+            <strong>Updated By:</strong> {book.updatedBy}
+          </p>
+        </div>
+      )}
       <div className='book-detail-buttons'>
         <button className='back-button' onClick={handleBackClick}>
           Back

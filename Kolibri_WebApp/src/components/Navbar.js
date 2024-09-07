@@ -2,10 +2,12 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
-import './Navbar.css'; // Import the CSS file for styling
+import { useAuth } from '../context/AuthContext';
+import './Navbar.css';
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
   const navigate = useNavigate();
+  const { currentUser, userRole } = useAuth(); // Access user and role from AuthContext
 
   const handleLogout = async () => {
     try {
@@ -17,26 +19,42 @@ const Navbar = ({ user }) => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
+    <nav className='navbar'>
+      <div className='navbar-brand'>
         <h1>Library</h1>
       </div>
-      <ul className="navbar-links">
-        {user ? (
+      <ul className='navbar-links'>
+        {currentUser ? (
           <>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/books">Books</Link></li>
-            <li><Link to="/reservations">Reservations</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
-            <li className="navbar-user">
-              {user.name || user.email} (Role: {user.role})
+            <li>
+              <Link to='/'>Home</Link>
             </li>
-            <li><button className="navbar-logout" onClick={handleLogout}>Logout</button></li>
+            <li>
+              <Link to='/books'>Books</Link>
+            </li>
+            <li>
+              <Link to='/reservations'>Reservations</Link>
+            </li>
+            <li>
+              <Link to='/profile'>Profile</Link>
+            </li>
+            <li className='navbar-user'>
+              {currentUser.displayName || currentUser.email} (Role: {userRole})
+            </li>
+            <li>
+              <button className='navbar-logout' onClick={handleLogout}>
+                Logout
+              </button>
+            </li>
           </>
         ) : (
           <>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
+            <li>
+              <Link to='/login'>Login</Link>
+            </li>
+            <li>
+              <Link to='/register'>Register</Link>
+            </li>
           </>
         )}
       </ul>

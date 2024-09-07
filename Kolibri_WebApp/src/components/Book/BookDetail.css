@@ -1,8 +1,6 @@
-/* BookDetail.css */
-
 .book-detail {
   width: 100%;
-  max-width: 40rem; /* Adjust based on your design */
+  max-width: 40rem;
   margin: 0 auto;
   padding: 1.25rem;
   border-radius: 0.5rem;
@@ -22,7 +20,7 @@
 
 .book-detail strong {
   display: inline-block;
-  width: 10rem; /* Adjust width based on your design */
+  width: 10rem;
 }
 
 .back-button {
@@ -63,4 +61,8 @@
 .back-button,
 .edit-button {
   margin-right: 10px;
+}
+
+.admin-fields p {
+  color: rgb(54, 54, 54);
 }

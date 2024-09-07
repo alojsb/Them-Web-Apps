@@ -8,14 +8,17 @@ import {
   where,
   getDocs,
   getDoc,
+  serverTimestamp,
 } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebaseConfig';
 import { useNavigate, useParams } from 'react-router-dom';
-import './BookForm.css'; // Import the CSS file
+import { useAuth } from '../../context/AuthContext'; // Import AuthContext
+import './BookForm.css';
 
 const BookForm = ({ editMode = false }) => {
-  const { id: bookId } = useParams(); // Get the book ID from URL params
+  const { currentUser, userRole } = useAuth(); // Access user and role from AuthContext
+  const { id: bookId } = useParams();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [author, setAuthor] = useState('');
@@ -24,124 +27,116 @@ const BookForm = ({ editMode = false }) => {
   const [script, setScript] = useState('');
   const [language, setLanguage] = useState('');
   const [genre, setGenre] = useState('');
-  const [totalNumber, setTotalNumber] = useState('');
-  const [currentStock, setCurrentStock] = useState('');
+  const [totalNumber, setTotalNumber] = useState(0);
+  const [currentStock, setCurrentStock] = useState(0);
   const [coverImage, setCoverImage] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [coverImageURL, setImageUrl] = useState('');
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (editMode && bookId) {
-      const fetchBookDetails = async () => {
-        try {
-          const bookRef = doc(firestore, 'books', bookId);
-          const bookSnap = await getDoc(bookRef);
-
-          if (bookSnap.exists()) {
-            const bookData = bookSnap.data();
-            setTitle(bookData.title);
-            setDescription(bookData.description);
-            setAuthor(bookData.author);
-            setYear(bookData.year);
-            setIsbn(bookData.isbn);
-            setScript(bookData.script);
-            setLanguage(bookData.language);
-            setGenre(bookData.genre);
-            setTotalNumber(bookData.totalNumber);
-            setCurrentStock(bookData.currentStock);
-            // Optionally, handle cover image URL if needed
-          }
-        } catch (error) {
-          console.error('Error fetching book details: ', error.message);
+      // Fetch book details from Firestore
+      const fetchBook = async () => {
+        const bookRef = doc(firestore, 'books', bookId);
+        const bookSnap = await getDoc(bookRef);
+        if (bookSnap.exists()) {
+          const bookData = bookSnap.data();
+          setTitle(bookData.title);
+          setDescription(bookData.description);
+          setAuthor(bookData.author);
+          setYear(bookData.year);
+          setIsbn(bookData.isbn);
+          setScript(bookData.script);
+          setLanguage(bookData.language);
+          setGenre(bookData.genre);
+          setTotalNumber(bookData.totalNumber);
+          setCurrentStock(bookData.currentStock);
+          setImageUrl(bookData.coverImageURL || '');
+        } else {
+          console.error('No such book found!');
+          navigate('/404');
         }
       };
-
-      fetchBookDetails();
+      fetchBook();
     }
-  }, [editMode, bookId]);
+  }, [editMode, bookId, navigate]);
+
+  const handleImageUpload = async (file) => {
+    if (!file) return;
+    const storageRef = ref(storage, `book-covers/${file.name}`);
+    await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(storageRef);
+    setImageUrl(url);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (parseInt(totalNumber) < 0 || parseInt(currentStock) < 0) {
-      setErrorMessage('Total Number and Current Stock cannot be negative.');
+    if (userRole !== 'admin') {
+      alert('Only admins can add or edit books.');
       return;
     }
 
-    if (parseInt(currentStock) > parseInt(totalNumber)) {
-      setErrorMessage('Current Stock cannot be greater than Total Number.');
+    if (currentStock > totalNumber) {
+      alert('Current stock cannot exceed total number of books.');
       return;
     }
+
+    if (totalNumber < 0 || currentStock < 0) {
+      alert('Stock numbers cannot be negative.');
+      return;
+    }
+
+    const bookData = {
+      title,
+      description,
+      author,
+      year,
+      isbn,
+      script,
+      language,
+      genre,
+      totalNumber,
+      currentStock,
+      coverImageURL,
+      updatedAt: serverTimestamp(), // Timestamp for update
+      updatedBy: currentUser.email, // User performing the update
+    };
 
     try {
-      const booksRef = collection(firestore, 'books');
-      const q = query(booksRef, where('isbn', '==', isbn));
-      const querySnapshot = await getDocs(q);
-
-      if (!editMode && !querySnapshot.empty) {
-        setErrorMessage('A book with this ISBN already exists.');
-        return;
-      }
-
-      let coverImageURL = '';
-      if (coverImage) {
-        const imageRef = ref(storage, `book-covers/${coverImage.name}`);
-        await uploadBytes(imageRef, coverImage);
-        coverImageURL = await getDownloadURL(imageRef);
-      }
-
-      if (editMode && bookId) {
-        // Update existing book
+      if (editMode) {
         const bookRef = doc(firestore, 'books', bookId);
-        await updateDoc(bookRef, {
-          title,
-          description,
-          author,
-          year,
-          isbn,
-          script,
-          language,
-          genre,
-          totalNumber: parseInt(totalNumber),
-          currentStock: parseInt(currentStock),
-          coverImageURL,
-        });
-        alert('Book successfully updated!');
+        await updateDoc(bookRef, bookData);
+        alert('Book updated successfully!');
+        navigate(`/books/${bookId}`);
       } else {
-        // Add new book
-        await addDoc(collection(firestore, 'books'), {
-          title,
-          description,
-          author,
-          year,
-          isbn,
-          script,
-          language,
-          genre,
-          totalNumber: parseInt(totalNumber),
-          currentStock: parseInt(currentStock),
-          coverImageURL,
-        });
-        alert('Book successfully added!');
-      }
+        const isbnQuery = query(
+          collection(firestore, 'books'),
+          where('isbn', '==', isbn)
+        );
+        const querySnapshot = await getDocs(isbnQuery);
 
-      navigate('/books');
+        if (!querySnapshot.empty) {
+          alert('A book with this ISBN already exists.');
+          return;
+        }
+
+        // Add createdAt and createdBy for new book entry
+        bookData.createdAt = serverTimestamp();
+        bookData.createdBy = currentUser.email;
+
+        const docRef = await addDoc(collection(firestore, 'books'), bookData);
+        alert('Book added successfully!');
+        navigate(`/books/${docRef.id}`);
+      }
     } catch (error) {
-      console.error('Error saving book: ', error.message);
+      console.error('Error adding/updating book:', error.message);
     }
   };
 
   const handleCancel = () => {
-    if (editMode) {
-      navigate(`/books/${bookId}`); // Navigate to BookDetail page if in edit mode
-    } else {
-      navigate('/books');
-    }
-  };
-
-  const handleImageChange = (e) => {
-    setCoverImage(e.target.files[0]);
+    navigate(editMode ? `/books/${bookId}` : '/books');
   };
 
   return (
@@ -149,109 +144,95 @@ const BookForm = ({ editMode = false }) => {
       <form onSubmit={handleSubmit}>
         <h2>{editMode ? 'Edit Book' : 'Add New Book'}</h2>
 
-        {errorMessage && <div className='error-message'>{errorMessage}</div>}
+        <label>Title</label>
+        <input
+          type='text'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
 
-        <div className='form-group'>
-          <input
-            type='text'
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder='Title'
-            required
+        <label>Description</label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        ></textarea>
+
+        <label>Author</label>
+        <input
+          type='text'
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          required
+        />
+
+        <label>Year</label>
+        <input
+          type='number'
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+          required
+        />
+
+        <label>ISBN</label>
+        <input
+          type='text'
+          value={isbn}
+          onChange={(e) => setIsbn(e.target.value)}
+          required
+        />
+
+        <label>Script</label>
+        <input
+          type='text'
+          value={script}
+          onChange={(e) => setScript(e.target.value)}
+        />
+
+        <label>Language</label>
+        <input
+          type='text'
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        />
+
+        <label>Genre</label>
+        <input
+          type='text'
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
+        />
+
+        <label>Total Number of Books</label>
+        <input
+          type='number'
+          value={totalNumber}
+          onChange={(e) => setTotalNumber(Number(e.target.value))}
+          required
+        />
+
+        <label>Current Stock</label>
+        <input
+          type='number'
+          value={currentStock}
+          onChange={(e) => setCurrentStock(Number(e.target.value))}
+          required
+        />
+
+        <label>Book Cover</label>
+        <input
+          type='file'
+          onChange={(e) => handleImageUpload(e.target.files[0])}
+        />
+
+        {coverImageURL && (
+          <img
+            src={coverImageURL}
+            alt='Book Cover'
+            className='book-cover-preview'
           />
-        </div>
-
-        <div className='form-group'>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder='Description'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='text'
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            placeholder='Author'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='number'
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            placeholder='Year'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='text'
-            value={isbn}
-            onChange={(e) => setIsbn(e.target.value)}
-            placeholder='ISBN'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='text'
-            value={script}
-            onChange={(e) => setScript(e.target.value)}
-            placeholder='Script'
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='text'
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            placeholder='Language'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='text'
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-            placeholder='Genre'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='number'
-            value={totalNumber}
-            onChange={(e) => setTotalNumber(e.target.value)}
-            placeholder='Total Number'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='number'
-            value={currentStock}
-            onChange={(e) => setCurrentStock(e.target.value)}
-            placeholder='Current Stock'
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <input type='file' accept='image/*' onChange={handleImageChange} />
-        </div>
+        )}
 
         <div className='button-group'>
           <button type='submit'>{editMode ? 'Update Book' : 'Add Book'}</button>
