@@ -237,26 +237,28 @@ const Inventory = () => {
 
   return (
     <div className='inventory-form'>
-      <h2>Manage Inventory</h2>
+      <h2 className='inventory-header'>Manage Inventory</h2>
 
-      <label htmlFor='bookId'>Book:</label>
-      <select
-        id='bookId'
-        value={selectedBookId}
-        onChange={(e) => {
-          setSelectedBookId(e.target.value);
-          handleInputChange();
-        }}
-      >
-        <option value='' disabled>
-          Select a book
-        </option>
-        {books.map((book) => (
-          <option key={book.id} value={book.id}>
-            {book.title}
+      <div className='inventory-controls'>
+        <label htmlFor='bookId'>Book:</label>
+        <select
+          id='bookId'
+          value={selectedBookId}
+          onChange={(e) => {
+            setSelectedBookId(e.target.value);
+            handleInputChange();
+          }}
+        >
+          <option value='' disabled>
+            Select a book
           </option>
-        ))}
-      </select>
+          {books.map((book) => (
+            <option key={book.id} value={book.id}>
+              {book.title}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className='book-stock-info'>
         <p>
@@ -267,45 +269,47 @@ const Inventory = () => {
         </p>
       </div>
 
-      <label htmlFor='quantityChange'>Quantity Change:</label>
-      <input
-        type='number'
-        id='quantityChange'
-        value={quantityChange}
-        onChange={(e) => {
-          setQuantityChange(parseInt(e.target.value));
-          handleInputChange();
-        }}
-      />
+      <div className='inventory-inputs'>
+        <label htmlFor='quantityChange'>Quantity Change:</label>
+        <input
+          type='number'
+          id='quantityChange'
+          value={quantityChange}
+          onChange={(e) => {
+            setQuantityChange(parseInt(e.target.value));
+            handleInputChange();
+          }}
+        />
 
-      <label htmlFor='invoiceOrWriteOff'>Invoice/Write-off Request:</label>
-      <input
-        type='text'
-        id='invoiceOrWriteOff'
-        value={invoiceOrWriteOff}
-        onChange={(e) => {
-          setInvoiceOrWriteOff(e.target.value);
-          handleInputChange();
-        }}
-        placeholder='Enter invoice or write-off request'
-        required
-      />
+        <label htmlFor='invoiceOrWriteOff'>Invoice/Write-off Request:</label>
+        <input
+          type='text'
+          id='invoiceOrWriteOff'
+          value={invoiceOrWriteOff}
+          onChange={(e) => {
+            setInvoiceOrWriteOff(e.target.value);
+            handleInputChange();
+          }}
+          placeholder='Enter invoice or write-off request'
+          required
+        />
+      </div>
 
       {/* Display error or success message */}
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+      {errorMessage && <p className='error-message'>{errorMessage}</p>}
+      {successMessage && <p className='success-message'>{successMessage}</p>}
 
       <div className='inventory-buttons'>
-        <button type='button' onClick={handleSubmit}>
+        <button className='submit-btn' type='button' onClick={handleSubmit}>
           Submit
         </button>
-        <button type='button' onClick={clearForm}>
+        <button className='clear-btn' type='button' onClick={clearForm}>
           Clear
         </button>
       </div>
 
       {/* Transaction Overview */}
-      <h3>Transaction Overview</h3>
+      <h3 className='transaction-header'>Transaction Overview</h3>
       <div className='filters'>
         <label htmlFor='filterField'>Filter by:</label>
         <input
@@ -331,7 +335,7 @@ const Inventory = () => {
         />
       </div>
 
-      <table>
+      <table className='transaction-table'>
         <thead>
           <tr>
             <th onClick={() => handleSort('bookTitle')}>Book Title</th>
