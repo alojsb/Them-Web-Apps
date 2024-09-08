@@ -6,6 +6,8 @@ import {
   doc,
   getDoc,
   updateDoc,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 import { firestore, auth } from '../../firebase/firebaseConfig'; // Import Firebase Authentication
 import './Inventory.css';
@@ -26,7 +28,7 @@ const Inventory = () => {
   const [filterField, setFilterField] = useState('');
   const [filterValue, setFilterValue] = useState('');
   const [sortField, setSortField] = useState('transactionDate');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortOrder, setSortOrder] = useState('desc');
 
   useEffect(() => {
     // Fetch current user from Firebase Authentication
@@ -49,24 +51,6 @@ const Inventory = () => {
         setBooks(booksList);
       } catch (error) {
         console.error('Error fetching books:', error.message);
-      }
-    };
-
-    const fetchTransactions = async () => {
-      try {
-        const transactionsCollection = collection(
-          firestore,
-          'inventoryTransactions'
-        );
-        const transactionsSnapshot = await getDocs(transactionsCollection);
-        const transactionsList = transactionsSnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setTransactions(transactionsList);
-        setFilteredTransactions(transactionsList);
-      } catch (error) {
-        console.error('Error fetching transactions:', error.message);
       }
     };
 
@@ -99,6 +83,24 @@ const Inventory = () => {
 
     fetchBookDetails();
   }, [selectedBookId]);
+
+  const fetchTransactions = async () => {
+    try {
+      const transactionsQuery = query(
+        collection(firestore, 'inventoryTransactions'),
+        orderBy('transactionDate', 'desc') // Ensure sorting by date
+      );
+      const transactionsSnapshot = await getDocs(transactionsQuery);
+      const transactionsList = transactionsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTransactions(transactionsList);
+      setFilteredTransactions(transactionsList); // Initialize filtered transactions
+    } catch (error) {
+      console.error('Error fetching transactions:', error.message);
+    }
+  };
 
   const handleSubmit = async () => {
     // Reset success and error messages
@@ -161,6 +163,10 @@ const Inventory = () => {
         return;
       }
 
+      // Update the totalNumber and currentStock in the books collection
+      const newTotalNumber = currentTotalNumber + quantityChange;
+      const newCurrentStock = currentCurrentStock + quantityChange;
+
       // Add the transaction to the inventoryTransactions collection
       await addDoc(collection(firestore, 'inventoryTransactions'), {
         bookId: selectedBookId,
@@ -169,11 +175,8 @@ const Inventory = () => {
         quantityChange, // Renamed from numberOfBooks
         invoiceOrWriteOff, // Add the invoice/write-off request input
         transactionDate: new Date(),
+        totalNumber: newTotalNumber,
       });
-
-      // Update the totalNumber and currentStock in the books collection
-      const newTotalNumber = currentTotalNumber + quantityChange;
-      const newCurrentStock = currentCurrentStock + quantityChange;
 
       await updateDoc(bookDocRef, {
         totalNumber: newTotalNumber,
@@ -182,6 +185,7 @@ const Inventory = () => {
 
       setSuccessMessage('Transaction successful!');
       clearForm();
+      fetchTransactions(); // Refresh the transactions table after a successful transaction
     } catch (error) {
       setErrorMessage('Error submitting transaction: ' + error.message);
     }
@@ -332,6 +336,7 @@ const Inventory = () => {
             <th onClick={() => handleSort('quantityChange')}>
               Quantity Change
             </th>
+            <th onClick={() => handleSort('totalNumber')}>Total Number</th>
             <th onClick={() => handleSort('invoiceOrWriteOff')}>
               Invoice/Write-off
             </th>
@@ -346,11 +351,13 @@ const Inventory = () => {
               <td>{transaction.bookTitle}</td>
               <td>{transaction.transactionBy}</td>
               <td>{transaction.quantityChange}</td>
+              <td>{transaction.totalNumber}</td>
               <td>{transaction.invoiceOrWriteOff}</td>
               <td>
-                {new Date(
-                  transaction.transactionDate.seconds * 1000
-                ).toLocaleString()}
+                {transaction.transactionDate &&
+                  new Date(
+                    transaction.transactionDate.seconds * 1000
+                  ).toLocaleString()}
               </td>
             </tr>
           ))}
