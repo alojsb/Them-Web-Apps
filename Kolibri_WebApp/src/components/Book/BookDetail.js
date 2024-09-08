@@ -36,33 +36,44 @@ const BookDetail = () => {
   }, [bookId]);
 
   const handleDelete = async () => {
-    const confirmed = window.confirm(
-      'Are you sure you want to delete this book?'
-    );
-    if (confirmed) {
-      try {
-        const bookRef = doc(firestore, 'books', bookId);
-        await deleteDoc(bookRef);
-        alert('Book deleted successfully!');
-        navigate('/books'); // Redirect to book list after deletion
-      } catch (error) {
-        console.error('Error deleting book:', error.message);
+    if (userRole !== 'admin') {
+      alert('Only admins can delete books.');
+      return;
+    }
+
+    try {
+      if (book.currentStock !== book.totalNumber) {
+        alert(
+          'Cannot delete this book. All rented books must be returned before deletion.'
+        );
+        return;
       }
+
+      const confirmDelete = window.confirm(
+        'Are you sure you want to delete this book?'
+      );
+      if (confirmDelete) {
+        await deleteDoc(doc(firestore, 'books', bookId));
+        alert('Book deleted successfully!');
+        navigate('/books');
+      }
+    } catch (error) {
+      console.error('Error deleting book:', error.message);
     }
   };
 
   useEffect(() => {
     if (error) {
-      navigate('/not-found'); // Redirect to 404 page if error occurs
+      navigate('/not-found');
     }
   }, [error, navigate]);
 
   const handleBackClick = () => {
-    navigate('/books'); // Navigate back to the BookList screen
+    navigate('/books');
   };
 
   const handleEditClick = () => {
-    navigate(`/edit-book/${bookId}`); // Navigate to the edit book form
+    navigate(`/edit-book/${bookId}`);
   };
 
   if (loading) return <div>Loading...</div>;
@@ -96,10 +107,12 @@ const BookDetail = () => {
               <strong>Genre:</strong> {book.genre}
             </p>
             <p>
-              <strong>Total Number:</strong> {book.totalNumber}
+              <strong>Total Number:</strong>{' '}
+              {book.totalNumber !== null ? book.totalNumber : 'Loading...'}
             </p>
             <p>
-              <strong>Current Stock:</strong> {book.currentStock}
+              <strong>Current Stock:</strong>{' '}
+              {book.currentStock !== null ? book.currentStock : 'Loading...'}
             </p>
           </div>
           {book.coverImageURL && (

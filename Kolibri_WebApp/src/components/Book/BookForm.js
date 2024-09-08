@@ -205,20 +205,10 @@ const BookForm = ({ editMode = false }) => {
         />
 
         <label>Total Number of Books</label>
-        <input
-          type='number'
-          value={totalNumber}
-          onChange={(e) => setTotalNumber(Number(e.target.value))}
-          required
-        />
+        <input type='number' value={totalNumber} disabled />
 
         <label>Current Stock</label>
-        <input
-          type='number'
-          value={currentStock}
-          onChange={(e) => setCurrentStock(Number(e.target.value))}
-          required
-        />
+        <input type='number' value={currentStock} disabled />
 
         <label>Book Cover</label>
         <input

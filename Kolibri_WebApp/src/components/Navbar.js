@@ -36,6 +36,9 @@ const Navbar = () => {
               <Link to='/reservations'>Reservations</Link>
             </li>
             <li>
+              <Link to='/inventory'>Inventory</Link>
+            </li>
+            <li>
               <Link to='/profile'>Profile</Link>
             </li>
             <li className='navbar-user'>
