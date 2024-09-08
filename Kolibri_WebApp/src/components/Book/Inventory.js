@@ -7,19 +7,31 @@ import {
   getDoc,
   updateDoc,
 } from 'firebase/firestore';
-import { firestore } from '../../firebase/firebaseConfig';
+import { firestore, auth } from '../../firebase/firebaseConfig'; // Import Firebase Authentication
 import './Inventory.css';
 
 const Inventory = () => {
   const [books, setBooks] = useState([]);
   const [selectedBookId, setSelectedBookId] = useState('');
-  const [numberOfBooks, setNumberOfBooks] = useState(0);
+  const [quantityChange, setQuantityChange] = useState(0); // Renamed from numberOfBooks
   const [totalNumber, setTotalNumber] = useState('-'); // Initial value is '-'
   const [currentStock, setCurrentStock] = useState('-'); // Initial value is '-'
   const [errorMessage, setErrorMessage] = useState(''); // State for error message
   const [successMessage, setSuccessMessage] = useState(''); // State for success message
+  const [invoiceOrWriteOff, setInvoiceOrWriteOff] = useState(''); // For storing the invoice/write-off request input
+  const [currentUser, setCurrentUser] = useState(null); // Store current user
+  const [selectedBookTitle, setSelectedBookTitle] = useState(''); // Store selected book title
 
   useEffect(() => {
+    // Fetch current user from Firebase Authentication
+    const fetchCurrentUser = () => {
+      const user = auth.currentUser;
+      if (user) {
+        setCurrentUser(user.email); // Or user.displayName if you prefer
+      }
+    };
+    fetchCurrentUser();
+
     const fetchBooks = async () => {
       try {
         const booksCollection = collection(firestore, 'books');
@@ -37,12 +49,13 @@ const Inventory = () => {
     fetchBooks();
   }, []);
 
-  // Fetch totalNumber and currentStock when a book is selected
+  // Fetch totalNumber, currentStock, and book title when a book is selected
   useEffect(() => {
     const fetchBookDetails = async () => {
       if (!selectedBookId) {
         setTotalNumber('-');
         setCurrentStock('-');
+        setSelectedBookTitle(''); // Reset book title
         return;
       }
 
@@ -52,6 +65,7 @@ const Inventory = () => {
         if (bookDoc.exists()) {
           setTotalNumber(bookDoc.data().totalNumber);
           setCurrentStock(bookDoc.data().currentStock);
+          setSelectedBookTitle(bookDoc.data().title); // Set the selected book's title
         }
       } catch (error) {
         console.error('Error fetching book details:', error.message);
@@ -65,6 +79,28 @@ const Inventory = () => {
     // Reset success and error messages
     setErrorMessage('');
     setSuccessMessage('');
+
+    // Validation: Ensure a book is selected
+    if (!selectedBookId) {
+      setErrorMessage(
+        'Please select a book before submitting the transaction.'
+      );
+      return;
+    }
+
+    // Validation: Ensure quantityChange is not 0
+    if (quantityChange === 0) {
+      setErrorMessage(
+        'Quantity change cannot be 0. Please enter a valid number.'
+      );
+      return;
+    }
+
+    // Validation: Ensure invoice/write-off request is filled
+    if (!invoiceOrWriteOff) {
+      setErrorMessage('Invoice/Write-off request is required.');
+      return;
+    }
 
     const confirmSubmit = window.confirm(
       'Are you sure you want to submit this transaction?'
@@ -83,23 +119,29 @@ const Inventory = () => {
       const currentCurrentStock = bookDoc.data().currentStock;
 
       // Check if the disposal amount exceeds current stock
-      if (numberOfBooks < 0 && Math.abs(numberOfBooks) > currentCurrentStock) {
+      if (
+        quantityChange < 0 &&
+        Math.abs(quantityChange) > currentCurrentStock
+      ) {
         setErrorMessage(
           'Attempted disposal exceeds available stock. Please enter a smaller quantity.'
         );
         return;
       }
 
-      // Update the inventoryTransactions collection with the transaction
+      // Add the transaction to the inventoryTransactions collection
       await addDoc(collection(firestore, 'inventoryTransactions'), {
         bookId: selectedBookId,
-        numberOfBooks,
+        bookTitle: selectedBookTitle, // Add the book title
+        transactionBy: currentUser, // Renamed from userEmail
+        quantityChange, // Renamed from numberOfBooks
+        invoiceOrWriteOff, // Add the invoice/write-off request input
         transactionDate: new Date(),
       });
 
       // Update the totalNumber and currentStock in the books collection
-      const newTotalNumber = currentTotalNumber + numberOfBooks;
-      const newCurrentStock = currentCurrentStock + numberOfBooks;
+      const newTotalNumber = currentTotalNumber + quantityChange;
+      const newCurrentStock = currentCurrentStock + quantityChange;
 
       await updateDoc(bookDocRef, {
         totalNumber: newTotalNumber,
@@ -115,11 +157,17 @@ const Inventory = () => {
 
   const clearForm = () => {
     setSelectedBookId('');
-    setNumberOfBooks(0);
+    setQuantityChange(0); // Reset quantity change
     setTotalNumber('-'); // Reset to '-'
     setCurrentStock('-'); // Reset to '-'
+    setInvoiceOrWriteOff(''); // Clear invoice/write-off input
     setErrorMessage(''); // Clear any error message
     setSuccessMessage(''); // Clear success message
+  };
+
+  const handleInputChange = () => {
+    // Clear error message when the user makes a change
+    setErrorMessage('');
   };
 
   return (
@@ -130,7 +178,10 @@ const Inventory = () => {
       <select
         id='bookId'
         value={selectedBookId}
-        onChange={(e) => setSelectedBookId(e.target.value)}
+        onChange={(e) => {
+          setSelectedBookId(e.target.value);
+          handleInputChange(); // Clear error when book is selected
+        }}
       >
         <option value='' disabled>
           Select a book
@@ -151,12 +202,28 @@ const Inventory = () => {
         </p>
       </div>
 
-      <label htmlFor='numberOfBooks'>Number of Books:</label>
+      <label htmlFor='quantityChange'>Quantity Change:</label>
       <input
         type='number'
-        id='numberOfBooks'
-        value={numberOfBooks}
-        onChange={(e) => setNumberOfBooks(parseInt(e.target.value))}
+        id='quantityChange'
+        value={quantityChange}
+        onChange={(e) => {
+          setQuantityChange(parseInt(e.target.value));
+          handleInputChange(); // Clear error when quantity is changed
+        }}
+      />
+
+      <label htmlFor='invoiceOrWriteOff'>Invoice/Write-off Request:</label>
+      <input
+        type='text'
+        id='invoiceOrWriteOff'
+        value={invoiceOrWriteOff}
+        onChange={(e) => {
+          setInvoiceOrWriteOff(e.target.value);
+          handleInputChange(); // Clear error when invoice/write-off is changed
+        }}
+        placeholder='Enter invoice or write-off request'
+        required
       />
 
       {/* Display error or success message */}
