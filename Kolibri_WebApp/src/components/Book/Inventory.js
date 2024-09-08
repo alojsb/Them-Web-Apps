@@ -10,9 +10,11 @@ import {
   orderBy,
 } from 'firebase/firestore';
 import { firestore, auth } from '../../firebase/firebaseConfig'; // Import Firebase Authentication
+import { useNavigate } from 'react-router-dom';
 import './Inventory.css';
 
 const Inventory = () => {
+  const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
   const [selectedBookId, setSelectedBookId] = useState('');
   const [quantityChange, setQuantityChange] = useState(0); // Renamed from numberOfBooks
@@ -30,12 +32,24 @@ const Inventory = () => {
   const [sortField, setSortField] = useState('transactionDate');
   const [sortOrder, setSortOrder] = useState('desc');
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Fetch current user from Firebase Authentication
-    const fetchCurrentUser = () => {
+    const fetchCurrentUser = async () => {
       const user = auth.currentUser;
       if (user) {
-        setCurrentUser(user.email); // Or user.displayName if you prefer
+        setCurrentUser(user.email);
+
+        // Fetch user role from Firestore
+        const userDocRef = doc(firestore, 'users', user.uid); // Assuming roles are in 'users' collection
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          const userRole = userDoc.data().role; // Get the user's role
+          if (userRole !== 'admin') {
+            navigate('/'); // Redirect non-admin users to homepage
+          }
+        }
       }
     };
     fetchCurrentUser();
@@ -52,11 +66,13 @@ const Inventory = () => {
       } catch (error) {
         console.error('Error fetching books:', error.message);
       }
+      setLoading(false);
     };
 
+    fetchCurrentUser();
     fetchBooks();
     fetchTransactions();
-  }, []);
+  }, [navigate]);
 
   // Fetch totalNumber, currentStock, and book title when a book is selected
   useEffect(() => {
@@ -64,7 +80,7 @@ const Inventory = () => {
       if (!selectedBookId) {
         setTotalNumber('-');
         setCurrentStock('-');
-        setSelectedBookTitle(''); // Reset book title
+        setSelectedBookTitle('');
         return;
       }
 
@@ -74,7 +90,7 @@ const Inventory = () => {
         if (bookDoc.exists()) {
           setTotalNumber(bookDoc.data().totalNumber);
           setCurrentStock(bookDoc.data().currentStock);
-          setSelectedBookTitle(bookDoc.data().title); // Set the selected book's title
+          setSelectedBookTitle(bookDoc.data().title);
         }
       } catch (error) {
         console.error('Error fetching book details:', error.message);
@@ -96,7 +112,7 @@ const Inventory = () => {
         ...doc.data(),
       }));
       setTransactions(transactionsList);
-      setFilteredTransactions(transactionsList); // Initialize filtered transactions
+      setFilteredTransactions(transactionsList);
     } catch (error) {
       console.error('Error fetching transactions:', error.message);
     }
@@ -136,7 +152,7 @@ const Inventory = () => {
       return;
     }
 
-    const userEmail = user.email; // Store the user's email for the transaction
+    const userEmail = user.email;
 
     const confirmSubmit = window.confirm(
       'Are you sure you want to submit this transaction?'
@@ -170,10 +186,10 @@ const Inventory = () => {
       // Add the transaction to the inventoryTransactions collection
       await addDoc(collection(firestore, 'inventoryTransactions'), {
         bookId: selectedBookId,
-        bookTitle: selectedBookTitle, // Add the book title
-        transactionBy: userEmail, // Add the user's email
-        quantityChange, // Renamed from numberOfBooks
-        invoiceOrWriteOff, // Add the invoice/write-off request input
+        bookTitle: selectedBookTitle,
+        transactionBy: userEmail,
+        quantityChange,
+        invoiceOrWriteOff,
         transactionDate: new Date(),
         totalNumber: newTotalNumber,
       });
@@ -185,7 +201,7 @@ const Inventory = () => {
 
       setSuccessMessage('Transaction successful!');
       clearForm();
-      fetchTransactions(); // Refresh the transactions table after a successful transaction
+      fetchTransactions();
     } catch (error) {
       setErrorMessage('Error submitting transaction: ' + error.message);
     }
@@ -193,12 +209,12 @@ const Inventory = () => {
 
   const clearForm = () => {
     setSelectedBookId('');
-    setQuantityChange(0); // Reset quantity change
-    setTotalNumber('-'); // Reset to '-'
-    setCurrentStock('-'); // Reset to '-'
-    setInvoiceOrWriteOff(''); // Clear invoice/write-off input
-    setErrorMessage(''); // Clear any error message
-    setSuccessMessage(''); // Clear success message
+    setQuantityChange(0);
+    setTotalNumber('-');
+    setCurrentStock('-');
+    setInvoiceOrWriteOff('');
+    setErrorMessage('');
+    setSuccessMessage('');
   };
 
   const handleInputChange = () => {
@@ -232,6 +248,10 @@ const Inventory = () => {
     setFilteredTransactions(sortedTransactions);
   };
 
+  if (loading) {
+    return <p>Loading...</p>; // Show loading until role is determined
+  }
+
   return (
     <div className='inventory-form'>
       <h2>Manage Inventory</h2>
@@ -242,7 +262,7 @@ const Inventory = () => {
         value={selectedBookId}
         onChange={(e) => {
           setSelectedBookId(e.target.value);
-          handleInputChange(); // Clear error when book is selected
+          handleInputChange();
         }}
       >
         <option value='' disabled>
@@ -271,7 +291,7 @@ const Inventory = () => {
         value={quantityChange}
         onChange={(e) => {
           setQuantityChange(parseInt(e.target.value));
-          handleInputChange(); // Clear error when quantity is changed
+          handleInputChange();
         }}
       />
 
@@ -282,7 +302,7 @@ const Inventory = () => {
         value={invoiceOrWriteOff}
         onChange={(e) => {
           setInvoiceOrWriteOff(e.target.value);
-          handleInputChange(); // Clear error when invoice/write-off is changed
+          handleInputChange();
         }}
         placeholder='Enter invoice or write-off request'
         required
