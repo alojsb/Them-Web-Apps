@@ -21,6 +21,12 @@ const Inventory = () => {
   const [invoiceOrWriteOff, setInvoiceOrWriteOff] = useState(''); // For storing the invoice/write-off request input
   const [currentUser, setCurrentUser] = useState(null); // Store current user
   const [selectedBookTitle, setSelectedBookTitle] = useState(''); // Store selected book title
+  const [transactions, setTransactions] = useState([]);
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
+  const [filterField, setFilterField] = useState('');
+  const [filterValue, setFilterValue] = useState('');
+  const [sortField, setSortField] = useState('transactionDate');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     // Fetch current user from Firebase Authentication
@@ -46,7 +52,26 @@ const Inventory = () => {
       }
     };
 
+    const fetchTransactions = async () => {
+      try {
+        const transactionsCollection = collection(
+          firestore,
+          'inventoryTransactions'
+        );
+        const transactionsSnapshot = await getDocs(transactionsCollection);
+        const transactionsList = transactionsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setTransactions(transactionsList);
+        setFilteredTransactions(transactionsList);
+      } catch (error) {
+        console.error('Error fetching transactions:', error.message);
+      }
+    };
+
     fetchBooks();
+    fetchTransactions();
   }, []);
 
   // Fetch totalNumber, currentStock, and book title when a book is selected
@@ -102,6 +127,15 @@ const Inventory = () => {
       return;
     }
 
+    // Fetch the current user again to make sure we have the latest user data
+    const user = auth.currentUser;
+    if (!user) {
+      setErrorMessage('You must be logged in to submit a transaction.');
+      return;
+    }
+
+    const userEmail = user.email; // Store the user's email for the transaction
+
     const confirmSubmit = window.confirm(
       'Are you sure you want to submit this transaction?'
     );
@@ -123,9 +157,7 @@ const Inventory = () => {
         quantityChange < 0 &&
         Math.abs(quantityChange) > currentCurrentStock
       ) {
-        setErrorMessage(
-          'Attempted disposal exceeds available stock. Please enter a smaller quantity.'
-        );
+        setErrorMessage('Attempted disposal exceeds available stock.');
         return;
       }
 
@@ -133,7 +165,7 @@ const Inventory = () => {
       await addDoc(collection(firestore, 'inventoryTransactions'), {
         bookId: selectedBookId,
         bookTitle: selectedBookTitle, // Add the book title
-        transactionBy: currentUser, // Renamed from userEmail
+        transactionBy: userEmail, // Add the user's email
         quantityChange, // Renamed from numberOfBooks
         invoiceOrWriteOff, // Add the invoice/write-off request input
         transactionDate: new Date(),
@@ -168,6 +200,32 @@ const Inventory = () => {
   const handleInputChange = () => {
     // Clear error message when the user makes a change
     setErrorMessage('');
+  };
+
+  const handleFilterChange = (e) => {
+    setFilterField(e.target.name);
+    setFilterValue(e.target.value);
+
+    const filtered = transactions.filter((transaction) =>
+      transaction[e.target.name]
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase())
+    );
+    setFilteredTransactions(filtered);
+  };
+
+  const handleSort = (field) => {
+    const order = sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortField(field);
+    setSortOrder(order);
+
+    const sortedTransactions = [...filteredTransactions].sort((a, b) => {
+      if (order === 'asc') {
+        return a[field] > b[field] ? 1 : -1;
+      }
+      return a[field] < b[field] ? 1 : -1;
+    });
+    setFilteredTransactions(sortedTransactions);
   };
 
   return (
@@ -238,6 +296,66 @@ const Inventory = () => {
           Clear
         </button>
       </div>
+
+      {/* Transaction Overview */}
+      <h3>Transaction Overview</h3>
+      <div className='filters'>
+        <label htmlFor='filterField'>Filter by:</label>
+        <input
+          type='text'
+          name='bookTitle'
+          placeholder='Book Title'
+          value={filterField === 'bookTitle' ? filterValue : ''}
+          onChange={handleFilterChange}
+        />
+        <input
+          type='text'
+          name='transactionBy'
+          placeholder='Transaction By'
+          value={filterField === 'transactionBy' ? filterValue : ''}
+          onChange={handleFilterChange}
+        />
+        <input
+          type='text'
+          name='invoiceOrWriteOff'
+          placeholder='Invoice/Write-off'
+          value={filterField === 'invoiceOrWriteOff' ? filterValue : ''}
+          onChange={handleFilterChange}
+        />
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th onClick={() => handleSort('bookTitle')}>Book Title</th>
+            <th onClick={() => handleSort('transactionBy')}>Transaction By</th>
+            <th onClick={() => handleSort('quantityChange')}>
+              Quantity Change
+            </th>
+            <th onClick={() => handleSort('invoiceOrWriteOff')}>
+              Invoice/Write-off
+            </th>
+            <th onClick={() => handleSort('transactionDate')}>
+              Transaction Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredTransactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.bookTitle}</td>
+              <td>{transaction.transactionBy}</td>
+              <td>{transaction.quantityChange}</td>
+              <td>{transaction.invoiceOrWriteOff}</td>
+              <td>
+                {new Date(
+                  transaction.transactionDate.seconds * 1000
+                ).toLocaleString()}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
