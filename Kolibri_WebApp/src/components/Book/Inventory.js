@@ -9,7 +9,8 @@ import {
   query,
   orderBy,
 } from 'firebase/firestore';
-import { firestore, auth } from '../../firebase/firebaseConfig'; // Import Firebase Authentication
+import { firestore } from '../../firebase/firebaseConfig';
+import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import './Inventory.css';
 
@@ -17,14 +18,13 @@ const Inventory = () => {
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
   const [selectedBookId, setSelectedBookId] = useState('');
-  const [quantityChange, setQuantityChange] = useState(0); // Renamed from numberOfBooks
-  const [totalNumber, setTotalNumber] = useState('-'); // Initial value is '-'
-  const [currentStock, setCurrentStock] = useState('-'); // Initial value is '-'
-  const [errorMessage, setErrorMessage] = useState(''); // State for error message
-  const [successMessage, setSuccessMessage] = useState(''); // State for success message
-  const [invoiceOrWriteOff, setInvoiceOrWriteOff] = useState(''); // For storing the invoice/write-off request input
-  const [currentUser, setCurrentUser] = useState(null); // Store current user
-  const [selectedBookTitle, setSelectedBookTitle] = useState(''); // Store selected book title
+  const [quantityChange, setQuantityChange] = useState(0);
+  const [totalNumber, setTotalNumber] = useState('-');
+  const [currentStock, setCurrentStock] = useState('-');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [invoiceOrWriteOff, setInvoiceOrWriteOff] = useState('');
+  const [selectedBookTitle, setSelectedBookTitle] = useState('');
   const [transactions, setTransactions] = useState([]);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [filterField, setFilterField] = useState('');
@@ -33,26 +33,12 @@ const Inventory = () => {
   const [sortOrder, setSortOrder] = useState('desc');
 
   const navigate = useNavigate();
+  const { currentUser, userRole } = useAuth();
 
   useEffect(() => {
-    // Fetch current user from Firebase Authentication
-    const fetchCurrentUser = async () => {
-      const user = auth.currentUser;
-      if (user) {
-        setCurrentUser(user.email);
-
-        // Fetch user role from Firestore
-        const userDocRef = doc(firestore, 'users', user.uid); // Assuming roles are in 'users' collection
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists()) {
-          const userRole = userDoc.data().role; // Get the user's role
-          if (userRole !== 'admin') {
-            navigate('/'); // Redirect non-admin users to homepage
-          }
-        }
-      }
-    };
-    fetchCurrentUser();
+    if (userRole !== 'admin') {
+      navigate('/');
+    }
 
     const fetchBooks = async () => {
       try {
@@ -69,10 +55,9 @@ const Inventory = () => {
       setLoading(false);
     };
 
-    fetchCurrentUser();
     fetchBooks();
     fetchTransactions();
-  }, [navigate]);
+  }, [userRole, navigate]);
 
   // Fetch totalNumber, currentStock, and book title when a book is selected
   useEffect(() => {
@@ -146,13 +131,11 @@ const Inventory = () => {
     }
 
     // Fetch the current user again to make sure we have the latest user data
-    const user = auth.currentUser;
-    if (!user) {
+    if (!currentUser) {
       setErrorMessage('You must be logged in to submit a transaction.');
       return;
     }
-
-    const userEmail = user.email;
+    const userEmail = currentUser.email;
 
     const confirmSubmit = window.confirm(
       'Are you sure you want to submit this transaction?'
@@ -249,7 +232,7 @@ const Inventory = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>; // Show loading until role is determined
+    return <p>Loading...</p>;
   }
 
   return (

@@ -35,9 +35,11 @@ const Navbar = () => {
             <li>
               <Link to='/reservations'>Reservations</Link>
             </li>
-            <li>
-              <Link to='/inventory'>Inventory</Link>
-            </li>
+            {userRole === 'admin' && (
+              <li>
+                <Link to='/inventory'>Inventory</Link>
+              </li>
+            )}
             <li>
               <Link to='/profile'>Profile</Link>
             </li>
