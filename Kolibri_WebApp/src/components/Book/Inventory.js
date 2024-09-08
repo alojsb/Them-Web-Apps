@@ -90,8 +90,8 @@ const Inventory = () => {
         return;
       }
 
-      // Update the bookStock collection with the transaction
-      await addDoc(collection(firestore, 'bookStock'), {
+      // Update the inventoryTransactions collection with the transaction
+      await addDoc(collection(firestore, 'inventoryTransactions'), {
         bookId: selectedBookId,
         numberOfBooks,
         transactionDate: new Date(),
