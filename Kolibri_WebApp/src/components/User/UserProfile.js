@@ -3,11 +3,11 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebaseConfig';
 import { useParams } from 'react-router-dom'; // To get userId from route params if needed
-import { useAuth } from '../../context/AuthContext'; // Import useAuth for current user's role
+import placeholder from '../../assets/placeholder-profile.jpg'; // Placeholder for profile picture
+import './UserProfile.css';
 
 const UserProfile = () => {
   const { userId } = useParams(); // Get userId from route params
-  const { userRole } = useAuth(); // Get current logged-in user's role
   const [user, setUser] = useState(null);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -15,10 +15,10 @@ const UserProfile = () => {
   const [role, setRole] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [profilePicture, setProfilePicture] = useState(null); // For file upload
-  const [profilePictureUrl, setProfilePictureUrl] = useState('');
+  const [profilePictureUrl, setProfilePictureUrl] = useState(placeholder); // Set default placeholder
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(''); // Define success message
-  const [errorMessage, setErrorMessage] = useState(''); // Optional error message handling
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -38,7 +38,7 @@ const UserProfile = () => {
           setEmail(userData.email);
           setRole(userData.role);
           setDateOfBirth(userData.dateOfBirth || '');
-          setProfilePictureUrl(userData.profilePictureUrl || '');
+          setProfilePictureUrl(userData.profilePictureUrl || placeholder); // Set profile pic or placeholder
         } else {
           console.error('User not found');
         }
@@ -70,9 +70,9 @@ const UserProfile = () => {
         firstName,
         lastName,
         email,
+        role,
         dateOfBirth,
         profilePictureUrl: updatedProfilePictureUrl,
-        ...(userRole === 'admin' && { role }), // Only update role if the current user is an admin
       });
 
       setSuccessMessage('Profile updated successfully!'); // Set success message
@@ -90,8 +90,17 @@ const UserProfile = () => {
   if (!user) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className='user-profile'>
       <h2>User Profile</h2>
+
+      {/* Profile Picture */}
+      <div className='profile-picture-container'>
+        <img
+          src={profilePictureUrl}
+          alt='Profile'
+          className='profile-picture-full'
+        />
+      </div>
 
       {/* First Name */}
       <input
@@ -124,20 +133,8 @@ const UserProfile = () => {
           handleInputChange();
         }}
         placeholder='Email'
+        disabled // Prevent user from changing email manually
       />
-
-      {/* Role - Disable if not an admin */}
-      <select
-        value={role}
-        onChange={(e) => {
-          setRole(e.target.value);
-          handleInputChange();
-        }}
-        disabled={userRole !== 'admin'} // Disable role change for non-admins
-      >
-        <option value='user'>User</option>
-        <option value='admin'>Admin</option>
-      </select>
 
       {/* Date of Birth */}
       <input
@@ -163,13 +160,6 @@ const UserProfile = () => {
           }}
         />
       </div>
-
-      {/* Show profile picture if exists */}
-      {profilePictureUrl && (
-        <div>
-          <img src={profilePictureUrl} alt='Profile' width='100' />
-        </div>
-      )}
 
       {/* Update Button */}
       <button onClick={handleUpdate} disabled={loading}>

@@ -6,11 +6,14 @@ import { useAuth } from '../context/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
 import { firestore } from '../firebase/firebaseConfig';
 import './Navbar.css';
+import placeholder from '../assets/placeholder-profile.jpg';
 
 const Navbar = () => {
   const [displayName, setDisplayName] = useState('');
+  const [profilePictureUrl, setProfilePictureUrl] = useState('');
+  const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-  const { currentUser, userRole } = useAuth(); // Access user and role from AuthContext
+  const { currentUser, userRole } = useAuth();
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -21,19 +24,19 @@ const Navbar = () => {
 
           if (userDoc.exists()) {
             const userData = userDoc.data();
-            // Handle empty firstName or lastName
             const nameToDisplay =
-              (userData.firstName && userData.firstName.trim()) ||
-              (userData.lastName && userData.lastName.trim()) ||
-              currentUser.email;
+              userData.firstName || userData.lastName || currentUser.email;
             setDisplayName(nameToDisplay);
+
+            setProfilePictureUrl(userData.profilePictureUrl || placeholder);
           } else {
-            // If no user data is found, fallback to the email
             setDisplayName(currentUser.email);
+            setProfilePictureUrl(placeholder);
           }
         } catch (error) {
           console.error('Error fetching user data: ', error.message);
-          setDisplayName(currentUser.email); // Fallback to email if error occurs
+          setDisplayName(currentUser.email);
+          setProfilePictureUrl(placeholder);
         }
       }
     };
@@ -44,10 +47,20 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login'); // Redirect to login page after logout
+      setShowMenu(false); // Close the context menu after logging out
+      navigate('/login');
     } catch (error) {
       console.error('Error logging out: ', error.message);
     }
+  };
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleMenuClick = (path) => {
+    setShowMenu(false); // Close the context menu when navigating
+    navigate(path); // Navigate to the selected path
   };
 
   return (
@@ -77,16 +90,38 @@ const Navbar = () => {
                 <Link to='/rental'>Rental</Link>
               </li>
             )}
-            <li>
-              <Link to={`/users/${currentUser.uid}`}>Profile</Link>
-            </li>
+
+            {/* Profile Name/Email */}
             <li className='navbar-user'>
-              {displayName} (Role: {userRole})
+              <Link to={`/users/${currentUser.uid}`}>{displayName}</Link>
             </li>
-            <li>
-              <button className='navbar-logout' onClick={handleLogout}>
-                Logout
-              </button>
+
+            {/* Profile Picture */}
+            <li className='navbar-profile'>
+              <img
+                src={profilePictureUrl}
+                alt='Profile'
+                className='profile-picture-navbar'
+                onClick={toggleMenu}
+              />
+              {showMenu && (
+                <ul className='profile-menu'>
+                  <li>
+                    <button
+                      onClick={() =>
+                        handleMenuClick(`/users/${currentUser.uid}`)
+                      }
+                    >
+                      Profile
+                    </button>
+                  </li>
+                  <li>
+                    <button className='navbar-logout' onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              )}
             </li>
           </>
         ) : (
