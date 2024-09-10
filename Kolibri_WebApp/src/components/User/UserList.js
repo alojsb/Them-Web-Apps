@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebaseConfig';
+import { Link } from 'react-router-dom';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -9,7 +10,10 @@ const UserList = () => {
     const fetchUsers = async () => {
       const usersCollection = collection(firestore, 'users');
       const usersSnapshot = await getDocs(usersCollection);
-      const usersList = usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const usersList = usersSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       setUsers(usersList);
     };
 
@@ -20,8 +24,10 @@ const UserList = () => {
     <div>
       <h2>User List</h2>
       <ul>
-        {users.map(user => (
-          <li key={user.id}>{user.email}</li>
+        {users.map((user) => (
+          <li key={user.id}>
+            <Link to={`/users/${user.id}`}>{user.email}</Link>
+          </li>
         ))}
       </ul>
     </div>

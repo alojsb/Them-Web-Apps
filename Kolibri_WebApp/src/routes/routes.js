@@ -6,6 +6,7 @@ import BookList from '../components/Book/BookList';
 import BookDetail from '../components/Book/BookDetail';
 import BookForm from '../components/Book/BookForm';
 import UserList from '../components/User/UserList';
+import UserProfile from '../components/User/UserProfile';
 import Home from '../components/Home';
 import NotFound from '../components/NotFound';
 import Inventory from '../components/Book/Inventory';
@@ -21,8 +22,9 @@ const AppRoutes = () => (
     <Route path='/add-book' element={<BookForm editMode={false} />} />
     <Route path='/edit-book/:id' element={<BookForm editMode={true} />} />
     <Route path='/users' element={<UserList />} />
+    <Route path='/users/:userId' element={<UserProfile />} /> {/* New Route */}
     <Route path='/inventory' element={<Inventory />} />
-    <Route path='/rental' element={<Rental />} /> {/* New Route for Rentals */}
+    <Route path='/rental' element={<Rental />} />
     <Route path='/not-found' element={<NotFound />} />
   </Routes>
 );
