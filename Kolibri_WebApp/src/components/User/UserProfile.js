@@ -2,23 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebaseConfig';
-import { useParams } from 'react-router-dom'; // To get userId from route params if needed
-import placeholder from '../../assets/placeholder-profile.jpg'; // Placeholder for profile picture
+import { useParams } from 'react-router-dom';
+import placeholder from '../../assets/placeholder-profile.jpg';
 import './UserProfile.css';
+import { useAuth } from '../../context/AuthContext';
 
 const UserProfile = () => {
-  const { userId } = useParams(); // Get userId from route params
+  const { userId } = useParams();
   const [user, setUser] = useState(null);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null); // For file upload
-  const [profilePictureUrl, setProfilePictureUrl] = useState(placeholder); // Set default placeholder
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [profilePictureUrl, setProfilePictureUrl] = useState(placeholder);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const { userRole } = useAuth();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -38,7 +40,7 @@ const UserProfile = () => {
           setEmail(userData.email);
           setRole(userData.role);
           setDateOfBirth(userData.dateOfBirth || '');
-          setProfilePictureUrl(userData.profilePictureUrl || placeholder); // Set profile pic or placeholder
+          setProfilePictureUrl(userData.profilePictureUrl || placeholder);
         } else {
           console.error('User not found');
         }
@@ -75,16 +77,16 @@ const UserProfile = () => {
         profilePictureUrl: updatedProfilePictureUrl,
       });
 
-      setSuccessMessage('Profile updated successfully!'); // Set success message
+      setSuccessMessage('Profile updated successfully!');
     } catch (error) {
-      setErrorMessage('Error updating profile: ' + error.message); // Optional error handling
+      setErrorMessage('Error updating profile: ' + error.message);
     }
     setLoading(false);
   };
 
   const handleInputChange = () => {
-    setSuccessMessage(''); // Clear success message on any input change
-    setErrorMessage(''); // Optional: clear error message
+    setSuccessMessage('');
+    setErrorMessage('');
   };
 
   if (!user) return <div>Loading...</div>;
@@ -123,6 +125,21 @@ const UserProfile = () => {
         }}
         placeholder='Last Name'
       />
+
+      {/* Role Dropdown - only visible and editable by admin */}
+      {userRole === 'admin' && (
+        <select
+          value={role}
+          onChange={(e) => {
+            setRole(e.target.value);
+            handleInputChange();
+          }}
+          disabled={userRole !== 'admin'} // Disable if not admin
+        >
+          <option value='user'>User</option>
+          <option value='admin'>Admin</option>
+        </select>
+      )}
 
       {/* Email */}
       <input
