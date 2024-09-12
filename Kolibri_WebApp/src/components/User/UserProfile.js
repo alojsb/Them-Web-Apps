@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebaseConfig';
 import { useParams } from 'react-router-dom';
 import './UserProfile.css';
 import { useAuth } from '../../context/AuthContext';
 import { useUserSet } from '../../context/UserSettingsContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons'; // Add FontAwesome icon
 
 const UserProfile = () => {
   const { userId } = useParams();
-  const { userData, defaultMaleProfileUrl } = useUserSet(); // Use context for user data
+  const { userData, defaultMaleProfileUrl, updateUserData } = useUserSet(); // Use context for user data
 
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -23,6 +25,7 @@ const UserProfile = () => {
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [role, setRole] = useState(''); // Adding local state for role
   const [profilePicture, setProfilePicture] = useState(null);
+  const [profilePictureUrl, setProfilePictureUrl] = useState('');
 
   // Sync local state with context-provided userData when it changes
   useEffect(() => {
@@ -32,9 +35,13 @@ const UserProfile = () => {
       setEmail(userData.email || '');
       setDateOfBirth(userData.dateOfBirth || '');
       setRole(userData.role || ''); // Initialize role from context
-      setProfilePicture(userData.defaultMaleProfileUrl || '');
+      setProfilePictureUrl(userData.profilePictureUrl || defaultMaleProfileUrl);
     }
-  }, [userData]);
+  }, [userData, defaultMaleProfileUrl]);
+
+  const handleProfilePictureUpload = () => {
+    document.getElementById('profilePictureInput').click(); // Trigger the hidden file input
+  };
 
   const handleUpdate = async () => {
     setLoading(true);
@@ -45,12 +52,14 @@ const UserProfile = () => {
       const userDocRef = doc(firestore, 'users', userId);
 
       // Upload new profile picture to Firebase Storage if one is selected
-      let updatedProfilePictureUrl = userData.profilePictureUrl;
+      let updatedProfilePictureUrl = profilePictureUrl;
       if (profilePicture) {
         const profilePicRef = ref(storage, `profile-pics/${userId}`);
         await uploadBytes(profilePicRef, profilePicture);
         updatedProfilePictureUrl = await getDownloadURL(profilePicRef);
       }
+
+      setProfilePicture(updatedProfilePictureUrl);
 
       // Prepare the updated user data
       const updatedData = {
@@ -67,6 +76,10 @@ const UserProfile = () => {
       }
 
       await updateDoc(userDocRef, updatedData);
+
+      // Update the context with the new data
+      await updateUserData(userId);
+
       setSuccessMessage('Profile updated successfully!');
     } catch (error) {
       setErrorMessage('Error updating profile: ' + error.message);
@@ -89,9 +102,21 @@ const UserProfile = () => {
       {/* Profile Picture */}
       <div className='profile-picture-container'>
         <img
-          src={userData.profilePictureUrl || defaultMaleProfileUrl}
+          src={profilePictureUrl}
           alt='Profile'
           className='profile-picture-full'
+        />
+        <FontAwesomeIcon
+          icon={faCamera}
+          className='fas fa-camera upload-icon'
+          onClick={handleProfilePictureUpload}
+        />
+        <input
+          type='file'
+          id='profilePictureInput'
+          accept='image/*'
+          style={{ display: 'none' }} // Hidden input
+          onChange={(e) => setProfilePicture(e.target.files[0])}
         />
       </div>
 
@@ -153,20 +178,6 @@ const UserProfile = () => {
           <option value='admin'>Admin</option>
         </select>
       )}
-
-      {/* Profile Picture Upload */}
-      <div>
-        <label htmlFor='profilePicture'>Profile Picture</label>
-        <input
-          type='file'
-          id='profilePicture'
-          accept='image/*'
-          onChange={(e) => {
-            setProfilePicture(e.target.files[0]); // Set the file, not base64
-            handleInputChange();
-          }}
-        />
-      </div>
 
       <button onClick={handleUpdate} disabled={loading}>
         {loading ? 'Updating...' : 'Update'}
