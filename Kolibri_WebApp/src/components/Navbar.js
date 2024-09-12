@@ -6,9 +6,10 @@ import { useAuth } from '../context/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
 import { firestore } from '../firebase/firebaseConfig';
 import './Navbar.css';
-import placeholder from '../assets/placeholder-profile.jpg';
+//import placeholder from '../assets/placeholder-profile.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { useUserSet } from '../context/UserSettingsContext';
 
 const Navbar = () => {
   const [displayName, setDisplayName] = useState('');
@@ -16,6 +17,7 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { currentUser, userRole } = useAuth();
+  const { defaultMaleProfileUrl } = useUserSet();
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -30,15 +32,17 @@ const Navbar = () => {
               userData.firstName || userData.lastName || currentUser.email;
             setDisplayName(nameToDisplay);
 
-            setProfilePictureUrl(userData.profilePictureUrl || placeholder);
+            setProfilePictureUrl(
+              userData.profilePictureUrl || defaultMaleProfileUrl
+            );
           } else {
             setDisplayName(currentUser.email);
-            setProfilePictureUrl(placeholder);
+            setProfilePictureUrl(defaultMaleProfileUrl);
           }
         } catch (error) {
           console.error('Error fetching user data: ', error.message);
           setDisplayName(currentUser.email);
-          setProfilePictureUrl(placeholder);
+          setProfilePictureUrl(defaultMaleProfileUrl);
         }
       }
     };

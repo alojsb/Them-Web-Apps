@@ -5,6 +5,7 @@ import { firestore, storage } from '../../firebase/firebaseConfig';
 import { useParams } from 'react-router-dom';
 import './UserProfile.css';
 import { useAuth } from '../../context/AuthContext';
+import { useUserSet } from '../../context/UserSettingsContext';
 
 const UserProfile = () => {
   const { userId } = useParams();
@@ -20,6 +21,7 @@ const UserProfile = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const { currentUser, userRole } = useAuth();
+  const { defaultMaleProfileUrl } = useUserSet();
 
   useEffect(() => {
     if (currentUser) {
@@ -27,10 +29,8 @@ const UserProfile = () => {
     }
   }, [currentUser, userRole]);
 
-  const setDefaultProfilePicUrl = async () => {
-    setProfilePictureUrl(
-      'https://firebasestorage.googleapis.com/v0/b/kolibridb-27021.appspot.com/o/profile-pics%2Fdefault-profile-male.jpg?alt=media&token=3d4497dc-6863-4510-8e2b-87d5edadedd2'
-    );
+  const setDefaultProfilePicUrl = () => {
+    setProfilePictureUrl(defaultMaleProfileUrl);
   };
 
   useEffect(() => {
