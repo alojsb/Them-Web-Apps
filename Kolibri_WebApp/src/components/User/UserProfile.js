@@ -3,7 +3,6 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebaseConfig';
 import { useParams } from 'react-router-dom';
-import placeholder from '../../assets/placeholder-profile.jpg';
 import './UserProfile.css';
 import { useAuth } from '../../context/AuthContext';
 
@@ -16,11 +15,23 @@ const UserProfile = () => {
   const [role, setRole] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
-  const [profilePictureUrl, setProfilePictureUrl] = useState(placeholder);
+  const [profilePictureUrl, setProfilePictureUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const { userRole } = useAuth();
+  const { currentUser, userRole } = useAuth();
+
+  useEffect(() => {
+    if (currentUser) {
+      console.log('User role from AuthContext:', userRole); // This should print the correct role
+    }
+  }, [currentUser, userRole]);
+
+  const setDefaultProfilePicUrl = async () => {
+    setProfilePictureUrl(
+      'https://firebasestorage.googleapis.com/v0/b/kolibridb-27021.appspot.com/o/profile-pics%2Fdefault-profile-male.jpg?alt=media&token=3d4497dc-6863-4510-8e2b-87d5edadedd2'
+    );
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -40,7 +51,9 @@ const UserProfile = () => {
           setEmail(userData.email);
           setRole(userData.role);
           setDateOfBirth(userData.dateOfBirth || '');
-          setProfilePictureUrl(userData.profilePictureUrl || placeholder);
+          setProfilePictureUrl(
+            userData.profilePictureUrl || setDefaultProfilePicUrl
+          );
         } else {
           console.error('User not found');
         }
@@ -56,31 +69,41 @@ const UserProfile = () => {
     setLoading(true);
     setErrorMessage('');
     setSuccessMessage(''); // Clear success message before update
+
     try {
       const userDocRef = doc(firestore, 'users', userId);
 
-      // If a new profile picture is selected, upload it
+      // If a new profile picture is selected, upload it to Firebase Storage and get the URL
       let updatedProfilePictureUrl = profilePictureUrl;
       if (profilePicture) {
         const profilePicRef = ref(storage, `profile-pics/${userId}`);
-        await uploadBytes(profilePicRef, profilePicture);
-        updatedProfilePictureUrl = await getDownloadURL(profilePicRef);
+        await uploadBytes(profilePicRef, profilePicture); // Upload the image file
+        updatedProfilePictureUrl = await getDownloadURL(profilePicRef); // Get the image URL
       }
 
-      // Update user document in Firestore
-      await updateDoc(userDocRef, {
+      // Prepare the updated user data (only the URL should be stored in Firestore)
+      const updatedData = {
         firstName,
         lastName,
         email,
-        role,
         dateOfBirth,
-        profilePictureUrl: updatedProfilePictureUrl,
-      });
+        profilePictureUrl: updatedProfilePictureUrl, // Store the URL, not the file
+      };
+
+      // If the current user is an admin, include the role field in the update
+      if (userRole === 'admin') {
+        updatedData.role = role;
+      }
+
+      console.log(updatedData);
+      // Update the Firestore document with the user data
+      await updateDoc(userDocRef, updatedData);
 
       setSuccessMessage('Profile updated successfully!');
     } catch (error) {
       setErrorMessage('Error updating profile: ' + error.message);
     }
+
     setLoading(false);
   };
 
@@ -98,7 +121,7 @@ const UserProfile = () => {
       {/* Profile Picture */}
       <div className='profile-picture-container'>
         <img
-          src={profilePictureUrl}
+          src={profilePictureUrl} // Use the profilePictureUrl for display
           alt='Profile'
           className='profile-picture-full'
         />
@@ -134,7 +157,6 @@ const UserProfile = () => {
             setRole(e.target.value);
             handleInputChange();
           }}
-          disabled={userRole !== 'admin'} // Disable if not admin
         >
           <option value='user'>User</option>
           <option value='admin'>Admin</option>
@@ -172,7 +194,7 @@ const UserProfile = () => {
           id='profilePicture'
           accept='image/*'
           onChange={(e) => {
-            setProfilePicture(e.target.files[0]);
+            setProfilePicture(e.target.files[0]); // Set the file, not base64
             handleInputChange();
           }}
         />

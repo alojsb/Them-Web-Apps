@@ -7,25 +7,28 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userRole, setUserRole] = useState('user'); // Default role
+  const [userRole, setUserRole] = useState('user');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async user => {
-      setCurrentUser(user);
-
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
+        setCurrentUser(user);
         const userDoc = doc(firestore, 'users', user.uid);
-        const userSnapshot = await getDoc(userDoc);
-        if (userSnapshot.exists()) {
-          const userData = userSnapshot.data();
-          setUserRole(userData.role || 'user'); // Default to 'user' if role is not found
+        const docSnap = await getDoc(userDoc);
+        if (docSnap.exists()) {
+          setUserRole(docSnap.data().role || 'user'); // Set role from Firestore
+        } else {
+          setUserRole('user'); // Default to 'user' role if no doc
         }
       } else {
-        setUserRole('user'); // Default role if no user is logged in
+        setCurrentUser(null);
+        setUserRole(null);
       }
+      setLoading(false);
     });
 
-    return () => unsubscribe();
+    return unsubscribe;
   }, []);
 
   const getDisplayName = () => {
@@ -37,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ currentUser, userRole, getDisplayName }}>
-      {children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

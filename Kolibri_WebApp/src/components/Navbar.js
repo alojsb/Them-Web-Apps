@@ -78,6 +78,9 @@ const Navbar = () => {
               <Link to='/books'>Books</Link>
             </li>
             <li>
+              <Link to='/users'>Users</Link>
+            </li>
+            <li>
               <Link to='/reservations'>Reservations</Link>
             </li>
             {userRole === 'admin' && (
