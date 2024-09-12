@@ -1,75 +1,142 @@
-/* Orange gradient for the navbar */
+/* Navbar Container */
 .navbar {
-  background: linear-gradient(
-    to right,
-    #ff9800,
-    #ff5722
-  ); /* Horizontal orange gradient */
+  background: linear-gradient(to right, #ff9800, #ff5722); /* Orange gradient */
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  position: relative;
+  width: 100%; /* Ensure full width of page */
 }
 
-/* Profile picture styling */
-.navbar-profile img {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+/* Navbar Brand - Library Title */
+.navbar-brand h1 {
+  color: white;
+  margin: 0;
+  font-size: 24px; /* Larger font for brand */
 }
 
-.navbar-profile img:hover {
-  transform: scale(1.1);
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Remove default bullet points */
 }
 
-/* Profile menu dropdown styling */
-.profile-menu {
-  background-color: white;
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  padding: 10px 0;
-  width: 150px;
-  z-index: 10;
-}
-
-.profile-menu li {
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.profile-menu li:hover {
-  background-color: #f0f0f0;
-}
-
-.profile-menu a {
-  color: black; /* Set profile menu text color */
-  text-decoration: none;
-}
-
-/* Navbar links */
 .navbar-links li {
-  display: inline-block;
-  margin: 0 15px;
+  margin: 0 15px; /* Space between links */
 }
 
 .navbar-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 16px; /* Consistent font size */
+  transition: color 0.3s ease; /* Smooth transition for hover */
 }
 
 .navbar-links a:hover {
   text-decoration: underline;
+  color: #ffe0b2; /* Light orange hover effect */
 }
 
-.navbar-user {
-  color: white;
-  font-weight: bold;
+/* Special Styling for Username/Email */
+.navbar-user a {
+  color: #fbff00; /* Subtle blue color for the username/email */
+  font-size: 16px; /* Standard size */
+  font-weight: 600; /* Slightly bolder font for emphasis */
+  text-decoration: none;
+}
+
+.navbar-user a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Profile Picture */
+.navbar-profile img {
+  border-radius: 50%; /* Circle shape */
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.navbar-profile img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Profile Menu Dropdown - Windows Context Menu Style */
+.profile-menu {
+  background-color: #fff; /* White background */
+  position: absolute;
+  top: 60px;
+  right: 0;
+  border: 1px solid #ccc; /* Light border around the menu */
+  border-radius: 4px; /* Slight rounding for the menu */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  list-style: none;
+  padding: 0;
+  width: 180px; /* Standard width */
+  z-index: 10;
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Menu Items */
+.profile-menu li {
+  padding: 8px 16px; /* Padding similar to Windows context menus */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+/* Divider Between Items */
+.profile-menu li:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0; /* Light gray divider between items */
+}
+
+/* Hover Effect for Menu Items */
+.profile-menu li:hover {
+  background-color: #f0f0f0; /* Light gray hover effect */
+}
+
+/* Profile Menu Buttons */
+.profile-menu button {
+  border: none;
+  background: none;
+  color: #333; /* Dark gray text */
+  font-size: 14px; /* Slightly smaller for compact look */
+  font-weight: normal;
+  cursor: pointer;
+  width: 100%;
+  text-align: left; /* Left-align text */
+  padding: 0; /* No additional padding */
+}
+
+.profile-menu button:hover {
+  color: #000; /* Darker text on hover */
+}
+
+/* Navbar Hover States */
+.navbar-links a:hover {
+  color: #ffcc80; /* Slightly lighter color on hover */
+}
+
+/* Responsive Design: Mobile Screens */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Hide links on smaller screens */
+  }
+
+  .navbar-brand h1 {
+    font-size: 20px; /* Adjust brand size for smaller screens */
+  }
+
+  .profile-menu {
+    right: 10px; /* Adjust position for mobile */
+  }
 }

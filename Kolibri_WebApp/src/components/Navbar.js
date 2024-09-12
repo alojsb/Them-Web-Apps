@@ -81,16 +81,15 @@ const Navbar = () => {
               <Link to='/reservations'>Reservations</Link>
             </li>
             {userRole === 'admin' && (
-              <li>
-                <Link to='/inventory'>Inventory</Link>
-              </li>
+              <>
+                <li>
+                  <Link to='/inventory'>Inventory</Link>
+                </li>
+                <li>
+                  <Link to='/rental'>Rental</Link>
+                </li>
+              </>
             )}
-            {userRole === 'admin' && (
-              <li>
-                <Link to='/rental'>Rental</Link>
-              </li>
-            )}
-
             {/* Profile Name/Email */}
             <li className='navbar-user'>
               <Link to={`/users/${currentUser.uid}`}>{displayName}</Link>
