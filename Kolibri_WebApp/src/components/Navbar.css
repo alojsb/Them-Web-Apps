@@ -151,6 +151,33 @@
   color: #fff; /* Adjust to fit your navbar styling */
 }
 
+/* Navbar Profile Picture */
+.profile-picture-navbar {
+  width: 3rem; /* Adjust the size as needed */
+  height: 3rem;
+  object-fit: cover; /* Ensures that the image is not distorted */
+  border-radius: 50%; /* Makes the image a circle */
+  overflow: hidden;
+}
+
+/* User Profile Full Size Picture */
+.profile-picture-full {
+  width: 8rem; /* Adjust the size as needed */
+  height: 8rem;
+  object-fit: cover; /* Ensures that the image is not distorted */
+  border-radius: 50%; /* Makes the image a circle */
+  overflow: hidden;
+}
+
+/* Profile Picture Container */
+.profile-picture-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 /* Responsive Design: Mobile Screens */
 @media (max-width: 768px) {
   .navbar-links {
