@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebaseConfig';
 import { useParams } from 'react-router-dom';
@@ -9,85 +9,56 @@ import { useUserSet } from '../../context/UserSettingsContext';
 
 const UserProfile = () => {
   const { userId } = useParams();
-  const [user, setUser] = useState(null);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [role, setRole] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
-  const [profilePictureUrl, setProfilePictureUrl] = useState('');
+  const { userData, defaultMaleProfileUrl } = useUserSet(); // Use context for user data
+
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const { currentUser, userRole } = useAuth();
-  const { defaultMaleProfileUrl } = useUserSet();
+  const { userRole } = useAuth();
 
+  // Local state for editable fields
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [role, setRole] = useState(''); // Adding local state for role
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  // Sync local state with context-provided userData when it changes
   useEffect(() => {
-    if (currentUser) {
-      console.log('User role from AuthContext:', userRole); // This should print the correct role
+    if (userData) {
+      setFirstName(userData.firstName || '');
+      setLastName(userData.lastName || '');
+      setEmail(userData.email || '');
+      setDateOfBirth(userData.dateOfBirth || '');
+      setRole(userData.role || ''); // Initialize role from context
+      setProfilePicture(userData.defaultMaleProfileUrl || '');
     }
-  }, [currentUser, userRole]);
-
-  const setDefaultProfilePicUrl = () => {
-    setProfilePictureUrl(defaultMaleProfileUrl);
-  };
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      if (!userId) {
-        console.error('No userId provided');
-        return;
-      }
-
-      try {
-        const userDoc = doc(firestore, 'users', userId);
-        const userSnapshot = await getDoc(userDoc);
-        if (userSnapshot.exists()) {
-          const userData = userSnapshot.data();
-          setUser(userData);
-          setFirstName(userData.firstName || '');
-          setLastName(userData.lastName || '');
-          setEmail(userData.email);
-          setRole(userData.role);
-          setDateOfBirth(userData.dateOfBirth || '');
-          setProfilePictureUrl(
-            userData.profilePictureUrl || setDefaultProfilePicUrl
-          );
-        } else {
-          console.error('User not found');
-        }
-      } catch (error) {
-        console.error('Error fetching user:', error.message);
-      }
-    };
-
-    fetchUser();
-  }, [userId]);
+  }, [userData]);
 
   const handleUpdate = async () => {
     setLoading(true);
     setErrorMessage('');
-    setSuccessMessage(''); // Clear success message before update
+    setSuccessMessage('');
 
     try {
       const userDocRef = doc(firestore, 'users', userId);
 
-      // If a new profile picture is selected, upload it to Firebase Storage and get the URL
-      let updatedProfilePictureUrl = profilePictureUrl;
+      // Upload new profile picture to Firebase Storage if one is selected
+      let updatedProfilePictureUrl = userData.profilePictureUrl;
       if (profilePicture) {
         const profilePicRef = ref(storage, `profile-pics/${userId}`);
-        await uploadBytes(profilePicRef, profilePicture); // Upload the image file
-        updatedProfilePictureUrl = await getDownloadURL(profilePicRef); // Get the image URL
+        await uploadBytes(profilePicRef, profilePicture);
+        updatedProfilePictureUrl = await getDownloadURL(profilePicRef);
       }
 
-      // Prepare the updated user data (only the URL should be stored in Firestore)
+      // Prepare the updated user data
       const updatedData = {
         firstName,
         lastName,
         email,
         dateOfBirth,
-        profilePictureUrl: updatedProfilePictureUrl, // Store the URL, not the file
+        profilePictureUrl: updatedProfilePictureUrl,
       };
 
       // If the current user is an admin, include the role field in the update
@@ -95,10 +66,7 @@ const UserProfile = () => {
         updatedData.role = role;
       }
 
-      console.log(updatedData);
-      // Update the Firestore document with the user data
       await updateDoc(userDocRef, updatedData);
-
       setSuccessMessage('Profile updated successfully!');
     } catch (error) {
       setErrorMessage('Error updating profile: ' + error.message);
@@ -112,7 +80,7 @@ const UserProfile = () => {
     setErrorMessage('');
   };
 
-  if (!user) return <div>Loading...</div>;
+  if (!userData) return <div>Loading...</div>;
 
   return (
     <div className='user-profile'>
@@ -121,7 +89,7 @@ const UserProfile = () => {
       {/* Profile Picture */}
       <div className='profile-picture-container'>
         <img
-          src={profilePictureUrl} // Use the profilePictureUrl for display
+          src={userData.profilePictureUrl || defaultMaleProfileUrl}
           alt='Profile'
           className='profile-picture-full'
         />
@@ -149,20 +117,6 @@ const UserProfile = () => {
         placeholder='Last Name'
       />
 
-      {/* Role Dropdown - only visible and editable by admin */}
-      {userRole === 'admin' && (
-        <select
-          value={role}
-          onChange={(e) => {
-            setRole(e.target.value);
-            handleInputChange();
-          }}
-        >
-          <option value='user'>User</option>
-          <option value='admin'>Admin</option>
-        </select>
-      )}
-
       {/* Email */}
       <input
         type='email'
@@ -186,6 +140,20 @@ const UserProfile = () => {
         placeholder='Date of Birth'
       />
 
+      {/* Role Dropdown - only visible and editable by admin */}
+      {userRole === 'admin' && (
+        <select
+          value={role}
+          onChange={(e) => {
+            setRole(e.target.value); // Update local role state
+            handleInputChange();
+          }}
+        >
+          <option value='user'>User</option>
+          <option value='admin'>Admin</option>
+        </select>
+      )}
+
       {/* Profile Picture Upload */}
       <div>
         <label htmlFor='profilePicture'>Profile Picture</label>
@@ -200,7 +168,6 @@ const UserProfile = () => {
         />
       </div>
 
-      {/* Update Button */}
       <button onClick={handleUpdate} disabled={loading}>
         {loading ? 'Updating...' : 'Update'}
       </button>

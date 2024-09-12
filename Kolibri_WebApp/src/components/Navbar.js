@@ -1,59 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
 import { useAuth } from '../context/AuthContext';
-import { doc, getDoc } from 'firebase/firestore';
-import { firestore } from '../firebase/firebaseConfig';
 import './Navbar.css';
-//import placeholder from '../assets/placeholder-profile.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { useUserSet } from '../context/UserSettingsContext';
 
 const Navbar = () => {
-  const [displayName, setDisplayName] = useState('');
-  const [profilePictureUrl, setProfilePictureUrl] = useState('');
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { currentUser, userRole } = useAuth();
-  const { defaultMaleProfileUrl } = useUserSet();
+  const { userData, defaultMaleProfileUrl } = useUserSet();
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      if (currentUser) {
-        try {
-          const userDocRef = doc(firestore, 'users', currentUser.uid);
-          const userDoc = await getDoc(userDocRef);
+  const displayName =
+    (userData && (userData.firstName || userData.lastName)) ||
+    (currentUser && currentUser.email);
 
-          if (userDoc.exists()) {
-            const userData = userDoc.data();
-            const nameToDisplay =
-              userData.firstName || userData.lastName || currentUser.email;
-            setDisplayName(nameToDisplay);
-
-            setProfilePictureUrl(
-              userData.profilePictureUrl || defaultMaleProfileUrl
-            );
-          } else {
-            setDisplayName(currentUser.email);
-            setProfilePictureUrl(defaultMaleProfileUrl);
-          }
-        } catch (error) {
-          console.error('Error fetching user data: ', error.message);
-          setDisplayName(currentUser.email);
-          setProfilePictureUrl(defaultMaleProfileUrl);
-        }
-      }
-    };
-
-    fetchUserProfile();
-  }, [currentUser]);
+  const profilePictureUrl =
+    (userData && userData.profilePictureUrl) || defaultMaleProfileUrl;
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      setShowMenu(false); // Close the context menu after logging out
+      setShowMenu(false);
       navigate('/login');
     } catch (error) {
       console.error('Error logging out: ', error.message);
@@ -65,8 +36,8 @@ const Navbar = () => {
   };
 
   const handleMenuClick = (path) => {
-    setShowMenu(false); // Close the context menu when navigating
-    navigate(path); // Navigate to the selected path
+    setShowMenu(false);
+    navigate(path);
   };
 
   return (

@@ -21,12 +21,16 @@ const Register = () => {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
       // Add user to Firestore with default role 'user'
       await setDoc(doc(firestore, 'users', user.uid), {
         email: user.email,
-        role: 'user' // Default role
+        role: 'user', // Default role
       });
       navigate('/'); // Redirect to home or another page on successful registration
     } catch (error) {
@@ -35,47 +39,55 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <h2 className="register-title">Register</h2>
-      <form onSubmit={handleSubmit} className="register-form">
-        <div className="register-form-group">
-          <label htmlFor="email" className="register-label">Email:</label>
+    <div className='register-container'>
+      <h2 className='register-title'>Register</h2>
+      <form onSubmit={handleSubmit} className='register-form'>
+        <div className='register-form-group'>
+          <label htmlFor='email' className='register-label'>
+            Email:
+          </label>
           <input
-            id="email"
-            type="email"
+            id='email'
+            type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="register-input"
+            className='register-input'
             required
           />
         </div>
-        <div className="register-form-group">
-          <label htmlFor="password" className="register-label">Password:</label>
+        <div className='register-form-group'>
+          <label htmlFor='password' className='register-label'>
+            Password:
+          </label>
           <input
-            id="password"
-            type="password"
+            id='password'
+            type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="register-input"
+            className='register-input'
             required
           />
         </div>
-        <div className="register-form-group">
-          <label htmlFor="confirm-password" className="register-label">Confirm Password:</label>
+        <div className='register-form-group'>
+          <label htmlFor='confirm-password' className='register-label'>
+            Confirm Password:
+          </label>
           <input
-            id="confirm-password"
-            type="password"
+            id='confirm-password'
+            type='password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="register-input"
+            className='register-input'
             required
           />
         </div>
-        {error && <p className="register-error">{error}</p>}
-        <button type="submit" className="register-button">Register</button>
+        {error && <p className='register-error'>{error}</p>}
+        <button type='submit' className='register-button'>
+          Register
+        </button>
       </form>
-      <p className="register-login-link">
-        Already have an account? <Link to="/login">Login</Link>
+      <p className='register-login-link'>
+        Already have an account? <Link to='/login'>Login</Link>
       </p>
     </div>
   );

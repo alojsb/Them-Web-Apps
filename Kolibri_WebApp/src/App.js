@@ -7,14 +7,14 @@ import { UserSettingsProvider } from './context/UserSettingsContext';
 
 const App = () => {
   return (
-    <UserSettingsProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <UserSettingsProvider>
         <Router>
           <Navbar />
           <AppRoutes />
         </Router>
-      </AuthProvider>
-    </UserSettingsProvider>
+      </UserSettingsProvider>
+    </AuthProvider>
   );
 };
 
