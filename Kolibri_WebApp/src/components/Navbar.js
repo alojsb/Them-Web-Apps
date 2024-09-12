@@ -7,6 +7,8 @@ import { doc, getDoc } from 'firebase/firestore';
 import { firestore } from '../firebase/firebaseConfig';
 import './Navbar.css';
 import placeholder from '../assets/placeholder-profile.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   const [displayName, setDisplayName] = useState('');
@@ -66,14 +68,16 @@ const Navbar = () => {
   return (
     <nav className='navbar'>
       <div className='navbar-brand'>
-        <h1>Library</h1>
+        <Link to='/' className='navbar-brand-link'>
+          <div className='navbar-brand'>
+            <FontAwesomeIcon icon={faBookOpen} className='navbar-brand-icon' />
+            <span className='navbar-brand-name'>Kolibri</span>
+          </div>
+        </Link>
       </div>
       <ul className='navbar-links'>
         {currentUser ? (
           <>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
             <li>
               <Link to='/books'>Books</Link>
             </li>
