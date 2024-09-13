@@ -12,14 +12,16 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { currentUser, userRole } = useAuth();
-  const { userData, defaultMaleProfileUrl } = useUserSet();
+  const { loggedInUserData, defaultNeutralProfileUrl } = useUserSet();
 
   const displayName =
-    (userData && (userData.firstName || userData.lastName)) ||
+    (loggedInUserData &&
+      (loggedInUserData.firstName || loggedInUserData.lastName)) ||
     (currentUser && currentUser.email);
 
   const profilePictureUrl =
-    (userData && userData.profilePictureUrl) || defaultMaleProfileUrl;
+    (loggedInUserData && loggedInUserData.profilePictureUrl) ||
+    defaultNeutralProfileUrl;
 
   const handleLogout = async () => {
     try {

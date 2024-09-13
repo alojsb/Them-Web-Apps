@@ -7,12 +7,15 @@ const UserSettingsContext = React.createContext();
 
 export const UserSettingsProvider = ({ children }) => {
   const { currentUser } = useAuth(); // Fetch the current authenticated user
-  const [userData, setUserData] = useState(null);
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
   const [defaultMaleProfileUrl] = useState(
     'https://firebasestorage.googleapis.com/v0/b/kolibridb-27021.appspot.com/o/profile-pics%2Fdefault-profile-male.jpg?alt=media&token=3d4497dc-6863-4510-8e2b-87d5edadedd2'
   );
   const [defaultFemaleProfileUrl] = useState(
     'https://firebasestorage.googleapis.com/v0/b/kolibridb-27021.appspot.com/o/profile-pics%2Fdefault-profile-female.jpg?alt=media&token=4d28ada1-68de-4c09-938a-ad0cff296d53'
+  );
+  const [defaultNeutralProfileUrl] = useState(
+    'https://firebasestorage.googleapis.com/v0/b/kolibridb-27021.appspot.com/o/profile-pics%2Fdefault-profile-neutral.jpg?alt=media&token=8440818c-b0b8-4db1-8852-e4ef8464f20c'
   );
 
   useEffect(() => {
@@ -23,7 +26,7 @@ export const UserSettingsProvider = ({ children }) => {
           const userDoc = await getDoc(userDocRef);
 
           if (userDoc.exists()) {
-            setUserData(userDoc.data()); // Store user data in context
+            setLoggedInUserData(userDoc.data()); // Store user data in context
           } else {
             console.error('User document not found');
           }
@@ -36,21 +39,22 @@ export const UserSettingsProvider = ({ children }) => {
     fetchUserData();
   }, [currentUser]); // Depend on currentUser, which comes from AuthContext
 
-  const updateUserData = async (userId) => {
+  const updateLoggedInUserData = async (userId) => {
     const userDoc = doc(firestore, 'users', userId);
     const userSnapshot = await getDoc(userDoc);
     if (userSnapshot.exists()) {
-      setUserData(userSnapshot.data()); // Update the user data in the context
+      setLoggedInUserData(userSnapshot.data()); // Update the user data in the context
     }
   };
 
   return (
     <UserSettingsContext.Provider
       value={{
-        userData,
+        loggedInUserData,
         defaultMaleProfileUrl,
         defaultFemaleProfileUrl,
-        updateUserData,
+        defaultNeutralProfileUrl,
+        updateLoggedInUserData,
       }}
     >
       {children}

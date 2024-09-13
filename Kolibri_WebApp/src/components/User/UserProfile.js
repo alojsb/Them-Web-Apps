@@ -10,34 +10,57 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons'; // Add FontAwesome icon
 
 const UserProfile = () => {
-  const { userId } = useParams();
-  const { userData, defaultMaleProfileUrl, updateUserData } = useUserSet(); // Use context for user data
+  const { userId } = useParams(); // Fetch the userId from the URL
+  const { defaultNeutralProfileUrl, updateLoggedInUserData } = useUserSet(); // Get default profile picture URLs
+  const { userRole } = useAuth();
 
-  const [loading, setLoading] = useState(false);
+  // Local state for the user profile data and loading state
+  const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const { userRole } = useAuth();
+  const [userData, setUserData] = useState(null);
 
   // Local state for editable fields
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
-  const [role, setRole] = useState(''); // Adding local state for role
+  const [role, setRole] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
 
-  // Sync local state with context-provided userData when it changes
+  // Fetch user data based on the URL param userId
   useEffect(() => {
-    if (userData) {
-      setFirstName(userData.firstName || '');
-      setLastName(userData.lastName || '');
-      setEmail(userData.email || '');
-      setDateOfBirth(userData.dateOfBirth || '');
-      setRole(userData.role || ''); // Initialize role from context
-      setProfilePictureUrl(userData.profilePictureUrl || defaultMaleProfileUrl);
-    }
-  }, [userData, defaultMaleProfileUrl]);
+    const fetchUserData = async () => {
+      try {
+        const userDocRef = doc(firestore, 'users', userId);
+        const userSnapshot = await getDoc(userDocRef);
+
+        if (userSnapshot.exists()) {
+          const fetchedUserData = userSnapshot.data();
+          setUserData(fetchedUserData); // Set state with fetched data
+
+          // Set local state for form fields
+          setFirstName(fetchedUserData.firstName || '');
+          setLastName(fetchedUserData.lastName || '');
+          setEmail(fetchedUserData.email || '');
+          setDateOfBirth(fetchedUserData.dateOfBirth || '');
+          setRole(fetchedUserData.role || '');
+          setProfilePictureUrl(
+            fetchedUserData.profilePictureUrl || defaultNeutralProfileUrl
+          );
+        } else {
+          setErrorMessage('User not found');
+        }
+      } catch (error) {
+        setErrorMessage('Error fetching user data: ' + error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, [userId, defaultNeutralProfileUrl]);
 
   const handleProfilePictureUpload = () => {
     document.getElementById('profilePictureInput').click(); // Trigger the hidden file input
@@ -59,7 +82,7 @@ const UserProfile = () => {
         updatedProfilePictureUrl = await getDownloadURL(profilePicRef);
       }
 
-      setProfilePicture(updatedProfilePictureUrl);
+      setProfilePictureUrl(updatedProfilePictureUrl);
 
       // Prepare the updated user data
       const updatedData = {
@@ -70,22 +93,24 @@ const UserProfile = () => {
         profilePictureUrl: updatedProfilePictureUrl,
       };
 
-      // If the current user is an admin, include the role field in the update
+      // If the current user is an admin, allow updating the role
       if (userRole === 'admin') {
         updatedData.role = role;
       }
 
       await updateDoc(userDocRef, updatedData);
 
-      // Update the context with the new data
-      await updateUserData(userId);
+      // Update the user data if the current user is the one being edited
+      if (userId === userData?.id) {
+        await updateLoggedInUserData(userId);
+      }
 
       setSuccessMessage('Profile updated successfully!');
     } catch (error) {
       setErrorMessage('Error updating profile: ' + error.message);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   const handleInputChange = () => {
@@ -93,7 +118,7 @@ const UserProfile = () => {
     setErrorMessage('');
   };
 
-  if (!userData) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>; // Show a loading state if data is still being fetched
 
   return (
     <div className='user-profile'>
@@ -170,7 +195,7 @@ const UserProfile = () => {
         <select
           value={role}
           onChange={(e) => {
-            setRole(e.target.value); // Update local role state
+            setRole(e.target.value);
             handleInputChange();
           }}
         >
