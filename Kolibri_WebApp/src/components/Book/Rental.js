@@ -195,6 +195,7 @@ const Rental = () => {
         transactionBy: userEmail,
         quantityChange: action === 'rent' ? -quantityChange : quantityChange,
         transactionDate: new Date(),
+        currentStock: newCurrentStock,
       });
 
       await updateDoc(bookDocRef, {
@@ -349,6 +350,7 @@ const Rental = () => {
             <th onClick={() => handleSort('quantityChange')}>
               Quantity Change
             </th>
+            <th onClick={() => handleSort('currentStock')}>Current Stock</th>{' '}
             <th onClick={() => handleSort('transactionDate')}>
               Transaction Date
             </th>
@@ -360,6 +362,7 @@ const Rental = () => {
               <td>{transaction.bookTitle}</td>
               <td>{transaction.transactionBy}</td>
               <td>{transaction.quantityChange}</td>
+              <td>{transaction.currentStock}</td>
               <td>
                 {transaction.transactionDate &&
                   new Date(
