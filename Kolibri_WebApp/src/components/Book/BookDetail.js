@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, getDoc, deleteDoc } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  addDoc,
+  deleteDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from 'firebase/firestore';
+
 import { firestore } from '../../firebase/firebaseConfig';
 import { useAuth } from '../../context/AuthContext';
 import './BookDetail.css';
 
 const BookDetail = () => {
+  const { currentUser } = useAuth();
   const { id: bookId } = useParams();
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { userRole } = useAuth();
+  const [reservationError, setReservationError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -34,6 +47,71 @@ const BookDetail = () => {
 
     fetchBook();
   }, [bookId]);
+
+  const handleReserveBook = async () => {
+    try {
+      setReservationError('');
+      setSuccessMessage('');
+
+      if (!currentUser) {
+        setReservationError('You must be logged in to reserve a book.');
+        return;
+      }
+
+      // Check if the user already has 3 active reservations/rentals
+      const reservationsQuery = query(
+        collection(firestore, 'reservations'),
+        where('userId', '==', currentUser.uid),
+        where('status', '==', 'active')
+      );
+      const rentalsQuery = query(
+        collection(firestore, 'rentalTransactions'),
+        where('transactionBy', '==', currentUser.email),
+        where('transactionType', '==', 'rent')
+      );
+      const [reservationsSnapshot, rentalsSnapshot] = await Promise.all([
+        getDocs(reservationsQuery),
+        getDocs(rentalsQuery),
+      ]);
+
+      const totalActive = reservationsSnapshot.size + rentalsSnapshot.size;
+      if (totalActive >= 3) {
+        setReservationError(
+          'You cannot have more than 3 books reserved or rented.'
+        );
+        return;
+      }
+
+      // Check if the user already has this book rented or reserved
+      const hasSameBookReserved = reservationsSnapshot.docs.some(
+        (doc) => doc.data().bookId === bookId
+      );
+      const hasSameBookRented = rentalsSnapshot.docs.some(
+        (doc) => doc.data().bookId === bookId
+      );
+      if (hasSameBookReserved || hasSameBookRented) {
+        setReservationError('You already have this book reserved or rented.');
+        return;
+      }
+
+      // Create a new reservation
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 7); // 7 days from now
+
+      await addDoc(collection(firestore, 'reservations'), {
+        userId: currentUser.uid,
+        bookId: bookId,
+        bookTitle: book.title,
+        reservationDate: new Date(),
+        expirationDate,
+        status: 'active',
+      });
+
+      setSuccessMessage('Book reserved successfully!');
+    } catch (error) {
+      setReservationError('Error reserving book: ' + error.message);
+    }
+  };
 
   const handleDelete = async () => {
     if (userRole !== 'admin') {
@@ -114,6 +192,13 @@ const BookDetail = () => {
               <strong>Current Stock:</strong>{' '}
               {book.currentStock !== null ? book.currentStock : 'Loading...'}
             </p>
+            <button onClick={handleReserveBook}>Reserve</button>
+            {reservationError && (
+              <p className='error-message'>{reservationError}</p>
+            )}
+            {successMessage && (
+              <p className='success-message'>{successMessage}</p>
+            )}
           </div>
           {book.coverImageURL && (
             <div className='book-cover'>

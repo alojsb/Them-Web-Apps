@@ -10,7 +10,8 @@ import UserProfile from '../components/User/UserProfile';
 import Home from '../components/Home';
 import NotFound from '../components/NotFound';
 import Inventory from '../components/Book/Inventory';
-import Rental from '../components/Book/Rental'; // New Rental Component
+import Rental from '../components/Book/Rental';
+import Reservation from '../components/Book/Reservation';
 
 const AppRoutes = () => (
   <Routes>
@@ -25,6 +26,7 @@ const AppRoutes = () => (
     <Route path='/users/:userId' element={<UserProfile />} /> {/* New Route */}
     <Route path='/inventory' element={<Inventory />} />
     <Route path='/rental' element={<Rental />} />
+    <Route path='/reservations' element={<Reservation />} />
     <Route path='/not-found' element={<NotFound />} />
   </Routes>
 );

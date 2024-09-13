@@ -73,6 +73,15 @@ const Rental = () => {
     }
   };
 
+  const isOverdue = (transactionDate) => {
+    const currentDate = new Date();
+    const rentalDate = new Date(transactionDate.seconds * 1000); // Firestore timestamps are in seconds
+    const diffInDays = Math.floor(
+      (currentDate - rentalDate) / (1000 * 60 * 60 * 24)
+    );
+    return diffInDays > 30;
+  };
+
   // Fetch books and transactions when component loads
   useEffect(() => {
     if (userRole && userRole !== 'admin') {
@@ -358,7 +367,12 @@ const Rental = () => {
         </thead>
         <tbody>
           {filteredTransactions.map((transaction) => (
-            <tr key={transaction.id}>
+            <tr
+              key={transaction.id}
+              className={
+                isOverdue(transaction.transactionDate) ? 'overdue' : ''
+              }
+            >
               <td>{transaction.bookTitle}</td>
               <td>{transaction.transactionBy}</td>
               <td>{transaction.quantityChange}</td>
