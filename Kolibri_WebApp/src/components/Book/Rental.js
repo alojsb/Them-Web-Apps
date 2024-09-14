@@ -206,7 +206,7 @@ const Rental = () => {
       if (action === 'return') {
         if (quantityChange > currentNumberOfRentedOutBooks) {
           setErrorMessage(
-            `You cannot return more than ${currentNumberOfRentedOutBooks} books, which are currently rented out.`
+            `You cannot return that many. Only ${currentNumberOfRentedOutBooks} books are currently rented out.`
           );
           return;
         }
@@ -233,7 +233,7 @@ const Rental = () => {
           : currentNumberOfRentedOutBooks - quantityChange;
 
       if (newNumberOfRentedOutBooks < 0) {
-        setErrorMessage('Cannot return more books than rented out.');
+        setErrorMessage('Cannot return more books than are rented out.');
         return;
       }
 
@@ -360,6 +360,7 @@ const Rental = () => {
                 Expires on:{' '}
                 {reservation.expirationDate?.toDate().toLocaleDateString()}
               </p>
+              <p>Status: {reservation.status}</p>
             </div>
           ))}
         </div>
@@ -380,10 +381,11 @@ const Rental = () => {
           id='quantityChange'
           value={quantityChange}
           onChange={(e) => {
-            setQuantityChange(parseInt(e.target.value));
+            setQuantityChange(1); // Automatically set quantity to 1
             handleInputChange();
           }}
           min={1}
+          disabled // Disable the input
         />
       </div>
 
