@@ -6,20 +6,25 @@ import {
   doc,
   getDoc,
   updateDoc,
+  where,
   query,
   orderBy,
 } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebaseConfig';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import './Rental.css'; // Create a CSS file for this component
+import './Rental.css';
 
 const Rental = () => {
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [selectedUserId, setSelectedUserId] = useState('');
   const [selectedBookId, setSelectedBookId] = useState('');
   const [quantityChange, setQuantityChange] = useState(1);
   const [currentStock, setCurrentStock] = useState('-');
+  const [reservations, setReservations] = useState([]);
+  const [selectedReservationId, setSelectedReservationId] = useState(null); // Store selected reservation
   const [numberOfRentedOutBooks, setNumberOfRentedOutBooks] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -34,12 +39,8 @@ const Rental = () => {
   const navigate = useNavigate();
   const { currentUser, userRole } = useAuth();
 
-  // Clear error message when the user changes any input field
-  const handleInputChange = () => {
-    setErrorMessage('');
-  };
+  const handleInputChange = () => setErrorMessage('');
 
-  // Define fetchData outside of useEffect so it can be reused
   const fetchData = async () => {
     try {
       // Fetch books
@@ -50,6 +51,15 @@ const Rental = () => {
         title: doc.data().title,
       }));
       setBooks(booksList);
+
+      // Fetch users
+      const usersCollection = collection(firestore, 'users');
+      const usersSnapshot = await getDocs(usersCollection);
+      const usersList = usersSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        email: doc.data().email,
+      }));
+      setUsers(usersList);
 
       // Fetch transactions
       const transactionsQuery = query(
@@ -64,7 +74,6 @@ const Rental = () => {
       setTransactions(transactionsList);
       setFilteredTransactions(transactionsList);
 
-      // Set loading to false after both fetches are complete
       setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error.message);
@@ -73,21 +82,10 @@ const Rental = () => {
     }
   };
 
-  const isOverdue = (transactionDate) => {
-    const currentDate = new Date();
-    const rentalDate = new Date(transactionDate.seconds * 1000); // Firestore timestamps are in seconds
-    const diffInDays = Math.floor(
-      (currentDate - rentalDate) / (1000 * 60 * 60 * 24)
-    );
-    return diffInDays > 30;
-  };
-
-  // Fetch books and transactions when component loads
   useEffect(() => {
     if (userRole && userRole !== 'admin') {
       navigate('/');
     }
-
     fetchData();
   }, [userRole, navigate]);
 
@@ -105,7 +103,7 @@ const Rental = () => {
         if (bookDoc.exists()) {
           setCurrentStock(bookDoc.data().currentStock);
           setSelectedBookTitle(bookDoc.data().title);
-          setNumberOfRentedOutBooks(bookDoc.data().numberOfRentedOutBooks || 0); // Fetch this field
+          setNumberOfRentedOutBooks(bookDoc.data().numberOfRentedOutBooks || 0);
         }
       } catch (error) {
         console.error('Error fetching book details:', error.message);
@@ -115,12 +113,60 @@ const Rental = () => {
     fetchBookDetails();
   }, [selectedBookId]);
 
+  // Find reservations for selected user and book
+  const handleFindReservations = async () => {
+    if (!selectedUserId || !selectedBookId) {
+      setErrorMessage('Please select both a book and a user.');
+      return;
+    }
+
+    try {
+      const reservationsQuery = query(
+        collection(firestore, 'reservations'),
+        where('userId', '==', selectedUserId),
+        where('bookId', '==', selectedBookId),
+        where('status', '==', 'active')
+      );
+      const reservationsSnapshot = await getDocs(reservationsQuery);
+
+      if (reservationsSnapshot.empty) {
+        setErrorMessage('No active reservations found for this user and book.');
+        setReservations([]);
+      } else {
+        const reservationsList = reservationsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setReservations(reservationsList);
+      }
+    } catch (error) {
+      console.error('Error finding reservations:', error.message);
+    }
+  };
+
+  const handleSelectReservation = (reservationId) => {
+    setSelectedReservationId(reservationId);
+    setSuccessMessage('Reservation selected.');
+  };
+
+  const clearForm = () => {
+    setSelectedBookId(''); // Reset selected book
+    setSelectedUserId('');
+    setQuantityChange(1); // Reset quantity to 1 (default)
+    setCurrentStock('-'); // Reset the current stock display
+    setNumberOfRentedOutBooks(''); // Reset rented out books count
+    setErrorMessage(''); // Clear any error messages
+    setSuccessMessage(''); // Clear any success messages
+  };
+
   const handleSubmit = async (action) => {
     setErrorMessage('');
     setSuccessMessage('');
 
-    if (!selectedBookId) {
-      setErrorMessage('Please select a book before submitting.');
+    if (!selectedBookId || !selectedUserId) {
+      setErrorMessage(
+        'Please select both a book and a user before submitting.'
+      );
       return;
     }
 
@@ -156,12 +202,6 @@ const Rental = () => {
       const currentNumberOfRentedOutBooks =
         bookDoc.data().numberOfRentedOutBooks || 0;
 
-      console.log('quantityChange:', quantityChange);
-      console.log(
-        'currentNumberOfRentedOutBooks:',
-        currentNumberOfRentedOutBooks
-      );
-
       // Prevent returning more than rented-out books
       if (action === 'return') {
         if (quantityChange > currentNumberOfRentedOutBooks) {
@@ -187,7 +227,6 @@ const Rental = () => {
         action === 'rent'
           ? currentCurrentStock - quantityChange
           : currentCurrentStock + quantityChange;
-
       const newNumberOfRentedOutBooks =
         action === 'rent'
           ? currentNumberOfRentedOutBooks + quantityChange
@@ -198,13 +237,36 @@ const Rental = () => {
         return;
       }
 
+      // 1. Check if the user has an active reservation for this book
+      const reservationsQuery = query(
+        collection(firestore, 'reservations'),
+        where('userId', '==', selectedUserId),
+        where('bookId', '==', selectedBookId),
+        where('status', '==', 'active')
+      );
+      const reservationsSnapshot = await getDocs(reservationsQuery);
+      let reservationId = null;
+
+      if (!reservationsSnapshot.empty) {
+        const reservation = reservationsSnapshot.docs[0]; // Assuming one reservation per user per book
+        reservationId = reservation.id;
+
+        // Update the reservation status to 'fulfilled'
+        const reservationDocRef = doc(firestore, 'reservations', reservationId);
+
+        // Here is where we need to ensure the status gets updated
+        await updateDoc(reservationDocRef, { status: 'fulfilled' });
+      }
+
       await addDoc(collection(firestore, 'rentalTransactions'), {
         bookId: selectedBookId,
+        userId: selectedUserId,
         bookTitle: selectedBookTitle,
         transactionBy: userEmail,
         quantityChange: action === 'rent' ? -quantityChange : quantityChange,
         transactionDate: new Date(),
         currentStock: newCurrentStock,
+        reservationId: reservationId || null,
       });
 
       await updateDoc(bookDocRef, {
@@ -222,50 +284,33 @@ const Rental = () => {
     }
   };
 
-  const clearForm = () => {
-    setSelectedBookId('');
-    setQuantityChange(1); // Reset quantity change
-    setCurrentStock('-');
-    setErrorMessage('');
-    setSuccessMessage('');
-  };
-
-  // ... rest of your component JSX
-
-  const handleFilterChange = (e) => {
-    setFilterField(e.target.name);
-    setFilterValue(e.target.value);
-
-    const filtered = transactions.filter((transaction) =>
-      transaction[e.target.name]
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase())
-    );
-    setFilteredTransactions(filtered);
-  };
-
-  const handleSort = (field) => {
-    const order = sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
-    setSortField(field);
-    setSortOrder(order);
-
-    const sortedTransactions = [...filteredTransactions].sort((a, b) => {
-      if (order === 'asc') {
-        return a[field] > b[field] ? 1 : -1;
-      }
-      return a[field] < b[field] ? 1 : -1;
-    });
-    setFilteredTransactions(sortedTransactions);
-  };
-
-  if (loading || !userRole) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div className='rental-form'>
       <h2 className='rental-header'>Manage Rentals</h2>
 
+      {/* User Dropdown */}
+      <div className='rental-controls'>
+        <label htmlFor='userId'>User:</label>
+        <select
+          id='userId'
+          value={selectedUserId}
+          onChange={(e) => {
+            setSelectedUserId(e.target.value);
+            handleInputChange();
+          }}
+        >
+          <option value='' disabled>
+            Select a user
+          </option>
+          {users.map((user) => (
+            <option key={user.id} value={user.id}>
+              {user.email}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Book Dropdown */}
       <div className='rental-controls'>
         <label htmlFor='bookId'>Book:</label>
         <select
@@ -287,12 +332,47 @@ const Rental = () => {
         </select>
       </div>
 
+      {/* Find Reservations Button */}
+      <button type='button' onClick={handleFindReservations}>
+        Find Reservations
+      </button>
+
+      {/* Reservation List */}
+      {reservations.length > 0 && (
+        <div className='reservation-list'>
+          <h3>Select Reservation</h3>
+          {reservations.map((reservation) => (
+            <div
+              key={reservation.id}
+              className={`reservation-item ${
+                selectedReservationId === reservation.id ? 'selected' : ''
+              }`}
+              onClick={() => handleSelectReservation(reservation.id)}
+            >
+              <p>
+                {reservation.bookTitle} - Reserved by {reservation.userId}
+              </p>
+              <p>
+                Reservation Date:{' '}
+                {reservation.reservationDate?.toDate().toLocaleDateString()}
+              </p>
+              <p>
+                Expires on:{' '}
+                {reservation.expirationDate?.toDate().toLocaleDateString()}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Book Stock Info */}
       <div className='book-stock-info'>
         <p>
           <strong>Current Stock:</strong> {currentStock}
         </p>
       </div>
 
+      {/* Quantity Input */}
       <div className='rental-inputs'>
         <label htmlFor='quantityChange'>Quantity:</label>
         <input
@@ -307,10 +387,7 @@ const Rental = () => {
         />
       </div>
 
-      {/* Display error or success message */}
-      {errorMessage && <p className='error-message'>{errorMessage}</p>}
-      {successMessage && <p className='success-message'>{successMessage}</p>}
-
+      {/* Submit Buttons */}
       <div className='rental-buttons'>
         <button
           className='rent-btn'
@@ -326,67 +403,11 @@ const Rental = () => {
         >
           Return
         </button>
-        <button className='clear-btn' type='button' onClick={clearForm}>
-          Clear
-        </button>
       </div>
 
-      {/* Transaction Overview */}
-      <h3 className='transaction-header'>Rental Transactions</h3>
-      <div className='filters'>
-        <label htmlFor='filterField'>Filter by:</label>
-        <input
-          type='text'
-          name='bookTitle'
-          placeholder='Book Title'
-          value={filterField === 'bookTitle' ? filterValue : ''}
-          onChange={handleFilterChange}
-        />
-        <input
-          type='text'
-          name='transactionBy'
-          placeholder='Transaction By'
-          value={filterField === 'transactionBy' ? filterValue : ''}
-          onChange={handleFilterChange}
-        />
-      </div>
-
-      <table className='transaction-table'>
-        <thead>
-          <tr>
-            <th onClick={() => handleSort('bookTitle')}>Book Title</th>
-            <th onClick={() => handleSort('transactionBy')}>Transaction By</th>
-            <th onClick={() => handleSort('quantityChange')}>
-              Quantity Change
-            </th>
-            <th onClick={() => handleSort('currentStock')}>Current Stock</th>{' '}
-            <th onClick={() => handleSort('transactionDate')}>
-              Transaction Date
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredTransactions.map((transaction) => (
-            <tr
-              key={transaction.id}
-              className={
-                isOverdue(transaction.transactionDate) ? 'overdue' : ''
-              }
-            >
-              <td>{transaction.bookTitle}</td>
-              <td>{transaction.transactionBy}</td>
-              <td>{transaction.quantityChange}</td>
-              <td>{transaction.currentStock}</td>
-              <td>
-                {transaction.transactionDate &&
-                  new Date(
-                    transaction.transactionDate.seconds * 1000
-                  ).toLocaleString()}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/* Error and Success Messages */}
+      {errorMessage && <p className='error-message'>{errorMessage}</p>}
+      {successMessage && <p className='success-message'>{successMessage}</p>}
     </div>
   );
 };

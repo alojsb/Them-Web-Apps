@@ -9,10 +9,10 @@ import {
 } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebaseConfig';
 import { useAuth } from '../../context/AuthContext';
-import './Reservation.css'; // You can style this component with a CSS file
+import './Reservation.css';
 
 const Reservations = () => {
-  const { currentUser } = useAuth(); // Fetch the current user
+  const { currentUser } = useAuth();
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
@@ -23,11 +23,10 @@ const Reservations = () => {
         setErrorMessage('');
         setLoading(true);
 
-        // Fetch active reservations for the logged-in user
+        // Fetch all reservations for the current user, regardless of status
         const reservationsQuery = query(
           collection(firestore, 'reservations'),
-          where('userId', '==', currentUser.uid),
-          where('status', '==', 'active')
+          where('userId', '==', currentUser.uid)
         );
         const reservationsSnapshot = await getDocs(reservationsQuery);
 
@@ -36,26 +35,31 @@ const Reservations = () => {
           ...doc.data(),
         }));
 
-        // Filter out expired reservations
         const currentDate = new Date();
-        const activeReservations = reservationsList.filter(
-          (reservation) => reservation.expirationDate.toDate() > currentDate
-        );
+        const updatedReservations = [];
 
-        // Mark expired reservations as 'expired'
-        const expiredReservations = reservationsList.filter(
-          (reservation) => reservation.expirationDate.toDate() <= currentDate
-        );
-        expiredReservations.forEach(async (reservation) => {
+        for (const reservation of reservationsList) {
           const reservationDocRef = doc(
             firestore,
             'reservations',
             reservation.id
           );
-          await updateDoc(reservationDocRef, { status: 'expired' });
-        });
 
-        setReservations(activeReservations);
+          const expirationDate = reservation.expirationDate?.toDate();
+          if (
+            reservation.status === 'active' &&
+            expirationDate &&
+            expirationDate <= currentDate
+          ) {
+            // Mark as expired if the reservation has passed its expiration date
+            await updateDoc(reservationDocRef, { status: 'expired' });
+            updatedReservations.push({ ...reservation, status: 'expired' });
+          } else {
+            updatedReservations.push(reservation);
+          }
+        }
+
+        setReservations(updatedReservations);
       } catch (error) {
         setErrorMessage('Failed to load reservations: ' + error.message);
       } finally {
@@ -80,17 +84,30 @@ const Reservations = () => {
     <div className='reservations-list'>
       <h2>Your Reservations</h2>
       {reservations.length === 0 ? (
-        <p>You have no active reservations.</p>
+        <p>You have no reservations.</p>
       ) : (
         <ul>
           {reservations.map((reservation) => (
             <li key={reservation.id} className='reservation-item'>
               <p>
-                <strong>{reservation.bookTitle}</strong> (Reservation Expires:{' '}
-                {new Date(
-                  reservation.expirationDate.toDate()
-                ).toLocaleDateString()}
-                )
+                <strong>{reservation.bookTitle}</strong> - Status:{' '}
+                {reservation.status}
+                <br />
+                Reserved by: {currentUser.email}
+                <br />
+                Reserved on:{' '}
+                {reservation.reservationDate?.toDate()
+                  ? new Date(
+                      reservation.reservationDate.toDate()
+                    ).toLocaleDateString()
+                  : 'N/A'}
+                <br />
+                Expires on:{' '}
+                {reservation.expirationDate?.toDate()
+                  ? new Date(
+                      reservation.expirationDate.toDate()
+                    ).toLocaleDateString()
+                  : 'N/A'}
               </p>
             </li>
           ))}
