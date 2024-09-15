@@ -72,6 +72,32 @@ const Reservations = () => {
     }
   }, [currentUser]);
 
+  const handleCancelReservation = async (reservationId) => {
+    const confirmCancel = window.confirm(
+      'Are you sure you want to cancel this reservation?'
+    );
+
+    if (!confirmCancel) {
+      return;
+    }
+    try {
+      const reservationDocRef = doc(firestore, 'reservations', reservationId);
+      await updateDoc(reservationDocRef, {
+        status: 'cancelled',
+      });
+
+      setReservations((prev) =>
+        prev.map((reservation) =>
+          reservation.id === reservationId
+            ? { ...reservation, status: 'cancelled' }
+            : reservation
+        )
+      );
+    } catch (error) {
+      setErrorMessage('Failed to cancel reservation: ' + error.message);
+    }
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -102,13 +128,19 @@ const Reservations = () => {
                     ).toLocaleDateString()
                   : 'N/A'}
                 <br />
-                Expires on:{' '}
+                Expiration date:{' '}
                 {reservation.expirationDate?.toDate()
                   ? new Date(
                       reservation.expirationDate.toDate()
                     ).toLocaleDateString()
                   : 'N/A'}
               </p>
+              <button
+                onClick={() => handleCancelReservation(reservation.id)}
+                disabled={reservation.status !== 'active'}
+              >
+                Cancel
+              </button>
             </li>
           ))}
         </ul>
