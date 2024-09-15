@@ -3,6 +3,7 @@ import {
   collection,
   query,
   where,
+  getDoc,
   getDocs,
   updateDoc,
   doc,
@@ -11,7 +12,7 @@ import { firestore } from '../../firebase/firebaseConfig';
 import { useAuth } from '../../context/AuthContext';
 import './Reservation.css';
 
-const Reservations = () => {
+const Reservation = () => {
   const { currentUser } = useAuth();
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,15 +45,25 @@ const Reservations = () => {
             'reservations',
             reservation.id
           );
-
           const expirationDate = reservation.expirationDate?.toDate();
+
+          // Handle expired reservations
           if (
             reservation.status === 'active' &&
             expirationDate &&
             expirationDate <= currentDate
           ) {
-            // Mark as expired if the reservation has passed its expiration date
+            // Mark reservation as expired
             await updateDoc(reservationDocRef, { status: 'expired' });
+
+            // Increase book's current stock by 1
+            const bookDocRef = doc(firestore, 'books', reservation.bookId);
+            const bookDocSnap = await getDoc(bookDocRef);
+            if (bookDocSnap.exists()) {
+              const currentStock = bookDocSnap.data().currentStock;
+              await updateDoc(bookDocRef, { currentStock: currentStock + 1 });
+            }
+
             updatedReservations.push({ ...reservation, status: 'expired' });
           } else {
             updatedReservations.push(reservation);
@@ -80,12 +91,52 @@ const Reservations = () => {
     if (!confirmCancel) {
       return;
     }
+
     try {
       const reservationDocRef = doc(firestore, 'reservations', reservationId);
-      await updateDoc(reservationDocRef, {
-        status: 'cancelled',
-      });
 
+      // Fetch the reservation document to get bookId
+      const reservationDocSnap = await getDoc(reservationDocRef);
+      if (!reservationDocSnap.exists()) {
+        setErrorMessage('Reservation not found!');
+        return;
+      }
+
+      const { bookId } = reservationDocSnap.data();
+
+      // Update the reservation status to 'cancelled'
+      await updateDoc(reservationDocRef, { status: 'cancelled' });
+
+      // Increase the currentStock by 1 in the book document
+      const bookDocRef = doc(firestore, 'books', bookId);
+      const bookDocSnap = await getDoc(bookDocRef);
+      if (bookDocSnap.exists()) {
+        const currentStock = bookDocSnap.data().currentStock;
+        const numberOfReservedBooks = bookDocSnap.data().numberOfReservedBooks;
+        await updateDoc(bookDocRef, {
+          currentStock: currentStock + 1,
+          numberOfReservedBooks: numberOfReservedBooks - 1,
+        });
+      }
+
+      // Fetch and update the user's currentlyReservedBooks array
+      const userDocRef = doc(firestore, 'users', currentUser.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        const currentlyReservedBooks =
+          userDocSnap.data().currentlyReservedBooks || [];
+
+        // Remove the bookId from the currentlyReservedBooks array
+        const updatedCurrentlyReservedBooks = currentlyReservedBooks.filter(
+          (id) => id !== bookId
+        );
+
+        await updateDoc(userDocRef, {
+          currentlyReservedBooks: updatedCurrentlyReservedBooks,
+        });
+      }
+
+      // Update the local state to reflect the canceled reservation
       setReservations((prev) =>
         prev.map((reservation) =>
           reservation.id === reservationId
@@ -149,4 +200,4 @@ const Reservations = () => {
   );
 };
 
-export default Reservations;
+export default Reservation;

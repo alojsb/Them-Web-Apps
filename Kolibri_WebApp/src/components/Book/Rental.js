@@ -113,6 +113,16 @@ const Rental = () => {
     fetchBookDetails();
   }, [selectedBookId]);
 
+  const clearForm = () => {
+    setSelectedBookId('');
+    setSelectedUserId('');
+    setQuantityChange(1);
+    setCurrentStock('-');
+    setNumberOfRentedOutBooks('');
+    setErrorMessage('');
+    setSuccessMessage('');
+  };
+
   // Find reservations for selected user and book
   const handleFindReservations = async () => {
     if (!selectedUserId || !selectedBookId) {
@@ -137,6 +147,9 @@ const Rental = () => {
           id: doc.id,
           ...doc.data(),
         }));
+        // Log reservations to check if they are correctly fetched
+        console.log('Fetched reservations:', reservationsList);
+
         setReservations(reservationsList);
       }
     } catch (error) {
@@ -146,17 +159,10 @@ const Rental = () => {
 
   const handleSelectReservation = (reservationId) => {
     setSelectedReservationId(reservationId);
-    setSuccessMessage('Reservation selected.');
-  };
+    // Log the selected reservationId to check if it's set correctly
+    console.log('Selected reservationId:', reservationId);
 
-  const clearForm = () => {
-    setSelectedBookId(''); // Reset selected book
-    setSelectedUserId('');
-    setQuantityChange(1); // Reset quantity to 1 (default)
-    setCurrentStock('-'); // Reset the current stock display
-    setNumberOfRentedOutBooks(''); // Reset rented out books count
-    setErrorMessage(''); // Clear any error messages
-    setSuccessMessage(''); // Clear any success messages
+    setSuccessMessage('Reservation selected.');
   };
 
   const handleSubmit = async (action) => {
@@ -164,179 +170,97 @@ const Rental = () => {
     setSuccessMessage('');
 
     if (!selectedBookId || !selectedUserId) {
-      setErrorMessage(
-        'Please select both a book and a user before submitting.'
-      );
+      setErrorMessage('Please select both a book and a user.');
       return;
     }
 
-    if (!currentUser) {
-      setErrorMessage('You must be logged in to submit a transaction.');
+    const userRef = doc(firestore, 'users', selectedUserId);
+    const userSnap = await getDoc(userRef);
+    const userData = userSnap.data();
+
+    // Ensure currentlyReservedBooks and currentlyRentedBooks are arrays
+    const reservedBooks = Array.isArray(userData.currentlyReservedBooks)
+      ? userData.currentlyReservedBooks
+      : [];
+    const rentedBooks = Array.isArray(userData.currentlyRentedBooks)
+      ? userData.currentlyRentedBooks
+      : [];
+
+    const bookRef = doc(firestore, 'books', selectedBookId);
+    const bookDoc = await getDoc(bookRef);
+    if (!bookDoc.exists()) {
+      setErrorMessage('Book not found!');
       return;
     }
 
-    const confirmSubmit = window.confirm(
-      `Are you sure you want to ${
-        action === 'rent' ? 'rent' : 'return'
-      } this book?`
-    );
-    if (!confirmSubmit) return;
+    const currentStock = bookDoc.data().currentStock;
+    const currentNumberOfRentedOutBooks =
+      bookDoc.data().numberOfRentedOutBooks || 0;
+    const numberOfReservedBooks = bookDoc.data().numberOfReservedBooks || 0;
 
-    try {
-      const bookDocRef = doc(firestore, 'books', selectedBookId);
-      const bookDoc = await getDoc(bookDocRef);
-
-      if (!bookDoc.exists()) {
-        setErrorMessage('Book not found!');
-        return;
-      }
-
-      const currentCurrentStock = bookDoc.data().currentStock;
-      const currentNumberOfRentedOutBooks =
-        bookDoc.data().numberOfRentedOutBooks || 0;
-
-      // Fetch selected user's email based on selectedUserId
-      const userDocRef = doc(firestore, 'users', selectedUserId);
-      const userDoc = await getDoc(userDocRef);
-      const selectedUserEmail = userDoc.data().email;
-
-      // Check if the user has already rented this book
-      const rentalQuery = query(
-        collection(firestore, 'rentalTransactions'),
-        where('renteeEmail', '==', selectedUserEmail),
-        where('bookId', '==', selectedBookId),
-        where('status', '==', 'active')
-      );
-      const rentalSnapshot = await getDocs(rentalQuery);
-
-      if (!rentalSnapshot.empty && action === 'rent') {
-        setErrorMessage(
-          'You have already rented this book and it is still active.'
+    // Check if renting is based on a reservation
+    if (action === 'rent') {
+      if (selectedReservationId) {
+        // Rental is based on a reservation
+        console.log(
+          'Processing rental for reservation:',
+          selectedReservationId
         );
-        return;
-      }
 
-      // Prevent returning more than rented-out books
-      if (action === 'return') {
-        if (currentNumberOfRentedOutBooks === 0) {
-          setErrorMessage('No books are currently rented out to be returned.');
-          return;
-        }
-      }
-
-      // Prevent renting if the stock is 0
-      if (action === 'rent' && currentCurrentStock <= 0) {
-        setErrorMessage('Not enough stock available for rent.');
-        return;
-      }
-
-      // Check if the user has an active reservation for this book
-      const reservationsQuery = query(
-        collection(firestore, 'reservations'),
-        where('userId', '==', selectedUserId),
-        where('bookId', '==', selectedBookId),
-        where('status', '==', 'active')
-      );
-      const reservationsSnapshot = await getDocs(reservationsQuery);
-      let reservationId = null;
-      let reservationExists = false;
-
-      if (!reservationsSnapshot.empty) {
-        const reservation = reservationsSnapshot.docs[0]; // Assuming one reservation per user per book
-        reservationId = reservation.id;
-        reservationExists = true;
-
-        // Update the reservation status to 'fulfilled'
-        const reservationDocRef = doc(firestore, 'reservations', reservationId);
-
-        // Here is where we need to ensure the status gets updated
-        await updateDoc(reservationDocRef, { status: 'fulfilled' });
-      }
-
-      // Update the stock and rented-out values accordingly
-      const newCurrentStock =
-        action === 'rent' ? currentCurrentStock - 1 : currentCurrentStock + 1;
-      const newNumberOfRentedOutBooks =
-        action === 'rent'
-          ? currentNumberOfRentedOutBooks + 1
-          : currentNumberOfRentedOutBooks - 1;
-
-      if (newNumberOfRentedOutBooks < 0) {
-        setErrorMessage('Cannot return more books than are rented out.');
-        return;
-      }
-
-      let rentalTransactionId = null;
-
-      if (action === 'return') {
-        if (rentalSnapshot.empty) {
-          setErrorMessage('No active rental found for this book.');
-          return;
-        }
-
-        const rentalDoc = rentalSnapshot.docs[0];
-        rentalTransactionId = rentalDoc.id;
-
-        // Update the existing rental to mark it as returned
-        await updateDoc(
-          doc(firestore, 'rentalTransactions', rentalTransactionId),
-          {
-            status: 'returned',
-            returnedDate: new Date(),
-          }
+        // Fulfill reservation and proceed without blocking
+        const reservationRef = doc(
+          firestore,
+          'reservations',
+          selectedReservationId
         );
+        await updateDoc(reservationRef, { status: 'fulfilled' });
+
+        // Update user's reserved and rented books
+        const updatedReservedBooks = reservedBooks.filter(
+          (id) => id !== selectedBookId
+        );
+        const updatedRentedBooks = [...rentedBooks, selectedBookId];
+
+        await updateDoc(userRef, {
+          currentlyReservedBooks: updatedReservedBooks,
+          currentlyRentedBooks: updatedRentedBooks,
+        });
+
+        // Update book's rented out count
+        await updateDoc(bookRef, {
+          numberOfRentedOutBooks: currentNumberOfRentedOutBooks + 1,
+          numberOfReservedBooks: numberOfReservedBooks - 1,
+        });
+
+        setSuccessMessage('Book rented successfully from reservation!');
       } else {
-        // Create a new rental transaction
-        const rentalTransaction = {
-          bookId: selectedBookId,
-          userId: selectedUserId,
-          bookTitle: selectedBookTitle,
-          transactionBy: currentUser.email,
-          status: 'active', // Set status to active for rentals
-          rentedDate: new Date(),
-          renteeEmail: selectedUserEmail,
-        };
+        // Rental without a reservation
+        console.log('No reservation selected, proceeding with direct rental.');
 
-        const rentalTransactionDocRef = await addDoc(
-          collection(firestore, 'rentalTransactions'),
-          rentalTransaction
-        );
+        // Now perform the total count check
+        if (reservedBooks.length + rentedBooks.length >= 3) {
+          setErrorMessage(
+            'The user cannot have more than 3 books reserved or rented.'
+          );
+          return;
+        }
 
-        rentalTransactionId = rentalTransactionDocRef.id;
+        // Proceed with the rental
+        const updatedRentedBooks = [...rentedBooks, selectedBookId];
+        await updateDoc(userRef, { currentlyRentedBooks: updatedRentedBooks });
+
+        // Decrease currentStock and update rented-out count
+        await updateDoc(bookRef, {
+          currentStock: currentStock - 1,
+          numberOfRentedOutBooks: currentNumberOfRentedOutBooks + 1,
+        });
+
+        setSuccessMessage('Book rented successfully!');
       }
-
-      await updateDoc(bookDocRef, {
-        currentStock: newCurrentStock,
-        numberOfRentedOutBooks: newNumberOfRentedOutBooks,
-      });
-
-      const oldCurrentlyRentedBooks = userDoc.data().currentlyRentedBooks || 0;
-      const oldCurrentlyReservedBooks =
-        userDoc.data().currentlyReservedBooks || 0;
-
-      // Update the user's currentlyRentedBooks
-      const updates = {
-        currentlyRentedBooks:
-          action === 'rent'
-            ? oldCurrentlyRentedBooks + 1
-            : oldCurrentlyRentedBooks - 1,
-      };
-
-      // Only update currentlyReservedBooks if the rental was based on a reservation
-      if (reservationExists) {
-        updates.currentlyReservedBooks = oldCurrentlyReservedBooks - 1;
-      }
-
-      await updateDoc(userDocRef, updates);
-
-      setSuccessMessage(
-        `Book ${action === 'rent' ? 'rented' : 'returned'} successfully!`
-      );
-      clearForm();
-      fetchData(); // Refresh data after submitting a transaction
-    } catch (error) {
-      setErrorMessage('Error processing transaction: ' + error.message);
     }
+
+    clearForm();
+    fetchData();
   };
 
   return (
@@ -402,7 +326,10 @@ const Rental = () => {
               className={`reservation-item ${
                 selectedReservationId === reservation.id ? 'selected' : ''
               }`}
-              onClick={() => handleSelectReservation(reservation.id)}
+              onClick={() => {
+                console.log('reservation id:', reservation.id);
+                handleSelectReservation(reservation.id);
+              }}
             >
               <p>
                 {reservation.bookTitle} - Reserved by {reservation.userId}
