@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Login from '../components/Auth/Login';
 import Register from '../components/Auth/Register';
 import BookList from '../components/Book/BookList';
@@ -11,17 +11,7 @@ import Home from '../components/Home';
 import NotFound from '../components/NotFound';
 import Inventory from '../components/Book/Inventory';
 import Rental from '../components/Book/Rental';
-import Reservations from '../components/Reservations/Reservations';
-import AdminReservations from '../components/Reservations/AdminReservations';
-import { useAuth } from '../context/AuthContext';
-
-const PrivateRoute = ({ children, adminOnly }) => {
-  const { userRole } = useAuth();
-  if (adminOnly && userRole !== 'admin') {
-    return <Navigate to='/' />;
-  }
-  return children;
-};
+import Reservation from '../components/Book/Reservation';
 
 const AppRoutes = () => (
   <Routes>
@@ -36,15 +26,7 @@ const AppRoutes = () => (
     <Route path='/users/:userId' element={<UserProfile />} /> {/* New Route */}
     <Route path='/inventory' element={<Inventory />} />
     <Route path='/rental' element={<Rental />} />
-    <Route
-      path='/admin/reservations'
-      element={
-        <PrivateRoute adminOnly>
-          <AdminReservations />
-        </PrivateRoute>
-      }
-    />
-    <Route path='/reservations' element={<Reservations />} />
+    <Route path='/reservations' element={<Reservation />} />
     <Route path='/not-found' element={<NotFound />} />
   </Routes>
 );
