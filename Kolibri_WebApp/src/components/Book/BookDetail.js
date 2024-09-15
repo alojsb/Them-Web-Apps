@@ -4,6 +4,7 @@ import {
   doc,
   getDoc,
   addDoc,
+  updateDoc,
   deleteDoc,
   collection,
   query,
@@ -58,23 +59,23 @@ const BookDetail = () => {
         return;
       }
 
-      // Check if the user already has 3 active reservations/rentals
-      const reservationsQuery = query(
-        collection(firestore, 'reservations'),
-        where('userId', '==', currentUser.uid),
-        where('status', '==', 'active')
-      );
-      const rentalsQuery = query(
-        collection(firestore, 'rentalTransactions'),
-        where('transactionBy', '==', currentUser.email),
-        where('transactionType', '==', 'rent')
-      );
-      const [reservationsSnapshot, rentalsSnapshot] = await Promise.all([
-        getDocs(reservationsQuery),
-        getDocs(rentalsQuery),
-      ]);
+      // Check if current stock is 0
+      if (book.currentStock === 0) {
+        setReservationError(
+          'This book is currently out of stock and cannot be reserved.'
+        );
+        return;
+      }
 
-      const totalActive = reservationsSnapshot.size + rentalsSnapshot.size;
+      // Get current user data to check their active rentals/reservations
+      const userRef = doc(firestore, 'users', currentUser.uid);
+      const userSnap = await getDoc(userRef);
+      const userData = userSnap.data();
+
+      const totalActive =
+        userData.currentlyRentedBooks + userData.currentlyReservedBooks;
+
+      // Check if user has too many active rentals/reservations
       if (totalActive >= 3) {
         setReservationError(
           'You cannot have more than 3 books reserved or rented.'
@@ -83,12 +84,27 @@ const BookDetail = () => {
       }
 
       // Check if the user already has this book rented or reserved
-      const hasSameBookReserved = reservationsSnapshot.docs.some(
-        (doc) => doc.data().bookId === bookId
+      const reservationsQuery = query(
+        collection(firestore, 'reservations'),
+        where('userId', '==', currentUser.uid),
+        where('bookId', '==', bookId),
+        where('status', '==', 'active')
       );
-      const hasSameBookRented = rentalsSnapshot.docs.some(
-        (doc) => doc.data().bookId === bookId
+
+      const rentalsQuery = query(
+        collection(firestore, 'rentalTransactions'),
+        where('renteeEmail', '==', currentUser.email), // Use renteeEmail here
+        where('bookId', '==', bookId),
+        where('status', '==', 'active')
       );
+      const [reservationsSnapshot, rentalsSnapshot] = await Promise.all([
+        getDocs(reservationsQuery),
+        getDocs(rentalsQuery),
+      ]);
+
+      const hasSameBookReserved = reservationsSnapshot.size > 0;
+      const hasSameBookRented = rentalsSnapshot.size > 0;
+
       if (hasSameBookReserved || hasSameBookRented) {
         setReservationError('You already have this book reserved or rented.');
         return;
@@ -100,11 +116,17 @@ const BookDetail = () => {
 
       await addDoc(collection(firestore, 'reservations'), {
         userId: currentUser.uid,
+        userEmail: currentUser.email,
         bookId: bookId,
         bookTitle: book.title,
         reservationDate: new Date(),
         expirationDate,
         status: 'active',
+      });
+
+      // Update the user's currentlyReservedBooks field
+      await updateDoc(userRef, {
+        currentlyReservedBooks: userData.currentlyReservedBooks + 1,
       });
 
       setSuccessMessage('Book reserved successfully!');
