@@ -140,37 +140,86 @@ const BookDetail = () => {
   return (
     <div className='book-detail'>
       <h2>Book Details</h2>
+
       {book && (
         <div className='book-details-container'>
+          {book.coverImageURL && (
+            <div className='book-cover'>
+              <div className='stock-display-container'>
+                In stock:{' '}
+                <span>
+                  {book.currentStock !== null
+                    ? book.currentStock
+                    : 'Loading...'}
+                </span>{' '}
+                of{' '}
+                <span>
+                  {book.totalNumber !== null ? book.totalNumber : 'Loading...'}
+                </span>
+              </div>
+              <img src={book.coverImageURL} alt={`${book.title} cover`} />
+            </div>
+          )}
           <div className='book-info'>
+            <div className='stock-display-container invisible'></div>
             <h3>{book.title}</h3>
-            <p>
-              <strong>Description:</strong> {book.description}
-            </p>
-            {/* More book details */}
-            <p>
-              <strong>Total Number:</strong>{' '}
-              {book.totalNumber !== null ? book.totalNumber : 'Loading...'}
-            </p>
-            <p>
-              <strong>Current Stock:</strong>{' '}
-              {book.currentStock !== null ? book.currentStock : 'Loading...'}
-            </p>
-            <p>
-              <strong>Reserved:</strong>{' '}
-              {book.numberOfReservedBooks !== null
-                ? book.numberOfReservedBooks
-                : 0}
-            </p>
-            <button onClick={handleReserveBook}>Reserve</button>
-            {reservationError && (
-              <p className='error-message'>{reservationError}</p>
-            )}
-            {successMessage && (
-              <p className='success-message'>{successMessage}</p>
-            )}
+
+            <div className='book-info-item'>
+              <div className='field-name-container'>
+                <div className='field-name item'>Author</div>
+                <div className='field-name item'>Year</div>
+                <div className='field-name item'>ISBN</div>
+                <div className='field-name item'>Script</div>
+                <div className='field-name item'>Language</div>
+                <div className='field-name item'>Genre</div>
+              </div>
+              <div className='field-value-container'>
+                <div className='field-value item'>{book.author}</div>
+                <div className='field-value item'>{book.year}</div>
+                <div className='field-value item'>{book.isbn}</div>
+                <div className='field-value item'>{book.script}</div>
+                <div className='field-value item'>{book.language}</div>
+                <div className='field-value item'>{book.genre}</div>
+              </div>
+            </div>
           </div>
-          {/* More UI... */}
+        </div>
+      )}
+      <div className='book-detail-buttons'>
+        {userRole === 'admin' && (
+          <>
+            <button className='button edit-button' onClick={handleEditClick}>
+              Edit
+            </button>
+          </>
+        )}
+        <button className='button back-button' onClick={handleBackClick}>
+          Back
+        </button>
+        <button className='button reserve-button' onClick={handleReserveBook}>
+          Reserve
+        </button>
+        {reservationError && (
+          <p className='error-message'>{reservationError}</p>
+        )}
+        {successMessage && <p className='success-message'>{successMessage}</p>}
+      </div>
+      {userRole === 'admin' && (
+        <div className='admin-fields'>
+          <p>
+            <strong>Created At:</strong>{' '}
+            {book.createdAt?.toDate().toLocaleString()}
+          </p>
+          <p>
+            <strong>Created By:</strong> {book.createdBy}
+          </p>
+          <p>
+            <strong>Updated At:</strong>{' '}
+            {book.updatedAt?.toDate().toLocaleString()}
+          </p>
+          <p>
+            <strong>Updated By:</strong> {book.updatedBy}
+          </p>
         </div>
       )}
     </div>
