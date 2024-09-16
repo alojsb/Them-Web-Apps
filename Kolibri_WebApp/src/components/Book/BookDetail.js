@@ -157,7 +157,9 @@ const BookDetail = () => {
                   {book.totalNumber !== null ? book.totalNumber : 'Loading...'}
                 </span>
               </div>
-              <img src={book.coverImageURL} alt={`${book.title} cover`} />
+              <div>
+                <img src={book.coverImageURL} alt={`${book.title} cover`} />
+              </div>
             </div>
           )}
           <div className='book-info'>

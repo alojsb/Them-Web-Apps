@@ -36,7 +36,6 @@ const BookList = () => {
   return (
     <div className='book-list'>
       <h2>Book List</h2>
-      {/* Only show the Add Book button to users with 'admin' role */}
       {userRole === 'admin' && (
         <button
           className='add-book-button'
@@ -45,13 +44,17 @@ const BookList = () => {
           Add Book
         </button>
       )}
-      <ul>
+      <div className='book-grid'>
         {books.map((book) => (
-          <li key={book.id}>
-            <Link to={`/books/${book.id}`}>{book.title}</Link>
-          </li>
+          <Link key={book.id} to={`/books/${book.id}`} className='book-card'>
+            <img
+              src={book.coverImageURL}
+              alt={book.title}
+              className='book-cover'
+            />
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

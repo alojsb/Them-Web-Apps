@@ -15,7 +15,7 @@ import Reservation from '../components/Book/Reservation';
 
 const AppRoutes = () => (
   <Routes>
-    <Route path='/' element={<Home />} />
+    <Route path='/' element={<BookList />} />
     <Route path='/login' element={<Login />} />
     <Route path='/register' element={<Register />} />
     <Route path='/books' element={<BookList />} />
