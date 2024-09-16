@@ -142,92 +142,94 @@ const BookForm = ({ editMode = false }) => {
   return (
     <div className='form-container'>
       <form onSubmit={handleSubmit}>
-        <h2>{editMode ? 'Edit Book' : 'Add New Book'}</h2>
+        <div className='form-title'>
+          <h2>{editMode ? 'Edit Book' : 'Add New Book'}</h2>
+        </div>
+        <div className='form-main'>
+          <div className='form-segment-left'>
+            <label>Book Cover</label>
+            <div className='image-container'>
+              {coverImageURL && (
+                <img
+                  src={coverImageURL}
+                  alt='Book Cover'
+                  className='book-cover-preview'
+                />
+              )}
+            </div>
 
-        <label>Title</label>
-        <input
-          type='text'
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+            <input
+              type='file'
+              onChange={(e) => handleImageUpload(e.target.files[0])}
+            />
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              placeholder='Description'
+            ></textarea>
+          </div>
+          <div className='form-segment-right'>
+            <input
+              type='text'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              placeholder='Title'
+            />
 
-        <label>Description</label>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        ></textarea>
+            <input
+              type='text'
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              required
+              placeholder='Author'
+            />
 
-        <label>Author</label>
-        <input
-          type='text'
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          required
-        />
+            <input
+              type='number'
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              required
+              placeholder='Year'
+            />
 
-        <label>Year</label>
-        <input
-          type='number'
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          required
-        />
+            <input
+              type='text'
+              value={isbn}
+              onChange={(e) => setIsbn(e.target.value)}
+              required
+              placeholder='ISBN'
+            />
 
-        <label>ISBN</label>
-        <input
-          type='text'
-          value={isbn}
-          onChange={(e) => setIsbn(e.target.value)}
-          required
-        />
+            <input
+              type='text'
+              value={script}
+              onChange={(e) => setScript(e.target.value)}
+              placeholder='Script'
+            />
 
-        <label>Script</label>
-        <input
-          type='text'
-          value={script}
-          onChange={(e) => setScript(e.target.value)}
-        />
+            <input
+              type='text'
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              placeholder='Language'
+            />
 
-        <label>Language</label>
-        <input
-          type='text'
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-        />
-
-        <label>Genre</label>
-        <input
-          type='text'
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-        />
-
-        <label>Total Number of Books</label>
-        <input type='number' value={totalNumber} disabled />
-
-        <label>Current Stock</label>
-        <input type='number' value={currentStock} disabled />
-
-        <label>Book Cover</label>
-        <input
-          type='file'
-          onChange={(e) => handleImageUpload(e.target.files[0])}
-        />
-
-        {coverImageURL && (
-          <img
-            src={coverImageURL}
-            alt='Book Cover'
-            className='book-cover-preview'
-          />
-        )}
-
-        <div className='button-group'>
-          <button type='submit'>{editMode ? 'Update Book' : 'Add Book'}</button>
-          <button type='button' onClick={handleCancel}>
+            <input
+              type='text'
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
+              placeholder='Genre'
+            />
+          </div>
+        </div>
+        <div className='form-buttons'>
+          <button className='button' type='button' onClick={handleCancel}>
             Cancel
+          </button>
+          <button className='button' type='submit'>
+            {editMode ? 'Update Book' : 'Add Book'}
           </button>
         </div>
       </form>

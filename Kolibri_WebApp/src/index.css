@@ -41,3 +41,32 @@ html,
   background-color: #f18805;
   transition: background-color 0.3s ease;
 }
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Apply consistent margin and padding to all inputs */
+input,
+select {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  padding: 12px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  width: 100%;
+  padding: 0.625rem; /* 10px converted to rem */
+  border: 0.0625rem solid #ddd; /* 1px converted to rem */
+  border-radius: 0.25rem; /* 4px converted to rem */
+  font-size: 1rem; /* 16px converted to rem */
+  font-family: Arial, Helvetica, sans-serif;
+}

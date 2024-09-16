@@ -6,35 +6,27 @@
   margin: 0 auto;
   padding: 1.25rem; /* 20px converted to rem */
   border-radius: 0.5rem; /* 8px converted to rem */
-  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); /* 10px converted to rem */
-  background-color: #f9f9f9;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 1.25rem; /* 20px converted to rem */
-  color: #333;
+.form-segment-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.form-group {
-  margin-bottom: 0.9375rem; /* 15px converted to rem */
+.form-segment-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.form-group input[type='file'] {
+.form-segment-right input {
+  min-width: 16rem;
+}
+
+.form-segment-left input[type='file'] {
   width: 100%;
   padding: 0.625rem; /* 10px converted to rem */
-  border: 0.0625rem solid #ddd; /* 1px converted to rem */
-  border-radius: 0.25rem; /* 4px converted to rem */
-  font-size: 1rem; /* 16px converted to rem */
-  margin-top: 0.3125rem; /* 5px converted to rem */
-}
-
-input[type='text'],
-input[type='number'],
-textarea {
-  width: 100%;
-  padding: 0.625rem; /* 10px converted to rem */
-  margin: 0.3125rem 0; /* 5px converted to rem */
   border: 0.0625rem solid #ddd; /* 1px converted to rem */
   border-radius: 0.25rem; /* 4px converted to rem */
   font-size: 1rem; /* 16px converted to rem */
@@ -43,6 +35,7 @@ textarea {
 textarea {
   resize: vertical;
   min-height: 10vh; /* Ensure the textarea is at least 20% of the viewport height */
+  margin: 0;
 }
 
 input:focus,
@@ -58,4 +51,30 @@ textarea:focus {
   border-radius: 0.25rem; /* 4px converted to rem */
   padding: 0.625rem; /* 10px converted to rem */
   margin-bottom: 1.25rem; /* 20px converted to rem */
+}
+
+.book-cover-preview {
+  max-height: 300px;
+  width: auto;
+}
+
+.form-main {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.form-segment-right input:first-child {
+  margin-top: 0;
+}
+
+.form-segment-right input:last-child {
+  margin-bottom: 0;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.25rem;
 }

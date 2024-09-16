@@ -8,25 +8,6 @@
   overflow-x: hidden;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 24px;
-  color: #333;
-}
-
-/* Apply consistent margin and padding to all inputs */
-input,
-select {
-  display: block;
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto 20px;
-  padding: 12px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
 input {
   border: 1px solid #ddd;
   border-radius: 6px;
