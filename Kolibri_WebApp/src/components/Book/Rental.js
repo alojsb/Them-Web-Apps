@@ -263,73 +263,147 @@ const Rental = () => {
     fetchData();
   };
 
+  const isOverdue = (transactionDate) => {
+    const currentDate = new Date();
+    const rentalDate = new Date(transactionDate.seconds * 1000); // Firestore timestamps are in seconds
+    const diffInDays = Math.floor(
+      (currentDate - rentalDate) / (1000 * 60 * 60 * 24)
+    );
+    return diffInDays > 30;
+  };
+
+  const handleFilterChange = (e) => {
+    setFilterField(e.target.name);
+    setFilterValue(e.target.value);
+
+    const filtered = transactions.filter((transaction) =>
+      transaction[e.target.name]
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase())
+    );
+    setFilteredTransactions(filtered);
+  };
+
+  const handleSort = (field) => {
+    const order = sortField === field && sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortField(field);
+    setSortOrder(order);
+
+    const sortedTransactions = [...filteredTransactions].sort((a, b) => {
+      if (order === 'asc') {
+        return a[field] > b[field] ? 1 : -1;
+      }
+      return a[field] < b[field] ? 1 : -1;
+    });
+    setFilteredTransactions(sortedTransactions);
+  };
+
+  if (loading || !userRole) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className='rental-form'>
       <h2 className='rental-header'>Manage Rentals</h2>
 
-      {/* User Dropdown */}
-      <div className='rental-controls'>
-        <label htmlFor='userId'>User:</label>
-        <select
-          id='userId'
-          value={selectedUserId}
-          onChange={(e) => {
-            setSelectedUserId(e.target.value);
-            handleInputChange();
-          }}
-        >
-          <option value='' disabled>
-            Select a user
-          </option>
-          {users.map((user) => (
-            <option key={user.id} value={user.id}>
-              {user.email}
+      {/* Rental Management Container */}
+      <div className='rental-management'>
+        {/* Left: User and Book Selection */}
+        <div className='rental-management-left'>
+          <select
+            id='userId'
+            value={selectedUserId}
+            onChange={(e) => {
+              setSelectedUserId(e.target.value);
+              handleInputChange();
+            }}
+          >
+            <option value='' disabled>
+              Select a user
             </option>
-          ))}
-        </select>
+            {users.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.email}
+              </option>
+            ))}
+          </select>
+
+          <select
+            id='bookId'
+            value={selectedBookId}
+            onChange={(e) => {
+              setSelectedBookId(e.target.value);
+              handleInputChange();
+            }}
+          >
+            <option value='' disabled>
+              Select a book
+            </option>
+            {books.map((book) => (
+              <option key={book.id} value={book.id}>
+                {book.title}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Right: Stock Info and Quantity */}
+        <div className='rental-management-right'>
+          <div className='book-stock-info'>
+            <p>
+              <strong>Current Stock:</strong> {currentStock}
+            </p>
+          </div>
+
+          <div className='rental-inputs'>
+            <div className='rental-inputs-left'>
+              <label htmlFor='quantityChange'>Quantity:</label>
+            </div>
+            <div className='rental-inputs-right'>
+              <input
+                type='number'
+                id='quantityChange'
+                value={quantityChange}
+                onChange={(e) => {
+                  setQuantityChange(1);
+                  handleInputChange();
+                }}
+                min={1}
+                disabled
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Book Dropdown */}
-      <div className='rental-controls'>
-        <label htmlFor='bookId'>Book:</label>
-        <select
-          id='bookId'
-          value={selectedBookId}
-          onChange={(e) => {
-            setSelectedBookId(e.target.value);
-            handleInputChange();
-          }}
-        >
-          <option value='' disabled>
-            Select a book
-          </option>
-          {books.map((book) => (
-            <option key={book.id} value={book.id}>
-              {book.title}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Error and Success Messages */}
+      {!errorMessage && !successMessage && (
+        <p className='placeholder-message'>.</p>
+      )}
+      {errorMessage && <p className='error-message'>{errorMessage}</p>}
+      {successMessage && <p className='success-message'>{successMessage}</p>}
 
       {/* Find Reservations Button */}
-      <button type='button' onClick={handleFindReservations}>
-        Find Reservations
-      </button>
+      <div className='rental-management-button'>
+        <button
+          type='button'
+          className='button find-reservations-btn'
+          onClick={handleFindReservations}
+        >
+          Find Reservations
+        </button>
+      </div>
 
       {/* Reservation List */}
       {reservations.length > 0 && (
         <div className='reservation-list'>
-          <h3>Select Reservation</h3>
           {reservations.map((reservation) => (
             <div
               key={reservation.id}
               className={`reservation-item ${
                 selectedReservationId === reservation.id ? 'selected' : ''
               }`}
-              onClick={() => {
-                console.log('reservation id:', reservation.id);
-                handleSelectReservation(reservation.id);
-              }}
+              onClick={() => handleSelectReservation(reservation.id)}
             >
               <p>
                 {reservation.bookTitle} - Reserved by {reservation.userId}
@@ -348,50 +422,83 @@ const Rental = () => {
         </div>
       )}
 
-      {/* Book Stock Info */}
-      <div className='book-stock-info'>
-        <p>
-          <strong>Current Stock:</strong> {currentStock}
-        </p>
-      </div>
-
-      {/* Quantity Input */}
-      <div className='rental-inputs'>
-        <label htmlFor='quantityChange'>Quantity:</label>
-        <input
-          type='number'
-          id='quantityChange'
-          value={quantityChange}
-          onChange={(e) => {
-            setQuantityChange(1); // Automatically set quantity to 1
-            handleInputChange();
-          }}
-          min={1}
-          disabled // Disable the input
-        />
-      </div>
-
       {/* Submit Buttons */}
       <div className='rental-buttons'>
         <button
-          className='rent-btn'
+          className='button rent-btn'
           type='button'
           onClick={() => handleSubmit('rent')}
         >
           Rent
         </button>
         <button
-          className='return-btn'
+          className='button return-btn'
           type='button'
           onClick={() => handleSubmit('return')}
         >
           Return
         </button>
+        <button className='clear-btn-rental' type='button' onClick={clearForm}>
+          Clear
+        </button>
       </div>
 
-      {/* Error and Success Messages */}
-      {errorMessage && <p className='error-message'>{errorMessage}</p>}
-      {successMessage && <p className='success-message'>{successMessage}</p>}
+      {/* Transaction Overview */}
+      <h3 className='transaction-header'>Rental Transactions</h3>
+      <div className='filters'>
+        <label htmlFor='filterField'>Filter by:</label>
+        <input
+          type='text'
+          name='bookTitle'
+          placeholder='Book Title'
+          value={filterField === 'bookTitle' ? filterValue : ''}
+          onChange={handleFilterChange}
+        />
+        <input
+          type='text'
+          name='transactionBy'
+          placeholder='Transaction By'
+          value={filterField === 'transactionBy' ? filterValue : ''}
+          onChange={handleFilterChange}
+        />
+      </div>
+
+      <table className='transaction-table'>
+        <thead>
+          <tr>
+            <th onClick={() => handleSort('bookTitle')}>Book Title</th>
+            <th onClick={() => handleSort('transactionBy')}>Transaction By</th>
+            <th onClick={() => handleSort('quantityChange')}>
+              Quantity Change
+            </th>
+            <th onClick={() => handleSort('currentStock')}>Current Stock</th>
+            <th onClick={() => handleSort('transactionDate')}>
+              Transaction Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredTransactions.map((transaction) => (
+            <tr
+              key={transaction.id}
+              className={
+                isOverdue(transaction.transactionDate) ? 'overdue' : ''
+              }
+            >
+              <td>{transaction.bookTitle}</td>
+              <td>{transaction.transactionBy}</td>
+              <td>{transaction.quantityChange}</td>
+              <td>{transaction.currentStock}</td>
+              <td>
+                {transaction.transactionDate &&
+                  new Date(
+                    transaction.transactionDate.seconds * 1000
+                  ).toLocaleString()}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

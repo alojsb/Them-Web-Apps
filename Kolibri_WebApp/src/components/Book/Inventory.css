@@ -66,12 +66,14 @@
   background-color: #28a745;
   color: #fff;
   border: none;
+  border-radius: 0;
 }
 
 .clear-btn {
   background-color: #dc3545;
   color: #fff;
   border: none;
+  border-radius: 0;
 }
 
 .error-message {
