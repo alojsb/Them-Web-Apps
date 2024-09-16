@@ -196,7 +196,6 @@ const Rental = () => {
     const currentStock = bookDoc.data().currentStock;
     const currentNumberOfRentedOutBooks =
       bookDoc.data().numberOfRentedOutBooks || 0;
-    const numberOfReservedBooks = bookDoc.data().numberOfReservedBooks || 0;
 
     // Check if renting is based on a reservation
     if (action === 'rent') {
@@ -229,7 +228,7 @@ const Rental = () => {
         // Update book's rented out count
         await updateDoc(bookRef, {
           numberOfRentedOutBooks: currentNumberOfRentedOutBooks + 1,
-          numberOfReservedBooks: numberOfReservedBooks - 1,
+          numberOfReservedBooks: bookDoc.data().numberOfReservedBooks - 1,
         });
 
         setSuccessMessage('Book rented successfully from reservation!');
@@ -257,6 +256,50 @@ const Rental = () => {
 
         setSuccessMessage('Book rented successfully!');
       }
+      // Clear the reservations list after rent is successful
+      setReservations([]);
+      // Add rental transaction to rentalTransactions collection
+      await addDoc(collection(firestore, 'rentalTransactions'), {
+        bookId: selectedBookId,
+        bookTitle: selectedBookTitle,
+        transactionBy: currentUser.email,
+        quantityChange: 1, // Since quantity is fixed to 1 in this case
+        transactionDate: new Date(),
+        currentStock: currentStock - 1, // Updated stock after rental
+      });
+    } else if (action === 'return') {
+      // Return logic
+      console.log('Processing return for book:', selectedBookId);
+
+      // Check if the user has rented this book
+      if (!rentedBooks.includes(selectedBookId)) {
+        setErrorMessage('This book is not currently rented by the user.');
+        return;
+      }
+
+      // Update user's rented books (remove the book from the list)
+      const updatedRentedBooks = rentedBooks.filter(
+        (id) => id !== selectedBookId
+      );
+      await updateDoc(userRef, { currentlyRentedBooks: updatedRentedBooks });
+
+      // Increase currentStock and update rented-out count
+      await updateDoc(bookRef, {
+        currentStock: currentStock + 1,
+        numberOfRentedOutBooks: currentNumberOfRentedOutBooks - 1,
+      });
+
+      // Add return transaction to rentalTransactions collection
+      await addDoc(collection(firestore, 'rentalTransactions'), {
+        bookId: selectedBookId,
+        bookTitle: selectedBookTitle,
+        transactionBy: currentUser.email,
+        quantityChange: -1, // Returning the book, so quantity decreases
+        transactionDate: new Date(),
+        currentStock: currentStock + 1, // Updated stock after return
+      });
+
+      setSuccessMessage('Book returned successfully!');
     }
 
     clearForm();
