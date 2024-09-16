@@ -238,64 +238,70 @@ const Inventory = () => {
   return (
     <div className='inventory-form'>
       <h2 className='inventory-header'>Manage Inventory</h2>
-
-      <div className='inventory-controls'>
-        <label htmlFor='bookId'>Book:</label>
-        <select
-          id='bookId'
-          value={selectedBookId}
-          onChange={(e) => {
-            setSelectedBookId(e.target.value);
-            handleInputChange();
-          }}
-        >
-          <option value='' disabled>
-            Select a book
-          </option>
-          {books.map((book) => (
-            <option key={book.id} value={book.id}>
-              {book.title}
+      <div className='inventory-management'>
+        <div className='inventory-management-left'>
+          <select
+            id='bookId'
+            value={selectedBookId}
+            onChange={(e) => {
+              setSelectedBookId(e.target.value);
+              handleInputChange();
+            }}
+          >
+            <option value='' disabled>
+              Select a book
             </option>
-          ))}
-        </select>
-      </div>
+            {books.map((book) => (
+              <option key={book.id} value={book.id}>
+                {book.title}
+              </option>
+            ))}
+          </select>
+          <div className='quantity-container'>
+            <div className='quantity-container-left'>
+              <label htmlFor='quantityChange'>Quantity Change:</label>
+            </div>
+            <div className='quantity-container-right'>
+              <input
+                type='number'
+                id='quantityChange'
+                value={quantityChange}
+                onChange={(e) => {
+                  setQuantityChange(parseInt(e.target.value));
+                  handleInputChange();
+                }}
+              />
+            </div>
+          </div>
 
-      <div className='book-stock-info'>
-        <p>
-          <strong>Total Number:</strong> {totalNumber}
-        </p>
-        <p>
-          <strong>Current Stock:</strong> {currentStock}
-        </p>
-      </div>
-
-      <div className='inventory-inputs'>
-        <label htmlFor='quantityChange'>Quantity Change:</label>
-        <input
-          type='number'
-          id='quantityChange'
-          value={quantityChange}
-          onChange={(e) => {
-            setQuantityChange(parseInt(e.target.value));
-            handleInputChange();
-          }}
-        />
-
-        <label htmlFor='invoiceOrWriteOff'>Invoice/Write-off Request:</label>
-        <input
-          type='text'
-          id='invoiceOrWriteOff'
-          value={invoiceOrWriteOff}
-          onChange={(e) => {
-            setInvoiceOrWriteOff(e.target.value);
-            handleInputChange();
-          }}
-          placeholder='Enter invoice or write-off request'
-          required
-        />
+          <input
+            type='text'
+            id='invoiceOrWriteOff'
+            value={invoiceOrWriteOff}
+            onChange={(e) => {
+              setInvoiceOrWriteOff(e.target.value);
+              handleInputChange();
+            }}
+            placeholder='Enter invoice or write-off request'
+            required
+          />
+        </div>
+        <div className='inventory-management-right'>
+          <div className='inventory-stock-info'>
+            <p>
+              <strong>Total Number: </strong> {totalNumber}
+            </p>
+            <p>
+              <strong>Current Stock:</strong> {currentStock}
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Display error or success message */}
+      {!errorMessage && !successMessage && (
+        <p className='placeholder-message'>.</p>
+      )}
       {errorMessage && <p className='error-message'>{errorMessage}</p>}
       {successMessage && <p className='success-message'>{successMessage}</p>}
 

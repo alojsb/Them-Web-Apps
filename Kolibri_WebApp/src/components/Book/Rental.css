@@ -13,24 +13,6 @@
   font-size: 14px;
 }
 
-.success-message {
-  color: green;
-  background-color: #e8f5e9;
-  padding: 10px;
-  border: 1px solid green;
-  border-radius: 5px;
-  margin-top: 15px;
-}
-
-.error-message {
-  color: red;
-  background-color: #fce4e4;
-  padding: 10px;
-  border: 1px solid red;
-  border-radius: 5px;
-  margin-top: 15px;
-}
-
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
