@@ -2,3 +2,84 @@
   color: red;
   font-weight: bold;
 }
+
+.rental-controls select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.success-message {
+  color: green;
+  background-color: #e8f5e9;
+  padding: 10px;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.error-message {
+  color: red;
+  background-color: #fce4e4;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.rental-form {
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.rental-controls {
+  margin-bottom: 20px;
+}
+
+.rental-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rental-header {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.reservation-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.rental-controls select:empty {
+  color: #999;
+}
+
+.rental-controls select option {
+  color: #000;
+}
