@@ -1,0 +1,3316 @@
+[
+  {
+    "name": "South Georgia",
+    "threeLetterISOCountryCode": "SGS",
+    "population": 30,
+    "area": 3903,
+    "continent": "Antarctica",
+    "capital": "King Edward Point",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Grenada",
+    "threeLetterISOCountryCode": "GRD",
+    "population": 112519,
+    "area": 344,
+    "continent": "North America",
+    "capital": "St. George's",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Switzerland",
+    "threeLetterISOCountryCode": "CHE",
+    "population": 8654622,
+    "area": 41284,
+    "continent": "Europe",
+    "capital": "Bern",
+    "landlocked": true,
+    "borders": [
+      "AUT",
+      "FRA",
+      "ITA",
+      "LIE",
+      "DEU"
+    ]
+  },
+  {
+    "name": "Sierra Leone",
+    "threeLetterISOCountryCode": "SLE",
+    "population": 7976985,
+    "area": 71740,
+    "continent": "Africa",
+    "capital": "Freetown",
+    "landlocked": false,
+    "borders": [
+      "GIN",
+      "LBR"
+    ]
+  },
+  {
+    "name": "Hungary",
+    "threeLetterISOCountryCode": "HUN",
+    "population": 9749763,
+    "area": 93028,
+    "continent": "Europe",
+    "capital": "Budapest",
+    "landlocked": true,
+    "borders": [
+      "AUT",
+      "HRV",
+      "ROU",
+      "SRB",
+      "SVK",
+      "SVN",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Taiwan",
+    "threeLetterISOCountryCode": "TWN",
+    "population": 23503349,
+    "area": 36193,
+    "continent": "Asia",
+    "capital": "Taipei",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Wallis and Futuna",
+    "threeLetterISOCountryCode": "WLF",
+    "population": 11750,
+    "area": 142,
+    "continent": "Oceania",
+    "capital": "Mata-Utu",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Barbados",
+    "threeLetterISOCountryCode": "BRB",
+    "population": 287371,
+    "area": 430,
+    "continent": "North America",
+    "capital": "Bridgetown",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Pitcairn Islands",
+    "threeLetterISOCountryCode": "PCN",
+    "population": 56,
+    "area": 47,
+    "continent": "Oceania",
+    "capital": "Adamstown",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Ivory Coast",
+    "threeLetterISOCountryCode": "CIV",
+    "population": 26378275,
+    "area": 322463,
+    "continent": "Africa",
+    "capital": "Yamoussoukro",
+    "landlocked": false,
+    "borders": [
+      "BFA",
+      "GHA",
+      "GIN",
+      "LBR",
+      "MLI"
+    ]
+  },
+  {
+    "name": "Tunisia",
+    "threeLetterISOCountryCode": "TUN",
+    "population": 11818618,
+    "area": 163610,
+    "continent": "Africa",
+    "capital": "Tunis",
+    "landlocked": false,
+    "borders": [
+      "DZA",
+      "LBY"
+    ]
+  },
+  {
+    "name": "Italy",
+    "threeLetterISOCountryCode": "ITA",
+    "population": 59554023,
+    "area": 301336,
+    "continent": "Europe",
+    "capital": "Rome",
+    "landlocked": false,
+    "borders": [
+      "AUT",
+      "FRA",
+      "SMR",
+      "SVN",
+      "CHE",
+      "VAT"
+    ]
+  },
+  {
+    "name": "Benin",
+    "threeLetterISOCountryCode": "BEN",
+    "population": 12123198,
+    "area": 112622,
+    "continent": "Africa",
+    "capital": "Porto-Novo",
+    "landlocked": false,
+    "borders": [
+      "BFA",
+      "NER",
+      "NGA",
+      "TGO"
+    ]
+  },
+  {
+    "name": "Indonesia",
+    "threeLetterISOCountryCode": "IDN",
+    "population": 273523621,
+    "area": 1904569,
+    "continent": "Asia",
+    "capital": "Jakarta",
+    "landlocked": false,
+    "borders": [
+      "TLS",
+      "MYS",
+      "PNG"
+    ]
+  },
+  {
+    "name": "Cape Verde",
+    "threeLetterISOCountryCode": "CPV",
+    "population": 555988,
+    "area": 4033,
+    "continent": "Africa",
+    "capital": "Praia",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "threeLetterISOCountryCode": "KNA",
+    "population": 53192,
+    "area": 261,
+    "continent": "North America",
+    "capital": "Basseterre",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Laos",
+    "threeLetterISOCountryCode": "LAO",
+    "population": 7275556,
+    "area": 236800,
+    "continent": "Asia",
+    "capital": "Vientiane",
+    "landlocked": true,
+    "borders": [
+      "MMR",
+      "KHM",
+      "CHN",
+      "THA",
+      "VNM"
+    ]
+  },
+  {
+    "name": "Caribbean Netherlands",
+    "threeLetterISOCountryCode": "BES",
+    "population": 25987,
+    "area": 328,
+    "continent": "North America",
+    "capital": "Kralendijk",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Uganda",
+    "threeLetterISOCountryCode": "UGA",
+    "population": 45741000,
+    "area": 241550,
+    "continent": "Africa",
+    "capital": "Kampala",
+    "landlocked": true,
+    "borders": [
+      "COD",
+      "KEN",
+      "RWA",
+      "SSD",
+      "TZA"
+    ]
+  },
+  {
+    "name": "Andorra",
+    "threeLetterISOCountryCode": "AND",
+    "population": 77265,
+    "area": 468,
+    "continent": "Europe",
+    "capital": "Andorra la Vella",
+    "landlocked": true,
+    "borders": [
+      "FRA",
+      "ESP"
+    ]
+  },
+  {
+    "name": "Burundi",
+    "threeLetterISOCountryCode": "BDI",
+    "population": 11890781,
+    "area": 27834,
+    "continent": "Africa",
+    "capital": "Gitega",
+    "landlocked": true,
+    "borders": [
+      "COD",
+      "RWA",
+      "TZA"
+    ]
+  },
+  {
+    "name": "South Africa",
+    "threeLetterISOCountryCode": "ZAF",
+    "population": 59308690,
+    "area": 1221037,
+    "continent": "Africa",
+    "capital": "Pretoria",
+    "landlocked": false,
+    "borders": [
+      "BWA",
+      "LSO",
+      "MOZ",
+      "NAM",
+      "SWZ",
+      "ZWE"
+    ]
+  },
+  {
+    "name": "France",
+    "threeLetterISOCountryCode": "FRA",
+    "population": 67391582,
+    "area": 551695,
+    "continent": "Europe",
+    "capital": "Paris",
+    "landlocked": false,
+    "borders": [
+      "AND",
+      "BEL",
+      "DEU",
+      "ITA",
+      "LUX",
+      "MCO",
+      "ESP",
+      "CHE"
+    ]
+  },
+  {
+    "name": "Libya",
+    "threeLetterISOCountryCode": "LBY",
+    "population": 6871287,
+    "area": 1759540,
+    "continent": "Africa",
+    "capital": "Tripoli",
+    "landlocked": false,
+    "borders": [
+      "DZA",
+      "TCD",
+      "EGY",
+      "NER",
+      "SDN",
+      "TUN"
+    ]
+  },
+  {
+    "name": "Mexico",
+    "threeLetterISOCountryCode": "MEX",
+    "population": 128932753,
+    "area": 1964375,
+    "continent": "North America",
+    "capital": "Mexico City",
+    "landlocked": false,
+    "borders": [
+      "BLZ",
+      "GTM",
+      "USA"
+    ]
+  },
+  {
+    "name": "Gabon",
+    "threeLetterISOCountryCode": "GAB",
+    "population": 2225728,
+    "area": 267668,
+    "continent": "Africa",
+    "capital": "Libreville",
+    "landlocked": false,
+    "borders": [
+      "CMR",
+      "COG",
+      "GNQ"
+    ]
+  },
+  {
+    "name": "Northern Mariana Islands",
+    "threeLetterISOCountryCode": "MNP",
+    "population": 57557,
+    "area": 464,
+    "continent": "Oceania",
+    "capital": "Saipan",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "North Macedonia",
+    "threeLetterISOCountryCode": "MKD",
+    "population": 2077132,
+    "area": 25713,
+    "continent": "Europe",
+    "capital": "Skopje",
+    "landlocked": true,
+    "borders": [
+      "ALB",
+      "BGR",
+      "GRC",
+      "UNK",
+      "SRB"
+    ]
+  },
+  {
+    "name": "China",
+    "threeLetterISOCountryCode": "CHN",
+    "population": 1402112000,
+    "area": 9706961,
+    "continent": "Asia",
+    "capital": "Beijing",
+    "landlocked": false,
+    "borders": [
+      "AFG",
+      "BTN",
+      "MMR",
+      "HKG",
+      "IND",
+      "KAZ",
+      "NPL",
+      "PRK",
+      "KGZ",
+      "LAO",
+      "MAC",
+      "MNG",
+      "PAK",
+      "RUS",
+      "TJK",
+      "VNM"
+    ]
+  },
+  {
+    "name": "Yemen",
+    "threeLetterISOCountryCode": "YEM",
+    "population": 29825968,
+    "area": 527968,
+    "continent": "Asia",
+    "capital": "Sana'a",
+    "landlocked": false,
+    "borders": [
+      "OMN",
+      "SAU"
+    ]
+  },
+  {
+    "name": "Saint Barthélemy",
+    "threeLetterISOCountryCode": "BLM",
+    "population": 4255,
+    "area": 21,
+    "continent": "North America",
+    "capital": "Gustavia",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Guernsey",
+    "threeLetterISOCountryCode": "GGY",
+    "population": 62999,
+    "area": 78,
+    "continent": "Europe",
+    "capital": "St. Peter Port",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Solomon Islands",
+    "threeLetterISOCountryCode": "SLB",
+    "population": 686878,
+    "area": 28896,
+    "continent": "Oceania",
+    "capital": "Honiara",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Svalbard and Jan Mayen",
+    "threeLetterISOCountryCode": "SJM",
+    "population": 2562,
+    "area": 61399,
+    "continent": "Europe",
+    "capital": "Longyearbyen",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Faroe Islands",
+    "threeLetterISOCountryCode": "FRO",
+    "population": 48865,
+    "area": 1393,
+    "continent": "Europe",
+    "capital": "Tórshavn",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Uzbekistan",
+    "threeLetterISOCountryCode": "UZB",
+    "population": 34232050,
+    "area": 447400,
+    "continent": "Asia",
+    "capital": "Tashkent",
+    "landlocked": true,
+    "borders": [
+      "AFG",
+      "KAZ",
+      "KGZ",
+      "TJK",
+      "TKM"
+    ]
+  },
+  {
+    "name": "Egypt",
+    "threeLetterISOCountryCode": "EGY",
+    "population": 102334403,
+    "area": 1002450,
+    "continent": "Africa",
+    "capital": "Cairo",
+    "landlocked": false,
+    "borders": [
+      "ISR",
+      "LBY",
+      "PSE",
+      "SDN"
+    ]
+  },
+  {
+    "name": "Senegal",
+    "threeLetterISOCountryCode": "SEN",
+    "population": 16743930,
+    "area": 196722,
+    "continent": "Africa",
+    "capital": "Dakar",
+    "landlocked": false,
+    "borders": [
+      "GMB",
+      "GIN",
+      "GNB",
+      "MLI",
+      "MRT"
+    ]
+  },
+  {
+    "name": "Sri Lanka",
+    "threeLetterISOCountryCode": "LKA",
+    "population": 21919000,
+    "area": 65610,
+    "continent": "Asia",
+    "capital": "Sri Jayawardenepura Kotte",
+    "landlocked": false,
+    "borders": [
+      "IND"
+    ]
+  },
+  {
+    "name": "Palestine",
+    "threeLetterISOCountryCode": "PSE",
+    "population": 4803269,
+    "area": 6220,
+    "continent": "Asia",
+    "capital": "Ramallah",
+    "landlocked": false,
+    "borders": [
+      "ISR",
+      "EGY",
+      "JOR"
+    ]
+  },
+  {
+    "name": "Bangladesh",
+    "threeLetterISOCountryCode": "BGD",
+    "population": 164689383,
+    "area": 147570,
+    "continent": "Asia",
+    "capital": "Dhaka",
+    "landlocked": false,
+    "borders": [
+      "MMR",
+      "IND"
+    ]
+  },
+  {
+    "name": "Peru",
+    "threeLetterISOCountryCode": "PER",
+    "population": 32971846,
+    "area": 1285216,
+    "continent": "South America",
+    "capital": "Lima",
+    "landlocked": false,
+    "borders": [
+      "BOL",
+      "BRA",
+      "CHL",
+      "COL",
+      "ECU"
+    ]
+  },
+  {
+    "name": "Singapore",
+    "threeLetterISOCountryCode": "SGP",
+    "population": 5685807,
+    "area": 710,
+    "continent": "Asia",
+    "capital": "Singapore",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Turkey",
+    "threeLetterISOCountryCode": "TUR",
+    "population": 84339067,
+    "area": 783562,
+    "continent": "Europe, Asia",
+    "capital": "Ankara",
+    "landlocked": false,
+    "borders": [
+      "ARM",
+      "AZE",
+      "BGR",
+      "GEO",
+      "GRC",
+      "IRN",
+      "IRQ",
+      "SYR"
+    ]
+  },
+  {
+    "name": "Afghanistan",
+    "threeLetterISOCountryCode": "AFG",
+    "population": 40218234,
+    "area": 652230,
+    "continent": "Asia",
+    "capital": "Kabul",
+    "landlocked": true,
+    "borders": [
+      "IRN",
+      "PAK",
+      "TKM",
+      "UZB",
+      "TJK",
+      "CHN"
+    ]
+  },
+  {
+    "name": "Aruba",
+    "threeLetterISOCountryCode": "ABW",
+    "population": 106766,
+    "area": 180,
+    "continent": "North America",
+    "capital": "Oranjestad",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Cook Islands",
+    "threeLetterISOCountryCode": "COK",
+    "population": 18100,
+    "area": 236,
+    "continent": "Oceania",
+    "capital": "Avarua",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "United Kingdom",
+    "threeLetterISOCountryCode": "GBR",
+    "population": 67215293,
+    "area": 242900,
+    "continent": "Europe",
+    "capital": "London",
+    "landlocked": false,
+    "borders": [
+      "IRL"
+    ]
+  },
+  {
+    "name": "Zambia",
+    "threeLetterISOCountryCode": "ZMB",
+    "population": 18383956,
+    "area": 752612,
+    "continent": "Africa",
+    "capital": "Lusaka",
+    "landlocked": true,
+    "borders": [
+      "AGO",
+      "BWA",
+      "COD",
+      "MWI",
+      "MOZ",
+      "NAM",
+      "TZA",
+      "ZWE"
+    ]
+  },
+  {
+    "name": "Finland",
+    "threeLetterISOCountryCode": "FIN",
+    "population": 5530719,
+    "area": 338424,
+    "continent": "Europe",
+    "capital": "Helsinki",
+    "landlocked": false,
+    "borders": [
+      "NOR",
+      "SWE",
+      "RUS"
+    ]
+  },
+  {
+    "name": "Niger",
+    "threeLetterISOCountryCode": "NER",
+    "population": 24206636,
+    "area": 1267000,
+    "continent": "Africa",
+    "capital": "Niamey",
+    "landlocked": true,
+    "borders": [
+      "DZA",
+      "BEN",
+      "BFA",
+      "TCD",
+      "LBY",
+      "MLI",
+      "NGA"
+    ]
+  },
+  {
+    "name": "Christmas Island",
+    "threeLetterISOCountryCode": "CXR",
+    "population": 2072,
+    "area": 135,
+    "continent": "Asia",
+    "capital": "Flying Fish Cove",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Tokelau",
+    "threeLetterISOCountryCode": "TKL",
+    "population": 1411,
+    "area": 12,
+    "continent": "Oceania",
+    "capital": "Fakaofo",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Guinea-Bissau",
+    "threeLetterISOCountryCode": "GNB",
+    "population": 1967998,
+    "area": 36125,
+    "continent": "Africa",
+    "capital": "Bissau",
+    "landlocked": false,
+    "borders": [
+      "GIN",
+      "SEN"
+    ]
+  },
+  {
+    "name": "Azerbaijan",
+    "threeLetterISOCountryCode": "AZE",
+    "population": 10110116,
+    "area": 86600,
+    "continent": "Europe, Asia",
+    "capital": "Baku",
+    "landlocked": true,
+    "borders": [
+      "ARM",
+      "GEO",
+      "IRN",
+      "RUS",
+      "TUR"
+    ]
+  },
+  {
+    "name": "Réunion",
+    "threeLetterISOCountryCode": "REU",
+    "population": 840974,
+    "area": 2511,
+    "continent": "Africa",
+    "capital": "Saint-Denis",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Djibouti",
+    "threeLetterISOCountryCode": "DJI",
+    "population": 988002,
+    "area": 23200,
+    "continent": "Africa",
+    "capital": "Djibouti",
+    "landlocked": false,
+    "borders": [
+      "ERI",
+      "ETH",
+      "SOM"
+    ]
+  },
+  {
+    "name": "North Korea",
+    "threeLetterISOCountryCode": "PRK",
+    "population": 25778815,
+    "area": 120538,
+    "continent": "Asia",
+    "capital": "Pyongyang",
+    "landlocked": false,
+    "borders": [
+      "CHN",
+      "KOR",
+      "RUS"
+    ]
+  },
+  {
+    "name": "Mauritius",
+    "threeLetterISOCountryCode": "MUS",
+    "population": 1265740,
+    "area": 2040,
+    "continent": "Africa",
+    "capital": "Port Louis",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Montserrat",
+    "threeLetterISOCountryCode": "MSR",
+    "population": 4922,
+    "area": 102,
+    "continent": "North America",
+    "capital": "Plymouth",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "United States Virgin Islands",
+    "threeLetterISOCountryCode": "VIR",
+    "population": 106290,
+    "area": 347,
+    "continent": "North America",
+    "capital": "Charlotte Amalie",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Colombia",
+    "threeLetterISOCountryCode": "COL",
+    "population": 50882884,
+    "area": 1141748,
+    "continent": "South America",
+    "capital": "Bogotá",
+    "landlocked": false,
+    "borders": [
+      "BRA",
+      "ECU",
+      "PAN",
+      "PER",
+      "VEN"
+    ]
+  },
+  {
+    "name": "Greece",
+    "threeLetterISOCountryCode": "GRC",
+    "population": 10715549,
+    "area": 131990,
+    "continent": "Europe",
+    "capital": "Athens",
+    "landlocked": false,
+    "borders": [
+      "ALB",
+      "BGR",
+      "TUR",
+      "MKD"
+    ]
+  },
+  {
+    "name": "Croatia",
+    "threeLetterISOCountryCode": "HRV",
+    "population": 4047200,
+    "area": 56594,
+    "continent": "Europe",
+    "capital": "Zagreb",
+    "landlocked": false,
+    "borders": [
+      "BIH",
+      "HUN",
+      "MNE",
+      "SRB",
+      "SVN"
+    ]
+  },
+  {
+    "name": "Morocco",
+    "threeLetterISOCountryCode": "MAR",
+    "population": 36910558,
+    "area": 446550,
+    "continent": "Africa",
+    "capital": "Rabat",
+    "landlocked": false,
+    "borders": [
+      "DZA",
+      "ESH",
+      "ESP"
+    ]
+  },
+  {
+    "name": "Algeria",
+    "threeLetterISOCountryCode": "DZA",
+    "population": 44700000,
+    "area": 2381741,
+    "continent": "Africa",
+    "capital": "Algiers",
+    "landlocked": false,
+    "borders": [
+      "TUN",
+      "LBY",
+      "NER",
+      "ESH",
+      "MRT",
+      "MLI",
+      "MAR"
+    ]
+  },
+  {
+    "name": "Antarctica",
+    "threeLetterISOCountryCode": "ATA",
+    "population": 1000,
+    "area": 14000000,
+    "continent": "Antarctica",
+    "capital": "N/A",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Netherlands",
+    "threeLetterISOCountryCode": "NLD",
+    "population": 16655799,
+    "area": 41850,
+    "continent": "Europe",
+    "capital": "Amsterdam",
+    "landlocked": false,
+    "borders": [
+      "BEL",
+      "DEU"
+    ]
+  },
+  {
+    "name": "Sudan",
+    "threeLetterISOCountryCode": "SDN",
+    "population": 43849269,
+    "area": 1886068,
+    "continent": "Africa",
+    "capital": "Khartoum",
+    "landlocked": false,
+    "borders": [
+      "CAF",
+      "TCD",
+      "EGY",
+      "ERI",
+      "ETH",
+      "LBY",
+      "SSD"
+    ]
+  },
+  {
+    "name": "Fiji",
+    "threeLetterISOCountryCode": "FJI",
+    "population": 896444,
+    "area": 18272,
+    "continent": "Oceania",
+    "capital": "Suva",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Liechtenstein",
+    "threeLetterISOCountryCode": "LIE",
+    "population": 38137,
+    "area": 160,
+    "continent": "Europe",
+    "capital": "Vaduz",
+    "landlocked": true,
+    "borders": [
+      "AUT",
+      "CHE"
+    ]
+  },
+  {
+    "name": "Nepal",
+    "threeLetterISOCountryCode": "NPL",
+    "population": 29136808,
+    "area": 147181,
+    "continent": "Asia",
+    "capital": "Kathmandu",
+    "landlocked": true,
+    "borders": [
+      "CHN",
+      "IND"
+    ]
+  },
+  {
+    "name": "Puerto Rico",
+    "threeLetterISOCountryCode": "PRI",
+    "population": 3194034,
+    "area": 8870,
+    "continent": "North America",
+    "capital": "San Juan",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Georgia",
+    "threeLetterISOCountryCode": "GEO",
+    "population": 3714000,
+    "area": 69700,
+    "continent": "Asia",
+    "capital": "Tbilisi",
+    "landlocked": false,
+    "borders": [
+      "ARM",
+      "AZE",
+      "RUS",
+      "TUR"
+    ]
+  },
+  {
+    "name": "Pakistan",
+    "threeLetterISOCountryCode": "PAK",
+    "population": 220892331,
+    "area": 881912,
+    "continent": "Asia",
+    "capital": "Islamabad",
+    "landlocked": false,
+    "borders": [
+      "AFG",
+      "CHN",
+      "IND",
+      "IRN"
+    ]
+  },
+  {
+    "name": "Monaco",
+    "threeLetterISOCountryCode": "MCO",
+    "population": 39244,
+    "area": 2.02,
+    "continent": "Europe",
+    "capital": "Monaco",
+    "landlocked": false,
+    "borders": [
+      "FRA"
+    ]
+  },
+  {
+    "name": "Botswana",
+    "threeLetterISOCountryCode": "BWA",
+    "population": 2351625,
+    "area": 582000,
+    "continent": "Africa",
+    "capital": "Gaborone",
+    "landlocked": true,
+    "borders": [
+      "NAM",
+      "ZAF",
+      "ZMB",
+      "ZWE"
+    ]
+  },
+  {
+    "name": "Lebanon",
+    "threeLetterISOCountryCode": "LBN",
+    "population": 6825442,
+    "area": 10452,
+    "continent": "Asia",
+    "capital": "Beirut",
+    "landlocked": false,
+    "borders": [
+      "ISR",
+      "SYR"
+    ]
+  },
+  {
+    "name": "Papua New Guinea",
+    "threeLetterISOCountryCode": "PNG",
+    "population": 8947027,
+    "area": 462840,
+    "continent": "Oceania",
+    "capital": "Port Moresby",
+    "landlocked": false,
+    "borders": [
+      "IDN"
+    ]
+  },
+  {
+    "name": "Mayotte",
+    "threeLetterISOCountryCode": "MYT",
+    "population": 226915,
+    "area": 374,
+    "continent": "Africa",
+    "capital": "Mamoudzou",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Dominican Republic",
+    "threeLetterISOCountryCode": "DOM",
+    "population": 10847904,
+    "area": 48671,
+    "continent": "North America",
+    "capital": "Santo Domingo",
+    "landlocked": false,
+    "borders": [
+      "HTI"
+    ]
+  },
+  {
+    "name": "Norfolk Island",
+    "threeLetterISOCountryCode": "NFK",
+    "population": 2302,
+    "area": 36,
+    "continent": "Oceania",
+    "capital": "Kingston",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Bouvet Island",
+    "threeLetterISOCountryCode": "BVT",
+    "population": 0,
+    "area": 49,
+    "continent": "Antarctica",
+    "capital": "N/A",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Qatar",
+    "threeLetterISOCountryCode": "QAT",
+    "population": 2881060,
+    "area": 11586,
+    "continent": "Asia",
+    "capital": "Doha",
+    "landlocked": false,
+    "borders": [
+      "SAU"
+    ]
+  },
+  {
+    "name": "Madagascar",
+    "threeLetterISOCountryCode": "MDG",
+    "population": 27691019,
+    "area": 587041,
+    "continent": "Africa",
+    "capital": "Antananarivo",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "India",
+    "threeLetterISOCountryCode": "IND",
+    "population": 1380004385,
+    "area": 3287590,
+    "continent": "Asia",
+    "capital": "New Delhi",
+    "landlocked": false,
+    "borders": [
+      "BGD",
+      "BTN",
+      "MMR",
+      "CHN",
+      "NPL",
+      "PAK"
+    ]
+  },
+  {
+    "name": "Syria",
+    "threeLetterISOCountryCode": "SYR",
+    "population": 17500657,
+    "area": 185180,
+    "continent": "Asia",
+    "capital": "Damascus",
+    "landlocked": false,
+    "borders": [
+      "IRQ",
+      "ISR",
+      "JOR",
+      "LBN",
+      "TUR"
+    ]
+  },
+  {
+    "name": "Montenegro",
+    "threeLetterISOCountryCode": "MNE",
+    "population": 621718,
+    "area": 13812,
+    "continent": "Europe",
+    "capital": "Podgorica",
+    "landlocked": false,
+    "borders": [
+      "ALB",
+      "BIH",
+      "HRV",
+      "UNK",
+      "SRB"
+    ]
+  },
+  {
+    "name": "Eswatini",
+    "threeLetterISOCountryCode": "SWZ",
+    "population": 1160164,
+    "area": 17364,
+    "continent": "Africa",
+    "capital": "Mbabane",
+    "landlocked": true,
+    "borders": [
+      "MOZ",
+      "ZAF"
+    ]
+  },
+  {
+    "name": "Paraguay",
+    "threeLetterISOCountryCode": "PRY",
+    "population": 7132530,
+    "area": 406752,
+    "continent": "South America",
+    "capital": "Asunción",
+    "landlocked": true,
+    "borders": [
+      "ARG",
+      "BOL",
+      "BRA"
+    ]
+  },
+  {
+    "name": "El Salvador",
+    "threeLetterISOCountryCode": "SLV",
+    "population": 6486201,
+    "area": 21041,
+    "continent": "North America",
+    "capital": "San Salvador",
+    "landlocked": false,
+    "borders": [
+      "GTM",
+      "HND"
+    ]
+  },
+  {
+    "name": "Ukraine",
+    "threeLetterISOCountryCode": "UKR",
+    "population": 44134693,
+    "area": 603500,
+    "continent": "Europe",
+    "capital": "Kyiv",
+    "landlocked": false,
+    "borders": [
+      "BLR",
+      "HUN",
+      "MDA",
+      "POL",
+      "ROU",
+      "RUS",
+      "SVK"
+    ]
+  },
+  {
+    "name": "Isle of Man",
+    "threeLetterISOCountryCode": "IMN",
+    "population": 85032,
+    "area": 572,
+    "continent": "Europe",
+    "capital": "Douglas",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Namibia",
+    "threeLetterISOCountryCode": "NAM",
+    "population": 2540916,
+    "area": 825615,
+    "continent": "Africa",
+    "capital": "Windhoek",
+    "landlocked": false,
+    "borders": [
+      "AGO",
+      "BWA",
+      "ZAF",
+      "ZMB"
+    ]
+  },
+  {
+    "name": "United Arab Emirates",
+    "threeLetterISOCountryCode": "ARE",
+    "population": 9890400,
+    "area": 83600,
+    "continent": "Asia",
+    "capital": "Abu Dhabi",
+    "landlocked": false,
+    "borders": [
+      "OMN",
+      "SAU"
+    ]
+  },
+  {
+    "name": "Bulgaria",
+    "threeLetterISOCountryCode": "BGR",
+    "population": 6927288,
+    "area": 110879,
+    "continent": "Europe",
+    "capital": "Sofia",
+    "landlocked": false,
+    "borders": [
+      "GRC",
+      "MKD",
+      "ROU",
+      "SRB",
+      "TUR"
+    ]
+  },
+  {
+    "name": "Greenland",
+    "threeLetterISOCountryCode": "GRL",
+    "population": 56367,
+    "area": 2166086,
+    "continent": "North America",
+    "capital": "Nuuk",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Germany",
+    "threeLetterISOCountryCode": "DEU",
+    "population": 83240525,
+    "area": 357114,
+    "continent": "Europe",
+    "capital": "Berlin",
+    "landlocked": false,
+    "borders": [
+      "AUT",
+      "BEL",
+      "CZE",
+      "DNK",
+      "FRA",
+      "LUX",
+      "NLD",
+      "POL",
+      "CHE"
+    ]
+  },
+  {
+    "name": "Cambodia",
+    "threeLetterISOCountryCode": "KHM",
+    "population": 16718971,
+    "area": 181035,
+    "continent": "Asia",
+    "capital": "Phnom Penh",
+    "landlocked": false,
+    "borders": [
+      "LAO",
+      "THA",
+      "VNM"
+    ]
+  },
+  {
+    "name": "Iraq",
+    "threeLetterISOCountryCode": "IRQ",
+    "population": 40222503,
+    "area": 438317,
+    "continent": "Asia",
+    "capital": "Baghdad",
+    "landlocked": false,
+    "borders": [
+      "IRN",
+      "JOR",
+      "KWT",
+      "SAU",
+      "SYR",
+      "TUR"
+    ]
+  },
+  {
+    "name": "French Southern and Antarctic Lands",
+    "threeLetterISOCountryCode": "ATF",
+    "population": 400,
+    "area": 7747,
+    "continent": "Antarctica",
+    "capital": "Port-aux-Français",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Sweden",
+    "threeLetterISOCountryCode": "SWE",
+    "population": 10353442,
+    "area": 450295,
+    "continent": "Europe",
+    "capital": "Stockholm",
+    "landlocked": false,
+    "borders": [
+      "FIN",
+      "NOR"
+    ]
+  },
+  {
+    "name": "Cuba",
+    "threeLetterISOCountryCode": "CUB",
+    "population": 11326616,
+    "area": 109884,
+    "continent": "North America",
+    "capital": "Havana",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Kyrgyzstan",
+    "threeLetterISOCountryCode": "KGZ",
+    "population": 6591600,
+    "area": 199951,
+    "continent": "Asia",
+    "capital": "Bishkek",
+    "landlocked": true,
+    "borders": [
+      "CHN",
+      "KAZ",
+      "TJK",
+      "UZB"
+    ]
+  },
+  {
+    "name": "Russia",
+    "threeLetterISOCountryCode": "RUS",
+    "population": 144104080,
+    "area": 17098242,
+    "continent": "Europe, Asia",
+    "capital": "Moscow",
+    "landlocked": false,
+    "borders": [
+      "AZE",
+      "BLR",
+      "CHN",
+      "EST",
+      "FIN",
+      "GEO",
+      "KAZ",
+      "PRK",
+      "LVA",
+      "LTU",
+      "MNG",
+      "NOR",
+      "POL",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Malaysia",
+    "threeLetterISOCountryCode": "MYS",
+    "population": 32365998,
+    "area": 330803,
+    "continent": "Asia",
+    "capital": "Kuala Lumpur",
+    "landlocked": false,
+    "borders": [
+      "BRN",
+      "IDN",
+      "THA"
+    ]
+  },
+  {
+    "name": "São Tomé and Príncipe",
+    "threeLetterISOCountryCode": "STP",
+    "population": 219161,
+    "area": 964,
+    "continent": "Africa",
+    "capital": "São Tomé",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Cyprus",
+    "threeLetterISOCountryCode": "CYP",
+    "population": 1207361,
+    "area": 9251,
+    "continent": "Europe",
+    "capital": "Nicosia",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Canada",
+    "threeLetterISOCountryCode": "CAN",
+    "population": 38005238,
+    "area": 9984670,
+    "continent": "North America",
+    "capital": "Ottawa",
+    "landlocked": false,
+    "borders": [
+      "USA"
+    ]
+  },
+  {
+    "name": "Malawi",
+    "threeLetterISOCountryCode": "MWI",
+    "population": 19129955,
+    "area": 118484,
+    "continent": "Africa",
+    "capital": "Lilongwe",
+    "landlocked": true,
+    "borders": [
+      "MOZ",
+      "TZA",
+      "ZMB"
+    ]
+  },
+  {
+    "name": "Saudi Arabia",
+    "threeLetterISOCountryCode": "SAU",
+    "population": 34813867,
+    "area": 2149690,
+    "continent": "Asia",
+    "capital": "Riyadh",
+    "landlocked": false,
+    "borders": [
+      "IRQ",
+      "JOR",
+      "KWT",
+      "OMN",
+      "QAT",
+      "ARE",
+      "YEM"
+    ]
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "threeLetterISOCountryCode": "BIH",
+    "population": 3280815,
+    "area": 51209,
+    "continent": "Europe",
+    "capital": "Sarajevo",
+    "landlocked": false,
+    "borders": [
+      "HRV",
+      "MNE",
+      "SRB"
+    ]
+  },
+  {
+    "name": "Ethiopia",
+    "threeLetterISOCountryCode": "ETH",
+    "population": 114963583,
+    "area": 1104300,
+    "continent": "Africa",
+    "capital": "Addis Ababa",
+    "landlocked": true,
+    "borders": [
+      "DJI",
+      "ERI",
+      "KEN",
+      "SOM",
+      "SSD",
+      "SDN"
+    ]
+  },
+  {
+    "name": "Spain",
+    "threeLetterISOCountryCode": "ESP",
+    "population": 47351567,
+    "area": 505992,
+    "continent": "Europe",
+    "capital": "Madrid",
+    "landlocked": false,
+    "borders": [
+      "AND",
+      "FRA",
+      "GIB",
+      "PRT",
+      "MAR"
+    ]
+  },
+  {
+    "name": "Slovenia",
+    "threeLetterISOCountryCode": "SVN",
+    "population": 2100126,
+    "area": 20273,
+    "continent": "Europe",
+    "capital": "Ljubljana",
+    "landlocked": false,
+    "borders": [
+      "AUT",
+      "HRV",
+      "ITA",
+      "HUN"
+    ]
+  },
+  {
+    "name": "Oman",
+    "threeLetterISOCountryCode": "OMN",
+    "population": 5106622,
+    "area": 309500,
+    "continent": "Asia",
+    "capital": "Muscat",
+    "landlocked": false,
+    "borders": [
+      "SAU",
+      "ARE",
+      "YEM"
+    ]
+  },
+  {
+    "name": "Saint Pierre and Miquelon",
+    "threeLetterISOCountryCode": "SPM",
+    "population": 6069,
+    "area": 242,
+    "continent": "North America",
+    "capital": "Saint-Pierre",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Macau",
+    "threeLetterISOCountryCode": "MAC",
+    "population": 649342,
+    "area": 30,
+    "continent": "Asia",
+    "capital": "N/A",
+    "landlocked": false,
+    "borders": [
+      "CHN"
+    ]
+  },
+  {
+    "name": "San Marino",
+    "threeLetterISOCountryCode": "SMR",
+    "population": 33938,
+    "area": 61,
+    "continent": "Europe",
+    "capital": "City of San Marino",
+    "landlocked": true,
+    "borders": [
+      "ITA"
+    ]
+  },
+  {
+    "name": "Lesotho",
+    "threeLetterISOCountryCode": "LSO",
+    "population": 2142252,
+    "area": 30355,
+    "continent": "Africa",
+    "capital": "Maseru",
+    "landlocked": true,
+    "borders": [
+      "ZAF"
+    ]
+  },
+  {
+    "name": "Marshall Islands",
+    "threeLetterISOCountryCode": "MHL",
+    "population": 59194,
+    "area": 181,
+    "continent": "Oceania",
+    "capital": "Majuro",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Sint Maarten",
+    "threeLetterISOCountryCode": "SXM",
+    "population": 40812,
+    "area": 34,
+    "continent": "North America",
+    "capital": "Philipsburg",
+    "landlocked": false,
+    "borders": [
+      "MAF"
+    ]
+  },
+  {
+    "name": "Iceland",
+    "threeLetterISOCountryCode": "ISL",
+    "population": 366425,
+    "area": 103000,
+    "continent": "Europe",
+    "capital": "Reykjavik",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Luxembourg",
+    "threeLetterISOCountryCode": "LUX",
+    "population": 632275,
+    "area": 2586,
+    "continent": "Europe",
+    "capital": "Luxembourg",
+    "landlocked": true,
+    "borders": [
+      "BEL",
+      "FRA",
+      "DEU"
+    ]
+  },
+  {
+    "name": "Argentina",
+    "threeLetterISOCountryCode": "ARG",
+    "population": 45376763,
+    "area": 2780400,
+    "continent": "South America",
+    "capital": "Buenos Aires",
+    "landlocked": false,
+    "borders": [
+      "BOL",
+      "BRA",
+      "CHL",
+      "PRY",
+      "URY"
+    ]
+  },
+  {
+    "name": "Turks and Caicos Islands",
+    "threeLetterISOCountryCode": "TCA",
+    "population": 38718,
+    "area": 948,
+    "continent": "North America",
+    "capital": "Cockburn Town",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Nauru",
+    "threeLetterISOCountryCode": "NRU",
+    "population": 10834,
+    "area": 21,
+    "continent": "Oceania",
+    "capital": "Yaren",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Cocos (Keeling) Islands",
+    "threeLetterISOCountryCode": "CCK",
+    "population": 544,
+    "area": 14,
+    "continent": "Asia",
+    "capital": "West Island",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Western Sahara",
+    "threeLetterISOCountryCode": "ESH",
+    "population": 510713,
+    "area": 266000,
+    "continent": "Africa",
+    "capital": "El Aaiún",
+    "landlocked": false,
+    "borders": [
+      "DZA",
+      "MRT",
+      "MAR"
+    ]
+  },
+  {
+    "name": "Dominica",
+    "threeLetterISOCountryCode": "DMA",
+    "population": 71991,
+    "area": 751,
+    "continent": "North America",
+    "capital": "Roseau",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Costa Rica",
+    "threeLetterISOCountryCode": "CRI",
+    "population": 5094114,
+    "area": 51100,
+    "continent": "North America",
+    "capital": "San José",
+    "landlocked": false,
+    "borders": [
+      "NIC",
+      "PAN"
+    ]
+  },
+  {
+    "name": "Australia",
+    "threeLetterISOCountryCode": "AUS",
+    "population": 25687041,
+    "area": 7692024,
+    "continent": "Oceania",
+    "capital": "Canberra",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Thailand",
+    "threeLetterISOCountryCode": "THA",
+    "population": 69799978,
+    "area": 513120,
+    "continent": "Asia",
+    "capital": "Bangkok",
+    "landlocked": false,
+    "borders": [
+      "MMR",
+      "KHM",
+      "LAO",
+      "MYS"
+    ]
+  },
+  {
+    "name": "Haiti",
+    "threeLetterISOCountryCode": "HTI",
+    "population": 11402533,
+    "area": 27750,
+    "continent": "North America",
+    "capital": "Port-au-Prince",
+    "landlocked": false,
+    "borders": [
+      "DOM"
+    ]
+  },
+  {
+    "name": "Tuvalu",
+    "threeLetterISOCountryCode": "TUV",
+    "population": 11792,
+    "area": 26,
+    "continent": "Oceania",
+    "capital": "Funafuti",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Honduras",
+    "threeLetterISOCountryCode": "HND",
+    "population": 9904608,
+    "area": 112492,
+    "continent": "North America",
+    "capital": "Tegucigalpa",
+    "landlocked": false,
+    "borders": [
+      "GTM",
+      "SLV",
+      "NIC"
+    ]
+  },
+  {
+    "name": "Equatorial Guinea",
+    "threeLetterISOCountryCode": "GNQ",
+    "population": 1402985,
+    "area": 28051,
+    "continent": "Africa",
+    "capital": "Malabo",
+    "landlocked": false,
+    "borders": [
+      "CMR",
+      "GAB"
+    ]
+  },
+  {
+    "name": "Saint Lucia",
+    "threeLetterISOCountryCode": "LCA",
+    "population": 183629,
+    "area": 616,
+    "continent": "North America",
+    "capital": "Castries",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "French Polynesia",
+    "threeLetterISOCountryCode": "PYF",
+    "population": 280904,
+    "area": 4167,
+    "continent": "Oceania",
+    "capital": "Papeetē",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Belarus",
+    "threeLetterISOCountryCode": "BLR",
+    "population": 9398861,
+    "area": 207600,
+    "continent": "Europe",
+    "capital": "Minsk",
+    "landlocked": true,
+    "borders": [
+      "LVA",
+      "LTU",
+      "POL",
+      "RUS",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Latvia",
+    "threeLetterISOCountryCode": "LVA",
+    "population": 1901548,
+    "area": 64559,
+    "continent": "Europe",
+    "capital": "Riga",
+    "landlocked": false,
+    "borders": [
+      "BLR",
+      "EST",
+      "LTU",
+      "RUS"
+    ]
+  },
+  {
+    "name": "Palau",
+    "threeLetterISOCountryCode": "PLW",
+    "population": 18092,
+    "area": 459,
+    "continent": "Oceania",
+    "capital": "Ngerulmud",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Guadeloupe",
+    "threeLetterISOCountryCode": "GLP",
+    "population": 400132,
+    "area": 1628,
+    "continent": "North America",
+    "capital": "Basse-Terre",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Philippines",
+    "threeLetterISOCountryCode": "PHL",
+    "population": 109581085,
+    "area": 342353,
+    "continent": "Asia",
+    "capital": "Manila",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Gibraltar",
+    "threeLetterISOCountryCode": "GIB",
+    "population": 33691,
+    "area": 6,
+    "continent": "Europe",
+    "capital": "Gibraltar",
+    "landlocked": false,
+    "borders": [
+      "ESP"
+    ]
+  },
+  {
+    "name": "Denmark",
+    "threeLetterISOCountryCode": "DNK",
+    "population": 5831404,
+    "area": 43094,
+    "continent": "Europe",
+    "capital": "Copenhagen",
+    "landlocked": false,
+    "borders": [
+      "DEU"
+    ]
+  },
+  {
+    "name": "Cameroon",
+    "threeLetterISOCountryCode": "CMR",
+    "population": 26545864,
+    "area": 475442,
+    "continent": "Africa",
+    "capital": "Yaoundé",
+    "landlocked": false,
+    "borders": [
+      "CAF",
+      "TCD",
+      "COG",
+      "GNQ",
+      "GAB",
+      "NGA"
+    ]
+  },
+  {
+    "name": "Guinea",
+    "threeLetterISOCountryCode": "GIN",
+    "population": 13132792,
+    "area": 245857,
+    "continent": "Africa",
+    "capital": "Conakry",
+    "landlocked": false,
+    "borders": [
+      "CIV",
+      "GNB",
+      "LBR",
+      "MLI",
+      "SEN",
+      "SLE"
+    ]
+  },
+  {
+    "name": "Bahrain",
+    "threeLetterISOCountryCode": "BHR",
+    "population": 1701583,
+    "area": 765,
+    "continent": "Asia",
+    "capital": "Manama",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Suriname",
+    "threeLetterISOCountryCode": "SUR",
+    "population": 586634,
+    "area": 163820,
+    "continent": "South America",
+    "capital": "Paramaribo",
+    "landlocked": false,
+    "borders": [
+      "BRA",
+      "GUF",
+      "GUY"
+    ]
+  },
+  {
+    "name": "DR Congo",
+    "threeLetterISOCountryCode": "COD",
+    "population": 108407721,
+    "area": 2344858,
+    "continent": "Africa",
+    "capital": "Kinshasa",
+    "landlocked": false,
+    "borders": [
+      "AGO",
+      "BDI",
+      "CAF",
+      "COG",
+      "RWA",
+      "SSD",
+      "TZA",
+      "UGA",
+      "ZMB"
+    ]
+  },
+  {
+    "name": "Somalia",
+    "threeLetterISOCountryCode": "SOM",
+    "population": 15893219,
+    "area": 637657,
+    "continent": "Africa",
+    "capital": "Mogadishu",
+    "landlocked": false,
+    "borders": [
+      "DJI",
+      "ETH",
+      "KEN"
+    ]
+  },
+  {
+    "name": "Czechia",
+    "threeLetterISOCountryCode": "CZE",
+    "population": 10698896,
+    "area": 78865,
+    "continent": "Europe",
+    "capital": "Prague",
+    "landlocked": true,
+    "borders": [
+      "AUT",
+      "DEU",
+      "POL",
+      "SVK"
+    ]
+  },
+  {
+    "name": "New Caledonia",
+    "threeLetterISOCountryCode": "NCL",
+    "population": 271960,
+    "area": 18575,
+    "continent": "Oceania",
+    "capital": "Nouméa",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Vanuatu",
+    "threeLetterISOCountryCode": "VUT",
+    "population": 307150,
+    "area": 12189,
+    "continent": "Oceania",
+    "capital": "Port Vila",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Saint Helena, Ascension and Tristan da Cunha",
+    "threeLetterISOCountryCode": "SHN",
+    "population": 53192,
+    "area": 394,
+    "continent": "Africa",
+    "capital": "Jamestown",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Togo",
+    "threeLetterISOCountryCode": "TGO",
+    "population": 8278737,
+    "area": 56785,
+    "continent": "Africa",
+    "capital": "Lomé",
+    "landlocked": false,
+    "borders": [
+      "BEN",
+      "BFA",
+      "GHA"
+    ]
+  },
+  {
+    "name": "British Virgin Islands",
+    "threeLetterISOCountryCode": "VGB",
+    "population": 30237,
+    "area": 151,
+    "continent": "North America",
+    "capital": "Road Town",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Kenya",
+    "threeLetterISOCountryCode": "KEN",
+    "population": 53771300,
+    "area": 580367,
+    "continent": "Africa",
+    "capital": "Nairobi",
+    "landlocked": false,
+    "borders": [
+      "ETH",
+      "SOM",
+      "SSD",
+      "TZA",
+      "UGA"
+    ]
+  },
+  {
+    "name": "Niue",
+    "threeLetterISOCountryCode": "NIU",
+    "population": 1470,
+    "area": 260,
+    "continent": "Oceania",
+    "capital": "Alofi",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Heard Island and McDonald Islands",
+    "threeLetterISOCountryCode": "HMD",
+    "population": 0,
+    "area": 412,
+    "continent": "Antarctica",
+    "capital": "N/A",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Rwanda",
+    "threeLetterISOCountryCode": "RWA",
+    "population": 12952209,
+    "area": 26338,
+    "continent": "Africa",
+    "capital": "Kigali",
+    "landlocked": true,
+    "borders": [
+      "BDI",
+      "COD",
+      "TZA",
+      "UGA"
+    ]
+  },
+  {
+    "name": "Estonia",
+    "threeLetterISOCountryCode": "EST",
+    "population": 1331057,
+    "area": 45227,
+    "continent": "Europe",
+    "capital": "Tallinn",
+    "landlocked": false,
+    "borders": [
+      "LVA",
+      "RUS"
+    ]
+  },
+  {
+    "name": "Romania",
+    "threeLetterISOCountryCode": "ROU",
+    "population": 19286123,
+    "area": 238391,
+    "continent": "Europe",
+    "capital": "Bucharest",
+    "landlocked": false,
+    "borders": [
+      "BGR",
+      "HUN",
+      "MDA",
+      "SRB",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "threeLetterISOCountryCode": "TTO",
+    "population": 1399491,
+    "area": 5130,
+    "continent": "North America",
+    "capital": "Port of Spain",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Guyana",
+    "threeLetterISOCountryCode": "GUY",
+    "population": 786559,
+    "area": 214969,
+    "continent": "South America",
+    "capital": "Georgetown",
+    "landlocked": false,
+    "borders": [
+      "BRA",
+      "SUR",
+      "VEN"
+    ]
+  },
+  {
+    "name": "Timor-Leste",
+    "threeLetterISOCountryCode": "TLS",
+    "population": 1318442,
+    "area": 14874,
+    "continent": "Oceania",
+    "capital": "Dili",
+    "landlocked": false,
+    "borders": [
+      "IDN"
+    ]
+  },
+  {
+    "name": "Vietnam",
+    "threeLetterISOCountryCode": "VNM",
+    "population": 97338583,
+    "area": 331212,
+    "continent": "Asia",
+    "capital": "Hanoi",
+    "landlocked": false,
+    "borders": [
+      "KHM",
+      "CHN",
+      "LAO"
+    ]
+  },
+  {
+    "name": "Uruguay",
+    "threeLetterISOCountryCode": "URY",
+    "population": 3473727,
+    "area": 181034,
+    "continent": "South America",
+    "capital": "Montevideo",
+    "landlocked": false,
+    "borders": [
+      "ARG",
+      "BRA"
+    ]
+  },
+  {
+    "name": "Vatican City",
+    "threeLetterISOCountryCode": "VAT",
+    "population": 451,
+    "area": 0.44,
+    "continent": "Europe",
+    "capital": "Vatican City",
+    "landlocked": true,
+    "borders": [
+      "ITA"
+    ]
+  },
+  {
+    "name": "Hong Kong",
+    "threeLetterISOCountryCode": "HKG",
+    "population": 7500700,
+    "area": 1104,
+    "continent": "Asia",
+    "capital": "City of Victoria",
+    "landlocked": false,
+    "borders": [
+      "CHN"
+    ]
+  },
+  {
+    "name": "Austria",
+    "threeLetterISOCountryCode": "AUT",
+    "population": 8917205,
+    "area": 83871,
+    "continent": "Europe",
+    "capital": "Vienna",
+    "landlocked": true,
+    "borders": [
+      "CZE",
+      "DEU",
+      "HUN",
+      "ITA",
+      "LIE",
+      "SVK",
+      "SVN",
+      "CHE"
+    ]
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "threeLetterISOCountryCode": "ATG",
+    "population": 97928,
+    "area": 442,
+    "continent": "North America",
+    "capital": "Saint John's",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Turkmenistan",
+    "threeLetterISOCountryCode": "TKM",
+    "population": 6031187,
+    "area": 488100,
+    "continent": "Asia",
+    "capital": "Ashgabat",
+    "landlocked": true,
+    "borders": [
+      "AFG",
+      "IRN",
+      "KAZ",
+      "UZB"
+    ]
+  },
+  {
+    "name": "Mozambique",
+    "threeLetterISOCountryCode": "MOZ",
+    "population": 31255435,
+    "area": 801590,
+    "continent": "Africa",
+    "capital": "Maputo",
+    "landlocked": false,
+    "borders": [
+      "MWI",
+      "ZAF",
+      "SWZ",
+      "TZA",
+      "ZMB",
+      "ZWE"
+    ]
+  },
+  {
+    "name": "Panama",
+    "threeLetterISOCountryCode": "PAN",
+    "population": 4314768,
+    "area": 75417,
+    "continent": "North America",
+    "capital": "Panama City",
+    "landlocked": false,
+    "borders": [
+      "COL",
+      "CRI"
+    ]
+  },
+  {
+    "name": "Micronesia",
+    "threeLetterISOCountryCode": "FSM",
+    "population": 115021,
+    "area": 702,
+    "continent": "Oceania",
+    "capital": "Palikir",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Ireland",
+    "threeLetterISOCountryCode": "IRL",
+    "population": 4994724,
+    "area": 70273,
+    "continent": "Europe",
+    "capital": "Dublin",
+    "landlocked": false,
+    "borders": [
+      "GBR"
+    ]
+  },
+  {
+    "name": "Curaçao",
+    "threeLetterISOCountryCode": "CUW",
+    "population": 155014,
+    "area": 444,
+    "continent": "North America",
+    "capital": "Willemstad",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "French Guiana",
+    "threeLetterISOCountryCode": "GUF",
+    "population": 254541,
+    "area": 83534,
+    "continent": "South America",
+    "capital": "Cayenne",
+    "landlocked": false,
+    "borders": [
+      "BRA",
+      "SUR"
+    ]
+  },
+  {
+    "name": "Norway",
+    "threeLetterISOCountryCode": "NOR",
+    "population": 5379475,
+    "area": 323802,
+    "continent": "Europe",
+    "capital": "Oslo",
+    "landlocked": false,
+    "borders": [
+      "FIN",
+      "SWE",
+      "RUS"
+    ]
+  },
+  {
+    "name": "Åland Islands",
+    "threeLetterISOCountryCode": "ALA",
+    "population": 29458,
+    "area": 1580,
+    "continent": "Europe",
+    "capital": "Mariehamn",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Central African Republic",
+    "threeLetterISOCountryCode": "CAF",
+    "population": 4829764,
+    "area": 622984,
+    "continent": "Africa",
+    "capital": "Bangui",
+    "landlocked": true,
+    "borders": [
+      "CMR",
+      "TCD",
+      "COD",
+      "COG",
+      "SSD",
+      "SDN"
+    ]
+  },
+  {
+    "name": "Burkina Faso",
+    "threeLetterISOCountryCode": "BFA",
+    "population": 20903278,
+    "area": 272967,
+    "continent": "Africa",
+    "capital": "Ouagadougou",
+    "landlocked": true,
+    "borders": [
+      "BEN",
+      "CIV",
+      "GHA",
+      "MLI",
+      "NER",
+      "TGO"
+    ]
+  },
+  {
+    "name": "Eritrea",
+    "threeLetterISOCountryCode": "ERI",
+    "population": 5352000,
+    "area": 117600,
+    "continent": "Africa",
+    "capital": "Asmara",
+    "landlocked": false,
+    "borders": [
+      "DJI",
+      "ETH",
+      "SDN"
+    ]
+  },
+  {
+    "name": "Tanzania",
+    "threeLetterISOCountryCode": "TZA",
+    "population": 59734213,
+    "area": 945087,
+    "continent": "Africa",
+    "capital": "Dodoma",
+    "landlocked": false,
+    "borders": [
+      "BDI",
+      "COD",
+      "KEN",
+      "MWI",
+      "MOZ",
+      "RWA",
+      "UGA",
+      "ZMB"
+    ]
+  },
+  {
+    "name": "South Korea",
+    "threeLetterISOCountryCode": "KOR",
+    "population": 51780579,
+    "area": 100210,
+    "continent": "Asia",
+    "capital": "Seoul",
+    "landlocked": false,
+    "borders": [
+      "PRK"
+    ]
+  },
+  {
+    "name": "Jordan",
+    "threeLetterISOCountryCode": "JOR",
+    "population": 10203140,
+    "area": 89342,
+    "continent": "Asia",
+    "capital": "Amman",
+    "landlocked": false,
+    "borders": [
+      "IRQ",
+      "ISR",
+      "PSE",
+      "SAU",
+      "SYR"
+    ]
+  },
+  {
+    "name": "Mauritania",
+    "threeLetterISOCountryCode": "MRT",
+    "population": 4649660,
+    "area": 1030700,
+    "continent": "Africa",
+    "capital": "Nouakchott",
+    "landlocked": false,
+    "borders": [
+      "DZA",
+      "MLI",
+      "SEN",
+      "ESH"
+    ]
+  },
+  {
+    "name": "Lithuania",
+    "threeLetterISOCountryCode": "LTU",
+    "population": 2794700,
+    "area": 65300,
+    "continent": "Europe",
+    "capital": "Vilnius",
+    "landlocked": false,
+    "borders": [
+      "BLR",
+      "LVA",
+      "POL",
+      "RUS"
+    ]
+  },
+  {
+    "name": "United States Minor Outlying Islands",
+    "threeLetterISOCountryCode": "UMI",
+    "population": 300,
+    "area": 34.2,
+    "continent": "Oceania",
+    "capital": "Washington DC",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Slovakia",
+    "threeLetterISOCountryCode": "SVK",
+    "population": 5458827,
+    "area": 49037,
+    "continent": "Europe",
+    "capital": "Bratislava",
+    "landlocked": true,
+    "borders": [
+      "AUT",
+      "CZE",
+      "HUN",
+      "POL",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Angola",
+    "threeLetterISOCountryCode": "AGO",
+    "population": 32866268,
+    "area": 1246700,
+    "continent": "Africa",
+    "capital": "Luanda",
+    "landlocked": false,
+    "borders": [
+      "COG",
+      "COD",
+      "ZMB",
+      "NAM"
+    ]
+  },
+  {
+    "name": "Kazakhstan",
+    "threeLetterISOCountryCode": "KAZ",
+    "population": 18754440,
+    "area": 2724900,
+    "continent": "Asia",
+    "capital": "Nur-Sultan",
+    "landlocked": true,
+    "borders": [
+      "CHN",
+      "KGZ",
+      "RUS",
+      "TKM",
+      "UZB"
+    ]
+  },
+  {
+    "name": "Moldova",
+    "threeLetterISOCountryCode": "MDA",
+    "population": 2617820,
+    "area": 33846,
+    "continent": "Europe",
+    "capital": "Chișinău",
+    "landlocked": true,
+    "borders": [
+      "ROU",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Mali",
+    "threeLetterISOCountryCode": "MLI",
+    "population": 20250834,
+    "area": 1240192,
+    "continent": "Africa",
+    "capital": "Bamako",
+    "landlocked": true,
+    "borders": [
+      "DZA",
+      "BFA",
+      "GIN",
+      "CIV",
+      "MRT",
+      "NER",
+      "SEN"
+    ]
+  },
+  {
+    "name": "Falkland Islands",
+    "threeLetterISOCountryCode": "FLK",
+    "population": 2563,
+    "area": 12173,
+    "continent": "South America",
+    "capital": "Stanley",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Armenia",
+    "threeLetterISOCountryCode": "ARM",
+    "population": 2963234,
+    "area": 29743,
+    "continent": "Asia",
+    "capital": "Yerevan",
+    "landlocked": true,
+    "borders": [
+      "AZE",
+      "GEO",
+      "IRN",
+      "TUR"
+    ]
+  },
+  {
+    "name": "Samoa",
+    "threeLetterISOCountryCode": "WSM",
+    "population": 198410,
+    "area": 2842,
+    "continent": "Oceania",
+    "capital": "Apia",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Jersey",
+    "threeLetterISOCountryCode": "JEY",
+    "population": 100800,
+    "area": 116,
+    "continent": "Europe",
+    "capital": "Saint Helier",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Japan",
+    "threeLetterISOCountryCode": "JPN",
+    "population": 125836021,
+    "area": 377930,
+    "continent": "Asia",
+    "capital": "Tokyo",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Bolivia",
+    "threeLetterISOCountryCode": "BOL",
+    "population": 11673029,
+    "area": 1098581,
+    "continent": "South America",
+    "capital": "Sucre",
+    "landlocked": true,
+    "borders": [
+      "ARG",
+      "BRA",
+      "CHL",
+      "PRY",
+      "PER"
+    ]
+  },
+  {
+    "name": "Chile",
+    "threeLetterISOCountryCode": "CHL",
+    "population": 19116209,
+    "area": 756102,
+    "continent": "South America",
+    "capital": "Santiago",
+    "landlocked": false,
+    "borders": [
+      "ARG",
+      "BOL",
+      "PER"
+    ]
+  },
+  {
+    "name": "United States",
+    "threeLetterISOCountryCode": "USA",
+    "population": 329484123,
+    "area": 9372610,
+    "continent": "North America",
+    "capital": "Washington, D.C.",
+    "landlocked": false,
+    "borders": [
+      "CAN",
+      "MEX"
+    ]
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "threeLetterISOCountryCode": "VCT",
+    "population": 110947,
+    "area": 389,
+    "continent": "North America",
+    "capital": "Kingstown",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Bermuda",
+    "threeLetterISOCountryCode": "BMU",
+    "population": 63903,
+    "area": 54,
+    "continent": "North America",
+    "capital": "Hamilton",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Seychelles",
+    "threeLetterISOCountryCode": "SYC",
+    "population": 98462,
+    "area": 452,
+    "continent": "Africa",
+    "capital": "Victoria",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "British Indian Ocean Territory",
+    "threeLetterISOCountryCode": "IOT",
+    "population": 3000,
+    "area": 60,
+    "continent": "Asia",
+    "capital": "Diego Garcia",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Guatemala",
+    "threeLetterISOCountryCode": "GTM",
+    "population": 16858333,
+    "area": 108889,
+    "continent": "North America",
+    "capital": "Guatemala City",
+    "landlocked": false,
+    "borders": [
+      "BLZ",
+      "SLV",
+      "HND",
+      "MEX"
+    ]
+  },
+  {
+    "name": "Ecuador",
+    "threeLetterISOCountryCode": "ECU",
+    "population": 17643060,
+    "area": 276841,
+    "continent": "South America",
+    "capital": "Quito",
+    "landlocked": false,
+    "borders": [
+      "COL",
+      "PER"
+    ]
+  },
+  {
+    "name": "Martinique",
+    "threeLetterISOCountryCode": "MTQ",
+    "population": 378243,
+    "area": 1128,
+    "continent": "North America",
+    "capital": "Fort-de-France",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Tajikistan",
+    "threeLetterISOCountryCode": "TJK",
+    "population": 9537642,
+    "area": 143100,
+    "continent": "Asia",
+    "capital": "Dushanbe",
+    "landlocked": true,
+    "borders": [
+      "AFG",
+      "CHN",
+      "KGZ",
+      "UZB"
+    ]
+  },
+  {
+    "name": "Malta",
+    "threeLetterISOCountryCode": "MLT",
+    "population": 525285,
+    "area": 316,
+    "continent": "Europe",
+    "capital": "Valletta",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Gambia",
+    "threeLetterISOCountryCode": "GMB",
+    "population": 2416664,
+    "area": 10689,
+    "continent": "Africa",
+    "capital": "Banjul",
+    "landlocked": false,
+    "borders": [
+      "SEN"
+    ]
+  },
+  {
+    "name": "Nigeria",
+    "threeLetterISOCountryCode": "NGA",
+    "population": 206139587,
+    "area": 923768,
+    "continent": "Africa",
+    "capital": "Abuja",
+    "landlocked": false,
+    "borders": [
+      "BEN",
+      "CMR",
+      "TCD",
+      "NER"
+    ]
+  },
+  {
+    "name": "Bahamas",
+    "threeLetterISOCountryCode": "BHS",
+    "population": 393248,
+    "area": 13943,
+    "continent": "North America",
+    "capital": "Nassau",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Kosovo",
+    "threeLetterISOCountryCode": "UNK",
+    "population": 1775378,
+    "area": 10908,
+    "continent": "Europe",
+    "capital": "Pristina",
+    "landlocked": true,
+    "borders": [
+      "ALB",
+      "MKD",
+      "MNE",
+      "SRB"
+    ]
+  },
+  {
+    "name": "Kuwait",
+    "threeLetterISOCountryCode": "KWT",
+    "population": 4270563,
+    "area": 17818,
+    "continent": "Asia",
+    "capital": "Kuwait City",
+    "landlocked": false,
+    "borders": [
+      "IRQ",
+      "SAU"
+    ]
+  },
+  {
+    "name": "Maldives",
+    "threeLetterISOCountryCode": "MDV",
+    "population": 540542,
+    "area": 300,
+    "continent": "Asia",
+    "capital": "Malé",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "South Sudan",
+    "threeLetterISOCountryCode": "SSD",
+    "population": 11193729,
+    "area": 619745,
+    "continent": "Africa",
+    "capital": "Juba",
+    "landlocked": true,
+    "borders": [
+      "CAF",
+      "COD",
+      "ETH",
+      "KEN",
+      "SDN",
+      "UGA"
+    ]
+  },
+  {
+    "name": "Iran",
+    "threeLetterISOCountryCode": "IRN",
+    "population": 83992953,
+    "area": 1648195,
+    "continent": "Asia",
+    "capital": "Tehran",
+    "landlocked": false,
+    "borders": [
+      "AFG",
+      "ARM",
+      "AZE",
+      "IRQ",
+      "PAK",
+      "TUR",
+      "TKM"
+    ]
+  },
+  {
+    "name": "Albania",
+    "threeLetterISOCountryCode": "ALB",
+    "population": 2837743,
+    "area": 28748,
+    "continent": "Europe",
+    "capital": "Tirana",
+    "landlocked": false,
+    "borders": [
+      "MNE",
+      "GRC",
+      "MKD",
+      "UNK"
+    ]
+  },
+  {
+    "name": "Brazil",
+    "threeLetterISOCountryCode": "BRA",
+    "population": 212559409,
+    "area": 8515767,
+    "continent": "South America",
+    "capital": "Brasília",
+    "landlocked": false,
+    "borders": [
+      "ARG",
+      "BOL",
+      "COL",
+      "GUF",
+      "GUY",
+      "PRY",
+      "PER",
+      "SUR",
+      "URY",
+      "VEN"
+    ]
+  },
+  {
+    "name": "Serbia",
+    "threeLetterISOCountryCode": "SRB",
+    "population": 6908224,
+    "area": 88361,
+    "continent": "Europe",
+    "capital": "Belgrade",
+    "landlocked": true,
+    "borders": [
+      "BIH",
+      "BGR",
+      "HRV",
+      "HUN",
+      "UNK",
+      "MKD",
+      "MNE",
+      "ROU"
+    ]
+  },
+  {
+    "name": "Belize",
+    "threeLetterISOCountryCode": "BLZ",
+    "population": 397621,
+    "area": 22966,
+    "continent": "North America",
+    "capital": "Belmopan",
+    "landlocked": false,
+    "borders": [
+      "GTM",
+      "MEX"
+    ]
+  },
+  {
+    "name": "Myanmar",
+    "threeLetterISOCountryCode": "MMR",
+    "population": 54409794,
+    "area": 676578,
+    "continent": "Asia",
+    "capital": "Naypyidaw",
+    "landlocked": false,
+    "borders": [
+      "BGD",
+      "CHN",
+      "IND",
+      "LAO",
+      "THA"
+    ]
+  },
+  {
+    "name": "Bhutan",
+    "threeLetterISOCountryCode": "BTN",
+    "population": 771612,
+    "area": 38394,
+    "continent": "Asia",
+    "capital": "Thimphu",
+    "landlocked": true,
+    "borders": [
+      "CHN",
+      "IND"
+    ]
+  },
+  {
+    "name": "Venezuela",
+    "threeLetterISOCountryCode": "VEN",
+    "population": 28435943,
+    "area": 916445,
+    "continent": "South America",
+    "capital": "Caracas",
+    "landlocked": false,
+    "borders": [
+      "BRA",
+      "COL",
+      "GUY"
+    ]
+  },
+  {
+    "name": "Liberia",
+    "threeLetterISOCountryCode": "LBR",
+    "population": 5057677,
+    "area": 111369,
+    "continent": "Africa",
+    "capital": "Monrovia",
+    "landlocked": false,
+    "borders": [
+      "GIN",
+      "CIV",
+      "SLE"
+    ]
+  },
+  {
+    "name": "Jamaica",
+    "threeLetterISOCountryCode": "JAM",
+    "population": 2961161,
+    "area": 10991,
+    "continent": "North America",
+    "capital": "Kingston",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Poland",
+    "threeLetterISOCountryCode": "POL",
+    "population": 37950802,
+    "area": 312679,
+    "continent": "Europe",
+    "capital": "Warsaw",
+    "landlocked": false,
+    "borders": [
+      "BLR",
+      "CZE",
+      "DEU",
+      "LTU",
+      "RUS",
+      "SVK",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Cayman Islands",
+    "threeLetterISOCountryCode": "CYM",
+    "population": 65720,
+    "area": 264,
+    "continent": "North America",
+    "capital": "George Town",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Brunei",
+    "threeLetterISOCountryCode": "BRN",
+    "population": 437483,
+    "area": 5765,
+    "continent": "Asia",
+    "capital": "Bandar Seri Begawan",
+    "landlocked": false,
+    "borders": [
+      "MYS"
+    ]
+  },
+  {
+    "name": "Comoros",
+    "threeLetterISOCountryCode": "COM",
+    "population": 869595,
+    "area": 1862,
+    "continent": "Africa",
+    "capital": "Moroni",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Guam",
+    "threeLetterISOCountryCode": "GUM",
+    "population": 168783,
+    "area": 549,
+    "continent": "Oceania",
+    "capital": "Hagåtña",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Tonga",
+    "threeLetterISOCountryCode": "TON",
+    "population": 105697,
+    "area": 747,
+    "continent": "Oceania",
+    "capital": "Nuku'alofa",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Kiribati",
+    "threeLetterISOCountryCode": "KIR",
+    "population": 119446,
+    "area": 811,
+    "continent": "Oceania",
+    "capital": "South Tarawa",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Ghana",
+    "threeLetterISOCountryCode": "GHA",
+    "population": 31072945,
+    "area": 238533,
+    "continent": "Africa",
+    "capital": "Accra",
+    "landlocked": false,
+    "borders": [
+      "BFA",
+      "CIV",
+      "TGO"
+    ]
+  },
+  {
+    "name": "Chad",
+    "threeLetterISOCountryCode": "TCD",
+    "population": 16425859,
+    "area": 1284000,
+    "continent": "Africa",
+    "capital": "N'Djamena",
+    "landlocked": true,
+    "borders": [
+      "CMR",
+      "CAF",
+      "LBY",
+      "NER",
+      "NGA",
+      "SDN"
+    ]
+  },
+  {
+    "name": "Zimbabwe",
+    "threeLetterISOCountryCode": "ZWE",
+    "population": 14862927,
+    "area": 390757,
+    "continent": "Africa",
+    "capital": "Harare",
+    "landlocked": true,
+    "borders": [
+      "BWA",
+      "MOZ",
+      "ZAF",
+      "ZMB"
+    ]
+  },
+  {
+    "name": "Saint Martin",
+    "threeLetterISOCountryCode": "MAF",
+    "population": 38659,
+    "area": 53,
+    "continent": "North America",
+    "capital": "Marigot",
+    "landlocked": false,
+    "borders": [
+      "SXM"
+    ]
+  },
+  {
+    "name": "Mongolia",
+    "threeLetterISOCountryCode": "MNG",
+    "population": 3278292,
+    "area": 1564110,
+    "continent": "Asia",
+    "capital": "Ulan Bator",
+    "landlocked": true,
+    "borders": [
+      "CHN",
+      "RUS"
+    ]
+  },
+  {
+    "name": "Portugal",
+    "threeLetterISOCountryCode": "PRT",
+    "population": 10305564,
+    "area": 92090,
+    "continent": "Europe",
+    "capital": "Lisbon",
+    "landlocked": false,
+    "borders": [
+      "ESP"
+    ]
+  },
+  {
+    "name": "American Samoa",
+    "threeLetterISOCountryCode": "ASM",
+    "population": 55197,
+    "area": 199,
+    "continent": "Oceania",
+    "capital": "Pago Pago",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Republic of the Congo",
+    "threeLetterISOCountryCode": "COG",
+    "population": 5657000,
+    "area": 342000,
+    "continent": "Africa",
+    "capital": "Brazzaville",
+    "landlocked": false,
+    "borders": [
+      "AGO",
+      "CMR",
+      "CAF",
+      "COD",
+      "GAB"
+    ]
+  },
+  {
+    "name": "Belgium",
+    "threeLetterISOCountryCode": "BEL",
+    "population": 11555997,
+    "area": 30528,
+    "continent": "Europe",
+    "capital": "Brussels",
+    "landlocked": false,
+    "borders": [
+      "FRA",
+      "DEU",
+      "LUX",
+      "NLD"
+    ]
+  },
+  {
+    "name": "Israel",
+    "threeLetterISOCountryCode": "ISR",
+    "population": 9216900,
+    "area": 20770,
+    "continent": "Asia",
+    "capital": "Jerusalem",
+    "landlocked": false,
+    "borders": [
+      "EGY",
+      "JOR",
+      "LBN",
+      "PSE",
+      "SYR"
+    ]
+  },
+  {
+    "name": "New Zealand",
+    "threeLetterISOCountryCode": "NZL",
+    "population": 5084300,
+    "area": 270467,
+    "continent": "Oceania",
+    "capital": "Wellington",
+    "landlocked": false,
+    "borders": []
+  },
+  {
+    "name": "Nicaragua",
+    "threeLetterISOCountryCode": "NIC",
+    "population": 6624554,
+    "area": 130373,
+    "continent": "North America",
+    "capital": "Managua",
+    "landlocked": false,
+    "borders": [
+      "CRI",
+      "HND"
+    ]
+  },
+  {
+    "name": "Anguilla",
+    "threeLetterISOCountryCode": "AIA",
+    "population": 13452,
+    "area": 91,
+    "continent": "North America",
+    "capital": "The Valley",
+    "landlocked": false,
+    "borders": []
+  }
+]
