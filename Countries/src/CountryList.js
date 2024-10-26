@@ -288,6 +288,7 @@ const CountryList = () => {
       <ul>
         {filteredCountries.map((country) => (
           <li key={country.name}>
+            <img src={country.flagUrl} alt={`${country.name} flag`} loading="lazy" width="20" height="15" style={{ marginRight: '8px' }} />
             <strong>{country.name}</strong> - Population: {formatPopulation(country.population)}, Area: {formatArea(country.area)}, Continent(s): {country.continent}, Capital: {country.capital}, Landlocked: {country.landlocked ? 'Yes' : 'No'}, Neighbors: {getNeighborNames(country.borders)}
           </li>
         ))}

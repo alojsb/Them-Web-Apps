@@ -18,6 +18,7 @@ const getCountries = async () => {
     area: country.area,
     population: country.population,
     continent: country.continents.join(', '),
+    flagUrl: country.flags.svg,
   }));
 
   // Save the data to src/countries.json

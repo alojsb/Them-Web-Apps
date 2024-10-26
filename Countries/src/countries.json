@@ -9,6 +9,7 @@
     "area": 3903,
     "population": 30,
     "continent": "Antarctica",
+    "flagUrl": "https://flagcdn.com/gs.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -20,7 +21,8 @@
     "borders": [],
     "area": 344,
     "population": 112519,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/gd.svg"
   },
   {
     "name": "Switzerland",
@@ -37,7 +39,8 @@
     ],
     "area": 41284,
     "population": 8654622,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ch.svg"
   },
   {
     "name": "Sierra Leone",
@@ -51,7 +54,8 @@
     ],
     "area": 71740,
     "population": 7976985,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/sl.svg"
   },
   {
     "name": "Hungary",
@@ -70,7 +74,8 @@
     ],
     "area": 93028,
     "population": 9749763,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/hu.svg"
   },
   {
     "name": "Taiwan",
@@ -81,7 +86,8 @@
     "borders": [],
     "area": 36193,
     "population": 23503349,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/tw.svg"
   },
   {
     "name": "Wallis and Futuna",
@@ -93,6 +99,7 @@
     "area": 142,
     "population": 11750,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/wf.svg",
     "belongsTo": "France"
   },
   {
@@ -104,7 +111,8 @@
     "borders": [],
     "area": 430,
     "population": 287371,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/bb.svg"
   },
   {
     "name": "Pitcairn Islands",
@@ -116,6 +124,7 @@
     "area": 47,
     "population": 56,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/pn.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -133,7 +142,8 @@
     ],
     "area": 322463,
     "population": 26378275,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ci.svg"
   },
   {
     "name": "Tunisia",
@@ -147,7 +157,8 @@
     ],
     "area": 163610,
     "population": 11818618,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/tn.svg"
   },
   {
     "name": "Italy",
@@ -165,7 +176,8 @@
     ],
     "area": 301336,
     "population": 59554023,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/it.svg"
   },
   {
     "name": "Benin",
@@ -181,7 +193,8 @@
     ],
     "area": 112622,
     "population": 12123198,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/bj.svg"
   },
   {
     "name": "Indonesia",
@@ -196,7 +209,8 @@
     ],
     "area": 1904569,
     "population": 273523621,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/id.svg"
   },
   {
     "name": "Cape Verde",
@@ -207,7 +221,8 @@
     "borders": [],
     "area": 4033,
     "population": 555988,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/cv.svg"
   },
   {
     "name": "Saint Kitts and Nevis",
@@ -218,7 +233,8 @@
     "borders": [],
     "area": 261,
     "population": 53192,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/kn.svg"
   },
   {
     "name": "Laos",
@@ -235,7 +251,8 @@
     ],
     "area": 236800,
     "population": 7275556,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/la.svg"
   },
   {
     "name": "Caribbean Netherlands",
@@ -247,6 +264,7 @@
     "area": 328,
     "population": 25987,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/bq.svg",
     "belongsTo": "Netherlands"
   },
   {
@@ -264,7 +282,8 @@
     ],
     "area": 241550,
     "population": 45741000,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ug.svg"
   },
   {
     "name": "Andorra",
@@ -278,7 +297,8 @@
     ],
     "area": 468,
     "population": 77265,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ad.svg"
   },
   {
     "name": "Burundi",
@@ -293,7 +313,8 @@
     ],
     "area": 27834,
     "population": 11890781,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/bi.svg"
   },
   {
     "name": "South Africa",
@@ -311,7 +332,8 @@
     ],
     "area": 1221037,
     "population": 59308690,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/za.svg"
   },
   {
     "name": "France",
@@ -331,7 +353,8 @@
     ],
     "area": 551695,
     "population": 67391582,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/fr.svg"
   },
   {
     "name": "Libya",
@@ -349,7 +372,8 @@
     ],
     "area": 1759540,
     "population": 6871287,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ly.svg"
   },
   {
     "name": "Mexico",
@@ -364,7 +388,8 @@
     ],
     "area": 1964375,
     "population": 128932753,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/mx.svg"
   },
   {
     "name": "Gabon",
@@ -379,7 +404,8 @@
     ],
     "area": 267668,
     "population": 2225728,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ga.svg"
   },
   {
     "name": "Northern Mariana Islands",
@@ -391,6 +417,7 @@
     "area": 464,
     "population": 57557,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/mp.svg",
     "belongsTo": "United States"
   },
   {
@@ -408,7 +435,8 @@
     ],
     "area": 25713,
     "population": 2077132,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/mk.svg"
   },
   {
     "name": "China",
@@ -436,7 +464,8 @@
     ],
     "area": 9706961,
     "population": 1402112000,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/cn.svg"
   },
   {
     "name": "Yemen",
@@ -450,7 +479,8 @@
     ],
     "area": 527968,
     "population": 29825968,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/ye.svg"
   },
   {
     "name": "Saint Barthélemy",
@@ -462,6 +492,7 @@
     "area": 21,
     "population": 4255,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/bl.svg",
     "belongsTo": "France"
   },
   {
@@ -474,6 +505,7 @@
     "area": 78,
     "population": 62999,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/gg.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -485,7 +517,8 @@
     "borders": [],
     "area": 28896,
     "population": 686878,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/sb.svg"
   },
   {
     "name": "Svalbard and Jan Mayen",
@@ -497,6 +530,7 @@
     "area": 61399,
     "population": 2562,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/sj.svg",
     "belongsTo": "Norway"
   },
   {
@@ -509,6 +543,7 @@
     "area": 1393,
     "population": 48865,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/fo.svg",
     "belongsTo": "Denmark"
   },
   {
@@ -526,7 +561,8 @@
     ],
     "area": 447400,
     "population": 34232050,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/uz.svg"
   },
   {
     "name": "Egypt",
@@ -542,7 +578,8 @@
     ],
     "area": 1002450,
     "population": 102334403,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/eg.svg"
   },
   {
     "name": "Senegal",
@@ -559,7 +596,8 @@
     ],
     "area": 196722,
     "population": 16743930,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/sn.svg"
   },
   {
     "name": "Sri Lanka",
@@ -572,7 +610,8 @@
     ],
     "area": 65610,
     "population": 21919000,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/lk.svg"
   },
   {
     "name": "Palestine",
@@ -588,6 +627,7 @@
     "area": 6220,
     "population": 4803269,
     "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/ps.svg",
     "belongsTo": "Disputed"
   },
   {
@@ -602,7 +642,8 @@
     ],
     "area": 147570,
     "population": 164689383,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/bd.svg"
   },
   {
     "name": "Peru",
@@ -619,7 +660,8 @@
     ],
     "area": 1285216,
     "population": 32971846,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/pe.svg"
   },
   {
     "name": "Singapore",
@@ -630,7 +672,8 @@
     "borders": [],
     "area": 710,
     "population": 5685807,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/sg.svg"
   },
   {
     "name": "Turkey",
@@ -650,7 +693,8 @@
     ],
     "area": 783562,
     "population": 84339067,
-    "continent": "Europe, Asia"
+    "continent": "Europe, Asia",
+    "flagUrl": "https://flagcdn.com/tr.svg"
   },
   {
     "name": "Afghanistan",
@@ -668,7 +712,8 @@
     ],
     "area": 652230,
     "population": 40218234,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg"
   },
   {
     "name": "Aruba",
@@ -680,6 +725,7 @@
     "area": 180,
     "population": 106766,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/aw.svg",
     "belongsTo": "Netherlands"
   },
   {
@@ -692,6 +738,7 @@
     "area": 236,
     "population": 18100,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/ck.svg",
     "belongsTo": "New Zealand"
   },
   {
@@ -705,7 +752,8 @@
     ],
     "area": 242900,
     "population": 67215293,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/gb.svg"
   },
   {
     "name": "Zambia",
@@ -725,7 +773,8 @@
     ],
     "area": 752612,
     "population": 18383956,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/zm.svg"
   },
   {
     "name": "Finland",
@@ -740,7 +789,8 @@
     ],
     "area": 338424,
     "population": 5530719,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/fi.svg"
   },
   {
     "name": "Niger",
@@ -759,7 +809,8 @@
     ],
     "area": 1267000,
     "population": 24206636,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ne.svg"
   },
   {
     "name": "Christmas Island",
@@ -771,6 +822,7 @@
     "area": 135,
     "population": 2072,
     "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/cx.svg",
     "belongsTo": "Australia"
   },
   {
@@ -783,6 +835,7 @@
     "area": 12,
     "population": 1411,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/tk.svg",
     "belongsTo": "New Zealand"
   },
   {
@@ -797,7 +850,8 @@
     ],
     "area": 36125,
     "population": 1967998,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/gw.svg"
   },
   {
     "name": "Azerbaijan",
@@ -814,7 +868,8 @@
     ],
     "area": 86600,
     "population": 10110116,
-    "continent": "Europe, Asia"
+    "continent": "Europe, Asia",
+    "flagUrl": "https://flagcdn.com/az.svg"
   },
   {
     "name": "Réunion",
@@ -826,6 +881,7 @@
     "area": 2511,
     "population": 840974,
     "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/re.svg",
     "belongsTo": "France"
   },
   {
@@ -841,7 +897,8 @@
     ],
     "area": 23200,
     "population": 988002,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/dj.svg"
   },
   {
     "name": "North Korea",
@@ -856,7 +913,8 @@
     ],
     "area": 120538,
     "population": 25778815,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/kp.svg"
   },
   {
     "name": "Mauritius",
@@ -867,7 +925,8 @@
     "borders": [],
     "area": 2040,
     "population": 1265740,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/mu.svg"
   },
   {
     "name": "Montserrat",
@@ -879,6 +938,7 @@
     "area": 102,
     "population": 4922,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/ms.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -891,6 +951,7 @@
     "area": 347,
     "population": 106290,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/vi.svg",
     "belongsTo": "United States"
   },
   {
@@ -908,7 +969,8 @@
     ],
     "area": 1141748,
     "population": 50882884,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/co.svg"
   },
   {
     "name": "Greece",
@@ -924,7 +986,8 @@
     ],
     "area": 131990,
     "population": 10715549,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/gr.svg"
   },
   {
     "name": "Croatia",
@@ -941,7 +1004,8 @@
     ],
     "area": 56594,
     "population": 4047200,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/hr.svg"
   },
   {
     "name": "Morocco",
@@ -956,7 +1020,8 @@
     ],
     "area": 446550,
     "population": 36910558,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ma.svg"
   },
   {
     "name": "Algeria",
@@ -975,7 +1040,8 @@
     ],
     "area": 2381741,
     "population": 44700000,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/dz.svg"
   },
   {
     "name": "Antarctica",
@@ -987,6 +1053,7 @@
     "area": 14000000,
     "population": 1000,
     "continent": "Antarctica",
+    "flagUrl": "https://flagcdn.com/aq.svg",
     "belongsTo": "International"
   },
   {
@@ -1001,7 +1068,8 @@
     ],
     "area": 41850,
     "population": 16655799,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/nl.svg"
   },
   {
     "name": "Sudan",
@@ -1020,7 +1088,8 @@
     ],
     "area": 1886068,
     "population": 43849269,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/sd.svg"
   },
   {
     "name": "Fiji",
@@ -1031,7 +1100,8 @@
     "borders": [],
     "area": 18272,
     "population": 896444,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/fj.svg"
   },
   {
     "name": "Liechtenstein",
@@ -1045,7 +1115,8 @@
     ],
     "area": 160,
     "population": 38137,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/li.svg"
   },
   {
     "name": "Nepal",
@@ -1059,7 +1130,8 @@
     ],
     "area": 147181,
     "population": 29136808,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/np.svg"
   },
   {
     "name": "Puerto Rico",
@@ -1071,6 +1143,7 @@
     "area": 8870,
     "population": 3194034,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/pr.svg",
     "belongsTo": "United States"
   },
   {
@@ -1087,7 +1160,8 @@
     ],
     "area": 69700,
     "population": 3714000,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/ge.svg"
   },
   {
     "name": "Pakistan",
@@ -1103,7 +1177,8 @@
     ],
     "area": 881912,
     "population": 220892331,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/pk.svg"
   },
   {
     "name": "Monaco",
@@ -1116,7 +1191,8 @@
     ],
     "area": 2.02,
     "population": 39244,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/mc.svg"
   },
   {
     "name": "Botswana",
@@ -1132,7 +1208,8 @@
     ],
     "area": 582000,
     "population": 2351625,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/bw.svg"
   },
   {
     "name": "Lebanon",
@@ -1146,7 +1223,8 @@
     ],
     "area": 10452,
     "population": 6825442,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/lb.svg"
   },
   {
     "name": "Papua New Guinea",
@@ -1159,7 +1237,8 @@
     ],
     "area": 462840,
     "population": 8947027,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/pg.svg"
   },
   {
     "name": "Mayotte",
@@ -1171,6 +1250,7 @@
     "area": 374,
     "population": 226915,
     "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/yt.svg",
     "belongsTo": "France"
   },
   {
@@ -1184,7 +1264,8 @@
     ],
     "area": 48671,
     "population": 10847904,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/do.svg"
   },
   {
     "name": "Norfolk Island",
@@ -1196,6 +1277,7 @@
     "area": 36,
     "population": 2302,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/nf.svg",
     "belongsTo": "Australia"
   },
   {
@@ -1208,6 +1290,7 @@
     "area": 49,
     "population": 0,
     "continent": "Antarctica",
+    "flagUrl": "https://flagcdn.com/bv.svg",
     "belongsTo": "Norway"
   },
   {
@@ -1221,7 +1304,8 @@
     ],
     "area": 11586,
     "population": 2881060,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/qa.svg"
   },
   {
     "name": "Madagascar",
@@ -1232,7 +1316,8 @@
     "borders": [],
     "area": 587041,
     "population": 27691019,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/mg.svg"
   },
   {
     "name": "India",
@@ -1250,7 +1335,8 @@
     ],
     "area": 3287590,
     "population": 1380004385,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/in.svg"
   },
   {
     "name": "Syria",
@@ -1267,7 +1353,8 @@
     ],
     "area": 185180,
     "population": 17500657,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/sy.svg"
   },
   {
     "name": "Montenegro",
@@ -1284,7 +1371,8 @@
     ],
     "area": 13812,
     "population": 621718,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/me.svg"
   },
   {
     "name": "Eswatini",
@@ -1298,7 +1386,8 @@
     ],
     "area": 17364,
     "population": 1160164,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/sz.svg"
   },
   {
     "name": "Paraguay",
@@ -1313,7 +1402,8 @@
     ],
     "area": 406752,
     "population": 7132530,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/py.svg"
   },
   {
     "name": "El Salvador",
@@ -1327,7 +1417,8 @@
     ],
     "area": 21041,
     "population": 6486201,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/sv.svg"
   },
   {
     "name": "Ukraine",
@@ -1346,7 +1437,8 @@
     ],
     "area": 603500,
     "population": 44134693,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ua.svg"
   },
   {
     "name": "Isle of Man",
@@ -1358,6 +1450,7 @@
     "area": 572,
     "population": 85032,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/im.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -1374,7 +1467,8 @@
     ],
     "area": 825615,
     "population": 2540916,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/na.svg"
   },
   {
     "name": "United Arab Emirates",
@@ -1388,7 +1482,8 @@
     ],
     "area": 83600,
     "population": 9890400,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/ae.svg"
   },
   {
     "name": "Bulgaria",
@@ -1405,7 +1500,8 @@
     ],
     "area": 110879,
     "population": 6927288,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/bg.svg"
   },
   {
     "name": "Greenland",
@@ -1417,6 +1513,7 @@
     "area": 2166086,
     "population": 56367,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/gl.svg",
     "belongsTo": "Denmark"
   },
   {
@@ -1438,7 +1535,8 @@
     ],
     "area": 357114,
     "population": 83240525,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/de.svg"
   },
   {
     "name": "Cambodia",
@@ -1453,7 +1551,8 @@
     ],
     "area": 181035,
     "population": 16718971,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/kh.svg"
   },
   {
     "name": "Iraq",
@@ -1471,7 +1570,8 @@
     ],
     "area": 438317,
     "population": 40222503,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/iq.svg"
   },
   {
     "name": "French Southern and Antarctic Lands",
@@ -1483,6 +1583,7 @@
     "area": 7747,
     "population": 400,
     "continent": "Antarctica",
+    "flagUrl": "https://flagcdn.com/tf.svg",
     "belongsTo": "France"
   },
   {
@@ -1497,7 +1598,8 @@
     ],
     "area": 450295,
     "population": 10353442,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/se.svg"
   },
   {
     "name": "Cuba",
@@ -1508,7 +1610,8 @@
     "borders": [],
     "area": 109884,
     "population": 11326616,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/cu.svg"
   },
   {
     "name": "Kyrgyzstan",
@@ -1524,7 +1627,8 @@
     ],
     "area": 199951,
     "population": 6591600,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/kg.svg"
   },
   {
     "name": "Russia",
@@ -1550,7 +1654,8 @@
     ],
     "area": 17098242,
     "population": 144104080,
-    "continent": "Europe, Asia"
+    "continent": "Europe, Asia",
+    "flagUrl": "https://flagcdn.com/ru.svg"
   },
   {
     "name": "Malaysia",
@@ -1565,7 +1670,8 @@
     ],
     "area": 330803,
     "population": 32365998,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/my.svg"
   },
   {
     "name": "São Tomé and Príncipe",
@@ -1576,7 +1682,8 @@
     "borders": [],
     "area": 964,
     "population": 219161,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/st.svg"
   },
   {
     "name": "Cyprus",
@@ -1587,7 +1694,8 @@
     "borders": [],
     "area": 9251,
     "population": 1207361,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/cy.svg"
   },
   {
     "name": "Canada",
@@ -1600,7 +1708,8 @@
     ],
     "area": 9984670,
     "population": 38005238,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/ca.svg"
   },
   {
     "name": "Malawi",
@@ -1615,7 +1724,8 @@
     ],
     "area": 118484,
     "population": 19129955,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/mw.svg"
   },
   {
     "name": "Saudi Arabia",
@@ -1634,7 +1744,8 @@
     ],
     "area": 2149690,
     "population": 34813867,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/sa.svg"
   },
   {
     "name": "Bosnia and Herzegovina",
@@ -1649,7 +1760,8 @@
     ],
     "area": 51209,
     "population": 3280815,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ba.svg"
   },
   {
     "name": "Ethiopia",
@@ -1667,7 +1779,8 @@
     ],
     "area": 1104300,
     "population": 114963583,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/et.svg"
   },
   {
     "name": "Spain",
@@ -1684,7 +1797,8 @@
     ],
     "area": 505992,
     "population": 47351567,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/es.svg"
   },
   {
     "name": "Slovenia",
@@ -1700,7 +1814,8 @@
     ],
     "area": 20273,
     "population": 2100126,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/si.svg"
   },
   {
     "name": "Oman",
@@ -1715,7 +1830,8 @@
     ],
     "area": 309500,
     "population": 5106622,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/om.svg"
   },
   {
     "name": "Saint Pierre and Miquelon",
@@ -1727,6 +1843,7 @@
     "area": 242,
     "population": 6069,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/pm.svg",
     "belongsTo": "France"
   },
   {
@@ -1741,6 +1858,7 @@
     "area": 30,
     "population": 649342,
     "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/mo.svg",
     "belongsTo": "China"
   },
   {
@@ -1754,7 +1872,8 @@
     ],
     "area": 61,
     "population": 33938,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/sm.svg"
   },
   {
     "name": "Lesotho",
@@ -1767,7 +1886,8 @@
     ],
     "area": 30355,
     "population": 2142252,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ls.svg"
   },
   {
     "name": "Marshall Islands",
@@ -1778,7 +1898,8 @@
     "borders": [],
     "area": 181,
     "population": 59194,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/mh.svg"
   },
   {
     "name": "Sint Maarten",
@@ -1792,6 +1913,7 @@
     "area": 34,
     "population": 40812,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/sx.svg",
     "belongsTo": "Netherlands"
   },
   {
@@ -1803,7 +1925,8 @@
     "borders": [],
     "area": 103000,
     "population": 366425,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/is.svg"
   },
   {
     "name": "Luxembourg",
@@ -1818,7 +1941,8 @@
     ],
     "area": 2586,
     "population": 632275,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/lu.svg"
   },
   {
     "name": "Argentina",
@@ -1835,7 +1959,8 @@
     ],
     "area": 2780400,
     "population": 45376763,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/ar.svg"
   },
   {
     "name": "Turks and Caicos Islands",
@@ -1847,6 +1972,7 @@
     "area": 948,
     "population": 38718,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/tc.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -1858,7 +1984,8 @@
     "borders": [],
     "area": 21,
     "population": 10834,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/nr.svg"
   },
   {
     "name": "Cocos (Keeling) Islands",
@@ -1870,6 +1997,7 @@
     "area": 14,
     "population": 544,
     "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/cc.svg",
     "belongsTo": "Australia"
   },
   {
@@ -1886,6 +2014,7 @@
     "area": 266000,
     "population": 510713,
     "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/eh.svg",
     "belongsTo": "Disputed"
   },
   {
@@ -1897,7 +2026,8 @@
     "borders": [],
     "area": 751,
     "population": 71991,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/dm.svg"
   },
   {
     "name": "Costa Rica",
@@ -1911,7 +2041,8 @@
     ],
     "area": 51100,
     "population": 5094114,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/cr.svg"
   },
   {
     "name": "Australia",
@@ -1922,7 +2053,8 @@
     "borders": [],
     "area": 7692024,
     "population": 25687041,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/au.svg"
   },
   {
     "name": "Thailand",
@@ -1938,7 +2070,8 @@
     ],
     "area": 513120,
     "population": 69799978,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/th.svg"
   },
   {
     "name": "Haiti",
@@ -1951,7 +2084,8 @@
     ],
     "area": 27750,
     "population": 11402533,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/ht.svg"
   },
   {
     "name": "Tuvalu",
@@ -1962,7 +2096,8 @@
     "borders": [],
     "area": 26,
     "population": 11792,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/tv.svg"
   },
   {
     "name": "Honduras",
@@ -1977,7 +2112,8 @@
     ],
     "area": 112492,
     "population": 9904608,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/hn.svg"
   },
   {
     "name": "Equatorial Guinea",
@@ -1991,7 +2127,8 @@
     ],
     "area": 28051,
     "population": 1402985,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/gq.svg"
   },
   {
     "name": "Saint Lucia",
@@ -2002,7 +2139,8 @@
     "borders": [],
     "area": 616,
     "population": 183629,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/lc.svg"
   },
   {
     "name": "French Polynesia",
@@ -2014,6 +2152,7 @@
     "area": 4167,
     "population": 280904,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/pf.svg",
     "belongsTo": "France"
   },
   {
@@ -2031,7 +2170,8 @@
     ],
     "area": 207600,
     "population": 9398861,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/by.svg"
   },
   {
     "name": "Latvia",
@@ -2047,7 +2187,8 @@
     ],
     "area": 64559,
     "population": 1901548,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/lv.svg"
   },
   {
     "name": "Palau",
@@ -2058,7 +2199,8 @@
     "borders": [],
     "area": 459,
     "population": 18092,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/pw.svg"
   },
   {
     "name": "Guadeloupe",
@@ -2070,6 +2212,7 @@
     "area": 1628,
     "population": 400132,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/gp.svg",
     "belongsTo": "France"
   },
   {
@@ -2081,7 +2224,8 @@
     "borders": [],
     "area": 342353,
     "population": 109581085,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/ph.svg"
   },
   {
     "name": "Gibraltar",
@@ -2095,6 +2239,7 @@
     "area": 6,
     "population": 33691,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/gi.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -2108,7 +2253,8 @@
     ],
     "area": 43094,
     "population": 5831404,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/dk.svg"
   },
   {
     "name": "Cameroon",
@@ -2126,7 +2272,8 @@
     ],
     "area": 475442,
     "population": 26545864,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/cm.svg"
   },
   {
     "name": "Guinea",
@@ -2144,7 +2291,8 @@
     ],
     "area": 245857,
     "population": 13132792,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/gn.svg"
   },
   {
     "name": "Bahrain",
@@ -2155,7 +2303,8 @@
     "borders": [],
     "area": 765,
     "population": 1701583,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/bh.svg"
   },
   {
     "name": "Suriname",
@@ -2170,7 +2319,8 @@
     ],
     "area": 163820,
     "population": 586634,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/sr.svg"
   },
   {
     "name": "DR Congo",
@@ -2191,7 +2341,8 @@
     ],
     "area": 2344858,
     "population": 108407721,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/cd.svg"
   },
   {
     "name": "Somalia",
@@ -2206,7 +2357,8 @@
     ],
     "area": 637657,
     "population": 15893219,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/so.svg"
   },
   {
     "name": "Czechia",
@@ -2222,7 +2374,8 @@
     ],
     "area": 78865,
     "population": 10698896,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/cz.svg"
   },
   {
     "name": "New Caledonia",
@@ -2234,6 +2387,7 @@
     "area": 18575,
     "population": 271960,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/nc.svg",
     "belongsTo": "France"
   },
   {
@@ -2245,7 +2399,8 @@
     "borders": [],
     "area": 12189,
     "population": 307150,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/vu.svg"
   },
   {
     "name": "Saint Helena, Ascension and Tristan da Cunha",
@@ -2257,6 +2412,7 @@
     "area": 394,
     "population": 53192,
     "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/sh.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -2272,7 +2428,8 @@
     ],
     "area": 56785,
     "population": 8278737,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/tg.svg"
   },
   {
     "name": "British Virgin Islands",
@@ -2284,6 +2441,7 @@
     "area": 151,
     "population": 30237,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/vg.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -2301,7 +2459,8 @@
     ],
     "area": 580367,
     "population": 53771300,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ke.svg"
   },
   {
     "name": "Niue",
@@ -2313,6 +2472,7 @@
     "area": 260,
     "population": 1470,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/nu.svg",
     "belongsTo": "New Zealand"
   },
   {
@@ -2325,6 +2485,7 @@
     "area": 412,
     "population": 0,
     "continent": "Antarctica",
+    "flagUrl": "https://flagcdn.com/hm.svg",
     "belongsTo": "Australia"
   },
   {
@@ -2341,7 +2502,8 @@
     ],
     "area": 26338,
     "population": 12952209,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/rw.svg"
   },
   {
     "name": "Estonia",
@@ -2355,7 +2517,8 @@
     ],
     "area": 45227,
     "population": 1331057,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ee.svg"
   },
   {
     "name": "Romania",
@@ -2372,7 +2535,8 @@
     ],
     "area": 238391,
     "population": 19286123,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ro.svg"
   },
   {
     "name": "Trinidad and Tobago",
@@ -2383,7 +2547,8 @@
     "borders": [],
     "area": 5130,
     "population": 1399491,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/tt.svg"
   },
   {
     "name": "Guyana",
@@ -2398,7 +2563,8 @@
     ],
     "area": 214969,
     "population": 786559,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/gy.svg"
   },
   {
     "name": "Timor-Leste",
@@ -2411,7 +2577,8 @@
     ],
     "area": 14874,
     "population": 1318442,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/tl.svg"
   },
   {
     "name": "Vietnam",
@@ -2426,7 +2593,8 @@
     ],
     "area": 331212,
     "population": 97338583,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/vn.svg"
   },
   {
     "name": "Uruguay",
@@ -2440,7 +2608,8 @@
     ],
     "area": 181034,
     "population": 3473727,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/uy.svg"
   },
   {
     "name": "Vatican City",
@@ -2453,7 +2622,8 @@
     ],
     "area": 0.44,
     "population": 451,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/va.svg"
   },
   {
     "name": "Hong Kong",
@@ -2467,6 +2637,7 @@
     "area": 1104,
     "population": 7500700,
     "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/hk.svg",
     "belongsTo": "China"
   },
   {
@@ -2487,7 +2658,8 @@
     ],
     "area": 83871,
     "population": 8917205,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/at.svg"
   },
   {
     "name": "Antigua and Barbuda",
@@ -2498,7 +2670,8 @@
     "borders": [],
     "area": 442,
     "population": 97928,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/ag.svg"
   },
   {
     "name": "Turkmenistan",
@@ -2514,7 +2687,8 @@
     ],
     "area": 488100,
     "population": 6031187,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/tm.svg"
   },
   {
     "name": "Mozambique",
@@ -2532,7 +2706,8 @@
     ],
     "area": 801590,
     "population": 31255435,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/mz.svg"
   },
   {
     "name": "Panama",
@@ -2546,7 +2721,8 @@
     ],
     "area": 75417,
     "population": 4314768,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/pa.svg"
   },
   {
     "name": "Micronesia",
@@ -2557,7 +2733,8 @@
     "borders": [],
     "area": 702,
     "population": 115021,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/fm.svg"
   },
   {
     "name": "Ireland",
@@ -2570,7 +2747,8 @@
     ],
     "area": 70273,
     "population": 4994724,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ie.svg"
   },
   {
     "name": "Curaçao",
@@ -2582,6 +2760,7 @@
     "area": 444,
     "population": 155014,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/cw.svg",
     "belongsTo": "Netherlands"
   },
   {
@@ -2597,6 +2776,7 @@
     "area": 83534,
     "population": 254541,
     "continent": "South America",
+    "flagUrl": "https://flagcdn.com/gf.svg",
     "belongsTo": "France"
   },
   {
@@ -2612,7 +2792,8 @@
     ],
     "area": 323802,
     "population": 5379475,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/no.svg"
   },
   {
     "name": "Åland Islands",
@@ -2624,6 +2805,7 @@
     "area": 1580,
     "population": 29458,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/ax.svg",
     "belongsTo": "Finland"
   },
   {
@@ -2642,7 +2824,8 @@
     ],
     "area": 622984,
     "population": 4829764,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/cf.svg"
   },
   {
     "name": "Burkina Faso",
@@ -2660,7 +2843,8 @@
     ],
     "area": 272967,
     "population": 20903278,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/bf.svg"
   },
   {
     "name": "Eritrea",
@@ -2675,7 +2859,8 @@
     ],
     "area": 117600,
     "population": 5352000,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/er.svg"
   },
   {
     "name": "Tanzania",
@@ -2695,7 +2880,8 @@
     ],
     "area": 945087,
     "population": 59734213,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/tz.svg"
   },
   {
     "name": "South Korea",
@@ -2708,7 +2894,8 @@
     ],
     "area": 100210,
     "population": 51780579,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/kr.svg"
   },
   {
     "name": "Jordan",
@@ -2725,7 +2912,8 @@
     ],
     "area": 89342,
     "population": 10203140,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/jo.svg"
   },
   {
     "name": "Mauritania",
@@ -2741,7 +2929,8 @@
     ],
     "area": 1030700,
     "population": 4649660,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/mr.svg"
   },
   {
     "name": "Lithuania",
@@ -2757,7 +2946,8 @@
     ],
     "area": 65300,
     "population": 2794700,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/lt.svg"
   },
   {
     "name": "United States Minor Outlying Islands",
@@ -2769,6 +2959,7 @@
     "area": 34.2,
     "population": 300,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/um.svg",
     "belongsTo": "United States"
   },
   {
@@ -2786,7 +2977,8 @@
     ],
     "area": 49037,
     "population": 5458827,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/sk.svg"
   },
   {
     "name": "Angola",
@@ -2802,7 +2994,8 @@
     ],
     "area": 1246700,
     "population": 32866268,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ao.svg"
   },
   {
     "name": "Kazakhstan",
@@ -2819,7 +3012,8 @@
     ],
     "area": 2724900,
     "population": 18754440,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/kz.svg"
   },
   {
     "name": "Moldova",
@@ -2833,7 +3027,8 @@
     ],
     "area": 33846,
     "population": 2617820,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/md.svg"
   },
   {
     "name": "Mali",
@@ -2852,7 +3047,8 @@
     ],
     "area": 1240192,
     "population": 20250834,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ml.svg"
   },
   {
     "name": "Falkland Islands",
@@ -2864,6 +3060,7 @@
     "area": 12173,
     "population": 2563,
     "continent": "South America",
+    "flagUrl": "https://flagcdn.com/fk.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -2880,7 +3077,8 @@
     ],
     "area": 29743,
     "population": 2963234,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/am.svg"
   },
   {
     "name": "Samoa",
@@ -2891,7 +3089,8 @@
     "borders": [],
     "area": 2842,
     "population": 198410,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/ws.svg"
   },
   {
     "name": "Jersey",
@@ -2903,6 +3102,7 @@
     "area": 116,
     "population": 100800,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/je.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -2914,7 +3114,8 @@
     "borders": [],
     "area": 377930,
     "population": 125836021,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/jp.svg"
   },
   {
     "name": "Bolivia",
@@ -2931,7 +3132,8 @@
     ],
     "area": 1098581,
     "population": 11673029,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/bo.svg"
   },
   {
     "name": "Chile",
@@ -2946,7 +3148,8 @@
     ],
     "area": 756102,
     "population": 19116209,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/cl.svg"
   },
   {
     "name": "United States",
@@ -2960,7 +3163,8 @@
     ],
     "area": 9372610,
     "population": 329484123,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/us.svg"
   },
   {
     "name": "Saint Vincent and the Grenadines",
@@ -2971,7 +3175,8 @@
     "borders": [],
     "area": 389,
     "population": 110947,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/vc.svg"
   },
   {
     "name": "Bermuda",
@@ -2983,6 +3188,7 @@
     "area": 54,
     "population": 63903,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/bm.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -2994,7 +3200,8 @@
     "borders": [],
     "area": 452,
     "population": 98462,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/sc.svg"
   },
   {
     "name": "British Indian Ocean Territory",
@@ -3006,6 +3213,7 @@
     "area": 60,
     "population": 3000,
     "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/io.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -3022,7 +3230,8 @@
     ],
     "area": 108889,
     "population": 16858333,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/gt.svg"
   },
   {
     "name": "Ecuador",
@@ -3036,7 +3245,8 @@
     ],
     "area": 276841,
     "population": 17643060,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/ec.svg"
   },
   {
     "name": "Martinique",
@@ -3048,6 +3258,7 @@
     "area": 1128,
     "population": 378243,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/mq.svg",
     "belongsTo": "France"
   },
   {
@@ -3064,7 +3275,8 @@
     ],
     "area": 143100,
     "population": 9537642,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/tj.svg"
   },
   {
     "name": "Malta",
@@ -3075,7 +3287,8 @@
     "borders": [],
     "area": 316,
     "population": 525285,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/mt.svg"
   },
   {
     "name": "Gambia",
@@ -3088,7 +3301,8 @@
     ],
     "area": 10689,
     "population": 2416664,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/gm.svg"
   },
   {
     "name": "Nigeria",
@@ -3104,7 +3318,8 @@
     ],
     "area": 923768,
     "population": 206139587,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ng.svg"
   },
   {
     "name": "Bahamas",
@@ -3115,7 +3330,8 @@
     "borders": [],
     "area": 13943,
     "population": 393248,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/bs.svg"
   },
   {
     "name": "Kosovo",
@@ -3131,6 +3347,7 @@
     "area": 10908,
     "population": 1775378,
     "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/xk.svg",
     "independent": true
   },
   {
@@ -3145,7 +3362,8 @@
     ],
     "area": 17818,
     "population": 4270563,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/kw.svg"
   },
   {
     "name": "Maldives",
@@ -3156,7 +3374,8 @@
     "borders": [],
     "area": 300,
     "population": 540542,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/mv.svg"
   },
   {
     "name": "South Sudan",
@@ -3174,7 +3393,8 @@
     ],
     "area": 619745,
     "population": 11193729,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/ss.svg"
   },
   {
     "name": "Iran",
@@ -3193,7 +3413,8 @@
     ],
     "area": 1648195,
     "population": 83992953,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/ir.svg"
   },
   {
     "name": "Albania",
@@ -3209,7 +3430,8 @@
     ],
     "area": 28748,
     "population": 2837743,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/al.svg"
   },
   {
     "name": "Brazil",
@@ -3231,7 +3453,8 @@
     ],
     "area": 8515767,
     "population": 212559409,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/br.svg"
   },
   {
     "name": "Serbia",
@@ -3251,7 +3474,8 @@
     ],
     "area": 88361,
     "population": 6908224,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/rs.svg"
   },
   {
     "name": "Belize",
@@ -3265,7 +3489,8 @@
     ],
     "area": 22966,
     "population": 397621,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/bz.svg"
   },
   {
     "name": "Myanmar",
@@ -3282,7 +3507,8 @@
     ],
     "area": 676578,
     "population": 54409794,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/mm.svg"
   },
   {
     "name": "Bhutan",
@@ -3296,7 +3522,8 @@
     ],
     "area": 38394,
     "population": 771612,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/bt.svg"
   },
   {
     "name": "Venezuela",
@@ -3311,7 +3538,8 @@
     ],
     "area": 916445,
     "population": 28435943,
-    "continent": "South America"
+    "continent": "South America",
+    "flagUrl": "https://flagcdn.com/ve.svg"
   },
   {
     "name": "Liberia",
@@ -3326,7 +3554,8 @@
     ],
     "area": 111369,
     "population": 5057677,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/lr.svg"
   },
   {
     "name": "Jamaica",
@@ -3337,7 +3566,8 @@
     "borders": [],
     "area": 10991,
     "population": 2961161,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/jm.svg"
   },
   {
     "name": "Poland",
@@ -3356,7 +3586,8 @@
     ],
     "area": 312679,
     "population": 37950802,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/pl.svg"
   },
   {
     "name": "Cayman Islands",
@@ -3368,6 +3599,7 @@
     "area": 264,
     "population": 65720,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/ky.svg",
     "belongsTo": "United Kingdom"
   },
   {
@@ -3381,7 +3613,8 @@
     ],
     "area": 5765,
     "population": 437483,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/bn.svg"
   },
   {
     "name": "Comoros",
@@ -3392,7 +3625,8 @@
     "borders": [],
     "area": 1862,
     "population": 869595,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/km.svg"
   },
   {
     "name": "Guam",
@@ -3404,6 +3638,7 @@
     "area": 549,
     "population": 168783,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/gu.svg",
     "belongsTo": "United States"
   },
   {
@@ -3415,7 +3650,8 @@
     "borders": [],
     "area": 747,
     "population": 105697,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/to.svg"
   },
   {
     "name": "Kiribati",
@@ -3426,7 +3662,8 @@
     "borders": [],
     "area": 811,
     "population": 119446,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/ki.svg"
   },
   {
     "name": "Ghana",
@@ -3441,7 +3678,8 @@
     ],
     "area": 238533,
     "population": 31072945,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/gh.svg"
   },
   {
     "name": "Chad",
@@ -3459,7 +3697,8 @@
     ],
     "area": 1284000,
     "population": 16425859,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/td.svg"
   },
   {
     "name": "Zimbabwe",
@@ -3475,7 +3714,8 @@
     ],
     "area": 390757,
     "population": 14862927,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/zw.svg"
   },
   {
     "name": "Saint Martin",
@@ -3489,6 +3729,7 @@
     "area": 53,
     "population": 38659,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/mf.svg",
     "belongsTo": "France"
   },
   {
@@ -3503,7 +3744,8 @@
     ],
     "area": 1564110,
     "population": 3278292,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/mn.svg"
   },
   {
     "name": "Portugal",
@@ -3516,7 +3758,8 @@
     ],
     "area": 92090,
     "population": 10305564,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/pt.svg"
   },
   {
     "name": "American Samoa",
@@ -3528,6 +3771,7 @@
     "area": 199,
     "population": 55197,
     "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/as.svg",
     "belongsTo": "United States"
   },
   {
@@ -3545,7 +3789,8 @@
     ],
     "area": 342000,
     "population": 5657000,
-    "continent": "Africa"
+    "continent": "Africa",
+    "flagUrl": "https://flagcdn.com/cg.svg"
   },
   {
     "name": "Belgium",
@@ -3561,7 +3806,8 @@
     ],
     "area": 30528,
     "population": 11555997,
-    "continent": "Europe"
+    "continent": "Europe",
+    "flagUrl": "https://flagcdn.com/be.svg"
   },
   {
     "name": "Israel",
@@ -3578,7 +3824,8 @@
     ],
     "area": 20770,
     "population": 9216900,
-    "continent": "Asia"
+    "continent": "Asia",
+    "flagUrl": "https://flagcdn.com/il.svg"
   },
   {
     "name": "New Zealand",
@@ -3589,7 +3836,8 @@
     "borders": [],
     "area": 270467,
     "population": 5084300,
-    "continent": "Oceania"
+    "continent": "Oceania",
+    "flagUrl": "https://flagcdn.com/nz.svg"
   },
   {
     "name": "Nicaragua",
@@ -3603,7 +3851,8 @@
     ],
     "area": 130373,
     "population": 6624554,
-    "continent": "North America"
+    "continent": "North America",
+    "flagUrl": "https://flagcdn.com/ni.svg"
   },
   {
     "name": "Anguilla",
@@ -3615,6 +3864,7 @@
     "area": 91,
     "population": 13452,
     "continent": "North America",
+    "flagUrl": "https://flagcdn.com/ai.svg",
     "belongsTo": "United Kingdom"
   }
 ]
