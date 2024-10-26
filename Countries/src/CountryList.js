@@ -4,17 +4,31 @@ import countriesData from './countries.json'; // Import the JSON file
 const CountryList = () => {
   const initialFilterState = {
     startsWith: '',
+    containsSubstring: '',
     endsWith: '',
     continent: '',
     population: 0,
     capital: '',
     landlocked: false,
+    independent: false,
+    dependency: false,
+    belongsTo: '',
     neighbor: '',
-    topNByArea: '' // New field for top N countries by area
+    topNByArea: '',
+    topNByPopulation: ''
   };
 
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [filteredTerritories, setFilteredTerritories] = useState([]);
   const [filter, setFilter] = useState(initialFilterState);
+
+  // Extract unique governing countries from countriesData
+  const governingCountries = Array.from(
+    new Set(countriesData
+      .filter(country => country.belongsTo) // Only territories/dependencies
+      .map(country => country.belongsTo)
+    )
+  );
 
   // Function to format population with thousands separator and comma for decimals
   const formatPopulation = (population) => {
@@ -40,9 +54,15 @@ const CountryList = () => {
   const filterCountries = () => {
     let result = countriesData;
     
+    // Apply all filters
     if (filter.startsWith) {
       result = result.filter(country =>
         country.name.toLowerCase().startsWith(filter.startsWith.toLowerCase())
+      );
+    }
+    if (filter.containsSubstring) {
+      result = result.filter(country => 
+        country.name.toLowerCase().includes(filter.containsSubstring.toLowerCase())
       );
     }
     if (filter.endsWith) {
@@ -66,6 +86,15 @@ const CountryList = () => {
     if (filter.landlocked) {
       result = result.filter(country => country.landlocked === filter.landlocked);
     }
+    if (filter.independent) {
+      result = result.filter(country => country.independent === filter.independent);
+    }
+    if (filter.dependency) {
+      result = result.filter(country => country.independent !== filter.dependency);
+    }
+    if (filter.belongsTo) {
+      result = result.filter(country => country.belongsTo === filter.belongsTo)
+    }
 
     // Filter by neighboring country
     if (filter.neighbor) {
@@ -86,11 +115,25 @@ const CountryList = () => {
     // Sort and return top N countries by area
     if (filter.topNByArea) {
       result = result
-        .sort((a, b) => b.area - a.area) // Sort by area descending
-        .slice(0, filter.topNByArea); // Take the top N
+        .sort((a, b) => b.area - a.area)
+        .slice(0, filter.topNByArea);
     }
 
-    setFilteredCountries(result);
+    // Sort and return top N countries by population
+    if (filter.topNByPopulation) {
+      result = result
+        .sort((a, b) => b.population - a.population)
+        .slice(0, filter.topNByPopulation);
+    }
+
+    // Separate filtered results into countries and territories
+    const countries = result.filter(country => 
+      country.independent === true
+    );
+    const territories = result.filter(country => country.independent === false || country.independent === undefined);
+
+    setFilteredCountries(countries);
+    setFilteredTerritories(territories);
   };
 
   // Re-run the filter whenever the filter changes
@@ -115,12 +158,22 @@ const CountryList = () => {
   return (
     <div>
       <h1>Country Quiz</h1>
+      {/* Filter Inputs */}
       <div>
         <label>Starts With: </label>
         <input
           type="text"
           name="startsWith"
           value={filter.startsWith}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Contains: </label>
+        <input
+          type="text"
+          name="containsSubstring"
+          value={filter.containsSubstring}
           onChange={handleInputChange}
         />
       </div>
@@ -161,6 +214,37 @@ const CountryList = () => {
         />
       </div>
       <div>
+        <label>Independent: </label>
+        <input
+          type="checkbox"
+          name="independent"
+          checked={filter.independent}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Dependency: </label>
+        <input
+          type="checkbox"
+          name="dependency"
+          checked={filter.dependency}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Belongs to: </label>
+        <select
+          name="belongsTo"
+          value={filter.belongsTo}
+          onChange={handleInputChange}
+        >
+          <option value="">Select a country</option>
+          {governingCountries.map(country => (
+            <option key={country} value={country}>{country}</option>
+          ))}
+        </select>
+      </div>
+      <div>
         <label>Neighboring Country: </label>
         <input
           type="text"
@@ -187,11 +271,20 @@ const CountryList = () => {
           onChange={handleInputChange}
         />
       </div>
+      <div>
+        <label>Top N Countries by Population: </label>
+        <input
+          type="number"
+          name="topNByPopulation"
+          value={filter.topNByPopulation}
+          onChange={handleInputChange}
+        />
+      </div>
 
       {/* Clear Button */}
       <button onClick={clearFilters}>Clear</button>
 
-      <h2>Countries that match the criteria:</h2>
+      <h2>Countries that match the criteria {"(" + (filteredCountries.length) + ")"}:</h2>
       <ul>
         {filteredCountries.map((country) => (
           <li key={country.name}>
@@ -199,6 +292,16 @@ const CountryList = () => {
           </li>
         ))}
       </ul>
+
+      <h2>Other Territories/Dependencies that match the criteria {"(" + (filteredTerritories.length) + ")"}:</h2>
+      <ul>
+        {filteredTerritories.map((territory) => (
+          <li key={territory.name}>
+            <strong>{territory.name}</strong> - Population: {formatPopulation(territory.population)}, Area: {formatArea(territory.area)}, Continent(s): {territory.continent}, Capital: {territory.capital}, Landlocked: {territory.landlocked ? 'Yes' : 'No'}, Neighbors: {getNeighborNames(territory.borders)}
+          </li>
+        ))}
+      </ul>
+
     </div>
   );
 };

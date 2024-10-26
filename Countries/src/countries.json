@@ -2,29 +2,30 @@
   {
     "name": "South Georgia",
     "threeLetterISOCountryCode": "SGS",
-    "population": 30,
-    "area": 3903,
-    "continent": "Antarctica",
+    "independent": false,
     "capital": "King Edward Point",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 3903,
+    "population": 30,
+    "continent": "Antarctica",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Grenada",
     "threeLetterISOCountryCode": "GRD",
-    "population": 112519,
-    "area": 344,
-    "continent": "North America",
+    "independent": true,
     "capital": "St. George's",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 344,
+    "population": 112519,
+    "continent": "North America"
   },
   {
     "name": "Switzerland",
     "threeLetterISOCountryCode": "CHE",
-    "population": 8654622,
-    "area": 41284,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Bern",
     "landlocked": true,
     "borders": [
@@ -33,27 +34,29 @@
       "ITA",
       "LIE",
       "DEU"
-    ]
+    ],
+    "area": 41284,
+    "population": 8654622,
+    "continent": "Europe"
   },
   {
     "name": "Sierra Leone",
     "threeLetterISOCountryCode": "SLE",
-    "population": 7976985,
-    "area": 71740,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Freetown",
     "landlocked": false,
     "borders": [
       "GIN",
       "LBR"
-    ]
+    ],
+    "area": 71740,
+    "population": 7976985,
+    "continent": "Africa"
   },
   {
     "name": "Hungary",
     "threeLetterISOCountryCode": "HUN",
-    "population": 9749763,
-    "area": 93028,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Budapest",
     "landlocked": true,
     "borders": [
@@ -64,54 +67,61 @@
       "SVK",
       "SVN",
       "UKR"
-    ]
+    ],
+    "area": 93028,
+    "population": 9749763,
+    "continent": "Europe"
   },
   {
     "name": "Taiwan",
     "threeLetterISOCountryCode": "TWN",
-    "population": 23503349,
-    "area": 36193,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Taipei",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 36193,
+    "population": 23503349,
+    "continent": "Asia"
   },
   {
     "name": "Wallis and Futuna",
     "threeLetterISOCountryCode": "WLF",
-    "population": 11750,
-    "area": 142,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Mata-Utu",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 142,
+    "population": 11750,
+    "continent": "Oceania",
+    "belongsTo": "France"
   },
   {
     "name": "Barbados",
     "threeLetterISOCountryCode": "BRB",
-    "population": 287371,
-    "area": 430,
-    "continent": "North America",
+    "independent": true,
     "capital": "Bridgetown",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 430,
+    "population": 287371,
+    "continent": "North America"
   },
   {
     "name": "Pitcairn Islands",
     "threeLetterISOCountryCode": "PCN",
-    "population": 56,
-    "area": 47,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Adamstown",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 47,
+    "population": 56,
+    "continent": "Oceania",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Ivory Coast",
     "threeLetterISOCountryCode": "CIV",
-    "population": 26378275,
-    "area": 322463,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Yamoussoukro",
     "landlocked": false,
     "borders": [
@@ -120,27 +130,29 @@
       "GIN",
       "LBR",
       "MLI"
-    ]
+    ],
+    "area": 322463,
+    "population": 26378275,
+    "continent": "Africa"
   },
   {
     "name": "Tunisia",
     "threeLetterISOCountryCode": "TUN",
-    "population": 11818618,
-    "area": 163610,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Tunis",
     "landlocked": false,
     "borders": [
       "DZA",
       "LBY"
-    ]
+    ],
+    "area": 163610,
+    "population": 11818618,
+    "continent": "Africa"
   },
   {
     "name": "Italy",
     "threeLetterISOCountryCode": "ITA",
-    "population": 59554023,
-    "area": 301336,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Rome",
     "landlocked": false,
     "borders": [
@@ -150,14 +162,15 @@
       "SVN",
       "CHE",
       "VAT"
-    ]
+    ],
+    "area": 301336,
+    "population": 59554023,
+    "continent": "Europe"
   },
   {
     "name": "Benin",
     "threeLetterISOCountryCode": "BEN",
-    "population": 12123198,
-    "area": 112622,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Porto-Novo",
     "landlocked": false,
     "borders": [
@@ -165,48 +178,52 @@
       "NER",
       "NGA",
       "TGO"
-    ]
+    ],
+    "area": 112622,
+    "population": 12123198,
+    "continent": "Africa"
   },
   {
     "name": "Indonesia",
     "threeLetterISOCountryCode": "IDN",
-    "population": 273523621,
-    "area": 1904569,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Jakarta",
     "landlocked": false,
     "borders": [
       "TLS",
       "MYS",
       "PNG"
-    ]
+    ],
+    "area": 1904569,
+    "population": 273523621,
+    "continent": "Asia"
   },
   {
     "name": "Cape Verde",
     "threeLetterISOCountryCode": "CPV",
-    "population": 555988,
-    "area": 4033,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Praia",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 4033,
+    "population": 555988,
+    "continent": "Africa"
   },
   {
     "name": "Saint Kitts and Nevis",
     "threeLetterISOCountryCode": "KNA",
-    "population": 53192,
-    "area": 261,
-    "continent": "North America",
+    "independent": true,
     "capital": "Basseterre",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 261,
+    "population": 53192,
+    "continent": "North America"
   },
   {
     "name": "Laos",
     "threeLetterISOCountryCode": "LAO",
-    "population": 7275556,
-    "area": 236800,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Vientiane",
     "landlocked": true,
     "borders": [
@@ -215,24 +232,27 @@
       "CHN",
       "THA",
       "VNM"
-    ]
+    ],
+    "area": 236800,
+    "population": 7275556,
+    "continent": "Asia"
   },
   {
     "name": "Caribbean Netherlands",
     "threeLetterISOCountryCode": "BES",
-    "population": 25987,
-    "area": 328,
-    "continent": "North America",
+    "independent": false,
     "capital": "Kralendijk",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 328,
+    "population": 25987,
+    "continent": "North America",
+    "belongsTo": "Netherlands"
   },
   {
     "name": "Uganda",
     "threeLetterISOCountryCode": "UGA",
-    "population": 45741000,
-    "area": 241550,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Kampala",
     "landlocked": true,
     "borders": [
@@ -241,41 +261,44 @@
       "RWA",
       "SSD",
       "TZA"
-    ]
+    ],
+    "area": 241550,
+    "population": 45741000,
+    "continent": "Africa"
   },
   {
     "name": "Andorra",
     "threeLetterISOCountryCode": "AND",
-    "population": 77265,
-    "area": 468,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Andorra la Vella",
     "landlocked": true,
     "borders": [
       "FRA",
       "ESP"
-    ]
+    ],
+    "area": 468,
+    "population": 77265,
+    "continent": "Europe"
   },
   {
     "name": "Burundi",
     "threeLetterISOCountryCode": "BDI",
-    "population": 11890781,
-    "area": 27834,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Gitega",
     "landlocked": true,
     "borders": [
       "COD",
       "RWA",
       "TZA"
-    ]
+    ],
+    "area": 27834,
+    "population": 11890781,
+    "continent": "Africa"
   },
   {
     "name": "South Africa",
     "threeLetterISOCountryCode": "ZAF",
-    "population": 59308690,
-    "area": 1221037,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Pretoria",
     "landlocked": false,
     "borders": [
@@ -285,14 +308,15 @@
       "NAM",
       "SWZ",
       "ZWE"
-    ]
+    ],
+    "area": 1221037,
+    "population": 59308690,
+    "continent": "Africa"
   },
   {
     "name": "France",
     "threeLetterISOCountryCode": "FRA",
-    "population": 67391582,
-    "area": 551695,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Paris",
     "landlocked": false,
     "borders": [
@@ -304,14 +328,15 @@
       "MCO",
       "ESP",
       "CHE"
-    ]
+    ],
+    "area": 551695,
+    "population": 67391582,
+    "continent": "Europe"
   },
   {
     "name": "Libya",
     "threeLetterISOCountryCode": "LBY",
-    "population": 6871287,
-    "area": 1759540,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Tripoli",
     "landlocked": false,
     "borders": [
@@ -321,52 +346,57 @@
       "NER",
       "SDN",
       "TUN"
-    ]
+    ],
+    "area": 1759540,
+    "population": 6871287,
+    "continent": "Africa"
   },
   {
     "name": "Mexico",
     "threeLetterISOCountryCode": "MEX",
-    "population": 128932753,
-    "area": 1964375,
-    "continent": "North America",
+    "independent": true,
     "capital": "Mexico City",
     "landlocked": false,
     "borders": [
       "BLZ",
       "GTM",
       "USA"
-    ]
+    ],
+    "area": 1964375,
+    "population": 128932753,
+    "continent": "North America"
   },
   {
     "name": "Gabon",
     "threeLetterISOCountryCode": "GAB",
-    "population": 2225728,
-    "area": 267668,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Libreville",
     "landlocked": false,
     "borders": [
       "CMR",
       "COG",
       "GNQ"
-    ]
+    ],
+    "area": 267668,
+    "population": 2225728,
+    "continent": "Africa"
   },
   {
     "name": "Northern Mariana Islands",
     "threeLetterISOCountryCode": "MNP",
-    "population": 57557,
-    "area": 464,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Saipan",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 464,
+    "population": 57557,
+    "continent": "Oceania",
+    "belongsTo": "United States"
   },
   {
     "name": "North Macedonia",
     "threeLetterISOCountryCode": "MKD",
-    "population": 2077132,
-    "area": 25713,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Skopje",
     "landlocked": true,
     "borders": [
@@ -375,14 +405,15 @@
       "GRC",
       "UNK",
       "SRB"
-    ]
+    ],
+    "area": 25713,
+    "population": 2077132,
+    "continent": "Europe"
   },
   {
     "name": "China",
     "threeLetterISOCountryCode": "CHN",
-    "population": 1402112000,
-    "area": 9706961,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Beijing",
     "landlocked": false,
     "borders": [
@@ -402,77 +433,88 @@
       "RUS",
       "TJK",
       "VNM"
-    ]
+    ],
+    "area": 9706961,
+    "population": 1402112000,
+    "continent": "Asia"
   },
   {
     "name": "Yemen",
     "threeLetterISOCountryCode": "YEM",
-    "population": 29825968,
-    "area": 527968,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Sana'a",
     "landlocked": false,
     "borders": [
       "OMN",
       "SAU"
-    ]
+    ],
+    "area": 527968,
+    "population": 29825968,
+    "continent": "Asia"
   },
   {
     "name": "Saint Barthélemy",
     "threeLetterISOCountryCode": "BLM",
-    "population": 4255,
-    "area": 21,
-    "continent": "North America",
+    "independent": false,
     "capital": "Gustavia",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 21,
+    "population": 4255,
+    "continent": "North America",
+    "belongsTo": "France"
   },
   {
     "name": "Guernsey",
     "threeLetterISOCountryCode": "GGY",
-    "population": 62999,
-    "area": 78,
-    "continent": "Europe",
+    "independent": false,
     "capital": "St. Peter Port",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 78,
+    "population": 62999,
+    "continent": "Europe",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Solomon Islands",
     "threeLetterISOCountryCode": "SLB",
-    "population": 686878,
-    "area": 28896,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Honiara",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 28896,
+    "population": 686878,
+    "continent": "Oceania"
   },
   {
     "name": "Svalbard and Jan Mayen",
     "threeLetterISOCountryCode": "SJM",
-    "population": 2562,
-    "area": 61399,
-    "continent": "Europe",
+    "independent": false,
     "capital": "Longyearbyen",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 61399,
+    "population": 2562,
+    "continent": "Europe",
+    "belongsTo": "Norway"
   },
   {
     "name": "Faroe Islands",
     "threeLetterISOCountryCode": "FRO",
-    "population": 48865,
-    "area": 1393,
-    "continent": "Europe",
+    "independent": false,
     "capital": "Tórshavn",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 1393,
+    "population": 48865,
+    "continent": "Europe",
+    "belongsTo": "Denmark"
   },
   {
     "name": "Uzbekistan",
     "threeLetterISOCountryCode": "UZB",
-    "population": 34232050,
-    "area": 447400,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Tashkent",
     "landlocked": true,
     "borders": [
@@ -481,14 +523,15 @@
       "KGZ",
       "TJK",
       "TKM"
-    ]
+    ],
+    "area": 447400,
+    "population": 34232050,
+    "continent": "Asia"
   },
   {
     "name": "Egypt",
     "threeLetterISOCountryCode": "EGY",
-    "population": 102334403,
-    "area": 1002450,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Cairo",
     "landlocked": false,
     "borders": [
@@ -496,14 +539,15 @@
       "LBY",
       "PSE",
       "SDN"
-    ]
+    ],
+    "area": 1002450,
+    "population": 102334403,
+    "continent": "Africa"
   },
   {
     "name": "Senegal",
     "threeLetterISOCountryCode": "SEN",
-    "population": 16743930,
-    "area": 196722,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Dakar",
     "landlocked": false,
     "borders": [
@@ -512,53 +556,58 @@
       "GNB",
       "MLI",
       "MRT"
-    ]
+    ],
+    "area": 196722,
+    "population": 16743930,
+    "continent": "Africa"
   },
   {
     "name": "Sri Lanka",
     "threeLetterISOCountryCode": "LKA",
-    "population": 21919000,
-    "area": 65610,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Sri Jayawardenepura Kotte",
     "landlocked": false,
     "borders": [
       "IND"
-    ]
+    ],
+    "area": 65610,
+    "population": 21919000,
+    "continent": "Asia"
   },
   {
     "name": "Palestine",
     "threeLetterISOCountryCode": "PSE",
-    "population": 4803269,
-    "area": 6220,
-    "continent": "Asia",
+    "independent": false,
     "capital": "Ramallah",
     "landlocked": false,
     "borders": [
       "ISR",
       "EGY",
       "JOR"
-    ]
+    ],
+    "area": 6220,
+    "population": 4803269,
+    "continent": "Asia",
+    "belongsTo": "Disputed"
   },
   {
     "name": "Bangladesh",
     "threeLetterISOCountryCode": "BGD",
-    "population": 164689383,
-    "area": 147570,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Dhaka",
     "landlocked": false,
     "borders": [
       "MMR",
       "IND"
-    ]
+    ],
+    "area": 147570,
+    "population": 164689383,
+    "continent": "Asia"
   },
   {
     "name": "Peru",
     "threeLetterISOCountryCode": "PER",
-    "population": 32971846,
-    "area": 1285216,
-    "continent": "South America",
+    "independent": true,
     "capital": "Lima",
     "landlocked": false,
     "borders": [
@@ -567,24 +616,26 @@
       "CHL",
       "COL",
       "ECU"
-    ]
+    ],
+    "area": 1285216,
+    "population": 32971846,
+    "continent": "South America"
   },
   {
     "name": "Singapore",
     "threeLetterISOCountryCode": "SGP",
-    "population": 5685807,
-    "area": 710,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Singapore",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 710,
+    "population": 5685807,
+    "continent": "Asia"
   },
   {
     "name": "Turkey",
     "threeLetterISOCountryCode": "TUR",
-    "population": 84339067,
-    "area": 783562,
-    "continent": "Europe, Asia",
+    "independent": true,
     "capital": "Ankara",
     "landlocked": false,
     "borders": [
@@ -596,14 +647,15 @@
       "IRN",
       "IRQ",
       "SYR"
-    ]
+    ],
+    "area": 783562,
+    "population": 84339067,
+    "continent": "Europe, Asia"
   },
   {
     "name": "Afghanistan",
     "threeLetterISOCountryCode": "AFG",
-    "population": 40218234,
-    "area": 652230,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Kabul",
     "landlocked": true,
     "borders": [
@@ -613,46 +665,52 @@
       "UZB",
       "TJK",
       "CHN"
-    ]
+    ],
+    "area": 652230,
+    "population": 40218234,
+    "continent": "Asia"
   },
   {
     "name": "Aruba",
     "threeLetterISOCountryCode": "ABW",
-    "population": 106766,
-    "area": 180,
-    "continent": "North America",
+    "independent": false,
     "capital": "Oranjestad",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 180,
+    "population": 106766,
+    "continent": "North America",
+    "belongsTo": "Netherlands"
   },
   {
     "name": "Cook Islands",
     "threeLetterISOCountryCode": "COK",
-    "population": 18100,
-    "area": 236,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Avarua",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 236,
+    "population": 18100,
+    "continent": "Oceania",
+    "belongsTo": "New Zealand"
   },
   {
     "name": "United Kingdom",
     "threeLetterISOCountryCode": "GBR",
-    "population": 67215293,
-    "area": 242900,
-    "continent": "Europe",
+    "independent": true,
     "capital": "London",
     "landlocked": false,
     "borders": [
       "IRL"
-    ]
+    ],
+    "area": 242900,
+    "population": 67215293,
+    "continent": "Europe"
   },
   {
     "name": "Zambia",
     "threeLetterISOCountryCode": "ZMB",
-    "population": 18383956,
-    "area": 752612,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Lusaka",
     "landlocked": true,
     "borders": [
@@ -664,28 +722,30 @@
       "NAM",
       "TZA",
       "ZWE"
-    ]
+    ],
+    "area": 752612,
+    "population": 18383956,
+    "continent": "Africa"
   },
   {
     "name": "Finland",
     "threeLetterISOCountryCode": "FIN",
-    "population": 5530719,
-    "area": 338424,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Helsinki",
     "landlocked": false,
     "borders": [
       "NOR",
       "SWE",
       "RUS"
-    ]
+    ],
+    "area": 338424,
+    "population": 5530719,
+    "continent": "Europe"
   },
   {
     "name": "Niger",
     "threeLetterISOCountryCode": "NER",
-    "population": 24206636,
-    "area": 1267000,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Niamey",
     "landlocked": true,
     "borders": [
@@ -696,47 +756,53 @@
       "LBY",
       "MLI",
       "NGA"
-    ]
+    ],
+    "area": 1267000,
+    "population": 24206636,
+    "continent": "Africa"
   },
   {
     "name": "Christmas Island",
     "threeLetterISOCountryCode": "CXR",
-    "population": 2072,
-    "area": 135,
-    "continent": "Asia",
+    "independent": false,
     "capital": "Flying Fish Cove",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 135,
+    "population": 2072,
+    "continent": "Asia",
+    "belongsTo": "Australia"
   },
   {
     "name": "Tokelau",
     "threeLetterISOCountryCode": "TKL",
-    "population": 1411,
-    "area": 12,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Fakaofo",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 12,
+    "population": 1411,
+    "continent": "Oceania",
+    "belongsTo": "New Zealand"
   },
   {
     "name": "Guinea-Bissau",
     "threeLetterISOCountryCode": "GNB",
-    "population": 1967998,
-    "area": 36125,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Bissau",
     "landlocked": false,
     "borders": [
       "GIN",
       "SEN"
-    ]
+    ],
+    "area": 36125,
+    "population": 1967998,
+    "continent": "Africa"
   },
   {
     "name": "Azerbaijan",
     "threeLetterISOCountryCode": "AZE",
-    "population": 10110116,
-    "area": 86600,
-    "continent": "Europe, Asia",
+    "independent": true,
     "capital": "Baku",
     "landlocked": true,
     "borders": [
@@ -745,82 +811,92 @@
       "IRN",
       "RUS",
       "TUR"
-    ]
+    ],
+    "area": 86600,
+    "population": 10110116,
+    "continent": "Europe, Asia"
   },
   {
     "name": "Réunion",
     "threeLetterISOCountryCode": "REU",
-    "population": 840974,
-    "area": 2511,
-    "continent": "Africa",
+    "independent": false,
     "capital": "Saint-Denis",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 2511,
+    "population": 840974,
+    "continent": "Africa",
+    "belongsTo": "France"
   },
   {
     "name": "Djibouti",
     "threeLetterISOCountryCode": "DJI",
-    "population": 988002,
-    "area": 23200,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Djibouti",
     "landlocked": false,
     "borders": [
       "ERI",
       "ETH",
       "SOM"
-    ]
+    ],
+    "area": 23200,
+    "population": 988002,
+    "continent": "Africa"
   },
   {
     "name": "North Korea",
     "threeLetterISOCountryCode": "PRK",
-    "population": 25778815,
-    "area": 120538,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Pyongyang",
     "landlocked": false,
     "borders": [
       "CHN",
       "KOR",
       "RUS"
-    ]
+    ],
+    "area": 120538,
+    "population": 25778815,
+    "continent": "Asia"
   },
   {
     "name": "Mauritius",
     "threeLetterISOCountryCode": "MUS",
-    "population": 1265740,
-    "area": 2040,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Port Louis",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 2040,
+    "population": 1265740,
+    "continent": "Africa"
   },
   {
     "name": "Montserrat",
     "threeLetterISOCountryCode": "MSR",
-    "population": 4922,
-    "area": 102,
-    "continent": "North America",
+    "independent": false,
     "capital": "Plymouth",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 102,
+    "population": 4922,
+    "continent": "North America",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "United States Virgin Islands",
     "threeLetterISOCountryCode": "VIR",
-    "population": 106290,
-    "area": 347,
-    "continent": "North America",
+    "independent": false,
     "capital": "Charlotte Amalie",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 347,
+    "population": 106290,
+    "continent": "North America",
+    "belongsTo": "United States"
   },
   {
     "name": "Colombia",
     "threeLetterISOCountryCode": "COL",
-    "population": 50882884,
-    "area": 1141748,
-    "continent": "South America",
+    "independent": true,
     "capital": "Bogotá",
     "landlocked": false,
     "borders": [
@@ -829,14 +905,15 @@
       "PAN",
       "PER",
       "VEN"
-    ]
+    ],
+    "area": 1141748,
+    "population": 50882884,
+    "continent": "South America"
   },
   {
     "name": "Greece",
     "threeLetterISOCountryCode": "GRC",
-    "population": 10715549,
-    "area": 131990,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Athens",
     "landlocked": false,
     "borders": [
@@ -844,14 +921,15 @@
       "BGR",
       "TUR",
       "MKD"
-    ]
+    ],
+    "area": 131990,
+    "population": 10715549,
+    "continent": "Europe"
   },
   {
     "name": "Croatia",
     "threeLetterISOCountryCode": "HRV",
-    "population": 4047200,
-    "area": 56594,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Zagreb",
     "landlocked": false,
     "borders": [
@@ -860,28 +938,30 @@
       "MNE",
       "SRB",
       "SVN"
-    ]
+    ],
+    "area": 56594,
+    "population": 4047200,
+    "continent": "Europe"
   },
   {
     "name": "Morocco",
     "threeLetterISOCountryCode": "MAR",
-    "population": 36910558,
-    "area": 446550,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Rabat",
     "landlocked": false,
     "borders": [
       "DZA",
       "ESH",
       "ESP"
-    ]
+    ],
+    "area": 446550,
+    "population": 36910558,
+    "continent": "Africa"
   },
   {
     "name": "Algeria",
     "threeLetterISOCountryCode": "DZA",
-    "population": 44700000,
-    "area": 2381741,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Algiers",
     "landlocked": false,
     "borders": [
@@ -892,37 +972,41 @@
       "MRT",
       "MLI",
       "MAR"
-    ]
+    ],
+    "area": 2381741,
+    "population": 44700000,
+    "continent": "Africa"
   },
   {
     "name": "Antarctica",
     "threeLetterISOCountryCode": "ATA",
-    "population": 1000,
-    "area": 14000000,
-    "continent": "Antarctica",
+    "independent": false,
     "capital": "N/A",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 14000000,
+    "population": 1000,
+    "continent": "Antarctica",
+    "belongsTo": "International"
   },
   {
     "name": "Netherlands",
     "threeLetterISOCountryCode": "NLD",
-    "population": 16655799,
-    "area": 41850,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Amsterdam",
     "landlocked": false,
     "borders": [
       "BEL",
       "DEU"
-    ]
+    ],
+    "area": 41850,
+    "population": 16655799,
+    "continent": "Europe"
   },
   {
     "name": "Sudan",
     "threeLetterISOCountryCode": "SDN",
-    "population": 43849269,
-    "area": 1886068,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Khartoum",
     "landlocked": false,
     "borders": [
@@ -933,60 +1017,66 @@
       "ETH",
       "LBY",
       "SSD"
-    ]
+    ],
+    "area": 1886068,
+    "population": 43849269,
+    "continent": "Africa"
   },
   {
     "name": "Fiji",
     "threeLetterISOCountryCode": "FJI",
-    "population": 896444,
-    "area": 18272,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Suva",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 18272,
+    "population": 896444,
+    "continent": "Oceania"
   },
   {
     "name": "Liechtenstein",
     "threeLetterISOCountryCode": "LIE",
-    "population": 38137,
-    "area": 160,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Vaduz",
     "landlocked": true,
     "borders": [
       "AUT",
       "CHE"
-    ]
+    ],
+    "area": 160,
+    "population": 38137,
+    "continent": "Europe"
   },
   {
     "name": "Nepal",
     "threeLetterISOCountryCode": "NPL",
-    "population": 29136808,
-    "area": 147181,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Kathmandu",
     "landlocked": true,
     "borders": [
       "CHN",
       "IND"
-    ]
+    ],
+    "area": 147181,
+    "population": 29136808,
+    "continent": "Asia"
   },
   {
     "name": "Puerto Rico",
     "threeLetterISOCountryCode": "PRI",
-    "population": 3194034,
-    "area": 8870,
-    "continent": "North America",
+    "independent": false,
     "capital": "San Juan",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 8870,
+    "population": 3194034,
+    "continent": "North America",
+    "belongsTo": "United States"
   },
   {
     "name": "Georgia",
     "threeLetterISOCountryCode": "GEO",
-    "population": 3714000,
-    "area": 69700,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Tbilisi",
     "landlocked": false,
     "borders": [
@@ -994,14 +1084,15 @@
       "AZE",
       "RUS",
       "TUR"
-    ]
+    ],
+    "area": 69700,
+    "population": 3714000,
+    "continent": "Asia"
   },
   {
     "name": "Pakistan",
     "threeLetterISOCountryCode": "PAK",
-    "population": 220892331,
-    "area": 881912,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Islamabad",
     "landlocked": false,
     "borders": [
@@ -1009,26 +1100,28 @@
       "CHN",
       "IND",
       "IRN"
-    ]
+    ],
+    "area": 881912,
+    "population": 220892331,
+    "continent": "Asia"
   },
   {
     "name": "Monaco",
     "threeLetterISOCountryCode": "MCO",
-    "population": 39244,
-    "area": 2.02,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Monaco",
     "landlocked": false,
     "borders": [
       "FRA"
-    ]
+    ],
+    "area": 2.02,
+    "population": 39244,
+    "continent": "Europe"
   },
   {
     "name": "Botswana",
     "threeLetterISOCountryCode": "BWA",
-    "population": 2351625,
-    "area": 582000,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Gaborone",
     "landlocked": true,
     "borders": [
@@ -1036,103 +1129,115 @@
       "ZAF",
       "ZMB",
       "ZWE"
-    ]
+    ],
+    "area": 582000,
+    "population": 2351625,
+    "continent": "Africa"
   },
   {
     "name": "Lebanon",
     "threeLetterISOCountryCode": "LBN",
-    "population": 6825442,
-    "area": 10452,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Beirut",
     "landlocked": false,
     "borders": [
       "ISR",
       "SYR"
-    ]
+    ],
+    "area": 10452,
+    "population": 6825442,
+    "continent": "Asia"
   },
   {
     "name": "Papua New Guinea",
     "threeLetterISOCountryCode": "PNG",
-    "population": 8947027,
-    "area": 462840,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Port Moresby",
     "landlocked": false,
     "borders": [
       "IDN"
-    ]
+    ],
+    "area": 462840,
+    "population": 8947027,
+    "continent": "Oceania"
   },
   {
     "name": "Mayotte",
     "threeLetterISOCountryCode": "MYT",
-    "population": 226915,
-    "area": 374,
-    "continent": "Africa",
+    "independent": false,
     "capital": "Mamoudzou",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 374,
+    "population": 226915,
+    "continent": "Africa",
+    "belongsTo": "France"
   },
   {
     "name": "Dominican Republic",
     "threeLetterISOCountryCode": "DOM",
-    "population": 10847904,
-    "area": 48671,
-    "continent": "North America",
+    "independent": true,
     "capital": "Santo Domingo",
     "landlocked": false,
     "borders": [
       "HTI"
-    ]
+    ],
+    "area": 48671,
+    "population": 10847904,
+    "continent": "North America"
   },
   {
     "name": "Norfolk Island",
     "threeLetterISOCountryCode": "NFK",
-    "population": 2302,
-    "area": 36,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Kingston",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 36,
+    "population": 2302,
+    "continent": "Oceania",
+    "belongsTo": "Australia"
   },
   {
     "name": "Bouvet Island",
     "threeLetterISOCountryCode": "BVT",
-    "population": 0,
-    "area": 49,
-    "continent": "Antarctica",
+    "independent": false,
     "capital": "N/A",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 49,
+    "population": 0,
+    "continent": "Antarctica",
+    "belongsTo": "Norway"
   },
   {
     "name": "Qatar",
     "threeLetterISOCountryCode": "QAT",
-    "population": 2881060,
-    "area": 11586,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Doha",
     "landlocked": false,
     "borders": [
       "SAU"
-    ]
+    ],
+    "area": 11586,
+    "population": 2881060,
+    "continent": "Asia"
   },
   {
     "name": "Madagascar",
     "threeLetterISOCountryCode": "MDG",
-    "population": 27691019,
-    "area": 587041,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Antananarivo",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 587041,
+    "population": 27691019,
+    "continent": "Africa"
   },
   {
     "name": "India",
     "threeLetterISOCountryCode": "IND",
-    "population": 1380004385,
-    "area": 3287590,
-    "continent": "Asia",
+    "independent": true,
     "capital": "New Delhi",
     "landlocked": false,
     "borders": [
@@ -1142,14 +1247,15 @@
       "CHN",
       "NPL",
       "PAK"
-    ]
+    ],
+    "area": 3287590,
+    "population": 1380004385,
+    "continent": "Asia"
   },
   {
     "name": "Syria",
     "threeLetterISOCountryCode": "SYR",
-    "population": 17500657,
-    "area": 185180,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Damascus",
     "landlocked": false,
     "borders": [
@@ -1158,14 +1264,15 @@
       "JOR",
       "LBN",
       "TUR"
-    ]
+    ],
+    "area": 185180,
+    "population": 17500657,
+    "continent": "Asia"
   },
   {
     "name": "Montenegro",
     "threeLetterISOCountryCode": "MNE",
-    "population": 621718,
-    "area": 13812,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Podgorica",
     "landlocked": false,
     "borders": [
@@ -1174,54 +1281,58 @@
       "HRV",
       "UNK",
       "SRB"
-    ]
+    ],
+    "area": 13812,
+    "population": 621718,
+    "continent": "Europe"
   },
   {
     "name": "Eswatini",
     "threeLetterISOCountryCode": "SWZ",
-    "population": 1160164,
-    "area": 17364,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Mbabane",
     "landlocked": true,
     "borders": [
       "MOZ",
       "ZAF"
-    ]
+    ],
+    "area": 17364,
+    "population": 1160164,
+    "continent": "Africa"
   },
   {
     "name": "Paraguay",
     "threeLetterISOCountryCode": "PRY",
-    "population": 7132530,
-    "area": 406752,
-    "continent": "South America",
+    "independent": true,
     "capital": "Asunción",
     "landlocked": true,
     "borders": [
       "ARG",
       "BOL",
       "BRA"
-    ]
+    ],
+    "area": 406752,
+    "population": 7132530,
+    "continent": "South America"
   },
   {
     "name": "El Salvador",
     "threeLetterISOCountryCode": "SLV",
-    "population": 6486201,
-    "area": 21041,
-    "continent": "North America",
+    "independent": true,
     "capital": "San Salvador",
     "landlocked": false,
     "borders": [
       "GTM",
       "HND"
-    ]
+    ],
+    "area": 21041,
+    "population": 6486201,
+    "continent": "North America"
   },
   {
     "name": "Ukraine",
     "threeLetterISOCountryCode": "UKR",
-    "population": 44134693,
-    "area": 603500,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Kyiv",
     "landlocked": false,
     "borders": [
@@ -1232,24 +1343,27 @@
       "ROU",
       "RUS",
       "SVK"
-    ]
+    ],
+    "area": 603500,
+    "population": 44134693,
+    "continent": "Europe"
   },
   {
     "name": "Isle of Man",
     "threeLetterISOCountryCode": "IMN",
-    "population": 85032,
-    "area": 572,
-    "continent": "Europe",
+    "independent": false,
     "capital": "Douglas",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 572,
+    "population": 85032,
+    "continent": "Europe",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Namibia",
     "threeLetterISOCountryCode": "NAM",
-    "population": 2540916,
-    "area": 825615,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Windhoek",
     "landlocked": false,
     "borders": [
@@ -1257,27 +1371,29 @@
       "BWA",
       "ZAF",
       "ZMB"
-    ]
+    ],
+    "area": 825615,
+    "population": 2540916,
+    "continent": "Africa"
   },
   {
     "name": "United Arab Emirates",
     "threeLetterISOCountryCode": "ARE",
-    "population": 9890400,
-    "area": 83600,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Abu Dhabi",
     "landlocked": false,
     "borders": [
       "OMN",
       "SAU"
-    ]
+    ],
+    "area": 83600,
+    "population": 9890400,
+    "continent": "Asia"
   },
   {
     "name": "Bulgaria",
     "threeLetterISOCountryCode": "BGR",
-    "population": 6927288,
-    "area": 110879,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Sofia",
     "landlocked": false,
     "borders": [
@@ -1286,24 +1402,27 @@
       "ROU",
       "SRB",
       "TUR"
-    ]
+    ],
+    "area": 110879,
+    "population": 6927288,
+    "continent": "Europe"
   },
   {
     "name": "Greenland",
     "threeLetterISOCountryCode": "GRL",
-    "population": 56367,
-    "area": 2166086,
-    "continent": "North America",
+    "independent": false,
     "capital": "Nuuk",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 2166086,
+    "population": 56367,
+    "continent": "North America",
+    "belongsTo": "Denmark"
   },
   {
     "name": "Germany",
     "threeLetterISOCountryCode": "DEU",
-    "population": 83240525,
-    "area": 357114,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Berlin",
     "landlocked": false,
     "borders": [
@@ -1316,28 +1435,30 @@
       "NLD",
       "POL",
       "CHE"
-    ]
+    ],
+    "area": 357114,
+    "population": 83240525,
+    "continent": "Europe"
   },
   {
     "name": "Cambodia",
     "threeLetterISOCountryCode": "KHM",
-    "population": 16718971,
-    "area": 181035,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Phnom Penh",
     "landlocked": false,
     "borders": [
       "LAO",
       "THA",
       "VNM"
-    ]
+    ],
+    "area": 181035,
+    "population": 16718971,
+    "continent": "Asia"
   },
   {
     "name": "Iraq",
     "threeLetterISOCountryCode": "IRQ",
-    "population": 40222503,
-    "area": 438317,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Baghdad",
     "landlocked": false,
     "borders": [
@@ -1347,47 +1468,52 @@
       "SAU",
       "SYR",
       "TUR"
-    ]
+    ],
+    "area": 438317,
+    "population": 40222503,
+    "continent": "Asia"
   },
   {
     "name": "French Southern and Antarctic Lands",
     "threeLetterISOCountryCode": "ATF",
-    "population": 400,
-    "area": 7747,
-    "continent": "Antarctica",
+    "independent": false,
     "capital": "Port-aux-Français",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 7747,
+    "population": 400,
+    "continent": "Antarctica",
+    "belongsTo": "France"
   },
   {
     "name": "Sweden",
     "threeLetterISOCountryCode": "SWE",
-    "population": 10353442,
-    "area": 450295,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Stockholm",
     "landlocked": false,
     "borders": [
       "FIN",
       "NOR"
-    ]
+    ],
+    "area": 450295,
+    "population": 10353442,
+    "continent": "Europe"
   },
   {
     "name": "Cuba",
     "threeLetterISOCountryCode": "CUB",
-    "population": 11326616,
-    "area": 109884,
-    "continent": "North America",
+    "independent": true,
     "capital": "Havana",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 109884,
+    "population": 11326616,
+    "continent": "North America"
   },
   {
     "name": "Kyrgyzstan",
     "threeLetterISOCountryCode": "KGZ",
-    "population": 6591600,
-    "area": 199951,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Bishkek",
     "landlocked": true,
     "borders": [
@@ -1395,14 +1521,15 @@
       "KAZ",
       "TJK",
       "UZB"
-    ]
+    ],
+    "area": 199951,
+    "population": 6591600,
+    "continent": "Asia"
   },
   {
     "name": "Russia",
     "threeLetterISOCountryCode": "RUS",
-    "population": 144104080,
-    "area": 17098242,
-    "continent": "Europe, Asia",
+    "independent": true,
     "capital": "Moscow",
     "landlocked": false,
     "borders": [
@@ -1420,74 +1547,80 @@
       "NOR",
       "POL",
       "UKR"
-    ]
+    ],
+    "area": 17098242,
+    "population": 144104080,
+    "continent": "Europe, Asia"
   },
   {
     "name": "Malaysia",
     "threeLetterISOCountryCode": "MYS",
-    "population": 32365998,
-    "area": 330803,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Kuala Lumpur",
     "landlocked": false,
     "borders": [
       "BRN",
       "IDN",
       "THA"
-    ]
+    ],
+    "area": 330803,
+    "population": 32365998,
+    "continent": "Asia"
   },
   {
     "name": "São Tomé and Príncipe",
     "threeLetterISOCountryCode": "STP",
-    "population": 219161,
-    "area": 964,
-    "continent": "Africa",
+    "independent": true,
     "capital": "São Tomé",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 964,
+    "population": 219161,
+    "continent": "Africa"
   },
   {
     "name": "Cyprus",
     "threeLetterISOCountryCode": "CYP",
-    "population": 1207361,
-    "area": 9251,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Nicosia",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 9251,
+    "population": 1207361,
+    "continent": "Europe"
   },
   {
     "name": "Canada",
     "threeLetterISOCountryCode": "CAN",
-    "population": 38005238,
-    "area": 9984670,
-    "continent": "North America",
+    "independent": true,
     "capital": "Ottawa",
     "landlocked": false,
     "borders": [
       "USA"
-    ]
+    ],
+    "area": 9984670,
+    "population": 38005238,
+    "continent": "North America"
   },
   {
     "name": "Malawi",
     "threeLetterISOCountryCode": "MWI",
-    "population": 19129955,
-    "area": 118484,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Lilongwe",
     "landlocked": true,
     "borders": [
       "MOZ",
       "TZA",
       "ZMB"
-    ]
+    ],
+    "area": 118484,
+    "population": 19129955,
+    "continent": "Africa"
   },
   {
     "name": "Saudi Arabia",
     "threeLetterISOCountryCode": "SAU",
-    "population": 34813867,
-    "area": 2149690,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Riyadh",
     "landlocked": false,
     "borders": [
@@ -1498,28 +1631,30 @@
       "QAT",
       "ARE",
       "YEM"
-    ]
+    ],
+    "area": 2149690,
+    "population": 34813867,
+    "continent": "Asia"
   },
   {
     "name": "Bosnia and Herzegovina",
     "threeLetterISOCountryCode": "BIH",
-    "population": 3280815,
-    "area": 51209,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Sarajevo",
     "landlocked": false,
     "borders": [
       "HRV",
       "MNE",
       "SRB"
-    ]
+    ],
+    "area": 51209,
+    "population": 3280815,
+    "continent": "Europe"
   },
   {
     "name": "Ethiopia",
     "threeLetterISOCountryCode": "ETH",
-    "population": 114963583,
-    "area": 1104300,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Addis Ababa",
     "landlocked": true,
     "borders": [
@@ -1529,14 +1664,15 @@
       "SOM",
       "SSD",
       "SDN"
-    ]
+    ],
+    "area": 1104300,
+    "population": 114963583,
+    "continent": "Africa"
   },
   {
     "name": "Spain",
     "threeLetterISOCountryCode": "ESP",
-    "population": 47351567,
-    "area": 505992,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Madrid",
     "landlocked": false,
     "borders": [
@@ -1545,14 +1681,15 @@
       "GIB",
       "PRT",
       "MAR"
-    ]
+    ],
+    "area": 505992,
+    "population": 47351567,
+    "continent": "Europe"
   },
   {
     "name": "Slovenia",
     "threeLetterISOCountryCode": "SVN",
-    "population": 2100126,
-    "area": 20273,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Ljubljana",
     "landlocked": false,
     "borders": [
@@ -1560,120 +1697,133 @@
       "HRV",
       "ITA",
       "HUN"
-    ]
+    ],
+    "area": 20273,
+    "population": 2100126,
+    "continent": "Europe"
   },
   {
     "name": "Oman",
     "threeLetterISOCountryCode": "OMN",
-    "population": 5106622,
-    "area": 309500,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Muscat",
     "landlocked": false,
     "borders": [
       "SAU",
       "ARE",
       "YEM"
-    ]
+    ],
+    "area": 309500,
+    "population": 5106622,
+    "continent": "Asia"
   },
   {
     "name": "Saint Pierre and Miquelon",
     "threeLetterISOCountryCode": "SPM",
-    "population": 6069,
-    "area": 242,
-    "continent": "North America",
+    "independent": false,
     "capital": "Saint-Pierre",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 242,
+    "population": 6069,
+    "continent": "North America",
+    "belongsTo": "France"
   },
   {
     "name": "Macau",
     "threeLetterISOCountryCode": "MAC",
-    "population": 649342,
-    "area": 30,
-    "continent": "Asia",
+    "independent": false,
     "capital": "N/A",
     "landlocked": false,
     "borders": [
       "CHN"
-    ]
+    ],
+    "area": 30,
+    "population": 649342,
+    "continent": "Asia",
+    "belongsTo": "China"
   },
   {
     "name": "San Marino",
     "threeLetterISOCountryCode": "SMR",
-    "population": 33938,
-    "area": 61,
-    "continent": "Europe",
+    "independent": true,
     "capital": "City of San Marino",
     "landlocked": true,
     "borders": [
       "ITA"
-    ]
+    ],
+    "area": 61,
+    "population": 33938,
+    "continent": "Europe"
   },
   {
     "name": "Lesotho",
     "threeLetterISOCountryCode": "LSO",
-    "population": 2142252,
-    "area": 30355,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Maseru",
     "landlocked": true,
     "borders": [
       "ZAF"
-    ]
+    ],
+    "area": 30355,
+    "population": 2142252,
+    "continent": "Africa"
   },
   {
     "name": "Marshall Islands",
     "threeLetterISOCountryCode": "MHL",
-    "population": 59194,
-    "area": 181,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Majuro",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 181,
+    "population": 59194,
+    "continent": "Oceania"
   },
   {
     "name": "Sint Maarten",
     "threeLetterISOCountryCode": "SXM",
-    "population": 40812,
-    "area": 34,
-    "continent": "North America",
+    "independent": false,
     "capital": "Philipsburg",
     "landlocked": false,
     "borders": [
       "MAF"
-    ]
+    ],
+    "area": 34,
+    "population": 40812,
+    "continent": "North America",
+    "belongsTo": "Netherlands"
   },
   {
     "name": "Iceland",
     "threeLetterISOCountryCode": "ISL",
-    "population": 366425,
-    "area": 103000,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Reykjavik",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 103000,
+    "population": 366425,
+    "continent": "Europe"
   },
   {
     "name": "Luxembourg",
     "threeLetterISOCountryCode": "LUX",
-    "population": 632275,
-    "area": 2586,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Luxembourg",
     "landlocked": true,
     "borders": [
       "BEL",
       "FRA",
       "DEU"
-    ]
+    ],
+    "area": 2586,
+    "population": 632275,
+    "continent": "Europe"
   },
   {
     "name": "Argentina",
     "threeLetterISOCountryCode": "ARG",
-    "population": 45376763,
-    "area": 2780400,
-    "continent": "South America",
+    "independent": true,
     "capital": "Buenos Aires",
     "landlocked": false,
     "borders": [
@@ -1682,91 +1832,102 @@
       "CHL",
       "PRY",
       "URY"
-    ]
+    ],
+    "area": 2780400,
+    "population": 45376763,
+    "continent": "South America"
   },
   {
     "name": "Turks and Caicos Islands",
     "threeLetterISOCountryCode": "TCA",
-    "population": 38718,
-    "area": 948,
-    "continent": "North America",
+    "independent": false,
     "capital": "Cockburn Town",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 948,
+    "population": 38718,
+    "continent": "North America",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Nauru",
     "threeLetterISOCountryCode": "NRU",
-    "population": 10834,
-    "area": 21,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Yaren",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 21,
+    "population": 10834,
+    "continent": "Oceania"
   },
   {
     "name": "Cocos (Keeling) Islands",
     "threeLetterISOCountryCode": "CCK",
-    "population": 544,
-    "area": 14,
-    "continent": "Asia",
+    "independent": false,
     "capital": "West Island",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 14,
+    "population": 544,
+    "continent": "Asia",
+    "belongsTo": "Australia"
   },
   {
     "name": "Western Sahara",
     "threeLetterISOCountryCode": "ESH",
-    "population": 510713,
-    "area": 266000,
-    "continent": "Africa",
+    "independent": false,
     "capital": "El Aaiún",
     "landlocked": false,
     "borders": [
       "DZA",
       "MRT",
       "MAR"
-    ]
+    ],
+    "area": 266000,
+    "population": 510713,
+    "continent": "Africa",
+    "belongsTo": "Disputed"
   },
   {
     "name": "Dominica",
     "threeLetterISOCountryCode": "DMA",
-    "population": 71991,
-    "area": 751,
-    "continent": "North America",
+    "independent": true,
     "capital": "Roseau",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 751,
+    "population": 71991,
+    "continent": "North America"
   },
   {
     "name": "Costa Rica",
     "threeLetterISOCountryCode": "CRI",
-    "population": 5094114,
-    "area": 51100,
-    "continent": "North America",
+    "independent": true,
     "capital": "San José",
     "landlocked": false,
     "borders": [
       "NIC",
       "PAN"
-    ]
+    ],
+    "area": 51100,
+    "population": 5094114,
+    "continent": "North America"
   },
   {
     "name": "Australia",
     "threeLetterISOCountryCode": "AUS",
-    "population": 25687041,
-    "area": 7692024,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Canberra",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 7692024,
+    "population": 25687041,
+    "continent": "Oceania"
   },
   {
     "name": "Thailand",
     "threeLetterISOCountryCode": "THA",
-    "population": 69799978,
-    "area": 513120,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Bangkok",
     "landlocked": false,
     "borders": [
@@ -1774,83 +1935,91 @@
       "KHM",
       "LAO",
       "MYS"
-    ]
+    ],
+    "area": 513120,
+    "population": 69799978,
+    "continent": "Asia"
   },
   {
     "name": "Haiti",
     "threeLetterISOCountryCode": "HTI",
-    "population": 11402533,
-    "area": 27750,
-    "continent": "North America",
+    "independent": true,
     "capital": "Port-au-Prince",
     "landlocked": false,
     "borders": [
       "DOM"
-    ]
+    ],
+    "area": 27750,
+    "population": 11402533,
+    "continent": "North America"
   },
   {
     "name": "Tuvalu",
     "threeLetterISOCountryCode": "TUV",
-    "population": 11792,
-    "area": 26,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Funafuti",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 26,
+    "population": 11792,
+    "continent": "Oceania"
   },
   {
     "name": "Honduras",
     "threeLetterISOCountryCode": "HND",
-    "population": 9904608,
-    "area": 112492,
-    "continent": "North America",
+    "independent": true,
     "capital": "Tegucigalpa",
     "landlocked": false,
     "borders": [
       "GTM",
       "SLV",
       "NIC"
-    ]
+    ],
+    "area": 112492,
+    "population": 9904608,
+    "continent": "North America"
   },
   {
     "name": "Equatorial Guinea",
     "threeLetterISOCountryCode": "GNQ",
-    "population": 1402985,
-    "area": 28051,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Malabo",
     "landlocked": false,
     "borders": [
       "CMR",
       "GAB"
-    ]
+    ],
+    "area": 28051,
+    "population": 1402985,
+    "continent": "Africa"
   },
   {
     "name": "Saint Lucia",
     "threeLetterISOCountryCode": "LCA",
-    "population": 183629,
-    "area": 616,
-    "continent": "North America",
+    "independent": true,
     "capital": "Castries",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 616,
+    "population": 183629,
+    "continent": "North America"
   },
   {
     "name": "French Polynesia",
     "threeLetterISOCountryCode": "PYF",
-    "population": 280904,
-    "area": 4167,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Papeetē",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 4167,
+    "population": 280904,
+    "continent": "Oceania",
+    "belongsTo": "France"
   },
   {
     "name": "Belarus",
     "threeLetterISOCountryCode": "BLR",
-    "population": 9398861,
-    "area": 207600,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Minsk",
     "landlocked": true,
     "borders": [
@@ -1859,14 +2028,15 @@
       "POL",
       "RUS",
       "UKR"
-    ]
+    ],
+    "area": 207600,
+    "population": 9398861,
+    "continent": "Europe"
   },
   {
     "name": "Latvia",
     "threeLetterISOCountryCode": "LVA",
-    "population": 1901548,
-    "area": 64559,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Riga",
     "landlocked": false,
     "borders": [
@@ -1874,68 +2044,76 @@
       "EST",
       "LTU",
       "RUS"
-    ]
+    ],
+    "area": 64559,
+    "population": 1901548,
+    "continent": "Europe"
   },
   {
     "name": "Palau",
     "threeLetterISOCountryCode": "PLW",
-    "population": 18092,
-    "area": 459,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Ngerulmud",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 459,
+    "population": 18092,
+    "continent": "Oceania"
   },
   {
     "name": "Guadeloupe",
     "threeLetterISOCountryCode": "GLP",
-    "population": 400132,
-    "area": 1628,
-    "continent": "North America",
+    "independent": false,
     "capital": "Basse-Terre",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 1628,
+    "population": 400132,
+    "continent": "North America",
+    "belongsTo": "France"
   },
   {
     "name": "Philippines",
     "threeLetterISOCountryCode": "PHL",
-    "population": 109581085,
-    "area": 342353,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Manila",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 342353,
+    "population": 109581085,
+    "continent": "Asia"
   },
   {
     "name": "Gibraltar",
     "threeLetterISOCountryCode": "GIB",
-    "population": 33691,
-    "area": 6,
-    "continent": "Europe",
+    "independent": false,
     "capital": "Gibraltar",
     "landlocked": false,
     "borders": [
       "ESP"
-    ]
+    ],
+    "area": 6,
+    "population": 33691,
+    "continent": "Europe",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Denmark",
     "threeLetterISOCountryCode": "DNK",
-    "population": 5831404,
-    "area": 43094,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Copenhagen",
     "landlocked": false,
     "borders": [
       "DEU"
-    ]
+    ],
+    "area": 43094,
+    "population": 5831404,
+    "continent": "Europe"
   },
   {
     "name": "Cameroon",
     "threeLetterISOCountryCode": "CMR",
-    "population": 26545864,
-    "area": 475442,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Yaoundé",
     "landlocked": false,
     "borders": [
@@ -1945,14 +2123,15 @@
       "GNQ",
       "GAB",
       "NGA"
-    ]
+    ],
+    "area": 475442,
+    "population": 26545864,
+    "continent": "Africa"
   },
   {
     "name": "Guinea",
     "threeLetterISOCountryCode": "GIN",
-    "population": 13132792,
-    "area": 245857,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Conakry",
     "landlocked": false,
     "borders": [
@@ -1962,38 +2141,41 @@
       "MLI",
       "SEN",
       "SLE"
-    ]
+    ],
+    "area": 245857,
+    "population": 13132792,
+    "continent": "Africa"
   },
   {
     "name": "Bahrain",
     "threeLetterISOCountryCode": "BHR",
-    "population": 1701583,
-    "area": 765,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Manama",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 765,
+    "population": 1701583,
+    "continent": "Asia"
   },
   {
     "name": "Suriname",
     "threeLetterISOCountryCode": "SUR",
-    "population": 586634,
-    "area": 163820,
-    "continent": "South America",
+    "independent": true,
     "capital": "Paramaribo",
     "landlocked": false,
     "borders": [
       "BRA",
       "GUF",
       "GUY"
-    ]
+    ],
+    "area": 163820,
+    "population": 586634,
+    "continent": "South America"
   },
   {
     "name": "DR Congo",
     "threeLetterISOCountryCode": "COD",
-    "population": 108407721,
-    "area": 2344858,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Kinshasa",
     "landlocked": false,
     "borders": [
@@ -2006,28 +2188,30 @@
       "TZA",
       "UGA",
       "ZMB"
-    ]
+    ],
+    "area": 2344858,
+    "population": 108407721,
+    "continent": "Africa"
   },
   {
     "name": "Somalia",
     "threeLetterISOCountryCode": "SOM",
-    "population": 15893219,
-    "area": 637657,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Mogadishu",
     "landlocked": false,
     "borders": [
       "DJI",
       "ETH",
       "KEN"
-    ]
+    ],
+    "area": 637657,
+    "population": 15893219,
+    "continent": "Africa"
   },
   {
     "name": "Czechia",
     "threeLetterISOCountryCode": "CZE",
-    "population": 10698896,
-    "area": 78865,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Prague",
     "landlocked": true,
     "borders": [
@@ -2035,68 +2219,77 @@
       "DEU",
       "POL",
       "SVK"
-    ]
+    ],
+    "area": 78865,
+    "population": 10698896,
+    "continent": "Europe"
   },
   {
     "name": "New Caledonia",
     "threeLetterISOCountryCode": "NCL",
-    "population": 271960,
-    "area": 18575,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Nouméa",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 18575,
+    "population": 271960,
+    "continent": "Oceania",
+    "belongsTo": "France"
   },
   {
     "name": "Vanuatu",
     "threeLetterISOCountryCode": "VUT",
-    "population": 307150,
-    "area": 12189,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Port Vila",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 12189,
+    "population": 307150,
+    "continent": "Oceania"
   },
   {
     "name": "Saint Helena, Ascension and Tristan da Cunha",
     "threeLetterISOCountryCode": "SHN",
-    "population": 53192,
-    "area": 394,
-    "continent": "Africa",
+    "independent": false,
     "capital": "Jamestown",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 394,
+    "population": 53192,
+    "continent": "Africa",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Togo",
     "threeLetterISOCountryCode": "TGO",
-    "population": 8278737,
-    "area": 56785,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Lomé",
     "landlocked": false,
     "borders": [
       "BEN",
       "BFA",
       "GHA"
-    ]
+    ],
+    "area": 56785,
+    "population": 8278737,
+    "continent": "Africa"
   },
   {
     "name": "British Virgin Islands",
     "threeLetterISOCountryCode": "VGB",
-    "population": 30237,
-    "area": 151,
-    "continent": "North America",
+    "independent": false,
     "capital": "Road Town",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 151,
+    "population": 30237,
+    "continent": "North America",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Kenya",
     "threeLetterISOCountryCode": "KEN",
-    "population": 53771300,
-    "area": 580367,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Nairobi",
     "landlocked": false,
     "borders": [
@@ -2105,34 +2298,39 @@
       "SSD",
       "TZA",
       "UGA"
-    ]
+    ],
+    "area": 580367,
+    "population": 53771300,
+    "continent": "Africa"
   },
   {
     "name": "Niue",
     "threeLetterISOCountryCode": "NIU",
-    "population": 1470,
-    "area": 260,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Alofi",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 260,
+    "population": 1470,
+    "continent": "Oceania",
+    "belongsTo": "New Zealand"
   },
   {
     "name": "Heard Island and McDonald Islands",
     "threeLetterISOCountryCode": "HMD",
-    "population": 0,
-    "area": 412,
-    "continent": "Antarctica",
+    "independent": false,
     "capital": "N/A",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 412,
+    "population": 0,
+    "continent": "Antarctica",
+    "belongsTo": "Australia"
   },
   {
     "name": "Rwanda",
     "threeLetterISOCountryCode": "RWA",
-    "population": 12952209,
-    "area": 26338,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Kigali",
     "landlocked": true,
     "borders": [
@@ -2140,27 +2338,29 @@
       "COD",
       "TZA",
       "UGA"
-    ]
+    ],
+    "area": 26338,
+    "population": 12952209,
+    "continent": "Africa"
   },
   {
     "name": "Estonia",
     "threeLetterISOCountryCode": "EST",
-    "population": 1331057,
-    "area": 45227,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Tallinn",
     "landlocked": false,
     "borders": [
       "LVA",
       "RUS"
-    ]
+    ],
+    "area": 45227,
+    "population": 1331057,
+    "continent": "Europe"
   },
   {
     "name": "Romania",
     "threeLetterISOCountryCode": "ROU",
-    "population": 19286123,
-    "area": 238391,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Bucharest",
     "landlocked": false,
     "borders": [
@@ -2169,101 +2369,110 @@
       "MDA",
       "SRB",
       "UKR"
-    ]
+    ],
+    "area": 238391,
+    "population": 19286123,
+    "continent": "Europe"
   },
   {
     "name": "Trinidad and Tobago",
     "threeLetterISOCountryCode": "TTO",
-    "population": 1399491,
-    "area": 5130,
-    "continent": "North America",
+    "independent": true,
     "capital": "Port of Spain",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 5130,
+    "population": 1399491,
+    "continent": "North America"
   },
   {
     "name": "Guyana",
     "threeLetterISOCountryCode": "GUY",
-    "population": 786559,
-    "area": 214969,
-    "continent": "South America",
+    "independent": true,
     "capital": "Georgetown",
     "landlocked": false,
     "borders": [
       "BRA",
       "SUR",
       "VEN"
-    ]
+    ],
+    "area": 214969,
+    "population": 786559,
+    "continent": "South America"
   },
   {
     "name": "Timor-Leste",
     "threeLetterISOCountryCode": "TLS",
-    "population": 1318442,
-    "area": 14874,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Dili",
     "landlocked": false,
     "borders": [
       "IDN"
-    ]
+    ],
+    "area": 14874,
+    "population": 1318442,
+    "continent": "Oceania"
   },
   {
     "name": "Vietnam",
     "threeLetterISOCountryCode": "VNM",
-    "population": 97338583,
-    "area": 331212,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Hanoi",
     "landlocked": false,
     "borders": [
       "KHM",
       "CHN",
       "LAO"
-    ]
+    ],
+    "area": 331212,
+    "population": 97338583,
+    "continent": "Asia"
   },
   {
     "name": "Uruguay",
     "threeLetterISOCountryCode": "URY",
-    "population": 3473727,
-    "area": 181034,
-    "continent": "South America",
+    "independent": true,
     "capital": "Montevideo",
     "landlocked": false,
     "borders": [
       "ARG",
       "BRA"
-    ]
+    ],
+    "area": 181034,
+    "population": 3473727,
+    "continent": "South America"
   },
   {
     "name": "Vatican City",
     "threeLetterISOCountryCode": "VAT",
-    "population": 451,
-    "area": 0.44,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Vatican City",
     "landlocked": true,
     "borders": [
       "ITA"
-    ]
+    ],
+    "area": 0.44,
+    "population": 451,
+    "continent": "Europe"
   },
   {
     "name": "Hong Kong",
     "threeLetterISOCountryCode": "HKG",
-    "population": 7500700,
-    "area": 1104,
-    "continent": "Asia",
+    "independent": false,
     "capital": "City of Victoria",
     "landlocked": false,
     "borders": [
       "CHN"
-    ]
+    ],
+    "area": 1104,
+    "population": 7500700,
+    "continent": "Asia",
+    "belongsTo": "China"
   },
   {
     "name": "Austria",
     "threeLetterISOCountryCode": "AUT",
-    "population": 8917205,
-    "area": 83871,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Vienna",
     "landlocked": true,
     "borders": [
@@ -2275,24 +2484,26 @@
       "SVK",
       "SVN",
       "CHE"
-    ]
+    ],
+    "area": 83871,
+    "population": 8917205,
+    "continent": "Europe"
   },
   {
     "name": "Antigua and Barbuda",
     "threeLetterISOCountryCode": "ATG",
-    "population": 97928,
-    "area": 442,
-    "continent": "North America",
+    "independent": true,
     "capital": "Saint John's",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 442,
+    "population": 97928,
+    "continent": "North America"
   },
   {
     "name": "Turkmenistan",
     "threeLetterISOCountryCode": "TKM",
-    "population": 6031187,
-    "area": 488100,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Ashgabat",
     "landlocked": true,
     "borders": [
@@ -2300,14 +2511,15 @@
       "IRN",
       "KAZ",
       "UZB"
-    ]
+    ],
+    "area": 488100,
+    "population": 6031187,
+    "continent": "Asia"
   },
   {
     "name": "Mozambique",
     "threeLetterISOCountryCode": "MOZ",
-    "population": 31255435,
-    "area": 801590,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Maputo",
     "landlocked": false,
     "borders": [
@@ -2317,96 +2529,107 @@
       "TZA",
       "ZMB",
       "ZWE"
-    ]
+    ],
+    "area": 801590,
+    "population": 31255435,
+    "continent": "Africa"
   },
   {
     "name": "Panama",
     "threeLetterISOCountryCode": "PAN",
-    "population": 4314768,
-    "area": 75417,
-    "continent": "North America",
+    "independent": true,
     "capital": "Panama City",
     "landlocked": false,
     "borders": [
       "COL",
       "CRI"
-    ]
+    ],
+    "area": 75417,
+    "population": 4314768,
+    "continent": "North America"
   },
   {
     "name": "Micronesia",
     "threeLetterISOCountryCode": "FSM",
-    "population": 115021,
-    "area": 702,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Palikir",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 702,
+    "population": 115021,
+    "continent": "Oceania"
   },
   {
     "name": "Ireland",
     "threeLetterISOCountryCode": "IRL",
-    "population": 4994724,
-    "area": 70273,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Dublin",
     "landlocked": false,
     "borders": [
       "GBR"
-    ]
+    ],
+    "area": 70273,
+    "population": 4994724,
+    "continent": "Europe"
   },
   {
     "name": "Curaçao",
     "threeLetterISOCountryCode": "CUW",
-    "population": 155014,
-    "area": 444,
-    "continent": "North America",
+    "independent": false,
     "capital": "Willemstad",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 444,
+    "population": 155014,
+    "continent": "North America",
+    "belongsTo": "Netherlands"
   },
   {
     "name": "French Guiana",
     "threeLetterISOCountryCode": "GUF",
-    "population": 254541,
-    "area": 83534,
-    "continent": "South America",
+    "independent": false,
     "capital": "Cayenne",
     "landlocked": false,
     "borders": [
       "BRA",
       "SUR"
-    ]
+    ],
+    "area": 83534,
+    "population": 254541,
+    "continent": "South America",
+    "belongsTo": "France"
   },
   {
     "name": "Norway",
     "threeLetterISOCountryCode": "NOR",
-    "population": 5379475,
-    "area": 323802,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Oslo",
     "landlocked": false,
     "borders": [
       "FIN",
       "SWE",
       "RUS"
-    ]
+    ],
+    "area": 323802,
+    "population": 5379475,
+    "continent": "Europe"
   },
   {
     "name": "Åland Islands",
     "threeLetterISOCountryCode": "ALA",
-    "population": 29458,
-    "area": 1580,
-    "continent": "Europe",
+    "independent": false,
     "capital": "Mariehamn",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 1580,
+    "population": 29458,
+    "continent": "Europe",
+    "belongsTo": "Finland"
   },
   {
     "name": "Central African Republic",
     "threeLetterISOCountryCode": "CAF",
-    "population": 4829764,
-    "area": 622984,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Bangui",
     "landlocked": true,
     "borders": [
@@ -2416,14 +2639,15 @@
       "COG",
       "SSD",
       "SDN"
-    ]
+    ],
+    "area": 622984,
+    "population": 4829764,
+    "continent": "Africa"
   },
   {
     "name": "Burkina Faso",
     "threeLetterISOCountryCode": "BFA",
-    "population": 20903278,
-    "area": 272967,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Ouagadougou",
     "landlocked": true,
     "borders": [
@@ -2433,28 +2657,30 @@
       "MLI",
       "NER",
       "TGO"
-    ]
+    ],
+    "area": 272967,
+    "population": 20903278,
+    "continent": "Africa"
   },
   {
     "name": "Eritrea",
     "threeLetterISOCountryCode": "ERI",
-    "population": 5352000,
-    "area": 117600,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Asmara",
     "landlocked": false,
     "borders": [
       "DJI",
       "ETH",
       "SDN"
-    ]
+    ],
+    "area": 117600,
+    "population": 5352000,
+    "continent": "Africa"
   },
   {
     "name": "Tanzania",
     "threeLetterISOCountryCode": "TZA",
-    "population": 59734213,
-    "area": 945087,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Dodoma",
     "landlocked": false,
     "borders": [
@@ -2466,26 +2692,28 @@
       "RWA",
       "UGA",
       "ZMB"
-    ]
+    ],
+    "area": 945087,
+    "population": 59734213,
+    "continent": "Africa"
   },
   {
     "name": "South Korea",
     "threeLetterISOCountryCode": "KOR",
-    "population": 51780579,
-    "area": 100210,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Seoul",
     "landlocked": false,
     "borders": [
       "PRK"
-    ]
+    ],
+    "area": 100210,
+    "population": 51780579,
+    "continent": "Asia"
   },
   {
     "name": "Jordan",
     "threeLetterISOCountryCode": "JOR",
-    "population": 10203140,
-    "area": 89342,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Amman",
     "landlocked": false,
     "borders": [
@@ -2494,14 +2722,15 @@
       "PSE",
       "SAU",
       "SYR"
-    ]
+    ],
+    "area": 89342,
+    "population": 10203140,
+    "continent": "Asia"
   },
   {
     "name": "Mauritania",
     "threeLetterISOCountryCode": "MRT",
-    "population": 4649660,
-    "area": 1030700,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Nouakchott",
     "landlocked": false,
     "borders": [
@@ -2509,14 +2738,15 @@
       "MLI",
       "SEN",
       "ESH"
-    ]
+    ],
+    "area": 1030700,
+    "population": 4649660,
+    "continent": "Africa"
   },
   {
     "name": "Lithuania",
     "threeLetterISOCountryCode": "LTU",
-    "population": 2794700,
-    "area": 65300,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Vilnius",
     "landlocked": false,
     "borders": [
@@ -2524,24 +2754,27 @@
       "LVA",
       "POL",
       "RUS"
-    ]
+    ],
+    "area": 65300,
+    "population": 2794700,
+    "continent": "Europe"
   },
   {
     "name": "United States Minor Outlying Islands",
     "threeLetterISOCountryCode": "UMI",
-    "population": 300,
-    "area": 34.2,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Washington DC",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 34.2,
+    "population": 300,
+    "continent": "Oceania",
+    "belongsTo": "United States"
   },
   {
     "name": "Slovakia",
     "threeLetterISOCountryCode": "SVK",
-    "population": 5458827,
-    "area": 49037,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Bratislava",
     "landlocked": true,
     "borders": [
@@ -2550,14 +2783,15 @@
       "HUN",
       "POL",
       "UKR"
-    ]
+    ],
+    "area": 49037,
+    "population": 5458827,
+    "continent": "Europe"
   },
   {
     "name": "Angola",
     "threeLetterISOCountryCode": "AGO",
-    "population": 32866268,
-    "area": 1246700,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Luanda",
     "landlocked": false,
     "borders": [
@@ -2565,14 +2799,15 @@
       "COD",
       "ZMB",
       "NAM"
-    ]
+    ],
+    "area": 1246700,
+    "population": 32866268,
+    "continent": "Africa"
   },
   {
     "name": "Kazakhstan",
     "threeLetterISOCountryCode": "KAZ",
-    "population": 18754440,
-    "area": 2724900,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Nur-Sultan",
     "landlocked": true,
     "borders": [
@@ -2581,27 +2816,29 @@
       "RUS",
       "TKM",
       "UZB"
-    ]
+    ],
+    "area": 2724900,
+    "population": 18754440,
+    "continent": "Asia"
   },
   {
     "name": "Moldova",
     "threeLetterISOCountryCode": "MDA",
-    "population": 2617820,
-    "area": 33846,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Chișinău",
     "landlocked": true,
     "borders": [
       "ROU",
       "UKR"
-    ]
+    ],
+    "area": 33846,
+    "population": 2617820,
+    "continent": "Europe"
   },
   {
     "name": "Mali",
     "threeLetterISOCountryCode": "MLI",
-    "population": 20250834,
-    "area": 1240192,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Bamako",
     "landlocked": true,
     "borders": [
@@ -2612,24 +2849,27 @@
       "MRT",
       "NER",
       "SEN"
-    ]
+    ],
+    "area": 1240192,
+    "population": 20250834,
+    "continent": "Africa"
   },
   {
     "name": "Falkland Islands",
     "threeLetterISOCountryCode": "FLK",
-    "population": 2563,
-    "area": 12173,
-    "continent": "South America",
+    "independent": false,
     "capital": "Stanley",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 12173,
+    "population": 2563,
+    "continent": "South America",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Armenia",
     "threeLetterISOCountryCode": "ARM",
-    "population": 2963234,
-    "area": 29743,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Yerevan",
     "landlocked": true,
     "borders": [
@@ -2637,44 +2877,49 @@
       "GEO",
       "IRN",
       "TUR"
-    ]
+    ],
+    "area": 29743,
+    "population": 2963234,
+    "continent": "Asia"
   },
   {
     "name": "Samoa",
     "threeLetterISOCountryCode": "WSM",
-    "population": 198410,
-    "area": 2842,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Apia",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 2842,
+    "population": 198410,
+    "continent": "Oceania"
   },
   {
     "name": "Jersey",
     "threeLetterISOCountryCode": "JEY",
-    "population": 100800,
-    "area": 116,
-    "continent": "Europe",
+    "independent": false,
     "capital": "Saint Helier",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 116,
+    "population": 100800,
+    "continent": "Europe",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Japan",
     "threeLetterISOCountryCode": "JPN",
-    "population": 125836021,
-    "area": 377930,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Tokyo",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 377930,
+    "population": 125836021,
+    "continent": "Asia"
   },
   {
     "name": "Bolivia",
     "threeLetterISOCountryCode": "BOL",
-    "population": 11673029,
-    "area": 1098581,
-    "continent": "South America",
+    "independent": true,
     "capital": "Sucre",
     "landlocked": true,
     "borders": [
@@ -2683,81 +2928,90 @@
       "CHL",
       "PRY",
       "PER"
-    ]
+    ],
+    "area": 1098581,
+    "population": 11673029,
+    "continent": "South America"
   },
   {
     "name": "Chile",
     "threeLetterISOCountryCode": "CHL",
-    "population": 19116209,
-    "area": 756102,
-    "continent": "South America",
+    "independent": true,
     "capital": "Santiago",
     "landlocked": false,
     "borders": [
       "ARG",
       "BOL",
       "PER"
-    ]
+    ],
+    "area": 756102,
+    "population": 19116209,
+    "continent": "South America"
   },
   {
     "name": "United States",
     "threeLetterISOCountryCode": "USA",
-    "population": 329484123,
-    "area": 9372610,
-    "continent": "North America",
+    "independent": true,
     "capital": "Washington, D.C.",
     "landlocked": false,
     "borders": [
       "CAN",
       "MEX"
-    ]
+    ],
+    "area": 9372610,
+    "population": 329484123,
+    "continent": "North America"
   },
   {
     "name": "Saint Vincent and the Grenadines",
     "threeLetterISOCountryCode": "VCT",
-    "population": 110947,
-    "area": 389,
-    "continent": "North America",
+    "independent": true,
     "capital": "Kingstown",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 389,
+    "population": 110947,
+    "continent": "North America"
   },
   {
     "name": "Bermuda",
     "threeLetterISOCountryCode": "BMU",
-    "population": 63903,
-    "area": 54,
-    "continent": "North America",
+    "independent": false,
     "capital": "Hamilton",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 54,
+    "population": 63903,
+    "continent": "North America",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Seychelles",
     "threeLetterISOCountryCode": "SYC",
-    "population": 98462,
-    "area": 452,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Victoria",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 452,
+    "population": 98462,
+    "continent": "Africa"
   },
   {
     "name": "British Indian Ocean Territory",
     "threeLetterISOCountryCode": "IOT",
-    "population": 3000,
-    "area": 60,
-    "continent": "Asia",
+    "independent": false,
     "capital": "Diego Garcia",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 60,
+    "population": 3000,
+    "continent": "Asia",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Guatemala",
     "threeLetterISOCountryCode": "GTM",
-    "population": 16858333,
-    "area": 108889,
-    "continent": "North America",
+    "independent": true,
     "capital": "Guatemala City",
     "landlocked": false,
     "borders": [
@@ -2765,37 +3019,41 @@
       "SLV",
       "HND",
       "MEX"
-    ]
+    ],
+    "area": 108889,
+    "population": 16858333,
+    "continent": "North America"
   },
   {
     "name": "Ecuador",
     "threeLetterISOCountryCode": "ECU",
-    "population": 17643060,
-    "area": 276841,
-    "continent": "South America",
+    "independent": true,
     "capital": "Quito",
     "landlocked": false,
     "borders": [
       "COL",
       "PER"
-    ]
+    ],
+    "area": 276841,
+    "population": 17643060,
+    "continent": "South America"
   },
   {
     "name": "Martinique",
     "threeLetterISOCountryCode": "MTQ",
-    "population": 378243,
-    "area": 1128,
-    "continent": "North America",
+    "independent": false,
     "capital": "Fort-de-France",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 1128,
+    "population": 378243,
+    "continent": "North America",
+    "belongsTo": "France"
   },
   {
     "name": "Tajikistan",
     "threeLetterISOCountryCode": "TJK",
-    "population": 9537642,
-    "area": 143100,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Dushanbe",
     "landlocked": true,
     "borders": [
@@ -2803,36 +3061,39 @@
       "CHN",
       "KGZ",
       "UZB"
-    ]
+    ],
+    "area": 143100,
+    "population": 9537642,
+    "continent": "Asia"
   },
   {
     "name": "Malta",
     "threeLetterISOCountryCode": "MLT",
-    "population": 525285,
-    "area": 316,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Valletta",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 316,
+    "population": 525285,
+    "continent": "Europe"
   },
   {
     "name": "Gambia",
     "threeLetterISOCountryCode": "GMB",
-    "population": 2416664,
-    "area": 10689,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Banjul",
     "landlocked": false,
     "borders": [
       "SEN"
-    ]
+    ],
+    "area": 10689,
+    "population": 2416664,
+    "continent": "Africa"
   },
   {
     "name": "Nigeria",
     "threeLetterISOCountryCode": "NGA",
-    "population": 206139587,
-    "area": 923768,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Abuja",
     "landlocked": false,
     "borders": [
@@ -2840,24 +3101,25 @@
       "CMR",
       "TCD",
       "NER"
-    ]
+    ],
+    "area": 923768,
+    "population": 206139587,
+    "continent": "Africa"
   },
   {
     "name": "Bahamas",
     "threeLetterISOCountryCode": "BHS",
-    "population": 393248,
-    "area": 13943,
-    "continent": "North America",
+    "independent": true,
     "capital": "Nassau",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 13943,
+    "population": 393248,
+    "continent": "North America"
   },
   {
     "name": "Kosovo",
     "threeLetterISOCountryCode": "UNK",
-    "population": 1775378,
-    "area": 10908,
-    "continent": "Europe",
     "capital": "Pristina",
     "landlocked": true,
     "borders": [
@@ -2865,37 +3127,41 @@
       "MKD",
       "MNE",
       "SRB"
-    ]
+    ],
+    "area": 10908,
+    "population": 1775378,
+    "continent": "Europe",
+    "independent": true
   },
   {
     "name": "Kuwait",
     "threeLetterISOCountryCode": "KWT",
-    "population": 4270563,
-    "area": 17818,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Kuwait City",
     "landlocked": false,
     "borders": [
       "IRQ",
       "SAU"
-    ]
+    ],
+    "area": 17818,
+    "population": 4270563,
+    "continent": "Asia"
   },
   {
     "name": "Maldives",
     "threeLetterISOCountryCode": "MDV",
-    "population": 540542,
-    "area": 300,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Malé",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 300,
+    "population": 540542,
+    "continent": "Asia"
   },
   {
     "name": "South Sudan",
     "threeLetterISOCountryCode": "SSD",
-    "population": 11193729,
-    "area": 619745,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Juba",
     "landlocked": true,
     "borders": [
@@ -2905,14 +3171,15 @@
       "KEN",
       "SDN",
       "UGA"
-    ]
+    ],
+    "area": 619745,
+    "population": 11193729,
+    "continent": "Africa"
   },
   {
     "name": "Iran",
     "threeLetterISOCountryCode": "IRN",
-    "population": 83992953,
-    "area": 1648195,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Tehran",
     "landlocked": false,
     "borders": [
@@ -2923,14 +3190,15 @@
       "PAK",
       "TUR",
       "TKM"
-    ]
+    ],
+    "area": 1648195,
+    "population": 83992953,
+    "continent": "Asia"
   },
   {
     "name": "Albania",
     "threeLetterISOCountryCode": "ALB",
-    "population": 2837743,
-    "area": 28748,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Tirana",
     "landlocked": false,
     "borders": [
@@ -2938,14 +3206,15 @@
       "GRC",
       "MKD",
       "UNK"
-    ]
+    ],
+    "area": 28748,
+    "population": 2837743,
+    "continent": "Europe"
   },
   {
     "name": "Brazil",
     "threeLetterISOCountryCode": "BRA",
-    "population": 212559409,
-    "area": 8515767,
-    "continent": "South America",
+    "independent": true,
     "capital": "Brasília",
     "landlocked": false,
     "borders": [
@@ -2959,14 +3228,15 @@
       "SUR",
       "URY",
       "VEN"
-    ]
+    ],
+    "area": 8515767,
+    "population": 212559409,
+    "continent": "South America"
   },
   {
     "name": "Serbia",
     "threeLetterISOCountryCode": "SRB",
-    "population": 6908224,
-    "area": 88361,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Belgrade",
     "landlocked": true,
     "borders": [
@@ -2978,27 +3248,29 @@
       "MKD",
       "MNE",
       "ROU"
-    ]
+    ],
+    "area": 88361,
+    "population": 6908224,
+    "continent": "Europe"
   },
   {
     "name": "Belize",
     "threeLetterISOCountryCode": "BLZ",
-    "population": 397621,
-    "area": 22966,
-    "continent": "North America",
+    "independent": true,
     "capital": "Belmopan",
     "landlocked": false,
     "borders": [
       "GTM",
       "MEX"
-    ]
+    ],
+    "area": 22966,
+    "population": 397621,
+    "continent": "North America"
   },
   {
     "name": "Myanmar",
     "threeLetterISOCountryCode": "MMR",
-    "population": 54409794,
-    "area": 676578,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Naypyidaw",
     "landlocked": false,
     "borders": [
@@ -3007,65 +3279,70 @@
       "IND",
       "LAO",
       "THA"
-    ]
+    ],
+    "area": 676578,
+    "population": 54409794,
+    "continent": "Asia"
   },
   {
     "name": "Bhutan",
     "threeLetterISOCountryCode": "BTN",
-    "population": 771612,
-    "area": 38394,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Thimphu",
     "landlocked": true,
     "borders": [
       "CHN",
       "IND"
-    ]
+    ],
+    "area": 38394,
+    "population": 771612,
+    "continent": "Asia"
   },
   {
     "name": "Venezuela",
     "threeLetterISOCountryCode": "VEN",
-    "population": 28435943,
-    "area": 916445,
-    "continent": "South America",
+    "independent": true,
     "capital": "Caracas",
     "landlocked": false,
     "borders": [
       "BRA",
       "COL",
       "GUY"
-    ]
+    ],
+    "area": 916445,
+    "population": 28435943,
+    "continent": "South America"
   },
   {
     "name": "Liberia",
     "threeLetterISOCountryCode": "LBR",
-    "population": 5057677,
-    "area": 111369,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Monrovia",
     "landlocked": false,
     "borders": [
       "GIN",
       "CIV",
       "SLE"
-    ]
+    ],
+    "area": 111369,
+    "population": 5057677,
+    "continent": "Africa"
   },
   {
     "name": "Jamaica",
     "threeLetterISOCountryCode": "JAM",
-    "population": 2961161,
-    "area": 10991,
-    "continent": "North America",
+    "independent": true,
     "capital": "Kingston",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 10991,
+    "population": 2961161,
+    "continent": "North America"
   },
   {
     "name": "Poland",
     "threeLetterISOCountryCode": "POL",
-    "population": 37950802,
-    "area": 312679,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Warsaw",
     "landlocked": false,
     "borders": [
@@ -3076,90 +3353,100 @@
       "RUS",
       "SVK",
       "UKR"
-    ]
+    ],
+    "area": 312679,
+    "population": 37950802,
+    "continent": "Europe"
   },
   {
     "name": "Cayman Islands",
     "threeLetterISOCountryCode": "CYM",
-    "population": 65720,
-    "area": 264,
-    "continent": "North America",
+    "independent": false,
     "capital": "George Town",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 264,
+    "population": 65720,
+    "continent": "North America",
+    "belongsTo": "United Kingdom"
   },
   {
     "name": "Brunei",
     "threeLetterISOCountryCode": "BRN",
-    "population": 437483,
-    "area": 5765,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Bandar Seri Begawan",
     "landlocked": false,
     "borders": [
       "MYS"
-    ]
+    ],
+    "area": 5765,
+    "population": 437483,
+    "continent": "Asia"
   },
   {
     "name": "Comoros",
     "threeLetterISOCountryCode": "COM",
-    "population": 869595,
-    "area": 1862,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Moroni",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 1862,
+    "population": 869595,
+    "continent": "Africa"
   },
   {
     "name": "Guam",
     "threeLetterISOCountryCode": "GUM",
-    "population": 168783,
-    "area": 549,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Hagåtña",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 549,
+    "population": 168783,
+    "continent": "Oceania",
+    "belongsTo": "United States"
   },
   {
     "name": "Tonga",
     "threeLetterISOCountryCode": "TON",
-    "population": 105697,
-    "area": 747,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Nuku'alofa",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 747,
+    "population": 105697,
+    "continent": "Oceania"
   },
   {
     "name": "Kiribati",
     "threeLetterISOCountryCode": "KIR",
-    "population": 119446,
-    "area": 811,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "South Tarawa",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 811,
+    "population": 119446,
+    "continent": "Oceania"
   },
   {
     "name": "Ghana",
     "threeLetterISOCountryCode": "GHA",
-    "population": 31072945,
-    "area": 238533,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Accra",
     "landlocked": false,
     "borders": [
       "BFA",
       "CIV",
       "TGO"
-    ]
+    ],
+    "area": 238533,
+    "population": 31072945,
+    "continent": "Africa"
   },
   {
     "name": "Chad",
     "threeLetterISOCountryCode": "TCD",
-    "population": 16425859,
-    "area": 1284000,
-    "continent": "Africa",
+    "independent": true,
     "capital": "N'Djamena",
     "landlocked": true,
     "borders": [
@@ -3169,14 +3456,15 @@
       "NER",
       "NGA",
       "SDN"
-    ]
+    ],
+    "area": 1284000,
+    "population": 16425859,
+    "continent": "Africa"
   },
   {
     "name": "Zimbabwe",
     "threeLetterISOCountryCode": "ZWE",
-    "population": 14862927,
-    "area": 390757,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Harare",
     "landlocked": true,
     "borders": [
@@ -3184,61 +3472,68 @@
       "MOZ",
       "ZAF",
       "ZMB"
-    ]
+    ],
+    "area": 390757,
+    "population": 14862927,
+    "continent": "Africa"
   },
   {
     "name": "Saint Martin",
     "threeLetterISOCountryCode": "MAF",
-    "population": 38659,
-    "area": 53,
-    "continent": "North America",
+    "independent": false,
     "capital": "Marigot",
     "landlocked": false,
     "borders": [
       "SXM"
-    ]
+    ],
+    "area": 53,
+    "population": 38659,
+    "continent": "North America",
+    "belongsTo": "France"
   },
   {
     "name": "Mongolia",
     "threeLetterISOCountryCode": "MNG",
-    "population": 3278292,
-    "area": 1564110,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Ulan Bator",
     "landlocked": true,
     "borders": [
       "CHN",
       "RUS"
-    ]
+    ],
+    "area": 1564110,
+    "population": 3278292,
+    "continent": "Asia"
   },
   {
     "name": "Portugal",
     "threeLetterISOCountryCode": "PRT",
-    "population": 10305564,
-    "area": 92090,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Lisbon",
     "landlocked": false,
     "borders": [
       "ESP"
-    ]
+    ],
+    "area": 92090,
+    "population": 10305564,
+    "continent": "Europe"
   },
   {
     "name": "American Samoa",
     "threeLetterISOCountryCode": "ASM",
-    "population": 55197,
-    "area": 199,
-    "continent": "Oceania",
+    "independent": false,
     "capital": "Pago Pago",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 199,
+    "population": 55197,
+    "continent": "Oceania",
+    "belongsTo": "United States"
   },
   {
     "name": "Republic of the Congo",
     "threeLetterISOCountryCode": "COG",
-    "population": 5657000,
-    "area": 342000,
-    "continent": "Africa",
+    "independent": true,
     "capital": "Brazzaville",
     "landlocked": false,
     "borders": [
@@ -3247,14 +3542,15 @@
       "CAF",
       "COD",
       "GAB"
-    ]
+    ],
+    "area": 342000,
+    "population": 5657000,
+    "continent": "Africa"
   },
   {
     "name": "Belgium",
     "threeLetterISOCountryCode": "BEL",
-    "population": 11555997,
-    "area": 30528,
-    "continent": "Europe",
+    "independent": true,
     "capital": "Brussels",
     "landlocked": false,
     "borders": [
@@ -3262,14 +3558,15 @@
       "DEU",
       "LUX",
       "NLD"
-    ]
+    ],
+    "area": 30528,
+    "population": 11555997,
+    "continent": "Europe"
   },
   {
     "name": "Israel",
     "threeLetterISOCountryCode": "ISR",
-    "population": 9216900,
-    "area": 20770,
-    "continent": "Asia",
+    "independent": true,
     "capital": "Jerusalem",
     "landlocked": false,
     "borders": [
@@ -3278,39 +3575,46 @@
       "LBN",
       "PSE",
       "SYR"
-    ]
+    ],
+    "area": 20770,
+    "population": 9216900,
+    "continent": "Asia"
   },
   {
     "name": "New Zealand",
     "threeLetterISOCountryCode": "NZL",
-    "population": 5084300,
-    "area": 270467,
-    "continent": "Oceania",
+    "independent": true,
     "capital": "Wellington",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 270467,
+    "population": 5084300,
+    "continent": "Oceania"
   },
   {
     "name": "Nicaragua",
     "threeLetterISOCountryCode": "NIC",
-    "population": 6624554,
-    "area": 130373,
-    "continent": "North America",
+    "independent": true,
     "capital": "Managua",
     "landlocked": false,
     "borders": [
       "CRI",
       "HND"
-    ]
+    ],
+    "area": 130373,
+    "population": 6624554,
+    "continent": "North America"
   },
   {
     "name": "Anguilla",
     "threeLetterISOCountryCode": "AIA",
-    "population": 13452,
-    "area": 91,
-    "continent": "North America",
+    "independent": false,
     "capital": "The Valley",
     "landlocked": false,
-    "borders": []
+    "borders": [],
+    "area": 91,
+    "population": 13452,
+    "continent": "North America",
+    "belongsTo": "United Kingdom"
   }
 ]

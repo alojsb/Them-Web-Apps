@@ -11,12 +11,13 @@ const getCountries = async () => {
   const formattedCountries = countries.map(country => ({
     name: country.name.common,
     threeLetterISOCountryCode: country.cca3,
-    population: country.population,
-    area: country.area,
-    continent: country.continents.join(', '),
+    independent: country.independent,
     capital: country.capital ? country.capital[0] : 'N/A',
     landlocked: country.landlocked,
     borders: country.borders || [],
+    area: country.area,
+    population: country.population,
+    continent: country.continents.join(', '),
   }));
 
   // Save the data to src/countries.json
@@ -27,3 +28,6 @@ const getCountries = async () => {
 };
 
 getCountries();
+
+// to run this, git bash to project root folder and
+// node tools/fetchCountries.js
