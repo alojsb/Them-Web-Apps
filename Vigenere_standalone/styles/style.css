@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  background-color: #219ebc;
+}
+
+.container {
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #fb8500;
+  background-color: #023047;
+}
+
+.center-content {
+  text-align: center;
+}
+
+.output-div {
+  width: 24%;
+  display: inline-block;
+  padding: 5px 0px;
+  margin: 2px 0px;
+  background-color: rgb(211, 192, 165);
+}
+
+.title-text {
+  -webkit-text-stroke: 1px black;
+  color: #ffb703;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 60px;
+}
+
+label {
+  color: #fb8500;
+}
+
+input {
+  padding: 4px;
+  margin: 4px;
+}
+
+h1 {
+  margin: 20px;
+}
+
+#infoButton {
+  border: 2px solid rgb(211, 179, 75);
+  width: 20px;
+  color: rgb(211, 179, 75);
+  font-weight: bold;
+  border-radius: 7px;
+  text-align: center;
+}
+
+#info {
+  position: fixed;
+  background-color: darkslategray;
+  color: whitesmoke;
+  width: 35%;
+  top: 80px;
+  left: 80px;
+  padding: 20px;
+  opacity: 0.85;
+  border-radius: 7px;
+}
+
+.hidden {
+  display: none;
+}
+
+textarea {
+  margin: 8px 0px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  width: 70px;
+  padding: 4px 0px;
+  margin: 4px;
+}
+
+@media only screen and (max-width: 900px) {
+  #info {
+    top: 20px;
+    left: 65px;
+    width: 70%;
+    overflow: scroll;
+  }
+}

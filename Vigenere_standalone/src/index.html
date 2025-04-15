@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vigenere Standalone</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="../scripts/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="center-content title-text">Vigenère Cipher</h1>
+    </div>
+    <div id="container-encryptionCode" class="container">
+      <div class="center-content">
+        <label for="encryptionCode" id="encryptionCode-label"
+          >Enter encryption key words here</label
+        >
+      </div>
+      <div class="center-content" class="center-content">
+        <input type="text" id="encryptionCode" class="center-content" />
+      </div>
+      <div class="center-content">
+        <textarea name="" id="originalText" cols="30" rows="10"></textarea>
+      </div>
+      <div class="center-content">
+        <div id="left-pos-div">
+          <button id="encode">Encode</button>
+          <button id="decode">Decode</button>
+          <button id="clear">Clear</button>
+        </div>
+        <div id="center-pos-div">
+          <div id="infoButton">i</div>
+        </div>
+        <div id="right-pos-div"></div>
+      </div>
+    </div>
+    <div id="container-offset" class="container center-content">
+      <textarea name="" id="cryptedText" cols="30" rows="10"></textarea>
+    </div>
+    <div id="info" class="hidden">
+      <h4>Info</h4>
+      <p>
+        Vigenere Cipher is a way of encrypting a message. <br /><br />
+        The way it works is as follows. Enter a code word. Then write something
+        into the text area. Each letter of the code word is used sequentially to
+        define a shift in the alphabet for the encrypted text. Once all letters
+        in the code word have been used, the algorithm loops back to the first
+        letter in the code word, and the cycle repeats until the entire text has
+        been encrypted. The interpunction from the original is preserved in the
+        encrypted text.
+        <br /><br />
+        The 'Encode', 'Clear' and 'Decode' buttons are self explainatory.
+        <br /><br />
+        Only letters are allowed in the code word. The code word input is
+        case-insensitive.
+      </p>
+    </div>
+  </body>
+</html>
