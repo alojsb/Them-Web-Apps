@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>digitalni sat 1.2</title>
+
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            background-color: rgb(47, 68, 85);
+        }
+    
+        #board{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 60vw;
+            height: 30vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(40, 45, 49);
+        }
+
+        .cifre{
+            width: 12vw;
+            height: 24vw;
+            display: inline-block;
+            position: relative;
+        }
+
+        .tacaka-mjesto{
+            width: 6vw;
+            height: 20vw;
+            position: relative;
+        }
+
+        .indikator-cigla{
+            width: 6vw;
+            height: 1.5vw;
+            position: absolute;
+        }
+
+        .gornja{
+            left: calc(100% - 6vw - 3vw);
+            top: calc(100% - 20vw - 0.75vw);
+        }
+
+        .desna-gornja{
+            left: calc(100% - 4vw - 0.75vw);
+            top: calc(100% - 16vw - 0.75vw);
+            transform: rotate(90deg);
+        }
+
+        .desna-donja{
+            left: calc(100% - 4vw - 0.75vw);
+            top: calc(100% - 8vw - 0.75vw);
+            transform: rotate(90deg);
+        }
+
+        .srednja{
+            left: calc(100% - 6vw - 3vw);
+            top: calc(100% - 12vw - 0.75vw);
+        }
+
+        .donja{
+            left: calc(100% - 6vw - 3vw);
+            top: calc(100% - 4vw - 0.75vw);
+        }
+
+        .lijeva-donja{
+            left: calc(100% - 12.5vw - 0.75vw);
+            top: calc(100% - 8vw - 0.75vw);
+            transform: rotate(90deg);
+        }
+
+        .lijeva-gornja{
+            left: calc(100% - 12.5vw - 0.75vw);
+            top: calc(100% - 16vw - 0.75vw);
+            transform: rotate(90deg);
+        }
+
+        .kruzici{
+            width: 1.5vw;
+            height: 1.5vw;
+            border-radius: 0.75vw;
+            position: absolute;
+        }
+
+        #tacka-1{
+            left: calc(100% - 3vw - 0.75vw);
+            top: calc(100% - 14vw - 0.75vw);
+        }
+
+        #tacka-2{
+            left: calc(100% - 3vw - 0.75vw);
+            top: calc(100% - 6vw - 0.75vw);
+        }
+
+        .pali{
+            background-color: darksalmon;
+        }
+
+        .trokut{
+            border-top: 0.75vw solid transparent;
+            border-bottom: 0.75vw solid transparent;
+            border-left: 0.75vw solid transparent;
+            border-right: 0.75vw solid darksalmon;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        .vertikalni-1{
+            left: -1.5vw;
+        }
+
+        .vertikalni-2{
+            transform: rotate(180deg);
+            left: 6vw;
+        }
+
+        .horizontalni-1{
+            left: -1.5vw;
+        }
+
+        .horizontalni-2{
+            transform: rotate(180deg);
+            left: 5.95vw;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="trenutnoVrijeme"></div>
+    <div>
+        <div id="board">
+
+                <div id="cifra-1" class="cifre">
+                    <div id="cigla-1-1" class="indikator-cigla gornja pali"><div id="trokut-1-1-1" class="trokut horizontalni-1"></div><div id="trokut-1-1-2" class="trokut horizontalni-2"></div></div>
+                    <div id="cigla-1-2" class="indikator-cigla desna-gornja pali"><div id="trokut-1-2-1" class="trokut vertikalni-1"></div><div id="trokut-1-2-2" class="trokut vertikalni-2"></div></div>
+                    <div id="cigla-1-3" class="indikator-cigla desna-donja pali"><div id="trokut-1-3-1" class="trokut vertikalni-1"></div><div id="trokut-1-3-2" class="trokut vertikalni-2"></div></div>
+                    <div id="cigla-1-4" class="indikator-cigla donja pali"><div id="trokut-1-4-1" class="trokut horizontalni-1"></div><div id="trokut-1-4-2" class="trokut horizontalni-2"></div></div>
+                    <div id="cigla-1-5" class="indikator-cigla lijeva-donja pali"><div id="trokut-1-5-1" class="trokut vertikalni-1"></div><div id="trokut-1-5-2" class="trokut vertikalni-2"></div></div>
+                    <div id="cigla-1-6" class="indikator-cigla lijeva-gornja pali"><div id="trokut-1-6-1" class="trokut vertikalni-1"></div><div id="trokut-1-6-2" class="trokut vertikalni-2"></div></div>
+                    <div id="cigla-1-7" class="indikator-cigla srednja"><div id="trokut-1-7-1" class="horizontalni-1"></div><div id="trokut-1-7-2" class="horizontalni-2"></div></div>
+                </div>
+                <div id="cifra-2" class="cifre">
+                        <div id="cigla-2-1" class="indikator-cigla gornja pali"><div id="trokut-2-1-1" class="trokut horizontalni-1"></div><div id="trokut-2-1-2" class="trokut horizontalni-2"></div></div>
+                        <div id="cigla-2-2" class="indikator-cigla desna-gornja pali"><div id="trokut-2-2-1" class="trokut vertikalni-1"></div><div id="trokut-2-2-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-2-3" class="indikator-cigla desna-donja pali"><div id="trokut-2-3-1" class="trokut vertikalni-1"></div><div id="trokut-2-3-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-2-4" class="indikator-cigla donja pali"><div id="trokut-2-4-1" class="trokut horizontalni-1"></div><div id="trokut-2-4-2" class="trokut horizontalni-2"></div></div>
+                        <div id="cigla-2-5" class="indikator-cigla lijeva-donja pali"><div id="trokut-2-5-1" class="trokut vertikalni-1"></div><div id="trokut-2-5-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-2-6" class="indikator-cigla lijeva-gornja pali"><div id="trokut-2-6-1" class="trokut vertikalni-1"></div><div id="trokut-2-6-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-2-7" class="indikator-cigla srednja"><div id="trokut-2-7-1" class="horizontalni-1"></div><div id="trokut-2-7-2" class="horizontalni-2"></div></div>
+                        
+                </div>
+                <div id="tacke" class="tacaka-mjesto">
+                    <div id="tacka-1" class="kruzici pali"></div>
+                    <div id="tacka-2" class="kruzici pali"></div>
+                </div>
+                <div id="cifra-3" class="cifre">
+                        <div id="cigla-3-1" class="indikator-cigla gornja pali"><div id="trokut-3-1-1" class="trokut horizontalni-1"></div><div id="trokut-3-1-2" class="trokut horizontalni-2"></div></div>
+                        <div id="cigla-3-2" class="indikator-cigla desna-gornja pali"><div id="trokut-3-2-1" class="trokut vertikalni-1"></div><div id="trokut-3-2-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-3-3" class="indikator-cigla desna-donja pali"><div id="trokut-3-3-1" class="trokut vertikalni-1"></div><div id="trokut-3-3-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-3-4" class="indikator-cigla donja pali"><div id="trokut-3-4-1" class="trokut horizontalni-1"></div><div id="trokut-3-4-2" class="trokut horizontalni-2"></div></div>
+                        <div id="cigla-3-5" class="indikator-cigla lijeva-donja pali"><div id="trokut-3-5-1" class="trokut vertikalni-1"></div><div id="trokut-3-5-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-3-6" class="indikator-cigla lijeva-gornja pali"><div id="trokut-3-6-1" class="trokut vertikalni-1"></div><div id="trokut-3-6-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-3-7" class="indikator-cigla srednja"><div id="trokut-3-7-1" class="horizontalni-1"></div><div id="trokut-3-7-2" class="horizontalni-2"></div></div>
+                </div>
+                <div id="cifra-4" class="cifre">
+                        <div id="cigla-4-1" class="indikator-cigla gornja pali"><div id="trokut-4-1-1" class="trokut horizontalni-1"></div><div id="trokut-4-1-2" class="trokut horizontalni-2"></div></div>
+                        <div id="cigla-4-2" class="indikator-cigla desna-gornja pali"><div id="trokut-4-2-1" class="trokut vertikalni-1"></div><div id="trokut-4-2-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-4-3" class="indikator-cigla desna-donja pali"><div id="trokut-4-3-1" class="trokut vertikalni-1"></div><div id="trokut-4-3-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-4-4" class="indikator-cigla donja pali"><div id="trokut-4-4-1" class="trokut horizontalni-1"></div><div id="trokut-4-4-2" class="trokut horizontalni-2"></div></div>
+                        <div id="cigla-4-5" class="indikator-cigla lijeva-donja pali"><div id="trokut-4-5-1" class="trokut vertikalni-1"></div><div id="trokut-4-5-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-4-6" class="indikator-cigla lijeva-gornja pali"><div id="trokut-4-6-1" class="trokut vertikalni-1"></div><div id="trokut-4-6-2" class="trokut vertikalni-2"></div></div>
+                        <div id="cigla-4-7" class="indikator-cigla srednja"><div id="trokut-4-7-1" class="horizontalni-1"></div><div id="trokut-4-7-2" class="horizontalni-2"></div></div>
+                </div>
+            
+        </div>
+    </div>
+
+    <script>
+
+        window.setInterval(glavniInterval, 1000);
+
+        var prikazVremena = document.getElementById('trenutnoVrijeme');
+        prikazVremena.innerText = new Date(); // bez ovoga 1 sekundu poslije otvaranja prozora ne ispise nista gore lijevo u cosku
+
+        var sati, minute;
+    
+        function glavniInterval() {
+            // uzimanje trenutnih vrijednosti sati i minuta
+            prikazVremena.innerText = new Date();
+            sati = new Date().getHours();
+            minute = new Date().getMinutes();
+
+            // dodjela vrijednosti elementima niza
+            var digits = [0, parseInt(sati/10), sati%10, parseInt(minute/10), minute%10];
+
+            // samo radi provjere
+            // for (let i = 1; i < digits.length; i++) {
+            //     console.log('clan broj '+i+' ima vrijednost = '+ digits[i]);  
+            // }
+
+            for (let i = 1; i < digits.length; i++) {
+
+                switch (digits[i]) {
+                case 0:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.remove('pali');
+                    break;
+                case 1:
+                    document.getElementById('cigla-'+i+'-1').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.remove('pali');
+                    break;
+                case 2:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.add('pali');
+                    break;
+                case 3:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.add('pali');
+                    break;
+                case 4:
+                    document.getElementById('cigla-'+i+'-1').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.add('pali');
+                    break;
+                case 5:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.add('pali');
+                    break;
+                case 6:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.add('pali');
+                    break;
+                case 7:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.remove('pali');
+                    break;
+                case 8:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.add('pali');
+                    break;
+                case 9:
+                    document.getElementById('cigla-'+i+'-1').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-2').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-3').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-4').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-5').classList.remove('pali');
+                    document.getElementById('cigla-'+i+'-6').classList.add('pali');
+                    document.getElementById('cigla-'+i+'-7').classList.add('pali');
+                    break;
+            
+                default:
+                    console.log('error na '+ i +'. cifri');
+                    break;
+                }
+
+                // dodavanje i brisanje ukrasnih trokutica oko 'cigli'
+                for (let j = 1; j <= 7; j++) {
+                    if (document.getElementById('cigla-'+i+'-'+j).classList.contains('pali')) {
+                        document.getElementById('trokut-'+i+'-'+j+'-1').classList.add('trokut'); 
+                        document.getElementById('trokut-'+i+'-'+j+'-2').classList.add('trokut');
+                        // console.log('contains vratio true');
+                    }
+                    else {
+                        document.getElementById('trokut-'+i+'-'+j+'-1').classList.remove('trokut');
+                        document.getElementById('trokut-'+i+'-'+j+'-2').classList.remove('trokut');
+                        // console.log('contains vratio false');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
