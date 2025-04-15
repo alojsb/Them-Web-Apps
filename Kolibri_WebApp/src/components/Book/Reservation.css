@@ -1,0 +1,16 @@
+.reservation-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reservation-item.selected {
+  border-color: #007bff;
+  background-color: #e7f3ff;
+}
+
+.reservation-item:hover {
+  background-color: #f0f0f0;
+}

@@ -1,0 +1,49 @@
+/* BookList.css */
+
+.book-list {
+  padding: 20px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+.book-card {
+  display: block;
+  width: 150px; /* You can adjust the size */
+  height: 225px; /* Fixed aspect ratio (2:3 for typical book covers) */
+  overflow: hidden;
+  border-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: scale(1.05);
+}
+
+.book-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the aspect ratio of the cover remains intact */
+  border-radius: 10px;
+}
+
+.add-book-button {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.add-book-button:hover {
+  background-color: #218838;
+}
